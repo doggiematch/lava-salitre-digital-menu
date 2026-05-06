@@ -62,7 +62,13 @@ function Index() {
               {/* warm glow */}
               <div className="absolute inset-0 [background-image:radial-gradient(circle_at_30%_25%,oklch(0.78_0.13_65/.45),transparent_55%),radial-gradient(circle_at_75%_75%,oklch(0.82_0.045_215/.4),transparent_60%)]" />
               {/* texture */}
-              <div className="absolute inset-0 opacity-[0.18] [background-image:url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")]" />
+              <div
+                className="absolute inset-0 opacity-[0.18]"
+                style={{
+                  backgroundImage:
+                    "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>\")",
+                }}
+              />
               {/* frame */}
               <div className="absolute inset-4 border border-cream/15" />
               <div className="absolute right-6 top-6 flex h-14 w-14 items-center justify-center rounded-full border border-cream/30 font-serif text-sm italic text-cream">
