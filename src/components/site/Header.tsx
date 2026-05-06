@@ -57,7 +57,7 @@ export function Header() {
           ))}
         </nav>
 
-        <Link to="/reservas" className="hidden lg:inline-flex btn-gold !py-2 !px-4">
+        <Link to="/reservas" className="hidden btn-gold !py-2 !px-4 !text-[10px] lg:inline-flex">
           Reservar
         </Link>
 
