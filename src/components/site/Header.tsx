@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import { Monogram } from "./Decorations";
 
 const nav = [
   { to: "/", label: "Inicio" },
@@ -14,20 +15,40 @@ const nav = [
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
+
   return (
-    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
-        <Link to="/" className="group flex items-center gap-2" onClick={() => setOpen(false)}>
-          <span className="font-serif text-xl tracking-wide text-foreground">
-            Lava <span className="text-accent">&</span> Salitre
+    <header
+      className={`sticky top-0 z-40 transition-all duration-500 ${
+        scrolled ? "border-b border-border/60 bg-background/85 backdrop-blur-xl" : "border-b border-transparent bg-transparent"
+      }`}
+    >
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
+        <Link to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
+          <Monogram size={36} className="text-foreground" />
+          <span className="hidden font-serif text-base italic tracking-wider text-foreground sm:inline">
+            Lava <span className="not-italic text-accent">&</span> Salitre
           </span>
         </Link>
-        <nav className="hidden items-center gap-7 lg:flex">
+
+        <nav className="hidden items-center gap-8 lg:flex">
           {nav.map((n) => (
             <Link
               key={n.to}
               to={n.to}
-              className="text-sm tracking-wide text-muted-foreground transition-colors hover:text-foreground"
+              className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground transition-colors hover:text-foreground"
               activeProps={{ className: "text-foreground gold-underline" }}
               activeOptions={{ exact: n.to === "/" }}
             >
@@ -35,32 +56,50 @@ export function Header() {
             </Link>
           ))}
         </nav>
+
+        <Link to="/reservas" className="hidden lg:inline-flex btn-gold !py-2 !px-4">
+          Reservar
+        </Link>
+
         <button
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground lg:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border/80 bg-background/60 text-foreground backdrop-blur lg:hidden"
           onClick={() => setOpen((o) => !o)}
           aria-label="Abrir menú"
         >
           {open ? <X size={18} /> : <Menu size={18} />}
         </button>
       </div>
-      {open && (
-        <div className="border-t border-border/60 bg-background lg:hidden">
-          <nav className="mx-auto flex max-w-6xl flex-col px-5 py-4">
-            {nav.map((n) => (
+
+      {/* Mobile drawer */}
+      <div
+        className={`fixed inset-x-0 top-[76px] z-30 origin-top transition-all duration-500 lg:hidden ${
+          open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
+        }`}
+      >
+        <div className="mx-4 overflow-hidden rounded-2xl border border-border bg-background/95 shadow-[0_30px_80px_-30px_oklch(0.18_0.012_55/.4)] backdrop-blur-xl">
+          <nav className="flex flex-col px-6 py-4">
+            {nav.map((n, i) => (
               <Link
                 key={n.to}
                 to={n.to}
                 onClick={() => setOpen(false)}
-                className="border-b border-border/40 py-3 text-sm tracking-wide text-foreground"
+                className="group flex items-center justify-between border-b border-border/50 py-4 text-sm tracking-wide text-foreground last:border-0"
                 activeProps={{ className: "text-accent" }}
                 activeOptions={{ exact: n.to === "/" }}
               >
-                {n.label}
+                <span className="flex items-center gap-3">
+                  <span className="font-serif text-[10px] italic text-accent">0{i + 1}</span>
+                  {n.label}
+                </span>
+                <span className="text-muted-foreground transition-transform group-hover:translate-x-1">→</span>
               </Link>
             ))}
+            <Link to="/reservas" onClick={() => setOpen(false)} className="btn-gold mt-5 mb-2 w-full">
+              Reservar mesa
+            </Link>
           </nav>
         </div>
-      )}
+      </div>
     </header>
   );
 }
