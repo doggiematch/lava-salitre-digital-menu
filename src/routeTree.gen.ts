@@ -9,8 +9,44 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ReservasRouteImport } from './routes/reservas'
+import { Route as PedidosRouteImport } from './routes/pedidos'
+import { Route as MenusRouteImport } from './routes/menus'
+import { Route as ExperienciaRouteImport } from './routes/experiencia'
+import { Route as ContactoRouteImport } from './routes/contacto'
+import { Route as CartaDigitalRouteImport } from './routes/carta-digital'
 import { Route as IndexRouteImport } from './routes/index'
 
+const ReservasRoute = ReservasRouteImport.update({
+  id: '/reservas',
+  path: '/reservas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PedidosRoute = PedidosRouteImport.update({
+  id: '/pedidos',
+  path: '/pedidos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MenusRoute = MenusRouteImport.update({
+  id: '/menus',
+  path: '/menus',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExperienciaRoute = ExperienciaRouteImport.update({
+  id: '/experiencia',
+  path: '/experiencia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactoRoute = ContactoRouteImport.update({
+  id: '/contacto',
+  path: '/contacto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CartaDigitalRoute = CartaDigitalRouteImport.update({
+  id: '/carta-digital',
+  path: '/carta-digital',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +55,116 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/carta-digital': typeof CartaDigitalRoute
+  '/contacto': typeof ContactoRoute
+  '/experiencia': typeof ExperienciaRoute
+  '/menus': typeof MenusRoute
+  '/pedidos': typeof PedidosRoute
+  '/reservas': typeof ReservasRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/carta-digital': typeof CartaDigitalRoute
+  '/contacto': typeof ContactoRoute
+  '/experiencia': typeof ExperienciaRoute
+  '/menus': typeof MenusRoute
+  '/pedidos': typeof PedidosRoute
+  '/reservas': typeof ReservasRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/carta-digital': typeof CartaDigitalRoute
+  '/contacto': typeof ContactoRoute
+  '/experiencia': typeof ExperienciaRoute
+  '/menus': typeof MenusRoute
+  '/pedidos': typeof PedidosRoute
+  '/reservas': typeof ReservasRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/carta-digital'
+    | '/contacto'
+    | '/experiencia'
+    | '/menus'
+    | '/pedidos'
+    | '/reservas'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/carta-digital'
+    | '/contacto'
+    | '/experiencia'
+    | '/menus'
+    | '/pedidos'
+    | '/reservas'
+  id:
+    | '__root__'
+    | '/'
+    | '/carta-digital'
+    | '/contacto'
+    | '/experiencia'
+    | '/menus'
+    | '/pedidos'
+    | '/reservas'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CartaDigitalRoute: typeof CartaDigitalRoute
+  ContactoRoute: typeof ContactoRoute
+  ExperienciaRoute: typeof ExperienciaRoute
+  MenusRoute: typeof MenusRoute
+  PedidosRoute: typeof PedidosRoute
+  ReservasRoute: typeof ReservasRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/reservas': {
+      id: '/reservas'
+      path: '/reservas'
+      fullPath: '/reservas'
+      preLoaderRoute: typeof ReservasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pedidos': {
+      id: '/pedidos'
+      path: '/pedidos'
+      fullPath: '/pedidos'
+      preLoaderRoute: typeof PedidosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/menus': {
+      id: '/menus'
+      path: '/menus'
+      fullPath: '/menus'
+      preLoaderRoute: typeof MenusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/experiencia': {
+      id: '/experiencia'
+      path: '/experiencia'
+      fullPath: '/experiencia'
+      preLoaderRoute: typeof ExperienciaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contacto': {
+      id: '/contacto'
+      path: '/contacto'
+      fullPath: '/contacto'
+      preLoaderRoute: typeof ContactoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/carta-digital': {
+      id: '/carta-digital'
+      path: '/carta-digital'
+      fullPath: '/carta-digital'
+      preLoaderRoute: typeof CartaDigitalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,17 +177,13 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CartaDigitalRoute: CartaDigitalRoute,
+  ContactoRoute: ContactoRoute,
+  ExperienciaRoute: ExperienciaRoute,
+  MenusRoute: MenusRoute,
+  PedidosRoute: PedidosRoute,
+  ReservasRoute: ReservasRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
