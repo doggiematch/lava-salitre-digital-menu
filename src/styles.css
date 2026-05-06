@@ -44,17 +44,18 @@
 }
 
 :root {
-  --radius: 0.375rem;
+  --radius: 0.25rem;
 
-  /* Brand palette */
-  --background: oklch(0.985 0.005 85);        /* blanco roto */
-  --foreground: oklch(0.22 0.012 60);         /* negro suave */
-  --sand: oklch(0.91 0.022 80);               /* beige arena */
-  --stone-volcanic: oklch(0.42 0.012 60);     /* gris piedra */
-  --salitre: oklch(0.82 0.04 220);            /* azul salitre pastel */
-  --sage: oklch(0.78 0.04 145);               /* verde salvia */
-  --gold: oklch(0.72 0.11 80);                /* dorado discreto */
-  --ink: oklch(0.18 0.01 60);
+  /* Brand palette — refined pastel canario */
+  --background: oklch(0.972 0.012 78);        /* blanco roto cálido */
+  --foreground: oklch(0.24 0.018 55);         /* tinta volcánica suave */
+  --cream: oklch(0.955 0.018 80);             /* crema */
+  --sand: oklch(0.895 0.028 75);              /* arena */
+  --stone-volcanic: oklch(0.46 0.018 50);     /* gris piedra cálido */
+  --salitre: oklch(0.84 0.045 215);           /* azul salitre pastel */
+  --sage: oklch(0.82 0.045 150);              /* verde salvia suave */
+  --gold: oklch(0.68 0.115 70);               /* dorado discreto */
+  --ink: oklch(0.18 0.012 55);
 
   --card: oklch(0.985 0.005 85);
   --card-foreground: var(--foreground);
