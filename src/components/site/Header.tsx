@@ -57,9 +57,11 @@ export function Header() {
           ))}
         </nav>
 
-        <Link to="/reservas" className="hidden btn-gold !py-2 !px-4 !text-[10px] lg:inline-flex">
-          Reservar
-        </Link>
+        <div className="hidden lg:block">
+          <Link to="/reservas" className="btn-gold !py-2 !px-4 !text-[10px]">
+            Reservar
+          </Link>
+        </div>
 
         <button
           className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border/80 bg-background/60 text-foreground backdrop-blur lg:hidden"
