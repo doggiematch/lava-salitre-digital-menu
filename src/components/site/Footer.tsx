@@ -1,11 +1,29 @@
+import { Link } from "@tanstack/react-router";
 import { Monogram, WaveDivider } from "./Decorations";
+
+const sitemap = [
+  { to: "/", label: "Inicio" },
+  { to: "/menus", label: "Menús" },
+  { to: "/carta-digital", label: "Carta digital" },
+  { to: "/conocenos", label: "Conócenos" },
+  { to: "/galeria", label: "Galería" },
+  { to: "/reservas", label: "Reservas" },
+  { to: "/contacto", label: "Contacto" },
+] as const;
+
+const projectLinks = [
+  { to: "/proyecto", hash: "investigacion-ingredientes-km-0", label: "Investigación de ingredientes km 0" },
+  { to: "/proyecto", hash: "estructura-menus-inversion", label: "Estructura, menús e inversión inicial" },
+  { to: "/proyecto", hash: "concepto-gastronomico", label: "Concepto gastronómico" },
+  { to: "/proyecto", hash: "tecnologias-gastronomicas", label: "Tecnologías gastronómicas" },
+] as const;
 
 export function Footer() {
   return (
     <footer className="relative mt-32 border-t border-border/60 bg-cream/30">
       <div className="mx-auto max-w-7xl px-6 pb-10 pt-20 lg:px-10">
         <div className="mb-12 flex flex-col items-center text-center">
-          <Monogram size={56} className="text-foreground" />
+          <Monogram size={96} className="h-24 w-24 text-foreground" />
           <p className="mt-4 font-serif text-2xl italic">Lava & Salitre</p>
           <WaveDivider className="mt-3 h-3 w-32 text-accent" />
         </div>
@@ -26,6 +44,38 @@ export function Footer() {
             <p className="mt-3 text-sm text-muted-foreground">+34 928 000 000</p>
             <p className="text-sm text-muted-foreground">hola@lavaysalitre.es</p>
             <p className="mt-2 font-serif text-sm italic">@lavaysalitre</p>
+          </div>
+        </div>
+
+        <div className="mt-14 grid gap-10 border-t border-border/50 pt-12 md:grid-cols-[1fr_1fr]">
+          <div>
+            <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Mapa de navegación</p>
+            <nav className="mt-4 grid gap-2 sm:grid-cols-2 md:grid-cols-4" aria-label="Mapa de navegación">
+              {sitemap.map((item) => (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+          <div>
+            <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Proyecto</p>
+            <nav className="mt-4 grid gap-2" aria-label="Proyecto">
+              {projectLinks.map((item) => (
+                <Link
+                  key={item.hash}
+                  to={item.to}
+                  hash={item.hash}
+                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
           </div>
         </div>
       </div>

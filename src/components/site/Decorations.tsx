@@ -1,19 +1,13 @@
 export function Monogram({ size = 36, className = "" }: { size?: number; className?: string }) {
   return (
-    <svg viewBox="0 0 64 64" width={size} height={size} className={className} aria-hidden>
-      <circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" strokeWidth="0.6" opacity="0.4" />
-      <circle cx="32" cy="32" r="26" fill="none" stroke="currentColor" strokeWidth="0.4" opacity="0.25" />
-      <text
-        x="32" y="40"
-        textAnchor="middle"
-        fontFamily="Fraunces, serif"
-        fontSize="22"
-        fontStyle="italic"
-        fill="currentColor"
-      >
-        L<tspan fill="var(--gold)">&amp;</tspan>S
-      </text>
-    </svg>
+    <img
+      src="/galeria/isotipo.png"
+      alt=""
+      width={size}
+      height={size}
+      className={`object-contain text-foreground ${className}`}
+      aria-hidden
+    />
   );
 }
 

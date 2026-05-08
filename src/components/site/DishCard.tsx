@@ -1,10 +1,14 @@
 import { useState } from "react";
 import type { Dish } from "@/data/menu";
 import { DishModal } from "./DishModal";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { allergenSheets } from "@/data/allergenSheets";
+import { AllergenSheetView } from "./AllergenSheetView";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 export function DishCard({ dish }: { dish: Dish }) {
   const [open, setOpen] = useState(false);
+  const [allergenOpen, setAllergenOpen] = useState(false);
+  const allergenSheet = allergenSheets[dish.id];
 
   return (
     <article className="group relative flex flex-col overflow-hidden rounded-sm border border-border/60 bg-cream/30 p-7 transition-all duration-500 hover:-translate-y-0.5 hover:border-accent/60 hover:bg-cream/60 hover:shadow-[0_30px_60px_-30px_oklch(0.46_0.018_50/.35)]">
@@ -33,29 +37,29 @@ export function DishCard({ dish }: { dish: Dish }) {
           >
             Ver ficha
           </button>
-          <Dialog>
-            <DialogTrigger className="rounded-full border border-border px-4 py-2 text-[10px] uppercase tracking-[0.25em] text-muted-foreground transition hover:border-foreground hover:text-foreground">
+          {allergenSheet ? (
+            <button
+              type="button"
+              onClick={() => setAllergenOpen(true)}
+              className="rounded-full border border-border px-4 py-2 text-[10px] uppercase tracking-[0.25em] text-muted-foreground transition hover:border-foreground hover:text-foreground"
+            >
               Alérgenos
-            </DialogTrigger>
-            <DialogContent className="max-w-sm">
-              <DialogHeader>
-                <DialogTitle className="font-serif text-2xl">Alérgenos</DialogTitle>
-              </DialogHeader>
-              <p className="text-xs uppercase tracking-widest text-accent">{dish.name}</p>
-              <ul className="mt-4 flex flex-wrap gap-2">
-                {dish.allergens.map((a) => (
-                  <li key={a} className="rounded-full border border-border bg-cream/60 px-3 py-1 text-xs text-foreground">
-                    {a}
-                  </li>
-                ))}
-              </ul>
-            </DialogContent>
-          </Dialog>
+            </button>
+          ) : null}
         </div>
-        <span className="font-serif text-xl text-accent">{dish.price}€</span>
       </div>
 
       <DishModal dish={dish} open={open} onOpenChange={setOpen} />
+      {allergenSheet ? (
+        <Dialog open={allergenOpen} onOpenChange={setAllergenOpen}>
+          <DialogContent className="max-h-[92vh] max-w-[96vw] overflow-y-auto p-0 md:max-w-5xl lg:max-w-6xl">
+            <DialogHeader className="sr-only">
+              <DialogTitle>Ficha de alérgenos de {allergenSheet.title}</DialogTitle>
+            </DialogHeader>
+            <AllergenSheetView sheet={allergenSheet} />
+          </DialogContent>
+        </Dialog>
+      ) : null}
     </article>
   );
 }

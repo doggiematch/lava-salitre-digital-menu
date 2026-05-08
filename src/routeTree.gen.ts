@@ -10,16 +10,24 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ReservasRouteImport } from './routes/reservas'
+import { Route as ProyectoRouteImport } from './routes/proyecto'
 import { Route as PedidosRouteImport } from './routes/pedidos'
 import { Route as MenusRouteImport } from './routes/menus'
+import { Route as GaleriaRouteImport } from './routes/galeria'
 import { Route as ExperienciaRouteImport } from './routes/experiencia'
 import { Route as ContactoRouteImport } from './routes/contacto'
+import { Route as ConocenosRouteImport } from './routes/conocenos'
 import { Route as CartaDigitalRouteImport } from './routes/carta-digital'
 import { Route as IndexRouteImport } from './routes/index'
 
 const ReservasRoute = ReservasRouteImport.update({
   id: '/reservas',
   path: '/reservas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProyectoRoute = ProyectoRouteImport.update({
+  id: '/proyecto',
+  path: '/proyecto',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PedidosRoute = PedidosRouteImport.update({
@@ -32,6 +40,11 @@ const MenusRoute = MenusRouteImport.update({
   path: '/menus',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GaleriaRoute = GaleriaRouteImport.update({
+  id: '/galeria',
+  path: '/galeria',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ExperienciaRoute = ExperienciaRouteImport.update({
   id: '/experiencia',
   path: '/experiencia',
@@ -40,6 +53,11 @@ const ExperienciaRoute = ExperienciaRouteImport.update({
 const ContactoRoute = ContactoRouteImport.update({
   id: '/contacto',
   path: '/contacto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConocenosRoute = ConocenosRouteImport.update({
+  id: '/conocenos',
+  path: '/conocenos',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CartaDigitalRoute = CartaDigitalRouteImport.update({
@@ -56,29 +74,38 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/carta-digital': typeof CartaDigitalRoute
+  '/conocenos': typeof ConocenosRoute
   '/contacto': typeof ContactoRoute
   '/experiencia': typeof ExperienciaRoute
+  '/galeria': typeof GaleriaRoute
   '/menus': typeof MenusRoute
   '/pedidos': typeof PedidosRoute
+  '/proyecto': typeof ProyectoRoute
   '/reservas': typeof ReservasRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/carta-digital': typeof CartaDigitalRoute
+  '/conocenos': typeof ConocenosRoute
   '/contacto': typeof ContactoRoute
   '/experiencia': typeof ExperienciaRoute
+  '/galeria': typeof GaleriaRoute
   '/menus': typeof MenusRoute
   '/pedidos': typeof PedidosRoute
+  '/proyecto': typeof ProyectoRoute
   '/reservas': typeof ReservasRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/carta-digital': typeof CartaDigitalRoute
+  '/conocenos': typeof ConocenosRoute
   '/contacto': typeof ContactoRoute
   '/experiencia': typeof ExperienciaRoute
+  '/galeria': typeof GaleriaRoute
   '/menus': typeof MenusRoute
   '/pedidos': typeof PedidosRoute
+  '/proyecto': typeof ProyectoRoute
   '/reservas': typeof ReservasRoute
 }
 export interface FileRouteTypes {
@@ -86,38 +113,50 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/carta-digital'
+    | '/conocenos'
     | '/contacto'
     | '/experiencia'
+    | '/galeria'
     | '/menus'
     | '/pedidos'
+    | '/proyecto'
     | '/reservas'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/carta-digital'
+    | '/conocenos'
     | '/contacto'
     | '/experiencia'
+    | '/galeria'
     | '/menus'
     | '/pedidos'
+    | '/proyecto'
     | '/reservas'
   id:
     | '__root__'
     | '/'
     | '/carta-digital'
+    | '/conocenos'
     | '/contacto'
     | '/experiencia'
+    | '/galeria'
     | '/menus'
     | '/pedidos'
+    | '/proyecto'
     | '/reservas'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CartaDigitalRoute: typeof CartaDigitalRoute
+  ConocenosRoute: typeof ConocenosRoute
   ContactoRoute: typeof ContactoRoute
   ExperienciaRoute: typeof ExperienciaRoute
+  GaleriaRoute: typeof GaleriaRoute
   MenusRoute: typeof MenusRoute
   PedidosRoute: typeof PedidosRoute
+  ProyectoRoute: typeof ProyectoRoute
   ReservasRoute: typeof ReservasRoute
 }
 
@@ -128,6 +167,13 @@ declare module '@tanstack/react-router' {
       path: '/reservas'
       fullPath: '/reservas'
       preLoaderRoute: typeof ReservasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/proyecto': {
+      id: '/proyecto'
+      path: '/proyecto'
+      fullPath: '/proyecto'
+      preLoaderRoute: typeof ProyectoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pedidos': {
@@ -144,6 +190,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MenusRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/galeria': {
+      id: '/galeria'
+      path: '/galeria'
+      fullPath: '/galeria'
+      preLoaderRoute: typeof GaleriaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/experiencia': {
       id: '/experiencia'
       path: '/experiencia'
@@ -156,6 +209,13 @@ declare module '@tanstack/react-router' {
       path: '/contacto'
       fullPath: '/contacto'
       preLoaderRoute: typeof ContactoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/conocenos': {
+      id: '/conocenos'
+      path: '/conocenos'
+      fullPath: '/conocenos'
+      preLoaderRoute: typeof ConocenosRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/carta-digital': {
@@ -178,12 +238,25 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CartaDigitalRoute: CartaDigitalRoute,
+  ConocenosRoute: ConocenosRoute,
   ContactoRoute: ContactoRoute,
   ExperienciaRoute: ExperienciaRoute,
+  GaleriaRoute: GaleriaRoute,
   MenusRoute: MenusRoute,
   PedidosRoute: PedidosRoute,
+  ProyectoRoute: ProyectoRoute,
   ReservasRoute: ReservasRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

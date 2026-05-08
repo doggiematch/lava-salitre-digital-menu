@@ -8,8 +8,8 @@ const nav = [
   { to: "/menus", label: "Menús" },
   { to: "/carta-digital", label: "Carta digital" },
   { to: "/experiencia", label: "Experiencia" },
-  { to: "/reservas", label: "Reservas" },
-  { to: "/pedidos", label: "Para llevar" },
+  { to: "/galeria", label: "Galería" },
+  { to: "/conocenos", label: "Conócenos" },
   { to: "/contacto", label: "Contacto" },
 ] as const;
 
@@ -35,9 +35,9 @@ export function Header() {
         scrolled ? "border-b border-border/60 bg-background/85 backdrop-blur-xl" : "border-b border-transparent bg-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
         <Link to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-          <Monogram size={36} className="text-foreground" />
+          <Monogram size={72} className="h-16 w-16 text-foreground md:h-20 md:w-20" />
           <span className="hidden font-serif text-base italic tracking-wider text-foreground sm:inline">
             Lava <span className="not-italic text-accent">&</span> Salitre
           </span>
@@ -74,7 +74,7 @@ export function Header() {
 
       {/* Mobile drawer */}
       <div
-        className={`fixed inset-x-0 top-[76px] z-30 origin-top transition-all duration-500 lg:hidden ${
+        className={`fixed inset-x-0 top-[88px] z-30 origin-top transition-all duration-500 lg:hidden ${
           open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
