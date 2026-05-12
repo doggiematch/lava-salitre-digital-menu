@@ -8,11 +8,23 @@ export function AllergenSheetView({ sheet }: { sheet: AllergenSheet }) {
     <article className="bg-background px-4 py-6 text-foreground sm:px-8 md:px-12 md:py-10">
       <header className="border-b border-gold pb-6 text-center">
         <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Carta de alérgenos</p>
-        <h2 className="mt-3 font-serif text-3xl leading-tight text-foreground md:text-5xl">{sheet.title}</h2>
+        <h2 className="mt-3 font-serif text-3xl leading-tight text-foreground md:text-5xl">
+          {sheet.title}
+        </h2>
         <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
           {sheet.subtitle}
         </p>
       </header>
+
+      {sheet.sourceImageSrc ? (
+        <figure className="mt-6 overflow-hidden rounded-md border border-border bg-card/45">
+          <img
+            src={sheet.sourceImageSrc}
+            alt={`Carta de alÃ©rgenos original de ${sheet.title}`}
+            className="h-auto w-full"
+          />
+        </figure>
+      ) : null}
 
       <div className="mt-6 grid gap-4 md:grid-cols-[0.8fr_1.2fr]">
         <section className="rounded-md border border-border bg-card/45 p-5">
@@ -21,10 +33,15 @@ export function AllergenSheetView({ sheet }: { sheet: AllergenSheet }) {
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{sheet.originNote}</p>
         </section>
         <section className="rounded-md border border-border bg-card/45 p-5">
-          <p className="text-[10px] uppercase tracking-[0.24em] text-accent">Ingredientes principales</p>
+          <p className="text-[10px] uppercase tracking-[0.24em] text-accent">
+            Ingredientes principales
+          </p>
           <ul className="mt-3 flex flex-wrap gap-2">
             {sheet.ingredients.map((ingredient) => (
-              <li key={ingredient} className="rounded-full border border-border bg-background px-3 py-1 text-sm">
+              <li
+                key={ingredient}
+                className="rounded-full border border-border bg-background px-3 py-1 text-sm"
+              >
                 {ingredient}
               </li>
             ))}
@@ -55,7 +72,9 @@ export function AllergenSheetView({ sheet }: { sheet: AllergenSheet }) {
       <footer className="mt-6 grid gap-4 md:grid-cols-3">
         <div className="rounded-md border border-border bg-card/45 p-5">
           <p className="text-[10px] uppercase tracking-[0.24em] text-sage">Contiene</p>
-          <p className="mt-2 text-sm font-semibold leading-relaxed text-foreground">{sheet.containsSummary}</p>
+          <p className="mt-2 text-sm font-semibold leading-relaxed text-foreground">
+            {sheet.containsSummary}
+          </p>
         </div>
         <div className="rounded-md border border-border bg-card/45 p-5">
           <p className="text-[10px] uppercase tracking-[0.24em] text-accent">Trazas</p>
@@ -74,8 +93,9 @@ export function AllergenSheetView({ sheet }: { sheet: AllergenSheet }) {
       </footer>
 
       <p className="mt-5 border-t border-border pt-4 text-xs leading-relaxed text-muted-foreground">
-        Si usted es alérgico o intolerante, consulte con nuestro personal. La información proporcionada se basa en los
-        ingredientes de la receta y puede variar por cambios de proveedor o manipulación en cocina.
+        Si usted es alérgico o intolerante, consulte con nuestro personal. La información
+        proporcionada se basa en los ingredientes de la receta y puede variar por cambios de
+        proveedor o manipulación en cocina.
       </p>
 
       <SheetScrollTopButton />

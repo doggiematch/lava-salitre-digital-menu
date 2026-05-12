@@ -17,8 +17,14 @@ import { Route as GaleriaRouteImport } from './routes/galeria'
 import { Route as ExperienciaRouteImport } from './routes/experiencia'
 import { Route as ContactoRouteImport } from './routes/contacto'
 import { Route as ConocenosRouteImport } from './routes/conocenos'
+import { Route as CodigosQrRouteImport } from './routes/codigos-qr'
 import { Route as CartaDigitalRouteImport } from './routes/carta-digital'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProyectoIndexRouteImport } from './routes/proyecto.index'
+import { Route as ProyectoTecnologiasGastronomicasRouteImport } from './routes/proyecto.tecnologias-gastronomicas'
+import { Route as ProyectoEstructuraMenusInversionRouteImport } from './routes/proyecto.estructura-menus-inversion'
+import { Route as ProyectoConceptualizacionFundamentacionRouteImport } from './routes/proyecto.conceptualizacion-fundamentacion'
+import { Route as CartaDigitalDishIdRouteImport } from './routes/carta-digital.$dishId'
 
 const ReservasRoute = ReservasRouteImport.update({
   id: '/reservas',
@@ -60,6 +66,11 @@ const ConocenosRoute = ConocenosRouteImport.update({
   path: '/conocenos',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CodigosQrRoute = CodigosQrRouteImport.update({
+  id: '/codigos-qr',
+  path: '/codigos-qr',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CartaDigitalRoute = CartaDigitalRouteImport.update({
   id: '/carta-digital',
   path: '/carta-digital',
@@ -70,49 +81,95 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProyectoIndexRoute = ProyectoIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ProyectoRoute,
+} as any)
+const ProyectoTecnologiasGastronomicasRoute =
+  ProyectoTecnologiasGastronomicasRouteImport.update({
+    id: '/tecnologias-gastronomicas',
+    path: '/tecnologias-gastronomicas',
+    getParentRoute: () => ProyectoRoute,
+  } as any)
+const ProyectoEstructuraMenusInversionRoute =
+  ProyectoEstructuraMenusInversionRouteImport.update({
+    id: '/estructura-menus-inversion',
+    path: '/estructura-menus-inversion',
+    getParentRoute: () => ProyectoRoute,
+  } as any)
+const ProyectoConceptualizacionFundamentacionRoute =
+  ProyectoConceptualizacionFundamentacionRouteImport.update({
+    id: '/conceptualizacion-fundamentacion',
+    path: '/conceptualizacion-fundamentacion',
+    getParentRoute: () => ProyectoRoute,
+  } as any)
+const CartaDigitalDishIdRoute = CartaDigitalDishIdRouteImport.update({
+  id: '/$dishId',
+  path: '/$dishId',
+  getParentRoute: () => CartaDigitalRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/carta-digital': typeof CartaDigitalRoute
+  '/carta-digital': typeof CartaDigitalRouteWithChildren
+  '/codigos-qr': typeof CodigosQrRoute
   '/conocenos': typeof ConocenosRoute
   '/contacto': typeof ContactoRoute
   '/experiencia': typeof ExperienciaRoute
   '/galeria': typeof GaleriaRoute
   '/menus': typeof MenusRoute
   '/pedidos': typeof PedidosRoute
-  '/proyecto': typeof ProyectoRoute
+  '/proyecto': typeof ProyectoRouteWithChildren
   '/reservas': typeof ReservasRoute
+  '/carta-digital/$dishId': typeof CartaDigitalDishIdRoute
+  '/proyecto/conceptualizacion-fundamentacion': typeof ProyectoConceptualizacionFundamentacionRoute
+  '/proyecto/estructura-menus-inversion': typeof ProyectoEstructuraMenusInversionRoute
+  '/proyecto/tecnologias-gastronomicas': typeof ProyectoTecnologiasGastronomicasRoute
+  '/proyecto/': typeof ProyectoIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/carta-digital': typeof CartaDigitalRoute
+  '/carta-digital': typeof CartaDigitalRouteWithChildren
+  '/codigos-qr': typeof CodigosQrRoute
   '/conocenos': typeof ConocenosRoute
   '/contacto': typeof ContactoRoute
   '/experiencia': typeof ExperienciaRoute
   '/galeria': typeof GaleriaRoute
   '/menus': typeof MenusRoute
   '/pedidos': typeof PedidosRoute
-  '/proyecto': typeof ProyectoRoute
   '/reservas': typeof ReservasRoute
+  '/carta-digital/$dishId': typeof CartaDigitalDishIdRoute
+  '/proyecto/conceptualizacion-fundamentacion': typeof ProyectoConceptualizacionFundamentacionRoute
+  '/proyecto/estructura-menus-inversion': typeof ProyectoEstructuraMenusInversionRoute
+  '/proyecto/tecnologias-gastronomicas': typeof ProyectoTecnologiasGastronomicasRoute
+  '/proyecto': typeof ProyectoIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/carta-digital': typeof CartaDigitalRoute
+  '/carta-digital': typeof CartaDigitalRouteWithChildren
+  '/codigos-qr': typeof CodigosQrRoute
   '/conocenos': typeof ConocenosRoute
   '/contacto': typeof ContactoRoute
   '/experiencia': typeof ExperienciaRoute
   '/galeria': typeof GaleriaRoute
   '/menus': typeof MenusRoute
   '/pedidos': typeof PedidosRoute
-  '/proyecto': typeof ProyectoRoute
+  '/proyecto': typeof ProyectoRouteWithChildren
   '/reservas': typeof ReservasRoute
+  '/carta-digital/$dishId': typeof CartaDigitalDishIdRoute
+  '/proyecto/conceptualizacion-fundamentacion': typeof ProyectoConceptualizacionFundamentacionRoute
+  '/proyecto/estructura-menus-inversion': typeof ProyectoEstructuraMenusInversionRoute
+  '/proyecto/tecnologias-gastronomicas': typeof ProyectoTecnologiasGastronomicasRoute
+  '/proyecto/': typeof ProyectoIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/carta-digital'
+    | '/codigos-qr'
     | '/conocenos'
     | '/contacto'
     | '/experiencia'
@@ -121,22 +178,33 @@ export interface FileRouteTypes {
     | '/pedidos'
     | '/proyecto'
     | '/reservas'
+    | '/carta-digital/$dishId'
+    | '/proyecto/conceptualizacion-fundamentacion'
+    | '/proyecto/estructura-menus-inversion'
+    | '/proyecto/tecnologias-gastronomicas'
+    | '/proyecto/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/carta-digital'
+    | '/codigos-qr'
     | '/conocenos'
     | '/contacto'
     | '/experiencia'
     | '/galeria'
     | '/menus'
     | '/pedidos'
-    | '/proyecto'
     | '/reservas'
+    | '/carta-digital/$dishId'
+    | '/proyecto/conceptualizacion-fundamentacion'
+    | '/proyecto/estructura-menus-inversion'
+    | '/proyecto/tecnologias-gastronomicas'
+    | '/proyecto'
   id:
     | '__root__'
     | '/'
     | '/carta-digital'
+    | '/codigos-qr'
     | '/conocenos'
     | '/contacto'
     | '/experiencia'
@@ -145,18 +213,24 @@ export interface FileRouteTypes {
     | '/pedidos'
     | '/proyecto'
     | '/reservas'
+    | '/carta-digital/$dishId'
+    | '/proyecto/conceptualizacion-fundamentacion'
+    | '/proyecto/estructura-menus-inversion'
+    | '/proyecto/tecnologias-gastronomicas'
+    | '/proyecto/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  CartaDigitalRoute: typeof CartaDigitalRoute
+  CartaDigitalRoute: typeof CartaDigitalRouteWithChildren
+  CodigosQrRoute: typeof CodigosQrRoute
   ConocenosRoute: typeof ConocenosRoute
   ContactoRoute: typeof ContactoRoute
   ExperienciaRoute: typeof ExperienciaRoute
   GaleriaRoute: typeof GaleriaRoute
   MenusRoute: typeof MenusRoute
   PedidosRoute: typeof PedidosRoute
-  ProyectoRoute: typeof ProyectoRoute
+  ProyectoRoute: typeof ProyectoRouteWithChildren
   ReservasRoute: typeof ReservasRoute
 }
 
@@ -218,6 +292,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ConocenosRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/codigos-qr': {
+      id: '/codigos-qr'
+      path: '/codigos-qr'
+      fullPath: '/codigos-qr'
+      preLoaderRoute: typeof CodigosQrRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/carta-digital': {
       id: '/carta-digital'
       path: '/carta-digital'
@@ -232,19 +313,86 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/proyecto/': {
+      id: '/proyecto/'
+      path: '/'
+      fullPath: '/proyecto/'
+      preLoaderRoute: typeof ProyectoIndexRouteImport
+      parentRoute: typeof ProyectoRoute
+    }
+    '/proyecto/tecnologias-gastronomicas': {
+      id: '/proyecto/tecnologias-gastronomicas'
+      path: '/tecnologias-gastronomicas'
+      fullPath: '/proyecto/tecnologias-gastronomicas'
+      preLoaderRoute: typeof ProyectoTecnologiasGastronomicasRouteImport
+      parentRoute: typeof ProyectoRoute
+    }
+    '/proyecto/estructura-menus-inversion': {
+      id: '/proyecto/estructura-menus-inversion'
+      path: '/estructura-menus-inversion'
+      fullPath: '/proyecto/estructura-menus-inversion'
+      preLoaderRoute: typeof ProyectoEstructuraMenusInversionRouteImport
+      parentRoute: typeof ProyectoRoute
+    }
+    '/proyecto/conceptualizacion-fundamentacion': {
+      id: '/proyecto/conceptualizacion-fundamentacion'
+      path: '/conceptualizacion-fundamentacion'
+      fullPath: '/proyecto/conceptualizacion-fundamentacion'
+      preLoaderRoute: typeof ProyectoConceptualizacionFundamentacionRouteImport
+      parentRoute: typeof ProyectoRoute
+    }
+    '/carta-digital/$dishId': {
+      id: '/carta-digital/$dishId'
+      path: '/$dishId'
+      fullPath: '/carta-digital/$dishId'
+      preLoaderRoute: typeof CartaDigitalDishIdRouteImport
+      parentRoute: typeof CartaDigitalRoute
+    }
   }
 }
 
+interface CartaDigitalRouteChildren {
+  CartaDigitalDishIdRoute: typeof CartaDigitalDishIdRoute
+}
+
+const CartaDigitalRouteChildren: CartaDigitalRouteChildren = {
+  CartaDigitalDishIdRoute: CartaDigitalDishIdRoute,
+}
+
+const CartaDigitalRouteWithChildren = CartaDigitalRoute._addFileChildren(
+  CartaDigitalRouteChildren,
+)
+
+interface ProyectoRouteChildren {
+  ProyectoConceptualizacionFundamentacionRoute: typeof ProyectoConceptualizacionFundamentacionRoute
+  ProyectoEstructuraMenusInversionRoute: typeof ProyectoEstructuraMenusInversionRoute
+  ProyectoTecnologiasGastronomicasRoute: typeof ProyectoTecnologiasGastronomicasRoute
+  ProyectoIndexRoute: typeof ProyectoIndexRoute
+}
+
+const ProyectoRouteChildren: ProyectoRouteChildren = {
+  ProyectoConceptualizacionFundamentacionRoute:
+    ProyectoConceptualizacionFundamentacionRoute,
+  ProyectoEstructuraMenusInversionRoute: ProyectoEstructuraMenusInversionRoute,
+  ProyectoTecnologiasGastronomicasRoute: ProyectoTecnologiasGastronomicasRoute,
+  ProyectoIndexRoute: ProyectoIndexRoute,
+}
+
+const ProyectoRouteWithChildren = ProyectoRoute._addFileChildren(
+  ProyectoRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  CartaDigitalRoute: CartaDigitalRoute,
+  CartaDigitalRoute: CartaDigitalRouteWithChildren,
+  CodigosQrRoute: CodigosQrRoute,
   ConocenosRoute: ConocenosRoute,
   ContactoRoute: ContactoRoute,
   ExperienciaRoute: ExperienciaRoute,
   GaleriaRoute: GaleriaRoute,
   MenusRoute: MenusRoute,
   PedidosRoute: PedidosRoute,
-  ProyectoRoute: ProyectoRoute,
+  ProyectoRoute: ProyectoRouteWithChildren,
   ReservasRoute: ReservasRoute,
 }
 export const routeTree = rootRouteImport

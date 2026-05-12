@@ -3,7 +3,7 @@ import { Monogram, WaveDivider } from "./Decorations";
 
 const sitemap = [
   { to: "/", label: "Inicio" },
-  { to: "/menus", label: "Menús" },
+  { to: "/menus", label: "Menú" },
   { to: "/carta-digital", label: "Carta digital" },
   { to: "/conocenos", label: "Conócenos" },
   { to: "/galeria", label: "Galería" },
@@ -12,10 +12,9 @@ const sitemap = [
 ] as const;
 
 const projectLinks = [
-  { to: "/proyecto", hash: "investigacion-ingredientes-km-0", label: "Investigación de ingredientes km 0" },
-  { to: "/proyecto", hash: "estructura-menus-inversion", label: "Estructura, menús e inversión inicial" },
-  { to: "/proyecto", hash: "concepto-gastronomico", label: "Concepto gastronómico" },
-  { to: "/proyecto", hash: "tecnologias-gastronomicas", label: "Tecnologías gastronómicas" },
+  { to: "/proyecto/conceptualizacion-fundamentacion", label: "Conceptualización y fundamentación" },
+  { to: "/proyecto/estructura-menus-inversion", label: "Estructura, menús e inversión inicial" },
+  { to: "/proyecto/tecnologias-gastronomicas", label: "Tecnologías gastronómicas" },
 ] as const;
 
 export function Footer() {
@@ -49,8 +48,13 @@ export function Footer() {
 
         <div className="mt-14 grid gap-10 border-t border-border/50 pt-12 md:grid-cols-[1fr_1fr]">
           <div>
-            <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Mapa de navegación</p>
-            <nav className="mt-4 grid gap-2 sm:grid-cols-2 md:grid-cols-4" aria-label="Mapa de navegación">
+            <p className="text-[10px] uppercase tracking-[0.35em] text-accent">
+              Mapa de navegación
+            </p>
+            <nav
+              className="mt-4 grid gap-2 sm:grid-cols-2 md:grid-cols-4"
+              aria-label="Mapa de navegación"
+            >
               {sitemap.map((item) => (
                 <Link
                   key={item.to}
@@ -67,9 +71,8 @@ export function Footer() {
             <nav className="mt-4 grid gap-2" aria-label="Proyecto">
               {projectLinks.map((item) => (
                 <Link
-                  key={item.hash}
+                  key={item.to}
                   to={item.to}
-                  hash={item.hash}
                   className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
                   {item.label}

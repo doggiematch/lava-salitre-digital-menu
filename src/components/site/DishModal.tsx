@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import type { Dish } from "@/data/menu";
 import { technicalSheets, type TechnicalRow, type TechnicalSheet } from "@/data/technicalSheets";
 import { allergenSheets } from "@/data/allergenSheets";
@@ -24,33 +25,60 @@ export function DishModal({
   onOpenChange: (o: boolean) => void;
 }) {
   const sheet = dish.technicalSheetId ? technicalSheets[dish.technicalSheetId] : undefined;
+  const [imageViewerOpen, setImageViewerOpen] = useState(false);
+
+  const preventParentCloseWhenImageIsOpen = (event: Event) => {
+    if (imageViewerOpen) {
+      event.preventDefault();
+    }
+  };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
         className="max-h-[92vh] max-w-[96vw] overflow-y-auto p-0 md:max-w-5xl lg:max-w-6xl"
         onInteractOutside={(event) => {
+          preventParentCloseWhenImageIsOpen(event);
           const target = event.target as HTMLElement | null;
           if (target?.closest("[data-image-viewer='true']")) {
             event.preventDefault();
           }
         }}
+        onPointerDownOutside={preventParentCloseWhenImageIsOpen}
+        onFocusOutside={preventParentCloseWhenImageIsOpen}
       >
         <DialogHeader className="sr-only">
           <DialogTitle>{dish.name}</DialogTitle>
         </DialogHeader>
-        {sheet ? <TechnicalSheetView sheet={sheet} /> : <FallbackDishView dish={dish} />}
+        {sheet ? (
+          <TechnicalSheetView sheet={sheet} onImageViewerOpenChange={setImageViewerOpen} />
+        ) : (
+          <FallbackDishView dish={dish} />
+        )}
       </DialogContent>
     </Dialog>
   );
 }
 
-function TechnicalSheetView({ sheet }: { sheet: TechnicalSheet }) {
+function TechnicalSheetView({
+  sheet,
+  onImageViewerOpenChange,
+}: {
+  sheet: TechnicalSheet;
+  onImageViewerOpenChange?: (open: boolean) => void;
+}) {
   const [viewerImage, setViewerImage] = useState<ViewerImage | null>(null);
   const [allergenOpen, setAllergenOpen] = useState(false);
-  const designRows = sheet.design.rows.filter((row) => row.value !== SKETCH_LINK_TEXT || sheet.sketchSrc);
+  const designRows = sheet.design.rows.filter(
+    (row) => row.value !== SKETCH_LINK_TEXT || sheet.sketchSrc,
+  );
   const plateRows = sheet.plate.filter((row) => row.label !== "Precio estimado");
   const allergenSheet = allergenSheets[sheet.id];
+
+  useEffect(() => {
+    onImageViewerOpenChange?.(Boolean(viewerImage));
+    return () => onImageViewerOpenChange?.(false);
+  }, [onImageViewerOpenChange, viewerImage]);
 
   return (
     <article className="relative overflow-hidden bg-background px-4 py-6 text-foreground sm:px-8 md:px-12 md:py-10">
@@ -64,7 +92,9 @@ function TechnicalSheetView({ sheet }: { sheet: TechnicalSheet }) {
               type="button"
               className="group h-28 w-28 cursor-pointer overflow-hidden rounded-md border border-border bg-card shadow-sm md:h-32 md:w-32"
               aria-label={`Ampliar fotografía de ${sheet.name}`}
-              onClick={() => setViewerImage({ src: sheet.photoSrc!, alt: `Fotografía de ${sheet.name}` })}
+              onClick={() =>
+                setViewerImage({ src: sheet.photoSrc!, alt: `Fotografía de ${sheet.name}` })
+              }
             >
               <img
                 src={sheet.photoSrc}
@@ -113,8 +143,8 @@ function TechnicalSheetView({ sheet }: { sheet: TechnicalSheet }) {
           <InfoRows
             rows={designRows}
             sketchSrc={sheet.sketchSrc}
-            onOpenImage={(image) => setViewerImage(image)}
             sheetName={sheet.name}
+            onOpenSketch={(image) => setViewerImage(image)}
           />
           <div className="mt-4 rounded-md border border-border bg-card/45 p-4">
             <p className="mb-3 text-xs uppercase tracking-[0.24em] text-muted-foreground">
@@ -128,7 +158,10 @@ function TechnicalSheetView({ sheet }: { sheet: TechnicalSheet }) {
             </p>
             <PillList items={sheet.design.textures} />
           </div>
-          <InfoRows className="mt-4" rows={[{ label: "Decoración", value: sheet.design.decoration }]} />
+          <InfoRows
+            className="mt-4"
+            rows={[{ label: "Decoración", value: sheet.design.decoration }]}
+          />
         </SheetSection>
       </div>
 
@@ -175,25 +208,30 @@ function InfoRows({
   rows,
   className = "",
   sketchSrc,
-  onOpenImage,
   onOpenAllergens,
+  onOpenSketch,
   sheetName = "",
 }: {
   rows: TechnicalRow[];
   className?: string;
   sketchSrc?: string;
-  onOpenImage?: (image: ViewerImage) => void;
   onOpenAllergens?: () => void;
+  onOpenSketch?: (image: ViewerImage) => void;
   sheetName?: string;
 }) {
   return (
     <div className={`overflow-hidden rounded-md border border-border bg-card/30 ${className}`}>
       {rows.map((row) => {
-        const isSketchLink = Boolean(sketchSrc && onOpenImage && row.value === SKETCH_LINK_TEXT);
-        const isAllergenLink = Boolean(onOpenAllergens && row.value === "Consulta aquí la carta de alérgenos");
+        const isSketchLink = Boolean(sketchSrc && row.value === SKETCH_LINK_TEXT);
+        const isAllergenLink = Boolean(
+          onOpenAllergens && row.value === "Consulta aquí la carta de alérgenos",
+        );
 
         return (
-          <div key={row.label} className="border-b border-border last:border-b-0 sm:grid sm:grid-cols-[17rem_1fr]">
+          <div
+            key={row.label}
+            className="border-b border-border last:border-b-0 sm:grid sm:grid-cols-[17rem_1fr]"
+          >
             <div className="bg-secondary/60 px-4 py-3 text-sm font-semibold text-stone-volcanic">
               {row.label}
             </div>
@@ -202,7 +240,13 @@ function InfoRows({
                 <button
                   type="button"
                   className="cursor-pointer text-left underline underline-offset-4 transition-colors hover:text-gold"
-                  onClick={() => onOpenImage({ src: sketchSrc!, alt: `Boceto de ${sheetName}` })}
+                  aria-label={`Abrir boceto de ${sheetName}`}
+                  onClick={() =>
+                    onOpenSketch?.({
+                      src: sketchSrc!,
+                      alt: `Boceto de emplatado de ${sheetName}`,
+                    })
+                  }
                 >
                   {row.value}
                 </button>
@@ -251,7 +295,10 @@ function PillList({ items }: { items: string[] }) {
   return (
     <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
       {items.map((item) => (
-        <li key={item} className="rounded-md border border-border/70 bg-background px-3 py-2 text-sm">
+        <li
+          key={item}
+          className="rounded-md border border-border/70 bg-background px-3 py-2 text-sm"
+        >
           <span className="mr-2 inline-block h-2 w-2 rounded-full bg-sage" />
           {item}
         </li>
@@ -265,31 +312,37 @@ function isLinkText(value: string) {
 }
 
 function ImageViewer({ image, onClose }: { image: ViewerImage | null; onClose: () => void }) {
-  if (!image) {
+  if (!image || typeof document === "undefined") {
     return null;
   }
 
-  return (
+  const stopViewerEvent = (event: React.SyntheticEvent) => {
+    event.stopPropagation();
+    event.nativeEvent.stopImmediatePropagation();
+  };
+
+  const closeViewer = (event: React.SyntheticEvent) => {
+    stopViewerEvent(event);
+    onClose();
+  };
+
+  return createPortal(
     <div
       data-image-viewer="true"
-      className="fixed inset-0 z-[999] flex items-center justify-center bg-foreground/92 p-4"
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-foreground/92 p-4"
       role="dialog"
       aria-modal="true"
       aria-label={image.alt}
-      onPointerDown={(event) => event.stopPropagation()}
-      onClick={(event) => {
-        event.stopPropagation();
-        onClose();
-      }}
+      onPointerDown={stopViewerEvent}
+      onMouseDown={stopViewerEvent}
+      onClick={stopViewerEvent}
     >
       <button
         type="button"
         className="absolute right-4 top-4 flex h-12 w-12 cursor-pointer items-center justify-center rounded-md border border-background/70 bg-background text-foreground shadow-lg transition-colors hover:bg-secondary md:right-6 md:top-6"
         aria-label="Cerrar imagen"
-        onClick={(event) => {
-          event.stopPropagation();
-          onClose();
-        }}
+        onPointerDown={closeViewer}
+        onClick={closeViewer}
       >
         <X className="h-7 w-7" />
       </button>
@@ -297,9 +350,12 @@ function ImageViewer({ image, onClose }: { image: ViewerImage | null; onClose: (
         src={image.src}
         alt={image.alt}
         className="max-h-[88vh] max-w-[94vw] object-contain shadow-2xl"
-        onClick={(event) => event.stopPropagation()}
+        onPointerDown={stopViewerEvent}
+        onMouseDown={stopViewerEvent}
+        onClick={stopViewerEvent}
       />
-    </div>
+    </div>,
+    document.body,
   );
 }
 

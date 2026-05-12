@@ -5,7 +5,6 @@ import { Monogram } from "./Decorations";
 
 const nav = [
   { to: "/", label: "Inicio" },
-  { to: "/menus", label: "Menús" },
   { to: "/carta-digital", label: "Carta digital" },
   { to: "/experiencia", label: "Experiencia" },
   { to: "/galeria", label: "Galería" },
@@ -26,13 +25,17 @@ export function Header() {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [open]);
 
   return (
     <header
       className={`sticky top-0 z-40 transition-all duration-500 ${
-        scrolled ? "border-b border-border/60 bg-background/85 backdrop-blur-xl" : "border-b border-transparent bg-transparent"
+        scrolled
+          ? "border-b border-border/60 bg-background/85 backdrop-blur-xl"
+          : "border-b border-transparent bg-transparent"
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
@@ -48,7 +51,7 @@ export function Header() {
             <Link
               key={n.to}
               to={n.to}
-              className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground transition-colors hover:text-foreground"
+              className="nav-rush text-[11px] uppercase tracking-[0.22em] text-muted-foreground transition-colors hover:text-foreground"
               activeProps={{ className: "text-foreground gold-underline" }}
               activeOptions={{ exact: n.to === "/" }}
             >
@@ -91,12 +94,18 @@ export function Header() {
               >
                 <span className="flex items-center gap-3">
                   <span className="font-serif text-[10px] italic text-accent">0{i + 1}</span>
-                  {n.label}
+                  <span className="nav-rush">{n.label}</span>
                 </span>
-                <span className="text-muted-foreground transition-transform group-hover:translate-x-1">→</span>
+                <span className="text-muted-foreground transition-transform group-hover:translate-x-1">
+                  →
+                </span>
               </Link>
             ))}
-            <Link to="/reservas" onClick={() => setOpen(false)} className="btn-gold mt-5 mb-2 w-full">
+            <Link
+              to="/reservas"
+              onClick={() => setOpen(false)}
+              className="btn-gold mt-5 mb-2 w-full"
+            >
               Reservar mesa
             </Link>
           </nav>

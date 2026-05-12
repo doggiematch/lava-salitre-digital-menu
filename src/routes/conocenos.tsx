@@ -16,14 +16,24 @@ export const Route = createFileRoute("/conocenos")({
 });
 
 const overview = [
-  { label: "Concepto", value: "Cocina canaria vanguardista basada en productos del mar y de la tierra." },
+  {
+    label: "Concepto",
+    value: "Cocina canaria vanguardista basada en productos del mar y de la tierra.",
+  },
   { label: "Ubicación", value: "Avenida de los Poetas, s/n, Puerto de las Nieves, Agaete." },
   {
     label: "Cliente principal",
-    value: "Adulto, curioso, con interés por gastronomía, producto local y experiencias diferentes.",
+    value:
+      "Adulto, curioso, con interés por gastronomía, producto local y experiencias diferentes.",
   },
-  { label: "Rango de edad orientativo", value: "30 a 60 años, con especial peso entre 35 y 55 años." },
-  { label: "Elemento diferenciador", value: "Menú degustación con opción de maridaje con vinos canarios." },
+  {
+    label: "Rango de edad orientativo",
+    value: "30 a 60 años, con especial peso entre 35 y 55 años.",
+  },
+  {
+    label: "Elemento diferenciador",
+    value: "Menú degustación con opción de maridaje con vinos canarios.",
+  },
 ] as const;
 
 const location = [
@@ -98,11 +108,13 @@ const idealClient = [
   },
   {
     aspect: "Motivación de visita",
-    description: "Celebración especial, escapada gastronómica, turismo gastronómico o interés por la cocina canaria actual.",
+    description:
+      "Celebración especial, escapada gastronómica, turismo gastronómico o interés por la cocina canaria actual.",
   },
   {
     aspect: "Expectativa principal",
-    description: "Vivir una experiencia coherente, con platos cuidados, buen servicio, maridaje y conexión con el paisaje canario.",
+    description:
+      "Vivir una experiencia coherente, con platos cuidados, buen servicio, maridaje y conexión con el paisaje canario.",
   },
 ] as const;
 
@@ -274,12 +286,32 @@ const digitalTechnologies = [
 ] as const;
 
 const technologySummary = [
-  { technology: "Deconstrucción", use: "Platos canarios reinterpretados", reason: "Une tradición e innovación" },
+  {
+    technology: "Deconstrucción",
+    use: "Platos canarios reinterpretados",
+    reason: "Une tradición e innovación",
+  },
   { technology: "Espumas", use: "Entrantes, salsas y postres", reason: "Aporta ligereza" },
-  { technology: "Gelificaciones", use: "Puntos cítricos, frutales o marinos", reason: "Controla sabores y mejora la presentación" },
-  { technology: "Esferificación", use: "Mojos, caldos y jugos", reason: "Da un toque moderno y sorprendente" },
-  { technology: "Nitrógeno líquido", use: "Postres o bocados concretos", reason: "Crea contraste de frío y efecto visual" },
-  { technology: "QR interactivo", use: "Carta digital", reason: "Facilita alérgenos, origen y maridajes" },
+  {
+    technology: "Gelificaciones",
+    use: "Puntos cítricos, frutales o marinos",
+    reason: "Controla sabores y mejora la presentación",
+  },
+  {
+    technology: "Esferificación",
+    use: "Mojos, caldos y jugos",
+    reason: "Da un toque moderno y sorprendente",
+  },
+  {
+    technology: "Nitrógeno líquido",
+    use: "Postres o bocados concretos",
+    reason: "Crea contraste de frío y efecto visual",
+  },
+  {
+    technology: "QR interactivo",
+    use: "Carta digital",
+    reason: "Facilita alérgenos, origen y maridajes",
+  },
   { technology: "Carta física", use: "Servicio en sala", reason: "Mantiene comodidad y elegancia" },
 ] as const;
 
@@ -331,37 +363,43 @@ const logoVersions = [
     src: "/galeria/logo-version-dorada-transparente.png",
     alt: "Logotipo dorado de Lava & Salitre sobre fondo negro",
     title: "Versión principal",
-    description: "Dorada sobre fondo oscuro, pensada para soportes elegantes, presencia digital y piezas de mayor impacto.",
+    description:
+      "Dorada sobre fondo oscuro, pensada para soportes elegantes, presencia digital y piezas de mayor impacto.",
   },
   {
     src: "/galeria/logo-version-dorada-transparente.png",
     alt: "Logotipo dorado de Lava & Salitre con fondo transparente",
     title: "Versión dorada adaptable",
-    description: "Útil para aplicaciones sobre fotografía, materiales corporativos y fondos neutros donde el oro mantiene protagonismo.",
+    description:
+      "Útil para aplicaciones sobre fotografía, materiales corporativos y fondos neutros donde el oro mantiene protagonismo.",
   },
   {
     src: "/galeria/logo-version-dorada-transparente.png",
     alt: "Logotipo blanco de Lava & Salitre sobre fondo negro",
     title: "Versión blanca",
-    description: "Funciona en fondos oscuros cuando se busca máxima limpieza, contraste y lectura inmediata.",
+    description:
+      "Funciona en fondos oscuros cuando se busca máxima limpieza, contraste y lectura inmediata.",
   },
   {
     src: "/galeria/logo-version-dorada-transparente.png",
     alt: "Logotipo dorado y negro de Lava & Salitre sobre fondo blanco",
     title: "Versión clara premium",
-    description: "Adecuada para papelería, cartas, presentaciones y soportes impresos con fondo claro.",
+    description:
+      "Adecuada para papelería, cartas, presentaciones y soportes impresos con fondo claro.",
   },
   {
     src: "/galeria/logo-version-dorada-transparente.png",
     alt: "Logotipo negro de Lava & Salitre sobre fondo blanco",
     title: "Versión monocroma",
-    description: "Pensada para usos sobrios, documentación, sellos, grabados o aplicaciones donde el color no sea posible.",
+    description:
+      "Pensada para usos sobrios, documentación, sellos, grabados o aplicaciones donde el color no sea posible.",
   },
   {
     src: "/galeria/logo-version-dorada-transparente.png",
     alt: "Logotipo de Lava & Salitre con claim Tierra y Mar centrado",
     title: "Versión con claim centrado",
-    description: "Refuerza el mensaje Tierra y Mar en piezas donde la identidad conceptual debe quedar especialmente clara.",
+    description:
+      "Refuerza el mensaje Tierra y Mar en piezas donde la identidad conceptual debe quedar especialmente clara.",
   },
 ] as const;
 
@@ -468,715 +506,883 @@ function Conocenos() {
             </figure>
           </div>
           <div>
-            <p className="text-[10px] uppercase tracking-[0.35em] text-accent">CEO & Culinary Leader</p>
+            <p className="text-[10px] uppercase tracking-[0.35em] text-accent">
+              CEO & Culinary Leader
+            </p>
             <h2 className="mt-4 font-serif text-3xl leading-tight text-foreground md:text-4xl">
-              “Lava & Salitre nace para escuchar la isla: el mar, la piedra caliente y la memoria de cada producto.”
+              “Lava & Salitre nace para escuchar la isla: el mar, la piedra caliente y la memoria de
+              cada producto.”
             </h2>
-            <p className="mt-4 font-serif text-lg italic text-stone-volcanic">Rudy Lindgreen García</p>
+            <p className="mt-4 font-serif text-lg italic text-stone-volcanic">
+              Rudy Lindgreen García
+            </p>
             <div className="mt-5 space-y-4">
               <CeoText>
-                Rudy lidera Lava & Salitre desde una visión clara: unir la identidad canaria, el producto
-                local y una cocina actual en una experiencia gastronómica cuidada de principio a fin.
+                Rudy lidera Lava & Salitre desde una visión clara: unir la identidad canaria, el
+                producto local y una cocina actual en una experiencia gastronómica cuidada de
+                principio a fin.
               </CeoText>
               <CeoText>
-                Su papel combina dirección, criterio culinario y sensibilidad por el territorio. Bajo su mirada, el
-                restaurante busca representar el vínculo entre el mar, la tierra volcánica y la hospitalidad canaria.
+                Su papel combina dirección, criterio culinario y sensibilidad por el territorio.
+                Bajo su mirada, el restaurante busca representar el vínculo entre el mar, la tierra
+                volcánica y la hospitalidad canaria.
               </CeoText>
               <CeoText>
-                La propuesta nace para quienes valoran el origen de los ingredientes, el ritmo de un menú degustación, el
-                maridaje con vinos canarios y una sala donde el servicio acompaña sin imponerse.
+                La propuesta nace para quienes valoran el origen de los ingredientes, el ritmo de un
+                menú degustación, el maridaje con vinos canarios y una sala donde el servicio
+                acompaña sin imponerse.
               </CeoText>
             </div>
           </div>
         </div>
       </section>
-
     </div>
   );
 }
 
-export function ProjectSections() {
+export type ProjectSectionId =
+  | "investigacion-ingredientes-km-0"
+  | "estructura-menus-inversion"
+  | "concepto-gastronomico"
+  | "tecnologias-gastronomicas";
+
+export function ProjectSections({ activeSection }: { activeSection?: ProjectSectionId }) {
   return (
     <>
-      <section id="investigacion-ingredientes-km-0" className="border-t border-border/60">
-        <div className="mx-auto max-w-6xl px-5 py-12 md:py-16">
-          <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Categoría</p>
-          <h2 className="mt-4 font-serif text-3xl text-foreground md:text-4xl">
-            Investigación de ingredientes km 0
-          </h2>
-          <div className="mt-6 space-y-5">
-            <Text>
-              En Lava & Salitre, la carta nace de una investigación sobre ingredientes canarios capaces de contar el paisaje
-              desde el plato. La selección combina producto fresco, elaboraciones tradicionales, frutas de temporada,
-              lácteos, frutos secos y productos de apoyo repostero vinculados a distintas islas.
-            </Text>
-            <Text>
-              Esta mirada permite que cada elaboración tenga una raíz concreta: una zona de cultivo, una tradición local, un
-              productor cercano o un sabor reconocible de Canarias. Para el cliente, esto se traduce en postres y platos con
-              identidad, pensados para disfrutar el territorio sin perder elegancia ni técnica.
-            </Text>
-          </div>
-
-          <div className="mt-10 rounded-md border border-border bg-background/70 p-6">
-            <h3 className="font-serif text-2xl text-foreground">Base dulce de la carta de postres</h3>
-            <p className="mt-3 text-sm leading-[1.85] text-muted-foreground md:text-base">
-              Estos diez ingredientes principales forman la base de nuestra carta de postres. Cada uno aporta una función:
-              dulzor, acidez, untuosidad, aroma, textura o memoria canaria.
-            </p>
-            <div className="mt-6 grid gap-4 md:grid-cols-2">
-              {dessertIngredients.map((ingredient) => (
-                <article key={ingredient.name} className="rounded-md border border-border bg-card/60 p-5">
-                  <h4 className="font-serif text-xl text-foreground">{ingredient.name}</h4>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{ingredient.role}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-
-          <details className="group mt-8 rounded-md border border-border bg-background/70">
-            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 font-serif text-xl text-foreground">
-              Ver selección completa de ingredientes canarios
-              <span className="text-sm text-accent transition-transform group-open:rotate-45">+</span>
-            </summary>
-            <div className="grid gap-px border-t border-border bg-border md:grid-cols-2">
-              {km0Ingredients.map((ingredient) => (
-                <div key={ingredient.name} className="bg-background p-5">
-                  <p className="font-serif text-lg text-foreground">{ingredient.name}</p>
-                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{ingredient.origin}</p>
-                </div>
-              ))}
-            </div>
-          </details>
-        </div>
-      </section>
-
-      <section id="estructura-menus-inversion" className="border-t border-border/60">
-        <div className="mx-auto max-w-6xl px-5 py-12 md:py-16">
-          <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Categoría</p>
-          <h2 className="mt-4 font-serif text-3xl text-foreground md:text-4xl">
-            Estructura, menús e inversión inicial
-          </h2>
-          <div className="mt-6 space-y-5">
-            <Text>
-              Lava & Salitre se concibe como un restaurante íntimo de alta cocina canaria contemporánea, con una capacidad
-              controlada y una estructura pensada para cuidar el ritmo del servicio. La propuesta busca equilibrar sala,
-              cocina, bodega y experiencia para que cada pase llegue al cliente con precisión.
-            </Text>
-            <Text>
-              El modelo prioriza empezar de forma inteligente: un local ya acondicionado mediante traspaso reduce el riesgo
-              inicial y permite concentrar la inversión en diseño, cocina, vajilla, bodega, carta digital, web e imagen.
-            </Text>
-          </div>
-
-          <details className="group mt-8 rounded-md border border-border bg-background/70">
-            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 font-serif text-xl text-foreground">
-              Ver estructura, menús e inversión
-              <span className="text-sm text-accent transition-transform group-open:rotate-45">+</span>
-            </summary>
-            <div className="space-y-8 border-t border-border p-5 md:p-8">
-              <div className="grid gap-6 md:grid-cols-[0.9fr_1.1fr]">
-                <div className="rounded-md border border-border bg-card/60 p-6">
-                  <h3 className="font-serif text-2xl text-foreground">Capacidad y servicio</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                    El restaurante tendrá una capacidad aproximada de 30 a 35 comensales por servicio, con dos pases diarios:
-                    uno al mediodía y otro por la noche. Así puede atender entre 60 y 70 comensales al día manteniendo una
-                    atención personalizada, tiempos controlados y calidad en cada plato.
-                  </p>
-                </div>
-                <div className="rounded-md border border-border bg-card/60 p-6">
-                  <h3 className="font-serif text-2xl text-foreground">Diseño del espacio</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                    El diseño combina paredes blancas, piedra volcánica negra, madera natural, cristaleras amplias y luz
-                    cálida. La estética representa la unión entre lava y salitre: tierra volcánica, mar y una sala elegante
-                    sin perder calidez.
-                  </p>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="font-serif text-2xl text-foreground">Zonas del restaurante</h3>
-                <InfoList items={restaurantZones} />
-              </div>
-
-              <div>
-                <h3 className="font-serif text-2xl text-foreground">Estructura de menús degustación</h3>
-                <div className="mt-5 grid gap-4 lg:grid-cols-3">
-                  {tastingMenuStructure.map((menu) => (
-                    <article key={menu.name} className="rounded-md border border-border bg-card/60 p-5">
-                      <h4 className="font-serif text-xl text-foreground">{menu.name}</h4>
-                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{menu.concept}</p>
-                      <p className="mt-4 text-[10px] uppercase tracking-[0.28em] text-accent">{menu.dishes}</p>
-                      <div className="mt-4 grid gap-2 text-sm text-muted-foreground">
-                        <p>Sin maridaje: {menu.withoutPairing}</p>
-                        <p>Con maridaje: {menu.withPairing}</p>
-                      </div>
-                    </article>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <h3 className="font-serif text-2xl text-foreground">Opciones de inversión inicial</h3>
-                <div className="mt-5 grid gap-4 md:grid-cols-2">
-                  {investmentOptions.map((item) => (
-                    <article key={item.option} className="rounded-md border border-border bg-card/60 p-5">
-                      <h4 className="font-serif text-xl text-foreground">{item.option}</h4>
-                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.note}</p>
-                      <p className="mt-4 text-[10px] uppercase tracking-[0.28em] text-accent">{item.recommendation}</p>
-                    </article>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <h3 className="font-serif text-2xl text-foreground">Presupuesto aproximado</h3>
-                <div className="mt-5 overflow-hidden rounded-md border border-border">
-                  {investmentBudget.map((row) => (
-                    <div
-                      key={row.concept}
-                      className="grid gap-3 border-b border-border bg-background p-5 last:border-b-0 md:grid-cols-[0.6fr_0.4fr]"
-                    >
-                      <p className="font-serif text-lg text-foreground">{row.concept}</p>
-                      <p className="text-sm leading-relaxed text-muted-foreground">{row.estimate}</p>
-                    </div>
-                  ))}
-                </div>
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                  La inversión total recomendada se sitúa entre 126.000 EUR y 265.000 EUR, según el estado del local y el
-                  equipamiento incluido. La opción más prudente al inicio sería un alquiler con traspaso.
-                </p>
-              </div>
-            </div>
-          </details>
-        </div>
-      </section>
-
-      <section id="concepto-gastronomico" className="border-t border-border/60">
-        <div className="mx-auto max-w-6xl px-5 py-12 md:py-16">
-          <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Categoría</p>
-          <h2 className="mt-4 font-serif text-3xl text-foreground md:text-4xl">
-            Concepto gastronómico: lava, salitre e identidad canaria
-          </h2>
-          <div className="mt-6 rounded-md border border-border bg-background/70 p-6">
-            <p className="text-[10px] uppercase tracking-[0.28em] text-accent">Definición del concepto</p>
-            <h3 className="mt-3 font-serif text-2xl text-foreground">Lava & Salitre: tierra volcánica y Atlántico</h3>
-            <div className="mt-5 space-y-5">
+      {(!activeSection || activeSection === "investigacion-ingredientes-km-0") && (
+        <section id="investigacion-ingredientes-km-0" className="border-t border-border/60">
+          <div className="mx-auto max-w-6xl px-5 py-12 md:py-16">
+            <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Categoría</p>
+            <h2 className="mt-4 font-serif text-3xl text-foreground md:text-4xl">
+              Investigación de ingredientes km 0
+            </h2>
+            <div className="mt-6 space-y-5">
               <Text>
-                Lava & Salitre es un restaurante inspirado en dos elementos muy presentes en Canarias: la lava volcánica y
-                el salitre del Atlántico. El nombre representa la unión entre la tierra y el mar, dos partes fundamentales
-                de la identidad canaria.
+                En Lava & Salitre, la carta nace de una investigación sobre ingredientes canarios
+                capaces de contar el paisaje desde el plato. La selección combina producto fresco,
+                elaboraciones tradicionales, frutas de temporada, lácteos, frutos secos y productos
+                de apoyo repostero vinculados a distintas islas.
               </Text>
               <Text>
-                El estilo del restaurante se define como una cocina canaria minimalista y de vanguardia, con platos de mar y
-                tierra elaborados con productos locales, de temporada y, siempre que sea posible, de kilómetro cero.
-              </Text>
-              <Text>
-                Su filosofía se basa en respetar el producto canario y presentarlo de una forma más actual, limpia y
-                elegante, sin perder la esencia tradicional. Cada plato busca contar una parte del paisaje de las islas: el
-                sabor salino del mar, la fuerza volcánica de la tierra y la riqueza de sus productos.
+                Esta mirada permite que cada elaboración tenga una raíz concreta: una zona de
+                cultivo, una tradición local, un productor cercano o un sabor reconocible de
+                Canarias. Para el cliente, esto se traduce en postres y platos con identidad,
+                pensados para disfrutar el territorio sin perder elegancia ni técnica.
               </Text>
             </div>
-          </div>
 
-          <div className="mt-8 space-y-5">
-            <Text>
-              Lava & Salitre nace de dos fuerzas esenciales del paisaje canario: la lava volcánica y el salitre del
-              Atlántico. La tierra y el mar se encuentran en una propuesta de cocina canaria minimalista, actual y elegante,
-              donde cada plato busca expresar una parte de las islas.
-            </Text>
-            <Text>
-              La filosofía del restaurante es respetar el producto local y presentarlo con una mirada más limpia y
-              contemporánea. Pescados, algas, sal marina, gofio, papas, miel de palma, almendra, piña, plátano, leche de
-              cabra, vino canario y carnes locales ayudan a construir un recorrido que representa a Canarias desde el sabor.
-            </Text>
-          </div>
-
-          <details className="group mt-8 rounded-md border border-border bg-background/70">
-            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 font-serif text-xl text-foreground">
-              Ver productos e islas representadas
-              <span className="text-sm text-accent transition-transform group-open:rotate-45">+</span>
-            </summary>
-            <div className="space-y-6 border-t border-border p-5 md:p-8">
-              <div className="grid gap-5 md:grid-cols-2">
-                {islandProducts.map((item) => (
-                  <article key={item.island} className="rounded-md border border-border bg-card/60 p-5">
-                    <h3 className="font-serif text-2xl text-foreground">{item.island}</h3>
-                    <p className="mt-3 text-[10px] uppercase tracking-[0.28em] text-accent">Productos</p>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.products}</p>
-                    <p className="mt-4 text-[10px] uppercase tracking-[0.28em] text-accent">Platos</p>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.dishes}</p>
+            <div className="mt-10 rounded-md border border-border bg-background/70 p-6">
+              <h3 className="font-serif text-2xl text-foreground">
+                Base dulce de la carta de postres
+              </h3>
+              <p className="mt-3 text-sm leading-[1.85] text-muted-foreground md:text-base">
+                Estos diez ingredientes principales forman la base de nuestra carta de postres. Cada
+                uno aporta una función: dulzor, acidez, untuosidad, aroma, textura o memoria
+                canaria.
+              </p>
+              <div className="mt-6 grid gap-4 md:grid-cols-2">
+                {dessertIngredients.map((ingredient) => (
+                  <article
+                    key={ingredient.name}
+                    className="rounded-md border border-border bg-card/60 p-5"
+                  >
+                    <h4 className="font-serif text-xl text-foreground">{ingredient.name}</h4>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {ingredient.role}
+                    </p>
                   </article>
                 ))}
               </div>
-              <Text>
-                El menú funciona como un mapa gastronómico: cada isla aporta ingredientes, memoria y carácter. La intención
-                no es copiar la cocina tradicional, sino mantener su esencia y llevarla a un lenguaje visual más cuidado,
-                técnico y contemporáneo.
-              </Text>
+            </div>
 
-              <div className="space-y-5 border-t border-border/60 pt-7">
-                <div>
-                  <p className="text-[10px] uppercase tracking-[0.28em] text-accent">Tradición e innovación</p>
-                  <h3 className="mt-3 font-serif text-2xl text-foreground">
-                    Cocina canaria transformada con mirada vanguardista
-                  </h3>
-                </div>
-                <Text>
-                  En Lava & Salitre, la tradición canaria se transforma en una propuesta vanguardista, minimalista y con
-                  vocación de alta cocina. El restaurante se inspira en la fuerza de la lava y en el carácter marino del
-                  salitre, uniendo tierra y mar en cada plato.
-                </Text>
-                <Text>
-                  La cocina trabaja productos locales como pescado fresco, gofio, papas antiguas, quesos canarios, miel de
-                  palma y frutas de las islas, aplicando técnicas actuales como espumas, geles, aires, texturas crujientes,
-                  cocciones precisas y emplatados limpios.
-                </Text>
-                <Text>
-                  La idea es respetar el sabor de Canarias, pero presentarlo de una forma más elegante, creativa y
-                  sorprendente, propia de una experiencia gastronómica cuidada de principio a fin.
-                </Text>
+            <div className="mt-8 rounded-md border border-border bg-background/70">
+              <h3 className="px-5 py-4 font-serif text-xl text-foreground">
+                Selección completa de ingredientes canarios
+              </h3>
+              <div className="grid gap-px border-t border-border bg-border md:grid-cols-2">
+                {km0Ingredients.map((ingredient) => (
+                  <div key={ingredient.name} className="bg-background p-5">
+                    <p className="font-serif text-lg text-foreground">{ingredient.name}</p>
+                    <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                      {ingredient.origin}
+                    </p>
+                  </div>
+                ))}
               </div>
+            </div>
+          </div>
+        </section>
+      )}
 
-              <div className="space-y-6 border-t border-border/60 pt-7">
-                <div>
-                  <p className="text-[10px] uppercase tracking-[0.28em] text-accent">Identidad visual</p>
-                  <h3 className="mt-3 font-serif text-2xl text-foreground">Logotipo de Lava & Salitre</h3>
-                </div>
+      {(!activeSection || activeSection === "estructura-menus-inversion") && (
+        <section id="estructura-menus-inversion" className="border-t border-border/60">
+          <div className="mx-auto max-w-6xl px-5 py-12 md:py-16">
+            <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Categoría</p>
+            <h2 className="mt-4 font-serif text-3xl text-foreground md:text-4xl">
+              Estructura, menús e inversión inicial
+            </h2>
+            <div className="mt-6 space-y-5">
+              <Text>
+                Lava & Salitre se concibe como un restaurante íntimo de alta cocina canaria
+                contemporánea, con una capacidad controlada y una estructura pensada para cuidar el
+                ritmo del servicio. La propuesta busca equilibrar sala, cocina, bodega y experiencia
+                para que cada pase llegue al cliente con precisión.
+              </Text>
+              <Text>
+                El modelo prioriza empezar de forma inteligente: un local ya acondicionado mediante
+                traspaso reduce el riesgo inicial y permite concentrar la inversión en diseño,
+                cocina, vajilla, bodega, carta digital, web e imagen.
+              </Text>
+            </div>
 
-                <div className="grid gap-6 md:grid-cols-[0.95fr_1.05fr] md:items-center">
-                  <figure className="overflow-hidden rounded-md border border-border bg-black">
-                    <img
-                      src="/galeria/logo-version-dorada-transparente.png"
-                      alt="Logotipo principal de Lava & Salitre"
-                      loading="lazy"
-                      className="h-full min-h-64 w-full object-contain"
-                    />
-                  </figure>
-                  <div className="space-y-4">
-                    <Text>
-                      La identidad visual de Lava & Salitre resume el mismo concepto que sostiene la cocina del restaurante:
-                      la fuerza de la tierra volcánica y la presencia constante del mar. El símbolo superior representa una
-                      montaña o formación volcánica atravesada por un recorrido orgánico que puede leerse como lava, camino,
-                      costa o corriente marina.
-                    </Text>
-                    <Text>
-                      El dorado aporta calidez, valor gastronómico y una sensación premium sin alejarse de la naturaleza del
-                      proyecto. El negro conecta con la piedra volcánica y la elegancia de la sala; el blanco permite
-                      versiones más limpias y luminosas para soportes claros.
-                    </Text>
-                  </div>
-                </div>
-
-                <div className="grid gap-5 md:grid-cols-2">
-                  <div className="rounded-md border border-border bg-card/60 p-5">
-                    <h4 className="font-serif text-xl text-foreground">Isotipo</h4>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                      Es la parte simbólica: la montaña volcánica, el trazo sinuoso y los puntos que evocan salitre, arena,
-                      espuma o mineralidad. Puede funcionar como recurso gráfico, aunque al ser una marca nueva conviene
-                      acompañarlo del nombre para que el cliente lo asocie rápidamente con el restaurante.
+            <div className="mt-8 rounded-md border border-border bg-background/70">
+              <h3 className="px-5 py-4 font-serif text-xl text-foreground">
+                Estructura, menús e inversión
+              </h3>
+              <div className="space-y-8 border-t border-border p-5 md:p-8">
+                <div className="grid gap-6 md:grid-cols-[0.9fr_1.1fr]">
+                  <div className="rounded-md border border-border bg-card/60 p-6">
+                    <h3 className="font-serif text-2xl text-foreground">Capacidad y servicio</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                      El restaurante tendrá una capacidad aproximada de 30 a 35 comensales por
+                      servicio, con dos pases diarios: uno al mediodía y otro por la noche. Así
+                      puede atender entre 60 y 70 comensales al día manteniendo una atención
+                      personalizada, tiempos controlados y calidad en cada plato.
                     </p>
                   </div>
-                  <div className="rounded-md border border-border bg-card/60 p-5">
-                    <h4 className="font-serif text-xl text-foreground">Logotipo</h4>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                      Es la composición tipográfica de Lava & Salitre, acompañada por la palabra Restaurante. La elección de
-                      una tipografía serif transmite oficio, pausa y una experiencia gastronómica cuidada, más cercana a una
-                      casa de autor que a una marca informal.
-                    </p>
-                  </div>
-                  <div className="rounded-md border border-border bg-card/60 p-5">
-                    <h4 className="font-serif text-xl text-foreground">Claim</h4>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                      Tierra y Mar funciona como eslogan o claim porque condensa la promesa del restaurante en una idea
-                      breve, clara y memorable. Explica la dualidad de la carta: producto terrestre, paisaje volcánico,
-                      pescado, sal marina y Atlántico.
-                    </p>
-                  </div>
-                  <div className="rounded-md border border-border bg-card/60 p-5">
-                    <h4 className="font-serif text-xl text-foreground">Imagotipo</h4>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                      La marca se entiende como un imagotipo porque combina un símbolo reconocible con un texto legible, y
-                      ambos pueden separarse en ciertos usos. Para una empresa joven es más recomendable utilizar el conjunto
-                      completo, ya que un isotipo aislado suele funcionar mejor cuando la marca lleva años en el mercado y el
-                      público ya la reconoce sin necesidad de leer el nombre.
+                  <div className="rounded-md border border-border bg-card/60 p-6">
+                    <h3 className="font-serif text-2xl text-foreground">Diseño del espacio</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                      El diseño combina paredes blancas, piedra volcánica negra, madera natural,
+                      cristaleras amplias y luz cálida. La estética representa la unión entre lava y
+                      salitre: tierra volcánica, mar y una sala elegante sin perder calidez.
                     </p>
                   </div>
                 </div>
 
                 <div>
-                  <h4 className="font-serif text-xl text-foreground">Versiones del logotipo</h4>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-base">
-                    Las distintas versiones permiten mantener una identidad coherente en sala, carta, web, redes sociales,
-                    papelería, señalética y materiales promocionales, adaptándose a fondos oscuros, claros, fotográficos o
-                    monocromos sin perder reconocimiento.
-                  </p>
-                  <div className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                    {logoVersions.map((version) => (
-                      <figure key={version.src} className="overflow-hidden rounded-md border border-border bg-background">
-                        <div className="flex h-40 items-center justify-center bg-stone-950 p-4">
-                          <img
-                            src={version.src}
-                            alt={version.alt}
-                            loading="lazy"
-                            className="max-h-full w-full object-contain"
-                          />
+                  <h3 className="font-serif text-2xl text-foreground">Zonas del restaurante</h3>
+                  <InfoList items={restaurantZones} />
+                </div>
+
+                <div>
+                  <h3 className="font-serif text-2xl text-foreground">
+                    Estructura de menús degustación
+                  </h3>
+                  <div className="mt-5 grid gap-4 lg:grid-cols-3">
+                    {tastingMenuStructure.map((menu) => (
+                      <article
+                        key={menu.name}
+                        className="rounded-md border border-border bg-card/60 p-5"
+                      >
+                        <h4 className="font-serif text-xl text-foreground">{menu.name}</h4>
+                        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                          {menu.concept}
+                        </p>
+                        <p className="mt-4 text-[10px] uppercase tracking-[0.28em] text-accent">
+                          {menu.dishes}
+                        </p>
+                        <div className="mt-4 grid gap-2 text-sm text-muted-foreground">
+                          <p>Sin maridaje: {menu.withoutPairing}</p>
+                          <p>Con maridaje: {menu.withPairing}</p>
                         </div>
-                        <figcaption className="p-4">
-                          <p className="font-serif text-lg text-foreground">{version.title}</p>
-                          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{version.description}</p>
-                        </figcaption>
-                      </figure>
+                      </article>
                     ))}
                   </div>
                 </div>
-              </div>
-            </div>
-          </details>
-        </div>
-      </section>
 
-      <section id="tecnologias-gastronomicas" className="border-t border-border/60">
-        <div className="mx-auto max-w-6xl px-5 py-12 md:py-16">
-          <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Categoría</p>
-          <h2 className="mt-4 font-serif text-3xl text-foreground md:text-4xl">Público objetivo</h2>
-          <div className="mt-6 space-y-5">
-            <Text>
-              Lava & Salitre se dirige a un público adulto, curioso y gastronómico, que entiende la visita al restaurante
-              como una experiencia completa. Su cliente principal valora el producto canario, la técnica, el servicio, el
-              entorno, el maridaje y la historia que conecta cada plato con el paisaje de Agaete y las islas.
-            </Text>
-            <Text>
-              La propuesta combina cocina canaria vanguardista, productos del mar y de la tierra, kilómetro cero siempre que
-              sea posible, y un formato de menú degustación pensado para celebraciones, escapadas gastronómicas, visitantes de
-              otras islas, turistas gastronómicos, gourmets y clientes interesados en sostenibilidad.
-            </Text>
-          </div>
-          <details className="group mt-8 rounded-md border border-border bg-background/70">
-            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 font-serif text-xl text-foreground">
-              Ver análisis completo del público objetivo
-              <span className="text-sm text-accent transition-transform group-open:rotate-45">+</span>
-            </summary>
-            <div className="border-t border-border">
+                <div>
+                  <h3 className="font-serif text-2xl text-foreground">
+                    Opciones de inversión inicial
+                  </h3>
+                  <div className="mt-5 grid gap-4 md:grid-cols-2">
+                    {investmentOptions.map((item) => (
+                      <article
+                        key={item.option}
+                        className="rounded-md border border-border bg-card/60 p-5"
+                      >
+                        <h4 className="font-serif text-xl text-foreground">{item.option}</h4>
+                        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                          {item.note}
+                        </p>
+                        <p className="mt-4 text-[10px] uppercase tracking-[0.28em] text-accent">
+                          {item.recommendation}
+                        </p>
+                      </article>
+                    ))}
+                  </div>
+                </div>
 
-      <ContentSection title="Introducción al público objetivo">
-        <Text>
-          El restaurante Lava & Salitre se plantea como un proyecto gastronómico situado en el Puerto de las Nieves, en
-          Agaete, Gran Canaria. Su concepto parte de una idea muy clara: representar la unión entre el mar y la tierra
-          canaria a través de una cocina actual, creativa y cuidada. No se trata de abrir un restaurante más, sino de crear
-          un espacio donde el cliente pueda vivir una experiencia ligada al paisaje, al producto local y a la identidad de
-          las islas.
-        </Text>
-        <Text>
-          El público objetivo no será una persona que busca simplemente comer fuera de casa. La propuesta estará pensada
-          para clientes que valoran el producto, la presentación, el servicio, el ambiente y la historia que hay detrás de
-          cada plato. Al ser un restaurante de cocina vanguardista y de menú degustación, se dirige a un perfil que entiende
-          la gastronomía como una experiencia completa y no solo como una comida abundante.
-        </Text>
-        <Text>
-          Lava & Salitre se apoyará en productos canarios de mar y tierra, priorizando el kilómetro cero siempre que sea
-          posible. Esta idea permite conectar el restaurante con pescadores, agricultores, ganaderos, bodegas y pequeños
-          productores del entorno. La cocina tendrá una base canaria, pero con una presentación más moderna, cercana al
-          estilo de los restaurantes gastronómicos actuales.
-        </Text>
-      </ContentSection>
-
-      <ContentSection title="Ubicación y enclave propuesto">
-        <Text>
-          Para el desarrollo del proyecto se elige una ubicación realista dentro de una calle real del Puerto de las Nieves.
-          La localización escogida sería la zona de la Avenida de los Poetas, uno de los espacios más relacionados con el
-          paseo marítimo, la restauración y el movimiento de visitantes en Agaete.
-        </Text>
-        <InfoList items={location} />
-        <Text>
-          Para ubicar el restaurante en el trabajo y en una búsqueda de referencia, se puede utilizar la dirección de Avenida
-          de los Poetas, en el Puerto de las Nieves. Esta zona permite situar Lava & Salitre de manera clara dentro del
-          municipio y facilita su localización en un mapa, ya que se trata de un entorno real y reconocible de Agaete.
-        </Text>
-        <Text>
-          La elección de Agaete tiene mucho sentido para el concepto del restaurante. El Puerto de las Nieves mantiene una
-          relación directa con el mar, la pesca, el salitre y la vida marinera. Al mismo tiempo, el municipio está rodeado de
-          riscos, barrancos y paisaje volcánico, lo que refuerza la parte de “lava” y de producto de la tierra. Esta mezcla
-          entre costa y paisaje volcánico encaja de forma natural con el nombre y la filosofía del restaurante.
-        </Text>
-        <Text>
-          Además, la conexión marítima entre Agaete y Tenerife amplía el público potencial. Según Fred. Olsen Express, la
-          ruta directa entre Gran Canaria y Tenerife tiene una duración aproximada de 80 minutos. Esto permite plantear el
-          restaurante no solo para clientes de Gran Canaria, sino también para visitantes de Tenerife que buscan una escapada
-          gastronómica diferente. También se puede tener en cuenta el potencial de otras islas como La Palma y El Hierro, por
-          su cercanía dentro del contexto canario y por su fuerte relación con el producto volcánico, agrícola y marinero.
-        </Text>
-        <ImageGrid photos={locationPhotos} />
-        <Text>
-          Foto 1. Vista exterior de Lava & Salitre en el Puerto de las Nieves. La imagen exterior representa un edificio
-          moderno, abierto al paisaje y conectado con el mar. La combinación de líneas limpias, tonos claros y piedra
-          volcánica ayuda a reflejar la identidad del restaurante. La terraza y los grandes ventanales permitirían aprovechar
-          la luz natural, las vistas al puerto y la sensación de calma que ofrece el entorno.
-        </Text>
-        <Text>
-          Foto 2. Vista interior del comedor y zona de maridaje. El interior se plantea como un comedor elegante, cálido y
-          tranquilo. La madera aporta cercanía, la piedra volcánica conecta con la tierra y los ventanales mantienen presente
-          el mar durante toda la experiencia. La presencia de una zona de vinos refuerza la importancia del maridaje dentro
-          de la propuesta gastronómica.
-        </Text>
-      </ContentSection>
-
-      <ContentSection title="Contexto gastronómico de Canarias">
-        <Text>
-          Canarias vive un momento interesante dentro de la gastronomía. Cada vez hay más restaurantes reconocidos por guías
-          como MICHELIN y Repsol, y esto demuestra que existe un público que busca experiencias distintas a la restauración
-          tradicional. Este tipo de cliente no solo valora comer bien, sino también el concepto del restaurante, la creatividad
-          del chef, la bodega, el servicio y la relación con el territorio.
-        </Text>
-        <Text>
-          La Guía MICHELIN incluye actualmente una selección amplia de restaurantes en Canarias, con 54 establecimientos
-          recogidos en su guía para las islas. Este dato refuerza la idea de que el archipiélago cuenta con una oferta
-          gastronómica cada vez más visible y atractiva para el público que consulta guías especializadas.
-        </Text>
-        <Text>
-          La Guía Repsol también refleja este crecimiento gastronómico. En su edición 2026 se mantiene un universo amplio de
-          restaurantes con Soles y restaurantes recomendados, y Canarias aparece de forma destacada en distintas publicaciones
-          de la guía, especialmente en zonas como Tenerife. Todo esto ayuda a crear un público más acostumbrado a buscar menús
-          degustación, cocina de autor, producto local y propuestas con personalidad.
-        </Text>
-        <Text>
-          Este contexto beneficia a un restaurante como Lava & Salitre. El proyecto se dirige precisamente a ese cliente que
-          quiere descubrir una cocina canaria diferente, más actual y más cuidada, pero sin perder la esencia del territorio.
-          La propuesta no pretende competir con la cocina tradicional de la zona, sino ofrecer otra lectura: más gastronómica,
-          más visual y más enfocada a la experiencia.
-        </Text>
-      </ContentSection>
-
-      <ContentSection title="Segmentos del público objetivo">
-        <figure className="overflow-hidden rounded-md border border-border bg-background">
-          <img
-            src="/galeria/equipo.png"
-            alt="Equipo de Lava & Salitre frente al restaurante"
-            loading="lazy"
-            className="h-[260px] w-full object-cover md:h-[360px]"
-          />
-          <figcaption className="px-5 py-4 text-sm italic leading-relaxed text-muted-foreground">
-            Un equipo cercano, profesional y conectado con la identidad del restaurante.
-          </figcaption>
-        </figure>
-        <div className="grid gap-6 md:grid-cols-2">
-          {segments.map((segment) => (
-            <article key={segment.title} className="rounded-md border border-border bg-background/70 p-6">
-              <h3 className="font-serif text-2xl text-foreground">{segment.title}</h3>
-              <div className="mt-4 space-y-4">
-                {segment.paragraphs.map((paragraph) => (
-                  <Text key={paragraph}>{paragraph}</Text>
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
-      </ContentSection>
-
-      <ContentSection title="Importancia del maridaje">
-        <Text>
-          El maridaje será uno de los atractivos más importantes de Lava & Salitre. Al ofrecer menús degustación con opción
-          de maridaje, el restaurante podrá captar mejor a clientes que buscan una experiencia completa. Muchos turistas
-          gastronómicos y amantes de la alta cocina no solo quieren probar los platos, sino también descubrir vinos que
-          acompañen y refuercen el recorrido del menú.
-        </Text>
-        <Text>
-          El maridaje con vinos canarios permitirá dar protagonismo a bodegas de distintas islas y conectar cada plato con el
-          territorio. Canarias cuenta con vinos muy diferentes por sus suelos volcánicos, microclimas y variedades de uva, por
-          lo que el maridaje puede convertirse en una parte muy interesante de la experiencia.
-        </Text>
-        <Text>
-          Además, ofrecer el menú con o sin maridaje permite adaptarse a distintos presupuestos. El cliente que quiera vivir
-          la experiencia completa podrá elegir el maridaje, mientras que otro cliente podrá disfrutar únicamente del menú
-          degustación. Esta flexibilidad hace que la propuesta sea más atractiva sin perder su carácter gastronómico.
-        </Text>
-      </ContentSection>
-
-      <ContentSection title="Intolerancias y necesidades alimentarias">
-        <Text>
-          Lava & Salitre respetará a las personas con intolerancias alimentarias o necesidades concretas. El restaurante
-          deberá informar correctamente sobre alérgenos y tratar este tema con seriedad. Siempre que sea posible, se intentará
-          adaptar el menú si el cliente avisa con antelación.
-        </Text>
-        <Text>
-          Aun así, es importante aclarar que el restaurante no estará pensado principalmente para este tipo de público. La
-          cocina vanguardista y el formato de menú degustación pueden dificultar algunas adaptaciones completas, ya que muchas
-          elaboraciones incluyen fondos, emulsiones, geles, fermentaciones, espumas, reducciones o técnicas donde varios
-          ingredientes forman parte de una misma preparación.
-        </Text>
-        <Text>
-          Por este motivo, las adaptaciones se realizarán de forma puntual y responsable, pero sin comprometer la coherencia
-          del concepto gastronómico. El objetivo será respetar al cliente y sus necesidades, pero también mantener la identidad
-          original del menú.
-        </Text>
-      </ContentSection>
-
-      <ContentSection title="Perfil del cliente ideal">
-        <Text>
-          El cliente ideal de Lava & Salitre será una persona adulta, aproximadamente entre 30 y 60 años, con especial
-          presencia entre los 35 y 55 años. Es un perfil con interés por la gastronomía, el producto local, las experiencias
-          diferentes y los restaurantes con personalidad.
-        </Text>
-        <Text>
-          No será un cliente que busca comer rápido o encontrar una opción económica. Será alguien que entiende que un menú
-          degustación tiene un valor añadido por el producto, la técnica, el servicio, la presentación y el conjunto de la
-          experiencia. Valora más la calidad que la cantidad.
-        </Text>
-        <Text>
-          Este cliente puede ser residente en Gran Canaria, visitante de Tenerife, turista nacional, turista extranjero o una
-          persona de otra isla que busca una experiencia concreta. Lo importante no es tanto su lugar de origen, sino su manera
-          de entender la gastronomía.
-        </Text>
-        <div className="mt-8 overflow-hidden rounded-md border border-border">
-          {idealClient.map((row) => (
-            <div key={row.aspect} className="grid gap-3 border-b border-border bg-background p-5 last:border-b-0 md:grid-cols-[0.35fr_0.65fr]">
-              <p className="font-serif text-lg text-foreground">{row.aspect}</p>
-              <p className="text-sm leading-relaxed text-muted-foreground">{row.description}</p>
-            </div>
-          ))}
-        </div>
-      </ContentSection>
-
-      <ContentSection title="Expectativas gastronómicas del cliente">
-        <figure className="overflow-hidden rounded-md border border-border bg-background">
-          <img
-            src="/galeria/restaurante-clientes.png"
-            alt="Clientes comiendo en el salón superior de Lava & Salitre"
-            loading="lazy"
-            className="h-[280px] w-full object-cover md:h-[460px]"
-          />
-          <figcaption className="px-5 py-4 text-sm italic leading-relaxed text-muted-foreground">
-            Clientes comiendo en el salón superior del restaurante.
-          </figcaption>
-        </figure>
-        <Text>
-          El cliente que acuda a Lava & Salitre esperará una experiencia completa. No buscará una carta amplia ni platos muy
-          abundantes, sino un menú trabajado, con varios pases y una historia común. Esperará que el nombre del restaurante se
-          vea reflejado en la comida, en el ambiente, en la decoración y en la forma de presentar los platos.
-        </Text>
-        <InfoList items={expectations} />
-        <Text>
-          La experiencia deberá ser elegante, pero no distante. El cliente debe sentirse atendido y cómodo, sin que el
-          restaurante pierda naturalidad. La alta cocina no tiene por qué ser fría; en Lava & Salitre debe sentirse cercana,
-          canaria y con personalidad propia.
-        </Text>
-      </ContentSection>
-
-      <ContentSection title="Conclusión">
-        <Text>
-          En conclusión, Lava & Salitre se dirigirá a un público adulto, con interés por la gastronomía, el producto local y
-          las experiencias diferentes. Su cliente principal será una persona de nivel adquisitivo medio-alto, que valora la
-          cocina canaria actual, los menús degustación y una propuesta con identidad.
-        </Text>
-        <Text>
-          La ubicación en el Puerto de las Nieves, en Agaete, será una ventaja importante por su conexión con el mar, el
-          paisaje volcánico y la ruta marítima con Tenerife. Este enclave permite ampliar el público potencial y reforzar la
-          idea de un restaurante canario conectado con otras islas.
-        </Text>
-        <Text>
-          El crecimiento de restaurantes canarios reconocidos en guías como MICHELIN y Repsol demuestra que existe un público
-          que busca experiencias gastronómicas de más nivel. Lava & Salitre se apoyará en ese interés, ofreciendo una cocina
-          vanguardista, producto de kilómetro cero, maridaje con vinos canarios y una experiencia cuidada desde la llegada al
-          restaurante hasta el último pase del menú.
-        </Text>
-        <Text>
-          Aunque el restaurante respetará las intolerancias y necesidades alimentarias, su propuesta principal estará pensada
-          para clientes que puedan disfrutar del menú degustación en su formato original o con pequeñas adaptaciones avisadas
-          previamente. De esta forma, se protege la coherencia del concepto sin dejar de actuar con responsabilidad hacia el
-          cliente.
-        </Text>
-        <Text>
-          Lava & Salitre no será solo un restaurante para comer. Será un espacio donde el cliente pueda descubrir Canarias
-          desde una mirada más moderna, gastronómica y personal, uniendo el paisaje, el producto, el vino, el mar y la tierra
-          en una misma experiencia.
-        </Text>
-      </ContentSection>
-
-      <ContentSection title="Fuentes consultadas">
-        <div className="grid gap-3">
-          {sources.map((source) => (
-            <a
-              key={source.href}
-              href={source.href}
-              target="_blank"
-              rel="noreferrer"
-              className="break-words rounded-md border border-border bg-background/70 p-4 text-sm leading-relaxed text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {source.label}: {source.href}
-            </a>
-          ))}
-        </div>
-      </ContentSection>
-            </div>
-          </details>
-        </div>
-      </section>
-
-      <section className="border-t border-border/60">
-        <div className="mx-auto max-w-6xl px-5 py-12 md:py-16">
-          <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Categoría</p>
-          <h2 className="mt-4 font-serif text-3xl text-foreground md:text-4xl">Tecnologías gastronómicas</h2>
-          <div className="mt-6 space-y-5">
-            <Text>
-              Lava & Salitre combina tradición canaria con técnicas modernas, siempre desde el respeto por el producto. La
-              tecnología no se plantea como un artificio, sino como una herramienta para mejorar texturas, presentación,
-              lectura del plato y experiencia del cliente sin esconder el sabor original de los ingredientes.
-            </Text>
-            <Text>
-              Deconstrucciones, espumas, gelificaciones y esferificaciones puntuales permiten mostrar la cocina canaria desde
-              una visión más actual. El nitrógeno líquido se reserva para momentos concretos, especialmente en postres o
-              pequeños bocados, y la experiencia de carta combina soporte físico elegante con información digital útil.
-            </Text>
-          </div>
-
-          <details className="group mt-8 rounded-md border border-border bg-background/70">
-            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 font-serif text-xl text-foreground">
-              Ver tecnologías y aplicaciones
-              <span className="text-sm text-accent transition-transform group-open:rotate-45">+</span>
-            </summary>
-            <div className="space-y-8 border-t border-border p-5 md:p-8">
-              <div>
-                <h3 className="font-serif text-2xl text-foreground">Técnicas culinarias</h3>
-                <div className="mt-5 grid gap-4 md:grid-cols-2">
-                  {culinaryTechnologies.map((technology) => (
-                    <article key={technology.name} className="rounded-md border border-border bg-card/60 p-5">
-                      <h4 className="font-serif text-xl text-foreground">{technology.name}</h4>
-                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{technology.description}</p>
-                    </article>
-                  ))}
+                <div>
+                  <h3 className="font-serif text-2xl text-foreground">Presupuesto aproximado</h3>
+                  <div className="mt-5 overflow-hidden rounded-md border border-border">
+                    {investmentBudget.map((row) => (
+                      <div
+                        key={row.concept}
+                        className="grid gap-3 border-b border-border bg-background p-5 last:border-b-0 md:grid-cols-[0.6fr_0.4fr]"
+                      >
+                        <p className="font-serif text-lg text-foreground">{row.concept}</p>
+                        <p className="text-sm leading-relaxed text-muted-foreground">
+                          {row.estimate}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                    La inversión total recomendada se sitúa entre 126.000 EUR y 265.000 EUR, según
+                    el estado del local y el equipamiento incluido. La opción más prudente al inicio
+                    sería un alquiler con traspaso.
+                  </p>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+      )}
 
-              <div>
-                <h3 className="font-serif text-2xl text-foreground">Tecnologías para la carta y la experiencia</h3>
-                <div className="mt-5 grid gap-4 md:grid-cols-2">
-                  {digitalTechnologies.map((technology) => (
-                    <article key={technology.name} className="rounded-md border border-border bg-card/60 p-5">
-                      <h4 className="font-serif text-xl text-foreground">{technology.name}</h4>
-                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{technology.description}</p>
-                    </article>
-                  ))}
-                </div>
+      {(!activeSection || activeSection === "concepto-gastronomico") && (
+        <section id="concepto-gastronomico" className="border-t border-border/60">
+          <div className="mx-auto max-w-6xl px-5 py-12 md:py-16">
+            <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Categoría</p>
+            <h2 className="mt-4 font-serif text-3xl text-foreground md:text-4xl">
+              Concepto gastronómico: lava, salitre e identidad canaria
+            </h2>
+            <div className="mt-6 rounded-md border border-border bg-background/70 p-6">
+              <p className="text-[10px] uppercase tracking-[0.28em] text-accent">
+                Definición del concepto
+              </p>
+              <h3 className="mt-3 font-serif text-2xl text-foreground">
+                Lava & Salitre: tierra volcánica y Atlántico
+              </h3>
+              <div className="mt-5 space-y-5">
+                <Text>
+                  Lava & Salitre es un restaurante inspirado en dos elementos muy presentes en
+                  Canarias: la lava volcánica y el salitre del Atlántico. El nombre representa la
+                  unión entre la tierra y el mar, dos partes fundamentales de la identidad canaria.
+                </Text>
+                <Text>
+                  El estilo del restaurante se define como una cocina canaria minimalista y de
+                  vanguardia, con platos de mar y tierra elaborados con productos locales, de
+                  temporada y, siempre que sea posible, de kilómetro cero.
+                </Text>
+                <Text>
+                  Su filosofía se basa en respetar el producto canario y presentarlo de una forma
+                  más actual, limpia y elegante, sin perder la esencia tradicional. Cada plato busca
+                  contar una parte del paisaje de las islas: el sabor salino del mar, la fuerza
+                  volcánica de la tierra y la riqueza de sus productos.
+                </Text>
               </div>
+            </div>
 
-              <div>
-                <h3 className="font-serif text-2xl text-foreground">Resumen de uso</h3>
-                <div className="mt-5 overflow-hidden rounded-md border border-border">
-                  {technologySummary.map((row) => (
-                    <div
-                      key={row.technology}
-                      className="grid gap-3 border-b border-border bg-background p-5 last:border-b-0 md:grid-cols-[0.25fr_0.35fr_0.4fr]"
+            <div className="mt-8 space-y-5">
+              <Text>
+                Lava & Salitre nace de dos fuerzas esenciales del paisaje canario: la lava volcánica
+                y el salitre del Atlántico. La tierra y el mar se encuentran en una propuesta de
+                cocina canaria minimalista, actual y elegante, donde cada plato busca expresar una
+                parte de las islas.
+              </Text>
+              <Text>
+                La filosofía del restaurante es respetar el producto local y presentarlo con una
+                mirada más limpia y contemporánea. Pescados, algas, sal marina, gofio, papas, miel
+                de palma, almendra, piña, plátano, leche de cabra, vino canario y carnes locales
+                ayudan a construir un recorrido que representa a Canarias desde el sabor.
+              </Text>
+            </div>
+
+            <div className="mt-8 rounded-md border border-border bg-background/70">
+              <h3 className="px-5 py-4 font-serif text-xl text-foreground">
+                Productos e islas representadas
+              </h3>
+              <div className="space-y-6 border-t border-border p-5 md:p-8">
+                <div className="grid gap-5 md:grid-cols-2">
+                  {islandProducts.map((item) => (
+                    <article
+                      key={item.island}
+                      className="rounded-md border border-border bg-card/60 p-5"
                     >
-                      <p className="font-serif text-lg text-foreground">{row.technology}</p>
-                      <p className="text-sm leading-relaxed text-muted-foreground">{row.use}</p>
-                      <p className="text-sm leading-relaxed text-muted-foreground">{row.reason}</p>
-                    </div>
+                      <h3 className="font-serif text-2xl text-foreground">{item.island}</h3>
+                      <p className="mt-3 text-[10px] uppercase tracking-[0.28em] text-accent">
+                        Productos
+                      </p>
+                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                        {item.products}
+                      </p>
+                      <p className="mt-4 text-[10px] uppercase tracking-[0.28em] text-accent">
+                        Platos
+                      </p>
+                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                        {item.dishes}
+                      </p>
+                    </article>
                   ))}
+                </div>
+                <Text>
+                  El menú funciona como un mapa gastronómico: cada isla aporta ingredientes, memoria
+                  y carácter. La intención no es copiar la cocina tradicional, sino mantener su
+                  esencia y llevarla a un lenguaje visual más cuidado, técnico y contemporáneo.
+                </Text>
+
+                <div className="space-y-5 border-t border-border/60 pt-7">
+                  <div>
+                    <p className="text-[10px] uppercase tracking-[0.28em] text-accent">
+                      Tradición e innovación
+                    </p>
+                    <h3 className="mt-3 font-serif text-2xl text-foreground">
+                      Cocina canaria transformada con mirada vanguardista
+                    </h3>
+                  </div>
+                  <Text>
+                    En Lava & Salitre, la tradición canaria se transforma en una propuesta
+                    vanguardista, minimalista y con vocación de alta cocina. El restaurante se
+                    inspira en la fuerza de la lava y en el carácter marino del salitre, uniendo
+                    tierra y mar en cada plato.
+                  </Text>
+                  <Text>
+                    La cocina trabaja productos locales como pescado fresco, gofio, papas antiguas,
+                    quesos canarios, miel de palma y frutas de las islas, aplicando técnicas
+                    actuales como espumas, geles, aires, texturas crujientes, cocciones precisas y
+                    emplatados limpios.
+                  </Text>
+                  <Text>
+                    La idea es respetar el sabor de Canarias, pero presentarlo de una forma más
+                    elegante, creativa y sorprendente, propia de una experiencia gastronómica
+                    cuidada de principio a fin.
+                  </Text>
+                </div>
+
+                <div className="space-y-6 border-t border-border/60 pt-7">
+                  <div>
+                    <p className="text-[10px] uppercase tracking-[0.28em] text-accent">
+                      Identidad visual
+                    </p>
+                    <h3 className="mt-3 font-serif text-2xl text-foreground">
+                      Logotipo de Lava & Salitre
+                    </h3>
+                  </div>
+
+                  <div className="grid gap-6 md:grid-cols-[0.95fr_1.05fr] md:items-center">
+                    <figure className="overflow-hidden rounded-md border border-border bg-black">
+                      <img
+                        src="/galeria/logo-version-dorada-transparente.png"
+                        alt="Logotipo principal de Lava & Salitre"
+                        loading="lazy"
+                        className="h-full min-h-64 w-full object-contain"
+                      />
+                    </figure>
+                    <div className="space-y-4">
+                      <Text>
+                        La identidad visual de Lava & Salitre resume el mismo concepto que sostiene
+                        la cocina del restaurante: la fuerza de la tierra volcánica y la presencia
+                        constante del mar. El símbolo superior representa una montaña o formación
+                        volcánica atravesada por un recorrido orgánico que puede leerse como lava,
+                        camino, costa o corriente marina.
+                      </Text>
+                      <Text>
+                        El dorado aporta calidez, valor gastronómico y una sensación premium sin
+                        alejarse de la naturaleza del proyecto. El negro conecta con la piedra
+                        volcánica y la elegancia de la sala; el blanco permite versiones más limpias
+                        y luminosas para soportes claros.
+                      </Text>
+                    </div>
+                  </div>
+
+                  <div className="grid gap-5 md:grid-cols-2">
+                    <div className="rounded-md border border-border bg-card/60 p-5">
+                      <h4 className="font-serif text-xl text-foreground">Isotipo</h4>
+                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                        Es la parte simbólica: la montaña volcánica, el trazo sinuoso y los puntos
+                        que evocan salitre, arena, espuma o mineralidad. Puede funcionar como
+                        recurso gráfico, aunque al ser una marca nueva conviene acompañarlo del
+                        nombre para que el cliente lo asocie rápidamente con el restaurante.
+                      </p>
+                    </div>
+                    <div className="rounded-md border border-border bg-card/60 p-5">
+                      <h4 className="font-serif text-xl text-foreground">Logotipo</h4>
+                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                        Es la composición tipográfica de Lava & Salitre, acompañada por la palabra
+                        Restaurante. La elección de una tipografía serif transmite oficio, pausa y
+                        una experiencia gastronómica cuidada, más cercana a una casa de autor que a
+                        una marca informal.
+                      </p>
+                    </div>
+                    <div className="rounded-md border border-border bg-card/60 p-5">
+                      <h4 className="font-serif text-xl text-foreground">Claim</h4>
+                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                        Tierra y Mar funciona como eslogan o claim porque condensa la promesa del
+                        restaurante en una idea breve, clara y memorable. Explica la dualidad de la
+                        carta: producto terrestre, paisaje volcánico, pescado, sal marina y
+                        Atlántico.
+                      </p>
+                    </div>
+                    <div className="rounded-md border border-border bg-card/60 p-5">
+                      <h4 className="font-serif text-xl text-foreground">Imagotipo</h4>
+                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                        La marca se entiende como un imagotipo porque combina un símbolo reconocible
+                        con un texto legible, y ambos pueden separarse en ciertos usos. Para una
+                        empresa joven es más recomendable utilizar el conjunto completo, ya que un
+                        isotipo aislado suele funcionar mejor cuando la marca lleva años en el
+                        mercado y el público ya la reconoce sin necesidad de leer el nombre.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="font-serif text-xl text-foreground">Versiones del logotipo</h4>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-base">
+                      Las distintas versiones permiten mantener una identidad coherente en sala,
+                      carta, web, redes sociales, papelería, señalética y materiales promocionales,
+                      adaptándose a fondos oscuros, claros, fotográficos o monocromos sin perder
+                      reconocimiento.
+                    </p>
+                    <div className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                      {logoVersions.map((version) => (
+                        <figure
+                          key={version.src}
+                          className="overflow-hidden rounded-md border border-border bg-background"
+                        >
+                          <div className="flex h-40 items-center justify-center bg-stone-950 p-4">
+                            <img
+                              src={version.src}
+                              alt={version.alt}
+                              loading="lazy"
+                              className="max-h-full w-full object-contain"
+                            />
+                          </div>
+                          <figcaption className="p-4">
+                            <p className="font-serif text-lg text-foreground">{version.title}</p>
+                            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                              {version.description}
+                            </p>
+                          </figcaption>
+                        </figure>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </details>
-        </div>
-      </section>
+          </div>
+        </section>
+      )}
+
+      {(!activeSection || activeSection === "tecnologias-gastronomicas") && (
+        <>
+          <section id="tecnologias-gastronomicas" className="border-t border-border/60">
+            <div className="mx-auto max-w-6xl px-5 py-12 md:py-16">
+              <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Categoría</p>
+              <h2 className="mt-4 font-serif text-3xl text-foreground md:text-4xl">
+                Público objetivo
+              </h2>
+              <div className="mt-6 space-y-5">
+                <Text>
+                  Lava & Salitre se dirige a un público adulto, curioso y gastronómico, que entiende
+                  la visita al restaurante como una experiencia completa. Su cliente principal
+                  valora el producto canario, la técnica, el servicio, el entorno, el maridaje y la
+                  historia que conecta cada plato con el paisaje de Agaete y las islas.
+                </Text>
+                <Text>
+                  La propuesta combina cocina canaria vanguardista, productos del mar y de la
+                  tierra, kilómetro cero siempre que sea posible, y un formato de menú degustación
+                  pensado para celebraciones, escapadas gastronómicas, visitantes de otras islas,
+                  turistas gastronómicos, gourmets y clientes interesados en sostenibilidad.
+                </Text>
+              </div>
+              <div className="mt-8 rounded-md border border-border bg-background/70">
+                <h3 className="px-5 py-4 font-serif text-xl text-foreground">
+                  Análisis completo del público objetivo
+                </h3>
+                <div className="border-t border-border">
+                  <ContentSection title="Introducción al público objetivo">
+                    <Text>
+                      El restaurante Lava & Salitre se plantea como un proyecto gastronómico situado
+                      en el Puerto de las Nieves, en Agaete, Gran Canaria. Su concepto parte de una
+                      idea muy clara: representar la unión entre el mar y la tierra canaria a través
+                      de una cocina actual, creativa y cuidada. No se trata de abrir un restaurante
+                      más, sino de crear un espacio donde el cliente pueda vivir una experiencia
+                      ligada al paisaje, al producto local y a la identidad de las islas.
+                    </Text>
+                    <Text>
+                      El público objetivo no será una persona que busca simplemente comer fuera de
+                      casa. La propuesta estará pensada para clientes que valoran el producto, la
+                      presentación, el servicio, el ambiente y la historia que hay detrás de cada
+                      plato. Al ser un restaurante de cocina vanguardista y de menú degustación, se
+                      dirige a un perfil que entiende la gastronomía como una experiencia completa y
+                      no solo como una comida abundante.
+                    </Text>
+                    <Text>
+                      Lava & Salitre se apoyará en productos canarios de mar y tierra, priorizando
+                      el kilómetro cero siempre que sea posible. Esta idea permite conectar el
+                      restaurante con pescadores, agricultores, ganaderos, bodegas y pequeños
+                      productores del entorno. La cocina tendrá una base canaria, pero con una
+                      presentación más moderna, cercana al estilo de los restaurantes gastronómicos
+                      actuales.
+                    </Text>
+                  </ContentSection>
+
+                  <ContentSection title="Ubicación y enclave propuesto">
+                    <Text>
+                      Para el desarrollo del proyecto se elige una ubicación realista dentro de una
+                      calle real del Puerto de las Nieves. La localización escogida sería la zona de
+                      la Avenida de los Poetas, uno de los espacios más relacionados con el paseo
+                      marítimo, la restauración y el movimiento de visitantes en Agaete.
+                    </Text>
+                    <InfoList items={location} />
+                    <Text>
+                      Para ubicar el restaurante en el trabajo y en una búsqueda de referencia, se
+                      puede utilizar la dirección de Avenida de los Poetas, en el Puerto de las
+                      Nieves. Esta zona permite situar Lava & Salitre de manera clara dentro del
+                      municipio y facilita su localización en un mapa, ya que se trata de un entorno
+                      real y reconocible de Agaete.
+                    </Text>
+                    <Text>
+                      La elección de Agaete tiene mucho sentido para el concepto del restaurante. El
+                      Puerto de las Nieves mantiene una relación directa con el mar, la pesca, el
+                      salitre y la vida marinera. Al mismo tiempo, el municipio está rodeado de
+                      riscos, barrancos y paisaje volcánico, lo que refuerza la parte de “lava” y de
+                      producto de la tierra. Esta mezcla entre costa y paisaje volcánico encaja de
+                      forma natural con el nombre y la filosofía del restaurante.
+                    </Text>
+                    <Text>
+                      Además, la conexión marítima entre Agaete y Tenerife amplía el público
+                      potencial. Según Fred. Olsen Express, la ruta directa entre Gran Canaria y
+                      Tenerife tiene una duración aproximada de 80 minutos. Esto permite plantear el
+                      restaurante no solo para clientes de Gran Canaria, sino también para
+                      visitantes de Tenerife que buscan una escapada gastronómica diferente. También
+                      se puede tener en cuenta el potencial de otras islas como La Palma y El
+                      Hierro, por su cercanía dentro del contexto canario y por su fuerte relación
+                      con el producto volcánico, agrícola y marinero.
+                    </Text>
+                    <ImageGrid photos={locationPhotos} />
+                    <Text>
+                      Foto 1. Vista exterior de Lava & Salitre en el Puerto de las Nieves. La imagen
+                      exterior representa un edificio moderno, abierto al paisaje y conectado con el
+                      mar. La combinación de líneas limpias, tonos claros y piedra volcánica ayuda a
+                      reflejar la identidad del restaurante. La terraza y los grandes ventanales
+                      permitirían aprovechar la luz natural, las vistas al puerto y la sensación de
+                      calma que ofrece el entorno.
+                    </Text>
+                    <Text>
+                      Foto 2. Vista interior del comedor y zona de maridaje. El interior se plantea
+                      como un comedor elegante, cálido y tranquilo. La madera aporta cercanía, la
+                      piedra volcánica conecta con la tierra y los ventanales mantienen presente el
+                      mar durante toda la experiencia. La presencia de una zona de vinos refuerza la
+                      importancia del maridaje dentro de la propuesta gastronómica.
+                    </Text>
+                  </ContentSection>
+
+                  <ContentSection title="Contexto gastronómico de Canarias">
+                    <Text>
+                      Canarias vive un momento interesante dentro de la gastronomía. Cada vez hay
+                      más restaurantes reconocidos por guías como MICHELIN y Repsol, y esto
+                      demuestra que existe un público que busca experiencias distintas a la
+                      restauración tradicional. Este tipo de cliente no solo valora comer bien, sino
+                      también el concepto del restaurante, la creatividad del chef, la bodega, el
+                      servicio y la relación con el territorio.
+                    </Text>
+                    <Text>
+                      La Guía MICHELIN incluye actualmente una selección amplia de restaurantes en
+                      Canarias, con 54 establecimientos recogidos en su guía para las islas. Este
+                      dato refuerza la idea de que el archipiélago cuenta con una oferta
+                      gastronómica cada vez más visible y atractiva para el público que consulta
+                      guías especializadas.
+                    </Text>
+                    <Text>
+                      La Guía Repsol también refleja este crecimiento gastronómico. En su edición
+                      2026 se mantiene un universo amplio de restaurantes con Soles y restaurantes
+                      recomendados, y Canarias aparece de forma destacada en distintas publicaciones
+                      de la guía, especialmente en zonas como Tenerife. Todo esto ayuda a crear un
+                      público más acostumbrado a buscar menús degustación, cocina de autor, producto
+                      local y propuestas con personalidad.
+                    </Text>
+                    <Text>
+                      Este contexto beneficia a un restaurante como Lava & Salitre. El proyecto se
+                      dirige precisamente a ese cliente que quiere descubrir una cocina canaria
+                      diferente, más actual y más cuidada, pero sin perder la esencia del
+                      territorio. La propuesta no pretende competir con la cocina tradicional de la
+                      zona, sino ofrecer otra lectura: más gastronómica, más visual y más enfocada a
+                      la experiencia.
+                    </Text>
+                  </ContentSection>
+
+                  <ContentSection title="Segmentos del público objetivo">
+                    <figure className="overflow-hidden rounded-md border border-border bg-background">
+                      <img
+                        src="/galeria/equipo.png"
+                        alt="Equipo de Lava & Salitre frente al restaurante"
+                        loading="lazy"
+                        className="h-[260px] w-full object-cover md:h-[360px]"
+                      />
+                      <figcaption className="px-5 py-4 text-sm italic leading-relaxed text-muted-foreground">
+                        Un equipo cercano, profesional y conectado con la identidad del restaurante.
+                      </figcaption>
+                    </figure>
+                    <div className="grid gap-6 md:grid-cols-2">
+                      {segments.map((segment) => (
+                        <article
+                          key={segment.title}
+                          className="rounded-md border border-border bg-background/70 p-6"
+                        >
+                          <h3 className="font-serif text-2xl text-foreground">{segment.title}</h3>
+                          <div className="mt-4 space-y-4">
+                            {segment.paragraphs.map((paragraph) => (
+                              <Text key={paragraph}>{paragraph}</Text>
+                            ))}
+                          </div>
+                        </article>
+                      ))}
+                    </div>
+                  </ContentSection>
+
+                  <ContentSection title="Importancia del maridaje">
+                    <Text>
+                      El maridaje será uno de los atractivos más importantes de Lava & Salitre. Al
+                      ofrecer menús degustación con opción de maridaje, el restaurante podrá captar
+                      mejor a clientes que buscan una experiencia completa. Muchos turistas
+                      gastronómicos y amantes de la alta cocina no solo quieren probar los platos,
+                      sino también descubrir vinos que acompañen y refuercen el recorrido del menú.
+                    </Text>
+                    <Text>
+                      El maridaje con vinos canarios permitirá dar protagonismo a bodegas de
+                      distintas islas y conectar cada plato con el territorio. Canarias cuenta con
+                      vinos muy diferentes por sus suelos volcánicos, microclimas y variedades de
+                      uva, por lo que el maridaje puede convertirse en una parte muy interesante de
+                      la experiencia.
+                    </Text>
+                    <Text>
+                      Además, ofrecer el menú con o sin maridaje permite adaptarse a distintos
+                      presupuestos. El cliente que quiera vivir la experiencia completa podrá elegir
+                      el maridaje, mientras que otro cliente podrá disfrutar únicamente del menú
+                      degustación. Esta flexibilidad hace que la propuesta sea más atractiva sin
+                      perder su carácter gastronómico.
+                    </Text>
+                  </ContentSection>
+
+                  <ContentSection title="Intolerancias y necesidades alimentarias">
+                    <Text>
+                      Lava & Salitre respetará a las personas con intolerancias alimentarias o
+                      necesidades concretas. El restaurante deberá informar correctamente sobre
+                      alérgenos y tratar este tema con seriedad. Siempre que sea posible, se
+                      intentará adaptar el menú si el cliente avisa con antelación.
+                    </Text>
+                    <Text>
+                      Aun así, es importante aclarar que el restaurante no estará pensado
+                      principalmente para este tipo de público. La cocina vanguardista y el formato
+                      de menú degustación pueden dificultar algunas adaptaciones completas, ya que
+                      muchas elaboraciones incluyen fondos, emulsiones, geles, fermentaciones,
+                      espumas, reducciones o técnicas donde varios ingredientes forman parte de una
+                      misma preparación.
+                    </Text>
+                    <Text>
+                      Por este motivo, las adaptaciones se realizarán de forma puntual y
+                      responsable, pero sin comprometer la coherencia del concepto gastronómico. El
+                      objetivo será respetar al cliente y sus necesidades, pero también mantener la
+                      identidad original del menú.
+                    </Text>
+                  </ContentSection>
+
+                  <ContentSection title="Perfil del cliente ideal">
+                    <Text>
+                      El cliente ideal de Lava & Salitre será una persona adulta, aproximadamente
+                      entre 30 y 60 años, con especial presencia entre los 35 y 55 años. Es un
+                      perfil con interés por la gastronomía, el producto local, las experiencias
+                      diferentes y los restaurantes con personalidad.
+                    </Text>
+                    <Text>
+                      No será un cliente que busca comer rápido o encontrar una opción económica.
+                      Será alguien que entiende que un menú degustación tiene un valor añadido por
+                      el producto, la técnica, el servicio, la presentación y el conjunto de la
+                      experiencia. Valora más la calidad que la cantidad.
+                    </Text>
+                    <Text>
+                      Este cliente puede ser residente en Gran Canaria, visitante de Tenerife,
+                      turista nacional, turista extranjero o una persona de otra isla que busca una
+                      experiencia concreta. Lo importante no es tanto su lugar de origen, sino su
+                      manera de entender la gastronomía.
+                    </Text>
+                    <div className="mt-8 overflow-hidden rounded-md border border-border">
+                      {idealClient.map((row) => (
+                        <div
+                          key={row.aspect}
+                          className="grid gap-3 border-b border-border bg-background p-5 last:border-b-0 md:grid-cols-[0.35fr_0.65fr]"
+                        >
+                          <p className="font-serif text-lg text-foreground">{row.aspect}</p>
+                          <p className="text-sm leading-relaxed text-muted-foreground">
+                            {row.description}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </ContentSection>
+
+                  <ContentSection title="Expectativas gastronómicas del cliente">
+                    <figure className="overflow-hidden rounded-md border border-border bg-background">
+                      <img
+                        src="/galeria/restaurante-clientes.png"
+                        alt="Clientes comiendo en el salón superior de Lava & Salitre"
+                        loading="lazy"
+                        className="h-[280px] w-full object-cover md:h-[460px]"
+                      />
+                      <figcaption className="px-5 py-4 text-sm italic leading-relaxed text-muted-foreground">
+                        Clientes comiendo en el salón superior del restaurante.
+                      </figcaption>
+                    </figure>
+                    <Text>
+                      El cliente que acuda a Lava & Salitre esperará una experiencia completa. No
+                      buscará una carta amplia ni platos muy abundantes, sino un menú trabajado, con
+                      varios pases y una historia común. Esperará que el nombre del restaurante se
+                      vea reflejado en la comida, en el ambiente, en la decoración y en la forma de
+                      presentar los platos.
+                    </Text>
+                    <InfoList items={expectations} />
+                    <Text>
+                      La experiencia deberá ser elegante, pero no distante. El cliente debe sentirse
+                      atendido y cómodo, sin que el restaurante pierda naturalidad. La alta cocina
+                      no tiene por qué ser fría; en Lava & Salitre debe sentirse cercana, canaria y
+                      con personalidad propia.
+                    </Text>
+                  </ContentSection>
+
+                  <ContentSection title="Conclusión">
+                    <Text>
+                      En conclusión, Lava & Salitre se dirigirá a un público adulto, con interés por
+                      la gastronomía, el producto local y las experiencias diferentes. Su cliente
+                      principal será una persona de nivel adquisitivo medio-alto, que valora la
+                      cocina canaria actual, los menús degustación y una propuesta con identidad.
+                    </Text>
+                    <Text>
+                      La ubicación en el Puerto de las Nieves, en Agaete, será una ventaja
+                      importante por su conexión con el mar, el paisaje volcánico y la ruta marítima
+                      con Tenerife. Este enclave permite ampliar el público potencial y reforzar la
+                      idea de un restaurante canario conectado con otras islas.
+                    </Text>
+                    <Text>
+                      El crecimiento de restaurantes canarios reconocidos en guías como MICHELIN y
+                      Repsol demuestra que existe un público que busca experiencias gastronómicas de
+                      más nivel. Lava & Salitre se apoyará en ese interés, ofreciendo una cocina
+                      vanguardista, producto de kilómetro cero, maridaje con vinos canarios y una
+                      experiencia cuidada desde la llegada al restaurante hasta el último pase del
+                      menú.
+                    </Text>
+                    <Text>
+                      Aunque el restaurante respetará las intolerancias y necesidades alimentarias,
+                      su propuesta principal estará pensada para clientes que puedan disfrutar del
+                      menú degustación en su formato original o con pequeñas adaptaciones avisadas
+                      previamente. De esta forma, se protege la coherencia del concepto sin dejar de
+                      actuar con responsabilidad hacia el cliente.
+                    </Text>
+                    <Text>
+                      Lava & Salitre no será solo un restaurante para comer. Será un espacio donde
+                      el cliente pueda descubrir Canarias desde una mirada más moderna, gastronómica
+                      y personal, uniendo el paisaje, el producto, el vino, el mar y la tierra en
+                      una misma experiencia.
+                    </Text>
+                  </ContentSection>
+
+                  <ContentSection title="Fuentes consultadas">
+                    <div className="grid gap-3">
+                      {sources.map((source) => (
+                        <a
+                          key={source.href}
+                          href={source.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="break-words rounded-md border border-border bg-background/70 p-4 text-sm leading-relaxed text-muted-foreground transition-colors hover:text-foreground"
+                        >
+                          {source.label}: {source.href}
+                        </a>
+                      ))}
+                    </div>
+                  </ContentSection>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="border-t border-border/60">
+            <div className="mx-auto max-w-6xl px-5 py-12 md:py-16">
+              <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Categoría</p>
+              <h2 className="mt-4 font-serif text-3xl text-foreground md:text-4xl">
+                Tecnologías gastronómicas
+              </h2>
+              <div className="mt-6 space-y-5">
+                <Text>
+                  Lava & Salitre combina tradición canaria con técnicas modernas, siempre desde el
+                  respeto por el producto. La tecnología no se plantea como un artificio, sino como
+                  una herramienta para mejorar texturas, presentación, lectura del plato y
+                  experiencia del cliente sin esconder el sabor original de los ingredientes.
+                </Text>
+                <Text>
+                  Deconstrucciones, espumas, gelificaciones y esferificaciones puntuales permiten
+                  mostrar la cocina canaria desde una visión más actual. El nitrógeno líquido se
+                  reserva para momentos concretos, especialmente en postres o pequeños bocados, y la
+                  experiencia de carta combina soporte físico elegante con información digital útil.
+                </Text>
+              </div>
+
+              <div className="mt-8 rounded-md border border-border bg-background/70">
+                <h3 className="px-5 py-4 font-serif text-xl text-foreground">
+                  Tecnologías y aplicaciones
+                </h3>
+                <div className="space-y-8 border-t border-border p-5 md:p-8">
+                  <div>
+                    <h3 className="font-serif text-2xl text-foreground">Técnicas culinarias</h3>
+                    <div className="mt-5 grid gap-4 md:grid-cols-2">
+                      {culinaryTechnologies.map((technology) => (
+                        <article
+                          key={technology.name}
+                          className="rounded-md border border-border bg-card/60 p-5"
+                        >
+                          <h4 className="font-serif text-xl text-foreground">{technology.name}</h4>
+                          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                            {technology.description}
+                          </p>
+                        </article>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3 className="font-serif text-2xl text-foreground">
+                      Tecnologías para la carta y la experiencia
+                    </h3>
+                    <div className="mt-5 grid gap-4 md:grid-cols-2">
+                      {digitalTechnologies.map((technology) => (
+                        <article
+                          key={technology.name}
+                          className="rounded-md border border-border bg-card/60 p-5"
+                        >
+                          <h4 className="font-serif text-xl text-foreground">{technology.name}</h4>
+                          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                            {technology.description}
+                          </p>
+                        </article>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3 className="font-serif text-2xl text-foreground">Resumen de uso</h3>
+                    <div className="mt-5 overflow-hidden rounded-md border border-border">
+                      {technologySummary.map((row) => (
+                        <div
+                          key={row.technology}
+                          className="grid gap-3 border-b border-border bg-background p-5 last:border-b-0 md:grid-cols-[0.25fr_0.35fr_0.4fr]"
+                        >
+                          <p className="font-serif text-lg text-foreground">{row.technology}</p>
+                          <p className="text-sm leading-relaxed text-muted-foreground">{row.use}</p>
+                          <p className="text-sm leading-relaxed text-muted-foreground">
+                            {row.reason}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </>
+      )}
     </>
   );
 }
@@ -1213,16 +1419,20 @@ function InfoList({ items }: { items: readonly string[] }) {
   );
 }
 
-function ImageGrid({
-  photos,
-}: {
-  photos: readonly { src: string; alt: string; title: string }[];
-}) {
+function ImageGrid({ photos }: { photos: readonly { src: string; alt: string; title: string }[] }) {
   return (
     <div className="grid gap-4 md:grid-cols-2">
       {photos.map((photo) => (
-        <figure key={photo.src} className="overflow-hidden rounded-md border border-border bg-background">
-          <img src={photo.src} alt={photo.alt} loading="lazy" className="h-72 w-full object-cover" />
+        <figure
+          key={photo.src}
+          className="overflow-hidden rounded-md border border-border bg-background"
+        >
+          <img
+            src={photo.src}
+            alt={photo.alt}
+            loading="lazy"
+            className="h-72 w-full object-cover"
+          />
           <figcaption className="px-5 py-4 text-sm italic leading-relaxed text-muted-foreground">
             {photo.title}
           </figcaption>

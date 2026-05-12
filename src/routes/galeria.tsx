@@ -69,13 +69,13 @@ function Galeria() {
             subtitle="Piedra volcánica, madera cálida y el Atlántico como telón de fondo para cada servicio."
           />
 
-          <div className="flex min-h-[300px] items-center justify-center lg:justify-end md:min-h-[420px]">
+          {/* <div className="flex min-h-[300px] items-center justify-center lg:justify-end md:min-h-[420px]">
             <img
               src="/galeria/logo-version-dorada-transparente.png"
               alt="Logo de Lava & Salitre"
               className="h-auto max-h-[300px] w-auto max-w-full object-contain md:max-h-[390px] lg:max-w-[680px]"
             />
-          </div>
+          </div> */}
         </div>
 
         <div className="mt-14 grid auto-rows-[260px] gap-4 md:grid-cols-3 md:auto-rows-[320px]">

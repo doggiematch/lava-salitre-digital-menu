@@ -38,7 +38,7 @@ const allergensBySheet: Record<string, string[]> = {
   "conejo-salmorejo": ["Lácteos", "Sulfitos"],
   "vaca-canaria": ["Lácteos", "Sulfitos", "Posibles trazas de gluten"],
   "ostra-canaria": ["Moluscos", "Soja"],
-  "ceviche-cherne": ["Pescado", "Posibles trazas de gluten"],
+  "ceviche-cherne": ["Pescado"],
   "vieja-sancochada": ["Pescado"],
   "sama-roquera": ["Pescado", "Lácteos"],
   "cabrilla-confitada": ["Pescado"],
@@ -102,15 +102,18 @@ const categoryNames: Record<string, string> = {
   segundos: "Segundos platos",
   sorbete: "Sorbete",
   postres: "Postres",
-  petit: "Dulce final",
+  petit: "Petit four",
 };
 
 const dishes: Dish[] = technicalSheetList.map((sheet) => {
   const ingredientNames = sheet.ingredients.slice(0, 4).map((row) => row.label);
   const description = sheet.plate.find((row) => row.label === "Descripción del plato")?.value ?? "";
-  const technique = sheet.plate.find((row) => row.label === "Técnica culinaria aplicada")?.value ?? "";
-  const inspiration = sheet.plate.find((row) => row.label === "Inspiración o historia")?.value ?? "";
-  const origin = sheet.ingredient.find((row) => row.label === "Isla o zona de producción")?.value ?? "";
+  const technique =
+    sheet.plate.find((row) => row.label === "Técnica culinaria aplicada")?.value ?? "";
+  const inspiration =
+    sheet.plate.find((row) => row.label === "Inspiración o historia")?.value ?? "";
+  const origin =
+    sheet.ingredient.find((row) => row.label === "Isla o zona de producción")?.value ?? "";
 
   return {
     id: sheet.id,
