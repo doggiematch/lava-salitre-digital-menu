@@ -12,9 +12,29 @@ const sitemap = [
 ] as const;
 
 const projectLinks = [
-  { to: "/proyecto/conceptualizacion-fundamentacion", label: "Conceptualización y fundamentación" },
-  { to: "/proyecto/estructura-menus-inversion", label: "Estructura, menús e inversión inicial" },
-  { to: "/proyecto/tecnologias-gastronomicas", label: "Tecnologías gastronómicas" },
+  {
+    to: "/proyecto/fase-1-conceptualizacion-fundamentacion",
+    label: "Fase 1 Conceptualización y fundamentación",
+  },
+  {
+    to: "/proyecto/fase-2-diseno-carta-contenido",
+    label: "Fase 2 Diseño de la carta y contenido",
+  },
+  {
+    to: "/proyecto/fase-3-desarrollo-tecnologico-implementacion",
+    label: "Fase 3 Desarrollo tecnológico e implementación",
+  },
+  {
+    to: "/proyecto/fase-4-documentacion-presentacion",
+    label: "Fase 4 Documentación y presentación",
+  },
+] as const;
+
+const presentationLinks = [
+  {
+    to: "/proyecto/presentacion",
+    label: "Presentación",
+  },
 ] as const;
 
 export function Footer() {
@@ -46,7 +66,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 grid gap-10 border-t border-border/50 pt-12 md:grid-cols-[1fr_1fr]">
+        <div className="mt-14 grid gap-10 border-t border-border/50 pt-12 md:grid-cols-[1fr_1fr_0.7fr]">
           <div>
             <p className="text-[10px] uppercase tracking-[0.35em] text-accent">
               Mapa de navegación
@@ -70,6 +90,20 @@ export function Footer() {
             <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Proyecto</p>
             <nav className="mt-4 grid gap-2" aria-label="Proyecto">
               {projectLinks.map((item) => (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+          <div>
+            <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Presentación</p>
+            <nav className="mt-4 grid gap-2" aria-label="Presentación">
+              {presentationLinks.map((item) => (
                 <Link
                   key={item.to}
                   to={item.to}

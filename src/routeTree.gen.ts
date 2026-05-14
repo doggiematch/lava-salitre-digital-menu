@@ -21,9 +21,14 @@ import { Route as CodigosQrRouteImport } from './routes/codigos-qr'
 import { Route as CartaDigitalRouteImport } from './routes/carta-digital'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProyectoIndexRouteImport } from './routes/proyecto.index'
-import { Route as ProyectoTecnologiasGastronomicasRouteImport } from './routes/proyecto.tecnologias-gastronomicas'
-import { Route as ProyectoEstructuraMenusInversionRouteImport } from './routes/proyecto.estructura-menus-inversion'
-import { Route as ProyectoConceptualizacionFundamentacionRouteImport } from './routes/proyecto.conceptualizacion-fundamentacion'
+import { Route as ProyectoTecnologiasGastronomicasTempRouteImport } from './routes/proyecto.tecnologias-gastronomicas-temp'
+import { Route as ProyectoPresentacionRouteImport } from './routes/proyecto.presentacion'
+import { Route as ProyectoFase4DocumentacionPresentacionRouteImport } from './routes/proyecto.fase-4-documentacion-presentacion'
+import { Route as ProyectoFase3DesarrolloTecnologicoImplementacionRouteImport } from './routes/proyecto.fase-3-desarrollo-tecnologico-implementacion'
+import { Route as ProyectoFase2DisenoCartaContenidoRouteImport } from './routes/proyecto.fase-2-diseno-carta-contenido'
+import { Route as ProyectoFase1ConceptualizacionFundamentacionRouteImport } from './routes/proyecto.fase-1-conceptualizacion-fundamentacion'
+import { Route as ProyectoEstructuraMenusInversionTempRouteImport } from './routes/proyecto.estructura-menus-inversion-temp'
+import { Route as ProyectoConceptualizacionFundamentacionTempRouteImport } from './routes/proyecto.conceptualizacion-fundamentacion-temp'
 import { Route as CartaDigitalDishIdRouteImport } from './routes/carta-digital.$dishId'
 
 const ReservasRoute = ReservasRouteImport.update({
@@ -86,22 +91,51 @@ const ProyectoIndexRoute = ProyectoIndexRouteImport.update({
   path: '/',
   getParentRoute: () => ProyectoRoute,
 } as any)
-const ProyectoTecnologiasGastronomicasRoute =
-  ProyectoTecnologiasGastronomicasRouteImport.update({
-    id: '/tecnologias-gastronomicas',
-    path: '/tecnologias-gastronomicas',
+const ProyectoTecnologiasGastronomicasTempRoute =
+  ProyectoTecnologiasGastronomicasTempRouteImport.update({
+    id: '/tecnologias-gastronomicas-temp',
+    path: '/tecnologias-gastronomicas-temp',
     getParentRoute: () => ProyectoRoute,
   } as any)
-const ProyectoEstructuraMenusInversionRoute =
-  ProyectoEstructuraMenusInversionRouteImport.update({
-    id: '/estructura-menus-inversion',
-    path: '/estructura-menus-inversion',
+const ProyectoPresentacionRoute = ProyectoPresentacionRouteImport.update({
+  id: '/presentacion',
+  path: '/presentacion',
+  getParentRoute: () => ProyectoRoute,
+} as any)
+const ProyectoFase4DocumentacionPresentacionRoute =
+  ProyectoFase4DocumentacionPresentacionRouteImport.update({
+    id: '/fase-4-documentacion-presentacion',
+    path: '/fase-4-documentacion-presentacion',
     getParentRoute: () => ProyectoRoute,
   } as any)
-const ProyectoConceptualizacionFundamentacionRoute =
-  ProyectoConceptualizacionFundamentacionRouteImport.update({
-    id: '/conceptualizacion-fundamentacion',
-    path: '/conceptualizacion-fundamentacion',
+const ProyectoFase3DesarrolloTecnologicoImplementacionRoute =
+  ProyectoFase3DesarrolloTecnologicoImplementacionRouteImport.update({
+    id: '/fase-3-desarrollo-tecnologico-implementacion',
+    path: '/fase-3-desarrollo-tecnologico-implementacion',
+    getParentRoute: () => ProyectoRoute,
+  } as any)
+const ProyectoFase2DisenoCartaContenidoRoute =
+  ProyectoFase2DisenoCartaContenidoRouteImport.update({
+    id: '/fase-2-diseno-carta-contenido',
+    path: '/fase-2-diseno-carta-contenido',
+    getParentRoute: () => ProyectoRoute,
+  } as any)
+const ProyectoFase1ConceptualizacionFundamentacionRoute =
+  ProyectoFase1ConceptualizacionFundamentacionRouteImport.update({
+    id: '/fase-1-conceptualizacion-fundamentacion',
+    path: '/fase-1-conceptualizacion-fundamentacion',
+    getParentRoute: () => ProyectoRoute,
+  } as any)
+const ProyectoEstructuraMenusInversionTempRoute =
+  ProyectoEstructuraMenusInversionTempRouteImport.update({
+    id: '/estructura-menus-inversion-temp',
+    path: '/estructura-menus-inversion-temp',
+    getParentRoute: () => ProyectoRoute,
+  } as any)
+const ProyectoConceptualizacionFundamentacionTempRoute =
+  ProyectoConceptualizacionFundamentacionTempRouteImport.update({
+    id: '/conceptualizacion-fundamentacion-temp',
+    path: '/conceptualizacion-fundamentacion-temp',
     getParentRoute: () => ProyectoRoute,
   } as any)
 const CartaDigitalDishIdRoute = CartaDigitalDishIdRouteImport.update({
@@ -123,9 +157,14 @@ export interface FileRoutesByFullPath {
   '/proyecto': typeof ProyectoRouteWithChildren
   '/reservas': typeof ReservasRoute
   '/carta-digital/$dishId': typeof CartaDigitalDishIdRoute
-  '/proyecto/conceptualizacion-fundamentacion': typeof ProyectoConceptualizacionFundamentacionRoute
-  '/proyecto/estructura-menus-inversion': typeof ProyectoEstructuraMenusInversionRoute
-  '/proyecto/tecnologias-gastronomicas': typeof ProyectoTecnologiasGastronomicasRoute
+  '/proyecto/conceptualizacion-fundamentacion-temp': typeof ProyectoConceptualizacionFundamentacionTempRoute
+  '/proyecto/estructura-menus-inversion-temp': typeof ProyectoEstructuraMenusInversionTempRoute
+  '/proyecto/fase-1-conceptualizacion-fundamentacion': typeof ProyectoFase1ConceptualizacionFundamentacionRoute
+  '/proyecto/fase-2-diseno-carta-contenido': typeof ProyectoFase2DisenoCartaContenidoRoute
+  '/proyecto/fase-3-desarrollo-tecnologico-implementacion': typeof ProyectoFase3DesarrolloTecnologicoImplementacionRoute
+  '/proyecto/fase-4-documentacion-presentacion': typeof ProyectoFase4DocumentacionPresentacionRoute
+  '/proyecto/presentacion': typeof ProyectoPresentacionRoute
+  '/proyecto/tecnologias-gastronomicas-temp': typeof ProyectoTecnologiasGastronomicasTempRoute
   '/proyecto/': typeof ProyectoIndexRoute
 }
 export interface FileRoutesByTo {
@@ -140,9 +179,14 @@ export interface FileRoutesByTo {
   '/pedidos': typeof PedidosRoute
   '/reservas': typeof ReservasRoute
   '/carta-digital/$dishId': typeof CartaDigitalDishIdRoute
-  '/proyecto/conceptualizacion-fundamentacion': typeof ProyectoConceptualizacionFundamentacionRoute
-  '/proyecto/estructura-menus-inversion': typeof ProyectoEstructuraMenusInversionRoute
-  '/proyecto/tecnologias-gastronomicas': typeof ProyectoTecnologiasGastronomicasRoute
+  '/proyecto/conceptualizacion-fundamentacion-temp': typeof ProyectoConceptualizacionFundamentacionTempRoute
+  '/proyecto/estructura-menus-inversion-temp': typeof ProyectoEstructuraMenusInversionTempRoute
+  '/proyecto/fase-1-conceptualizacion-fundamentacion': typeof ProyectoFase1ConceptualizacionFundamentacionRoute
+  '/proyecto/fase-2-diseno-carta-contenido': typeof ProyectoFase2DisenoCartaContenidoRoute
+  '/proyecto/fase-3-desarrollo-tecnologico-implementacion': typeof ProyectoFase3DesarrolloTecnologicoImplementacionRoute
+  '/proyecto/fase-4-documentacion-presentacion': typeof ProyectoFase4DocumentacionPresentacionRoute
+  '/proyecto/presentacion': typeof ProyectoPresentacionRoute
+  '/proyecto/tecnologias-gastronomicas-temp': typeof ProyectoTecnologiasGastronomicasTempRoute
   '/proyecto': typeof ProyectoIndexRoute
 }
 export interface FileRoutesById {
@@ -159,9 +203,14 @@ export interface FileRoutesById {
   '/proyecto': typeof ProyectoRouteWithChildren
   '/reservas': typeof ReservasRoute
   '/carta-digital/$dishId': typeof CartaDigitalDishIdRoute
-  '/proyecto/conceptualizacion-fundamentacion': typeof ProyectoConceptualizacionFundamentacionRoute
-  '/proyecto/estructura-menus-inversion': typeof ProyectoEstructuraMenusInversionRoute
-  '/proyecto/tecnologias-gastronomicas': typeof ProyectoTecnologiasGastronomicasRoute
+  '/proyecto/conceptualizacion-fundamentacion-temp': typeof ProyectoConceptualizacionFundamentacionTempRoute
+  '/proyecto/estructura-menus-inversion-temp': typeof ProyectoEstructuraMenusInversionTempRoute
+  '/proyecto/fase-1-conceptualizacion-fundamentacion': typeof ProyectoFase1ConceptualizacionFundamentacionRoute
+  '/proyecto/fase-2-diseno-carta-contenido': typeof ProyectoFase2DisenoCartaContenidoRoute
+  '/proyecto/fase-3-desarrollo-tecnologico-implementacion': typeof ProyectoFase3DesarrolloTecnologicoImplementacionRoute
+  '/proyecto/fase-4-documentacion-presentacion': typeof ProyectoFase4DocumentacionPresentacionRoute
+  '/proyecto/presentacion': typeof ProyectoPresentacionRoute
+  '/proyecto/tecnologias-gastronomicas-temp': typeof ProyectoTecnologiasGastronomicasTempRoute
   '/proyecto/': typeof ProyectoIndexRoute
 }
 export interface FileRouteTypes {
@@ -179,9 +228,14 @@ export interface FileRouteTypes {
     | '/proyecto'
     | '/reservas'
     | '/carta-digital/$dishId'
-    | '/proyecto/conceptualizacion-fundamentacion'
-    | '/proyecto/estructura-menus-inversion'
-    | '/proyecto/tecnologias-gastronomicas'
+    | '/proyecto/conceptualizacion-fundamentacion-temp'
+    | '/proyecto/estructura-menus-inversion-temp'
+    | '/proyecto/fase-1-conceptualizacion-fundamentacion'
+    | '/proyecto/fase-2-diseno-carta-contenido'
+    | '/proyecto/fase-3-desarrollo-tecnologico-implementacion'
+    | '/proyecto/fase-4-documentacion-presentacion'
+    | '/proyecto/presentacion'
+    | '/proyecto/tecnologias-gastronomicas-temp'
     | '/proyecto/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -196,9 +250,14 @@ export interface FileRouteTypes {
     | '/pedidos'
     | '/reservas'
     | '/carta-digital/$dishId'
-    | '/proyecto/conceptualizacion-fundamentacion'
-    | '/proyecto/estructura-menus-inversion'
-    | '/proyecto/tecnologias-gastronomicas'
+    | '/proyecto/conceptualizacion-fundamentacion-temp'
+    | '/proyecto/estructura-menus-inversion-temp'
+    | '/proyecto/fase-1-conceptualizacion-fundamentacion'
+    | '/proyecto/fase-2-diseno-carta-contenido'
+    | '/proyecto/fase-3-desarrollo-tecnologico-implementacion'
+    | '/proyecto/fase-4-documentacion-presentacion'
+    | '/proyecto/presentacion'
+    | '/proyecto/tecnologias-gastronomicas-temp'
     | '/proyecto'
   id:
     | '__root__'
@@ -214,9 +273,14 @@ export interface FileRouteTypes {
     | '/proyecto'
     | '/reservas'
     | '/carta-digital/$dishId'
-    | '/proyecto/conceptualizacion-fundamentacion'
-    | '/proyecto/estructura-menus-inversion'
-    | '/proyecto/tecnologias-gastronomicas'
+    | '/proyecto/conceptualizacion-fundamentacion-temp'
+    | '/proyecto/estructura-menus-inversion-temp'
+    | '/proyecto/fase-1-conceptualizacion-fundamentacion'
+    | '/proyecto/fase-2-diseno-carta-contenido'
+    | '/proyecto/fase-3-desarrollo-tecnologico-implementacion'
+    | '/proyecto/fase-4-documentacion-presentacion'
+    | '/proyecto/presentacion'
+    | '/proyecto/tecnologias-gastronomicas-temp'
     | '/proyecto/'
   fileRoutesById: FileRoutesById
 }
@@ -320,25 +384,60 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProyectoIndexRouteImport
       parentRoute: typeof ProyectoRoute
     }
-    '/proyecto/tecnologias-gastronomicas': {
-      id: '/proyecto/tecnologias-gastronomicas'
-      path: '/tecnologias-gastronomicas'
-      fullPath: '/proyecto/tecnologias-gastronomicas'
-      preLoaderRoute: typeof ProyectoTecnologiasGastronomicasRouteImport
+    '/proyecto/tecnologias-gastronomicas-temp': {
+      id: '/proyecto/tecnologias-gastronomicas-temp'
+      path: '/tecnologias-gastronomicas-temp'
+      fullPath: '/proyecto/tecnologias-gastronomicas-temp'
+      preLoaderRoute: typeof ProyectoTecnologiasGastronomicasTempRouteImport
       parentRoute: typeof ProyectoRoute
     }
-    '/proyecto/estructura-menus-inversion': {
-      id: '/proyecto/estructura-menus-inversion'
-      path: '/estructura-menus-inversion'
-      fullPath: '/proyecto/estructura-menus-inversion'
-      preLoaderRoute: typeof ProyectoEstructuraMenusInversionRouteImport
+    '/proyecto/presentacion': {
+      id: '/proyecto/presentacion'
+      path: '/presentacion'
+      fullPath: '/proyecto/presentacion'
+      preLoaderRoute: typeof ProyectoPresentacionRouteImport
       parentRoute: typeof ProyectoRoute
     }
-    '/proyecto/conceptualizacion-fundamentacion': {
-      id: '/proyecto/conceptualizacion-fundamentacion'
-      path: '/conceptualizacion-fundamentacion'
-      fullPath: '/proyecto/conceptualizacion-fundamentacion'
-      preLoaderRoute: typeof ProyectoConceptualizacionFundamentacionRouteImport
+    '/proyecto/fase-4-documentacion-presentacion': {
+      id: '/proyecto/fase-4-documentacion-presentacion'
+      path: '/fase-4-documentacion-presentacion'
+      fullPath: '/proyecto/fase-4-documentacion-presentacion'
+      preLoaderRoute: typeof ProyectoFase4DocumentacionPresentacionRouteImport
+      parentRoute: typeof ProyectoRoute
+    }
+    '/proyecto/fase-3-desarrollo-tecnologico-implementacion': {
+      id: '/proyecto/fase-3-desarrollo-tecnologico-implementacion'
+      path: '/fase-3-desarrollo-tecnologico-implementacion'
+      fullPath: '/proyecto/fase-3-desarrollo-tecnologico-implementacion'
+      preLoaderRoute: typeof ProyectoFase3DesarrolloTecnologicoImplementacionRouteImport
+      parentRoute: typeof ProyectoRoute
+    }
+    '/proyecto/fase-2-diseno-carta-contenido': {
+      id: '/proyecto/fase-2-diseno-carta-contenido'
+      path: '/fase-2-diseno-carta-contenido'
+      fullPath: '/proyecto/fase-2-diseno-carta-contenido'
+      preLoaderRoute: typeof ProyectoFase2DisenoCartaContenidoRouteImport
+      parentRoute: typeof ProyectoRoute
+    }
+    '/proyecto/fase-1-conceptualizacion-fundamentacion': {
+      id: '/proyecto/fase-1-conceptualizacion-fundamentacion'
+      path: '/fase-1-conceptualizacion-fundamentacion'
+      fullPath: '/proyecto/fase-1-conceptualizacion-fundamentacion'
+      preLoaderRoute: typeof ProyectoFase1ConceptualizacionFundamentacionRouteImport
+      parentRoute: typeof ProyectoRoute
+    }
+    '/proyecto/estructura-menus-inversion-temp': {
+      id: '/proyecto/estructura-menus-inversion-temp'
+      path: '/estructura-menus-inversion-temp'
+      fullPath: '/proyecto/estructura-menus-inversion-temp'
+      preLoaderRoute: typeof ProyectoEstructuraMenusInversionTempRouteImport
+      parentRoute: typeof ProyectoRoute
+    }
+    '/proyecto/conceptualizacion-fundamentacion-temp': {
+      id: '/proyecto/conceptualizacion-fundamentacion-temp'
+      path: '/conceptualizacion-fundamentacion-temp'
+      fullPath: '/proyecto/conceptualizacion-fundamentacion-temp'
+      preLoaderRoute: typeof ProyectoConceptualizacionFundamentacionTempRouteImport
       parentRoute: typeof ProyectoRoute
     }
     '/carta-digital/$dishId': {
@@ -364,17 +463,33 @@ const CartaDigitalRouteWithChildren = CartaDigitalRoute._addFileChildren(
 )
 
 interface ProyectoRouteChildren {
-  ProyectoConceptualizacionFundamentacionRoute: typeof ProyectoConceptualizacionFundamentacionRoute
-  ProyectoEstructuraMenusInversionRoute: typeof ProyectoEstructuraMenusInversionRoute
-  ProyectoTecnologiasGastronomicasRoute: typeof ProyectoTecnologiasGastronomicasRoute
+  ProyectoConceptualizacionFundamentacionTempRoute: typeof ProyectoConceptualizacionFundamentacionTempRoute
+  ProyectoEstructuraMenusInversionTempRoute: typeof ProyectoEstructuraMenusInversionTempRoute
+  ProyectoFase1ConceptualizacionFundamentacionRoute: typeof ProyectoFase1ConceptualizacionFundamentacionRoute
+  ProyectoFase2DisenoCartaContenidoRoute: typeof ProyectoFase2DisenoCartaContenidoRoute
+  ProyectoFase3DesarrolloTecnologicoImplementacionRoute: typeof ProyectoFase3DesarrolloTecnologicoImplementacionRoute
+  ProyectoFase4DocumentacionPresentacionRoute: typeof ProyectoFase4DocumentacionPresentacionRoute
+  ProyectoPresentacionRoute: typeof ProyectoPresentacionRoute
+  ProyectoTecnologiasGastronomicasTempRoute: typeof ProyectoTecnologiasGastronomicasTempRoute
   ProyectoIndexRoute: typeof ProyectoIndexRoute
 }
 
 const ProyectoRouteChildren: ProyectoRouteChildren = {
-  ProyectoConceptualizacionFundamentacionRoute:
-    ProyectoConceptualizacionFundamentacionRoute,
-  ProyectoEstructuraMenusInversionRoute: ProyectoEstructuraMenusInversionRoute,
-  ProyectoTecnologiasGastronomicasRoute: ProyectoTecnologiasGastronomicasRoute,
+  ProyectoConceptualizacionFundamentacionTempRoute:
+    ProyectoConceptualizacionFundamentacionTempRoute,
+  ProyectoEstructuraMenusInversionTempRoute:
+    ProyectoEstructuraMenusInversionTempRoute,
+  ProyectoFase1ConceptualizacionFundamentacionRoute:
+    ProyectoFase1ConceptualizacionFundamentacionRoute,
+  ProyectoFase2DisenoCartaContenidoRoute:
+    ProyectoFase2DisenoCartaContenidoRoute,
+  ProyectoFase3DesarrolloTecnologicoImplementacionRoute:
+    ProyectoFase3DesarrolloTecnologicoImplementacionRoute,
+  ProyectoFase4DocumentacionPresentacionRoute:
+    ProyectoFase4DocumentacionPresentacionRoute,
+  ProyectoPresentacionRoute: ProyectoPresentacionRoute,
+  ProyectoTecnologiasGastronomicasTempRoute:
+    ProyectoTecnologiasGastronomicasTempRoute,
   ProyectoIndexRoute: ProyectoIndexRoute,
 }
 

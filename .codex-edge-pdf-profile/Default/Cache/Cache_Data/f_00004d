@@ -1,0 +1,298 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/components/site/Footer.tsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=35a9473d"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import { Link } from "/node_modules/@tanstack/react-router/dist/esm/index.dev.js?v=35a9473d";
+import { Monogram, WaveDivider } from "/src/components/site/Decorations.tsx";
+const sitemap = [
+  { to: "/", label: "Inicio" },
+  { to: "/menus", label: "Menú" },
+  { to: "/carta-digital", label: "Carta digital" },
+  { to: "/conocenos", label: "Conócenos" },
+  { to: "/galeria", label: "Galería" },
+  { to: "/reservas", label: "Reservas" },
+  { to: "/contacto", label: "Contacto" }
+];
+const projectLinks = [
+  {
+    to: "/proyecto/fase-1-conceptualizacion-fundamentacion",
+    label: "Fase 1 Conceptualización y fundamentación"
+  },
+  {
+    to: "/proyecto/fase-2-diseno-carta-contenido",
+    label: "Fase 2 Diseño de la carta y contenido"
+  },
+  {
+    to: "/proyecto/fase-3-desarrollo-tecnologico-implementacion",
+    label: "Fase 3 Desarrollo tecnológico e implementación"
+  },
+  {
+    to: "/proyecto/fase-4-documentacion-presentacion",
+    label: "Fase 4 Documentación y presentación"
+  }
+];
+const presentationLinks = [
+  {
+    to: "/proyecto/presentacion",
+    label: "Presentación"
+  }
+];
+export function Footer() {
+  return /* @__PURE__ */ jsxDEV("footer", { className: "relative mt-32 border-t border-border/60 bg-cream/30", children: [
+    /* @__PURE__ */ jsxDEV("div", { className: "mx-auto max-w-7xl px-6 pb-10 pt-20 lg:px-10", children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "mb-12 flex flex-col items-center text-center", children: [
+        /* @__PURE__ */ jsxDEV(Monogram, { size: 96, className: "h-24 w-24 text-foreground" }, void 0, false, {
+          fileName: "C:/Users/Jeannette LG/Downloads/proyecto rudy/web-lava-y-salitre/lava-salitre-digital-menu/src/components/site/Footer.tsx",
+          lineNumber: 45,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "mt-4 font-serif text-2xl italic", children: "Lava & Salitre" }, void 0, false, {
+          fileName: "C:/Users/Jeannette LG/Downloads/proyecto rudy/web-lava-y-salitre/lava-salitre-digital-menu/src/components/site/Footer.tsx",
+          lineNumber: 46,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV(WaveDivider, { className: "mt-3 h-3 w-32 text-accent" }, void 0, false, {
+          fileName: "C:/Users/Jeannette LG/Downloads/proyecto rudy/web-lava-y-salitre/lava-salitre-digital-menu/src/components/site/Footer.tsx",
+          lineNumber: 47,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Jeannette LG/Downloads/proyecto rudy/web-lava-y-salitre/lava-salitre-digital-menu/src/components/site/Footer.tsx",
+        lineNumber: 44,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "grid gap-12 md:grid-cols-3", children: [
+        /* @__PURE__ */ jsxDEV("div", { children: [
+          /* @__PURE__ */ jsxDEV("p", { className: "text-[10px] uppercase tracking-[0.35em] text-accent", children: "Ubicación" }, void 0, false, {
+            fileName: "C:/Users/Jeannette LG/Downloads/proyecto rudy/web-lava-y-salitre/lava-salitre-digital-menu/src/components/site/Footer.tsx",
+            lineNumber: 52,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("p", { className: "mt-3 font-serif text-lg", children: "Puerto de las Nieves" }, void 0, false, {
+            fileName: "C:/Users/Jeannette LG/Downloads/proyecto rudy/web-lava-y-salitre/lava-salitre-digital-menu/src/components/site/Footer.tsx",
+            lineNumber: 53,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("p", { className: "text-sm text-muted-foreground", children: "Agaete · Gran Canaria" }, void 0, false, {
+            fileName: "C:/Users/Jeannette LG/Downloads/proyecto rudy/web-lava-y-salitre/lava-salitre-digital-menu/src/components/site/Footer.tsx",
+            lineNumber: 54,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Jeannette LG/Downloads/proyecto rudy/web-lava-y-salitre/lava-salitre-digital-menu/src/components/site/Footer.tsx",
+          lineNumber: 51,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { children: [
+          /* @__PURE__ */ jsxDEV("p", { className: "text-[10px] uppercase tracking-[0.35em] text-accent", children: "Horario" }, void 0, false, {
+            fileName: "C:/Users/Jeannette LG/Downloads/proyecto rudy/web-lava-y-salitre/lava-salitre-digital-menu/src/components/site/Footer.tsx",
+            lineNumber: 57,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("p", { className: "mt-3 text-sm text-muted-foreground", children: "Mar–Dom · 13:00–16:00" }, void 0, false, {
+            fileName: "C:/Users/Jeannette LG/Downloads/proyecto rudy/web-lava-y-salitre/lava-salitre-digital-menu/src/components/site/Footer.tsx",
+            lineNumber: 58,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("p", { className: "text-sm text-muted-foreground", children: "Mar–Sáb · 20:00–23:30" }, void 0, false, {
+            fileName: "C:/Users/Jeannette LG/Downloads/proyecto rudy/web-lava-y-salitre/lava-salitre-digital-menu/src/components/site/Footer.tsx",
+            lineNumber: 59,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Jeannette LG/Downloads/proyecto rudy/web-lava-y-salitre/lava-salitre-digital-menu/src/components/site/Footer.tsx",
+          lineNumber: 56,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { children: [
+          /* @__PURE__ */ jsxDEV("p", { className: "text-[10px] uppercase tracking-[0.35em] text-accent", children: "Contacto" }, void 0, false, {
+            fileName: "C:/Users/Jeannette LG/Downloads/proyecto rudy/web-lava-y-salitre/lava-salitre-digital-menu/src/components/site/Footer.tsx",
+            lineNumber: 62,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("p", { className: "mt-3 text-sm text-muted-foreground", children: "+34 928 000 000" }, void 0, false, {
+            fileName: "C:/Users/Jeannette LG/Downloads/proyecto rudy/web-lava-y-salitre/lava-salitre-digital-menu/src/components/site/Footer.tsx",
+            lineNumber: 63,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("p", { className: "text-sm text-muted-foreground", children: "hola@lavaysalitre.es" }, void 0, false, {
+            fileName: "C:/Users/Jeannette LG/Downloads/proyecto rudy/web-lava-y-salitre/lava-salitre-digital-menu/src/components/site/Footer.tsx",
+            lineNumber: 64,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("p", { className: "mt-2 font-serif text-sm italic", children: "@lavaysalitre" }, void 0, false, {
+            fileName: "C:/Users/Jeannette LG/Downloads/proyecto rudy/web-lava-y-salitre/lava-salitre-digital-menu/src/components/site/Footer.tsx",
+            lineNumber: 65,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Jeannette LG/Downloads/proyecto rudy/web-lava-y-salitre/lava-salitre-digital-menu/src/components/site/Footer.tsx",
+          lineNumber: 61,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Jeannette LG/Downloads/proyecto rudy/web-lava-y-salitre/lava-salitre-digital-menu/src/components/site/Footer.tsx",
+        lineNumber: 50,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "mt-14 grid gap-10 border-t border-border/50 pt-12 md:grid-cols-[1fr_1fr_0.7fr]", children: [
+        /* @__PURE__ */ jsxDEV("div", { children: [
+          /* @__PURE__ */ jsxDEV("p", { className: "text-[10px] uppercase tracking-[0.35em] text-accent", children: "Mapa de navegación" }, void 0, false, {
+            fileName: "C:/Users/Jeannette LG/Downloads/proyecto rudy/web-lava-y-salitre/lava-salitre-digital-menu/src/components/site/Footer.tsx",
+            lineNumber: 71,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV(
+            "nav",
+            {
+              className: "mt-4 grid gap-2 sm:grid-cols-2 md:grid-cols-4",
+              "aria-label": "Mapa de navegación",
+              children: sitemap.map(
+                (item) => /* @__PURE__ */ jsxDEV(
+                  Link,
+                  {
+                    to: item.to,
+                    className: "text-sm text-muted-foreground transition-colors hover:text-foreground",
+                    children: item.label
+                  },
+                  item.to,
+                  false,
+                  {
+                    fileName: "C:/Users/Jeannette LG/Downloads/proyecto rudy/web-lava-y-salitre/lava-salitre-digital-menu/src/components/site/Footer.tsx",
+                    lineNumber: 79,
+                    columnNumber: 15
+                  },
+                  this
+                )
+              )
+            },
+            void 0,
+            false,
+            {
+              fileName: "C:/Users/Jeannette LG/Downloads/proyecto rudy/web-lava-y-salitre/lava-salitre-digital-menu/src/components/site/Footer.tsx",
+              lineNumber: 74,
+              columnNumber: 13
+            },
+            this
+          )
+        ] }, void 0, true, {
+          fileName: "C:/Users/Jeannette LG/Downloads/proyecto rudy/web-lava-y-salitre/lava-salitre-digital-menu/src/components/site/Footer.tsx",
+          lineNumber: 70,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { children: [
+          /* @__PURE__ */ jsxDEV("p", { className: "text-[10px] uppercase tracking-[0.35em] text-accent", children: "Proyecto" }, void 0, false, {
+            fileName: "C:/Users/Jeannette LG/Downloads/proyecto rudy/web-lava-y-salitre/lava-salitre-digital-menu/src/components/site/Footer.tsx",
+            lineNumber: 90,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("nav", { className: "mt-4 grid gap-2", "aria-label": "Proyecto", children: projectLinks.map(
+            (item) => /* @__PURE__ */ jsxDEV(
+              Link,
+              {
+                to: item.to,
+                className: "text-sm text-muted-foreground transition-colors hover:text-foreground",
+                children: item.label
+              },
+              item.to,
+              false,
+              {
+                fileName: "C:/Users/Jeannette LG/Downloads/proyecto rudy/web-lava-y-salitre/lava-salitre-digital-menu/src/components/site/Footer.tsx",
+                lineNumber: 93,
+                columnNumber: 15
+              },
+              this
+            )
+          ) }, void 0, false, {
+            fileName: "C:/Users/Jeannette LG/Downloads/proyecto rudy/web-lava-y-salitre/lava-salitre-digital-menu/src/components/site/Footer.tsx",
+            lineNumber: 91,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Jeannette LG/Downloads/proyecto rudy/web-lava-y-salitre/lava-salitre-digital-menu/src/components/site/Footer.tsx",
+          lineNumber: 89,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { children: [
+          /* @__PURE__ */ jsxDEV("p", { className: "text-[10px] uppercase tracking-[0.35em] text-accent", children: "Presentación" }, void 0, false, {
+            fileName: "C:/Users/Jeannette LG/Downloads/proyecto rudy/web-lava-y-salitre/lava-salitre-digital-menu/src/components/site/Footer.tsx",
+            lineNumber: 104,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("nav", { className: "mt-4 grid gap-2", "aria-label": "Presentación", children: presentationLinks.map(
+            (item) => /* @__PURE__ */ jsxDEV(
+              Link,
+              {
+                to: item.to,
+                className: "text-sm text-muted-foreground transition-colors hover:text-foreground",
+                children: item.label
+              },
+              item.to,
+              false,
+              {
+                fileName: "C:/Users/Jeannette LG/Downloads/proyecto rudy/web-lava-y-salitre/lava-salitre-digital-menu/src/components/site/Footer.tsx",
+                lineNumber: 107,
+                columnNumber: 15
+              },
+              this
+            )
+          ) }, void 0, false, {
+            fileName: "C:/Users/Jeannette LG/Downloads/proyecto rudy/web-lava-y-salitre/lava-salitre-digital-menu/src/components/site/Footer.tsx",
+            lineNumber: 105,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Jeannette LG/Downloads/proyecto rudy/web-lava-y-salitre/lava-salitre-digital-menu/src/components/site/Footer.tsx",
+          lineNumber: 103,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Jeannette LG/Downloads/proyecto rudy/web-lava-y-salitre/lava-salitre-digital-menu/src/components/site/Footer.tsx",
+        lineNumber: 69,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/Jeannette LG/Downloads/proyecto rudy/web-lava-y-salitre/lava-salitre-digital-menu/src/components/site/Footer.tsx",
+      lineNumber: 43,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "border-t border-border/50 py-6 text-center text-[10px] uppercase tracking-[0.35em] text-muted-foreground", children: [
+      "© ",
+      (/* @__PURE__ */ new Date()).getFullYear(),
+      " Lava & Salitre · Cocina canaria de vanguardia"
+    ] }, void 0, true, {
+      fileName: "C:/Users/Jeannette LG/Downloads/proyecto rudy/web-lava-y-salitre/lava-salitre-digital-menu/src/components/site/Footer.tsx",
+      lineNumber: 119,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, true, {
+    fileName: "C:/Users/Jeannette LG/Downloads/proyecto rudy/web-lava-y-salitre/lava-salitre-digital-menu/src/components/site/Footer.tsx",
+    lineNumber: 42,
+    columnNumber: 5
+  }, this);
+}
+_c = Footer;
+var _c;
+$RefreshReg$(_c, "Footer");
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/Jeannette LG/Downloads/proyecto rudy/web-lava-y-salitre/lava-salitre-digital-menu/src/components/site/Footer.tsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/Jeannette LG/Downloads/proyecto rudy/web-lava-y-salitre/lava-salitre-digital-menu/src/components/site/Footer.tsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+function $RefreshReg$(type, id) {
+  return RefreshRuntime.register(type, "C:/Users/Jeannette LG/Downloads/proyecto rudy/web-lava-y-salitre/lava-salitre-digital-menu/src/components/site/Footer.tsx " + id);
+}
+function $RefreshSig$() {
+  return RefreshRuntime.createSignatureFunctionForTransform();
+}
+
+//# sourceMappingURL=data:application/json;base64,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O0FBQUEsaUJBVUE7QUFBQSxhQVpGO0FBQUE7QUFBQTtBQUFBO0FBQUEsZUFhQTtBQUFBLFFBQ0EsdUJBQUMsU0FDQztBQUFBLGlDQUFDLE9BQUUsV0FBVSx1REFBc0QsNEJBQW5FO0FBQUE7QUFBQTtBQUFBO0FBQUEsaUJBQStFO0FBQUEsVUFDL0UsdUJBQUMsU0FBSSxXQUFVLG1CQUFrQixjQUFXLGdCQUN6Q0csNEJBQWtCRTtBQUFBQSxZQUFJLENBQUNDLFNBQ3RCO0FBQUEsY0FBQztBQUFBO0FBQUEsZ0JBRUMsSUFBSUEsS0FBS047QUFBQUEsZ0JBQ1QsV0FBVTtBQUFBLGdCQUVUTSxlQUFLTDtBQUFBQTtBQUFBQSxjQUpESyxLQUFLTjtBQUFBQSxjQURaO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsWUFNQTtBQUFBLFVBQ0QsS0FUSDtBQUFBO0FBQUE7QUFBQTtBQUFBLGlCQVVBO0FBQUEsYUFaRjtBQUFBO0FBQUE7QUFBQTtBQUFBLGVBYUE7QUFBQSxXQS9DRjtBQUFBO0FBQUE7QUFBQTtBQUFBLGFBZ0RBO0FBQUEsU0ExRUY7QUFBQTtBQUFBO0FBQUE7QUFBQSxXQTJFQTtBQUFBLElBQ0EsdUJBQUMsU0FBSSxXQUFVLDRHQUEwRztBQUFBO0FBQUEsT0FDcEgsb0JBQUlPLEtBQUssR0FBRUMsWUFBWTtBQUFBLE1BQUU7QUFBQSxTQUQ5QjtBQUFBO0FBQUE7QUFBQTtBQUFBLFdBRUE7QUFBQSxPQS9FRjtBQUFBO0FBQUE7QUFBQTtBQUFBLFNBZ0ZBO0FBRUo7QUFBQ0MsS0FwRmVMO0FBQU0sSUFBQUs7QUFBQSxhQUFBQSxJQUFBIiwibmFtZXMiOlsiTGluayIsIk1vbm9ncmFtIiwiV2F2ZURpdmlkZXIiLCJzaXRlbWFwIiwidG8iLCJsYWJlbCIsInByb2plY3RMaW5rcyIsInByZXNlbnRhdGlvbkxpbmtzIiwiRm9vdGVyIiwibWFwIiwiaXRlbSIsIkRhdGUiLCJnZXRGdWxsWWVhciIsIl9jIl0sImlnbm9yZUxpc3QiOltdLCJzb3VyY2VzIjpbIkZvb3Rlci50c3giXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgTGluayB9IGZyb20gXCJAdGFuc3RhY2svcmVhY3Qtcm91dGVyXCI7XG5pbXBvcnQgeyBNb25vZ3JhbSwgV2F2ZURpdmlkZXIgfSBmcm9tIFwiLi9EZWNvcmF0aW9uc1wiO1xuXG5jb25zdCBzaXRlbWFwID0gW1xuICB7IHRvOiBcIi9cIiwgbGFiZWw6IFwiSW5pY2lvXCIgfSxcbiAgeyB0bzogXCIvbWVudXNcIiwgbGFiZWw6IFwiTWVuw7pcIiB9LFxuICB7IHRvOiBcIi9jYXJ0YS1kaWdpdGFsXCIsIGxhYmVsOiBcIkNhcnRhIGRpZ2l0YWxcIiB9LFxuICB7IHRvOiBcIi9jb25vY2Vub3NcIiwgbGFiZWw6IFwiQ29uw7NjZW5vc1wiIH0sXG4gIHsgdG86IFwiL2dhbGVyaWFcIiwgbGFiZWw6IFwiR2FsZXLDrWFcIiB9LFxuICB7IHRvOiBcIi9yZXNlcnZhc1wiLCBsYWJlbDogXCJSZXNlcnZhc1wiIH0sXG4gIHsgdG86IFwiL2NvbnRhY3RvXCIsIGxhYmVsOiBcIkNvbnRhY3RvXCIgfSxcbl0gYXMgY29uc3Q7XG5cbmNvbnN0IHByb2plY3RMaW5rcyA9IFtcbiAge1xuICAgIHRvOiBcIi9wcm95ZWN0by9mYXNlLTEtY29uY2VwdHVhbGl6YWNpb24tZnVuZGFtZW50YWNpb25cIixcbiAgICBsYWJlbDogXCJGYXNlIDEgQ29uY2VwdHVhbGl6YWNpw7NuIHkgZnVuZGFtZW50YWNpw7NuXCIsXG4gIH0sXG4gIHtcbiAgICB0bzogXCIvcHJveWVjdG8vZmFzZS0yLWRpc2Vuby1jYXJ0YS1jb250ZW5pZG9cIixcbiAgICBsYWJlbDogXCJGYXNlIDIgRGlzZcOxbyBkZSBsYSBjYXJ0YSB5IGNvbnRlbmlkb1wiLFxuICB9LFxuICB7XG4gICAgdG86IFwiL3Byb3llY3RvL2Zhc2UtMy1kZXNhcnJvbGxvLXRlY25vbG9naWNvLWltcGxlbWVudGFjaW9uXCIsXG4gICAgbGFiZWw6IFwiRmFzZSAzIERlc2Fycm9sbG8gdGVjbm9sw7NnaWNvIGUgaW1wbGVtZW50YWNpw7NuXCIsXG4gIH0sXG4gIHtcbiAgICB0bzogXCIvcHJveWVjdG8vZmFzZS00LWRvY3VtZW50YWNpb24tcHJlc2VudGFjaW9uXCIsXG4gICAgbGFiZWw6IFwiRmFzZSA0IERvY3VtZW50YWNpw7NuIHkgcHJlc2VudGFjacOzblwiLFxuICB9LFxuXSBhcyBjb25zdDtcblxuY29uc3QgcHJlc2VudGF0aW9uTGlua3MgPSBbXG4gIHtcbiAgICB0bzogXCIvcHJveWVjdG8vcHJlc2VudGFjaW9uXCIsXG4gICAgbGFiZWw6IFwiUHJlc2VudGFjacOzblwiLFxuICB9LFxuXSBhcyBjb25zdDtcblxuZXhwb3J0IGZ1bmN0aW9uIEZvb3RlcigpIHtcbiAgcmV0dXJuIChcbiAgICA8Zm9vdGVyIGNsYXNzTmFtZT1cInJlbGF0aXZlIG10LTMyIGJvcmRlci10IGJvcmRlci1ib3JkZXIvNjAgYmctY3JlYW0vMzBcIj5cbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwibXgtYXV0byBtYXgtdy03eGwgcHgtNiBwYi0xMCBwdC0yMCBsZzpweC0xMFwiPlxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cIm1iLTEyIGZsZXggZmxleC1jb2wgaXRlbXMtY2VudGVyIHRleHQtY2VudGVyXCI+XG4gICAgICAgICAgPE1vbm9ncmFtIHNpemU9ezk2fSBjbGFzc05hbWU9XCJoLTI0IHctMjQgdGV4dC1mb3JlZ3JvdW5kXCIgLz5cbiAgICAgICAgICA8cCBjbGFzc05hbWU9XCJtdC00IGZvbnQtc2VyaWYgdGV4dC0yeGwgaXRhbGljXCI+TGF2YSAmIFNhbGl0cmU8L3A+XG4gICAgICAgICAgPFdhdmVEaXZpZGVyIGNsYXNzTmFtZT1cIm10LTMgaC0zIHctMzIgdGV4dC1hY2NlbnRcIiAvPlxuICAgICAgICA8L2Rpdj5cblxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImdyaWQgZ2FwLTEyIG1kOmdyaWQtY29scy0zXCI+XG4gICAgICAgICAgPGRpdj5cbiAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cInRleHQtWzEwcHhdIHVwcGVyY2FzZSB0cmFja2luZy1bMC4zNWVtXSB0ZXh0LWFjY2VudFwiPlViaWNhY2nDs248L3A+XG4gICAgICAgICAgICA8cCBjbGFzc05hbWU9XCJtdC0zIGZvbnQtc2VyaWYgdGV4dC1sZ1wiPlB1ZXJ0byBkZSBsYXMgTmlldmVzPC9wPlxuICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwidGV4dC1zbSB0ZXh0LW11dGVkLWZvcmVncm91bmRcIj5BZ2FldGUgwrcgR3JhbiBDYW5hcmlhPC9wPlxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgIDxkaXY+XG4gICAgICAgICAgICA8cCBjbGFzc05hbWU9XCJ0ZXh0LVsxMHB4XSB1cHBlcmNhc2UgdHJhY2tpbmctWzAuMzVlbV0gdGV4dC1hY2NlbnRcIj5Ib3JhcmlvPC9wPlxuICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwibXQtMyB0ZXh0LXNtIHRleHQtbXV0ZWQtZm9yZWdyb3VuZFwiPk1hcuKAk0RvbSDCtyAxMzowMOKAkzE2OjAwPC9wPlxuICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwidGV4dC1zbSB0ZXh0LW11dGVkLWZvcmVncm91bmRcIj5NYXLigJNTw6FiIMK3IDIwOjAw4oCTMjM6MzA8L3A+XG4gICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgPGRpdj5cbiAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cInRleHQtWzEwcHhdIHVwcGVyY2FzZSB0cmFja2luZy1bMC4zNWVtXSB0ZXh0LWFjY2VudFwiPkNvbnRhY3RvPC9wPlxuICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwibXQtMyB0ZXh0LXNtIHRleHQtbXV0ZWQtZm9yZWdyb3VuZFwiPiszNCA5MjggMDAwIDAwMDwvcD5cbiAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cInRleHQtc20gdGV4dC1tdXRlZC1mb3JlZ3JvdW5kXCI+aG9sYUBsYXZheXNhbGl0cmUuZXM8L3A+XG4gICAgICAgICAgICA8cCBjbGFzc05hbWU9XCJtdC0yIGZvbnQtc2VyaWYgdGV4dC1zbSBpdGFsaWNcIj5AbGF2YXlzYWxpdHJlPC9wPlxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICA8L2Rpdj5cblxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cIm10LTE0IGdyaWQgZ2FwLTEwIGJvcmRlci10IGJvcmRlci1ib3JkZXIvNTAgcHQtMTIgbWQ6Z3JpZC1jb2xzLVsxZnJfMWZyXzAuN2ZyXVwiPlxuICAgICAgICAgIDxkaXY+XG4gICAgICAgICAgICA8cCBjbGFzc05hbWU9XCJ0ZXh0LVsxMHB4XSB1cHBlcmNhc2UgdHJhY2tpbmctWzAuMzVlbV0gdGV4dC1hY2NlbnRcIj5cbiAgICAgICAgICAgICAgTWFwYSBkZSBuYXZlZ2FjacOzblxuICAgICAgICAgICAgPC9wPlxuICAgICAgICAgICAgPG5hdlxuICAgICAgICAgICAgICBjbGFzc05hbWU9XCJtdC00IGdyaWQgZ2FwLTIgc206Z3JpZC1jb2xzLTIgbWQ6Z3JpZC1jb2xzLTRcIlxuICAgICAgICAgICAgICBhcmlhLWxhYmVsPVwiTWFwYSBkZSBuYXZlZ2FjacOzblwiXG4gICAgICAgICAgICA+XG4gICAgICAgICAgICAgIHtzaXRlbWFwLm1hcCgoaXRlbSkgPT4gKFxuICAgICAgICAgICAgICAgIDxMaW5rXG4gICAgICAgICAgICAgICAgICBrZXk9e2l0ZW0udG99XG4gICAgICAgICAgICAgICAgICB0bz17aXRlbS50b31cbiAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZT1cInRleHQtc20gdGV4dC1tdXRlZC1mb3JlZ3JvdW5kIHRyYW5zaXRpb24tY29sb3JzIGhvdmVyOnRleHQtZm9yZWdyb3VuZFwiXG4gICAgICAgICAgICAgICAgPlxuICAgICAgICAgICAgICAgICAge2l0ZW0ubGFiZWx9XG4gICAgICAgICAgICAgICAgPC9MaW5rPlxuICAgICAgICAgICAgICApKX1cbiAgICAgICAgICAgIDwvbmF2PlxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgIDxkaXY+XG4gICAgICAgICAgICA8cCBjbGFzc05hbWU9XCJ0ZXh0LVsxMHB4XSB1cHBlcmNhc2UgdHJhY2tpbmctWzAuMzVlbV0gdGV4dC1hY2NlbnRcIj5Qcm95ZWN0bzwvcD5cbiAgICAgICAgICAgIDxuYXYgY2xhc3NOYW1lPVwibXQtNCBncmlkIGdhcC0yXCIgYXJpYS1sYWJlbD1cIlByb3llY3RvXCI+XG4gICAgICAgICAgICAgIHtwcm9qZWN0TGlua3MubWFwKChpdGVtKSA9PiAoXG4gICAgICAgICAgICAgICAgPExpbmtcbiAgICAgICAgICAgICAgICAgIGtleT17aXRlbS50b31cbiAgICAgICAgICAgICAgICAgIHRvPXtpdGVtLnRvfVxuICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lPVwidGV4dC1zbSB0ZXh0LW11dGVkLWZvcmVncm91bmQgdHJhbnNpdGlvbi1jb2xvcnMgaG92ZXI6dGV4dC1mb3JlZ3JvdW5kXCJcbiAgICAgICAgICAgICAgICA+XG4gICAgICAgICAgICAgICAgICB7aXRlbS5sYWJlbH1cbiAgICAgICAgICAgICAgICA8L0xpbms+XG4gICAgICAgICAgICAgICkpfVxuICAgICAgICAgICAgPC9uYXY+XG4gICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgPGRpdj5cbiAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cInRleHQtWzEwcHhdIHVwcGVyY2FzZSB0cmFja2luZy1bMC4zNWVtXSB0ZXh0LWFjY2VudFwiPlByZXNlbnRhY2nDs248L3A+XG4gICAgICAgICAgICA8bmF2IGNsYXNzTmFtZT1cIm10LTQgZ3JpZCBnYXAtMlwiIGFyaWEtbGFiZWw9XCJQcmVzZW50YWNpw7NuXCI+XG4gICAgICAgICAgICAgIHtwcmVzZW50YXRpb25MaW5rcy5tYXAoKGl0ZW0pID0+IChcbiAgICAgICAgICAgICAgICA8TGlua1xuICAgICAgICAgICAgICAgICAga2V5PXtpdGVtLnRvfVxuICAgICAgICAgICAgICAgICAgdG89e2l0ZW0udG99XG4gICAgICAgICAgICAgICAgICBjbGFzc05hbWU9XCJ0ZXh0LXNtIHRleHQtbXV0ZWQtZm9yZWdyb3VuZCB0cmFuc2l0aW9uLWNvbG9ycyBob3Zlcjp0ZXh0LWZvcmVncm91bmRcIlxuICAgICAgICAgICAgICAgID5cbiAgICAgICAgICAgICAgICAgIHtpdGVtLmxhYmVsfVxuICAgICAgICAgICAgICAgIDwvTGluaz5cbiAgICAgICAgICAgICAgKSl9XG4gICAgICAgICAgICA8L25hdj5cbiAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgPC9kaXY+XG4gICAgICA8L2Rpdj5cbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwiYm9yZGVyLXQgYm9yZGVyLWJvcmRlci81MCBweS02IHRleHQtY2VudGVyIHRleHQtWzEwcHhdIHVwcGVyY2FzZSB0cmFja2luZy1bMC4zNWVtXSB0ZXh0LW11dGVkLWZvcmVncm91bmRcIj5cbiAgICAgICAgwqkge25ldyBEYXRlKCkuZ2V0RnVsbFllYXIoKX0gTGF2YSAmIFNhbGl0cmUgwrcgQ29jaW5hIGNhbmFyaWEgZGUgdmFuZ3VhcmRpYVxuICAgICAgPC9kaXY+XG4gICAgPC9mb290ZXI+XG4gICk7XG59XG4iXSwiZmlsZSI6IkM6L1VzZXJzL0plYW5uZXR0ZSBMRy9Eb3dubG9hZHMvcHJveWVjdG8gcnVkeS93ZWItbGF2YS15LXNhbGl0cmUvbGF2YS1zYWxpdHJlLWRpZ2l0YWwtbWVudS9zcmMvY29tcG9uZW50cy9zaXRlL0Zvb3Rlci50c3gifQ==
