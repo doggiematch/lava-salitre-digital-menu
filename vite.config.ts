@@ -12,9 +12,12 @@ export default defineConfig(({ command }) => ({
     tailwindcss(),
     tanstackStart({
       server: { entry: "server" },
+      spa: {
+        enabled: true,
+      },
     }),
     react(),
-    command === "build" && cloudflare(),
+    command === "build" && process.env.VERCEL !== "1" && cloudflare(),
   ],
   resolve: {
     alias: {
