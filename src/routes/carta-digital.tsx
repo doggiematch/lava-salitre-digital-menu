@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link, Outlet, useRouterState } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { Printer } from "lucide-react";
 import { SectionTitle } from "@/components/site/SectionTitle";
@@ -23,6 +23,9 @@ export const Route = createFileRoute("/carta-digital")({
 });
 
 function CartaDigital() {
+  const isDishPage = useRouterState({
+    select: (state) => state.location.pathname !== "/carta-digital",
+  });
   const [origin, setOrigin] = useState("http://localhost:5173");
   const dishes = useMemo(() => uniqueDishes(allDishes), []);
   const groupedDishes = useMemo(() => groupDishesByCategory(dishes), [dishes]);
@@ -30,6 +33,10 @@ function CartaDigital() {
   useEffect(() => {
     setOrigin(window.location.origin);
   }, []);
+
+  if (isDishPage) {
+    return <Outlet />;
+  }
 
   return (
     <div className="paper">
@@ -73,6 +80,7 @@ function CartaDigital() {
 
                 <div className="mt-7 grid gap-5 md:grid-cols-2">
                   {group.dishes.map((dish) => {
+                    const href = `/carta-digital/${dish.id}`;
                     const target = `${origin}/carta-digital/${dish.id}`;
                     const keywords = dishKeywords(dish);
 
@@ -99,6 +107,12 @@ function CartaDigital() {
                           <h2 className="mt-2 font-serif text-xl leading-tight text-foreground">
                             {dish.name}
                           </h2>
+                          <Link
+                            to={href}
+                            className="mt-4 inline-flex rounded-md border border-accent/70 px-3 py-2 text-[10px] uppercase tracking-[0.2em] text-accent transition-colors hover:bg-accent hover:text-accent-foreground print:hidden"
+                          >
+                            Ver contenido del QR
+                          </Link>
                         </div>
 
                         <div className="flex min-w-0 flex-col border-t border-border/60 pt-4 sm:border-l sm:border-t-0 sm:pl-4 sm:pt-0">

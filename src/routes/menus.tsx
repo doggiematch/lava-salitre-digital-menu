@@ -14,10 +14,12 @@ import {
 import { AllergenSheetView } from "@/components/site/AllergenSheetView";
 import { DishModal } from "@/components/site/DishModal";
 import { SectionTitle } from "@/components/site/SectionTitle";
+import { WinePairingSheetView } from "@/components/site/WinePairingSheetView";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { allergenSheets } from "@/data/allergenSheets";
 import { menus, menuList, type Dish, type MenuKey } from "@/data/menu";
 import { technicalSheets } from "@/data/technicalSheets";
+import { winePairings } from "@/data/winePairings";
 
 export const Route = createFileRoute("/menus")({
   component: MenusPage,
@@ -67,6 +69,7 @@ function MenusPage() {
   const [query, setQuery] = useState("");
   const [activeDish, setActiveDish] = useState<Dish | null>(null);
   const [allergenDish, setAllergenDish] = useState<Dish | null>(null);
+  const [pairingDish, setPairingDish] = useState<Dish | null>(null);
   const menu = menus[activeKey];
 
   const categories = useMemo(() => {
@@ -87,6 +90,7 @@ function MenusPage() {
   }, [menu, query]);
 
   const allergenSheet = allergenDish ? allergenSheets[allergenDish.id] : undefined;
+  const pairingSheet = pairingDish ? winePairings[pairingDish.id] : undefined;
   const dishCount = menu.categories.reduce((total, category) => total + category.dishes.length, 0);
 
   return (
@@ -222,6 +226,7 @@ function MenusPage() {
                       dish={dish}
                       onOpenDish={() => setActiveDish(dish)}
                       onOpenAllergens={() => setAllergenDish(dish)}
+                      onOpenPairing={() => setPairingDish(dish)}
                     />
                   ))}
                 </div>
@@ -250,6 +255,17 @@ function MenusPage() {
           </DialogContent>
         </Dialog>
       ) : null}
+
+      {pairingSheet ? (
+        <Dialog open={Boolean(pairingDish)} onOpenChange={(open) => !open && setPairingDish(null)}>
+          <DialogContent className="max-h-[92vh] max-w-[96vw] overflow-y-auto p-0 md:max-w-5xl lg:max-w-6xl">
+            <DialogHeader className="sr-only">
+              <DialogTitle>Ficha de maridaje de {pairingSheet.dishName}</DialogTitle>
+            </DialogHeader>
+            <WinePairingSheetView pairing={pairingSheet} />
+          </DialogContent>
+        </Dialog>
+      ) : null}
     </div>
   );
 }
@@ -258,13 +274,16 @@ function DigitalDishCard({
   dish,
   onOpenDish,
   onOpenAllergens,
+  onOpenPairing,
 }: {
   dish: Dish;
   onOpenDish: () => void;
   onOpenAllergens: () => void;
+  onOpenPairing: () => void;
 }) {
   const sheet = dish.technicalSheetId ? technicalSheets[dish.technicalSheetId] : undefined;
   const allergenSheet = allergenSheets[dish.id];
+  const pairingSheet = winePairings[dish.id];
   const imageSrc = sheet?.photoSrc ?? sheet?.sketchSrc;
 
   return (
@@ -328,6 +347,15 @@ function DigitalDishCard({
             >
               Ver ficha
             </button>
+            {pairingSheet ? (
+              <button
+                type="button"
+                onClick={onOpenPairing}
+                className="rounded-md border border-foreground px-4 py-2 text-[10px] uppercase tracking-[0.24em] transition-colors hover:bg-foreground hover:text-primary-foreground"
+              >
+                Ver maridaje
+              </button>
+            ) : null}
             {allergenSheet ? (
               <button
                 type="button"

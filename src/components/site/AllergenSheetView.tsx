@@ -1,4 +1,19 @@
 import type { AllergenSheet, AllergenStatus } from "@/data/allergenSheets";
+import {
+  CircleAlert,
+  CircleDot,
+  Egg,
+  Fish,
+  Leaf,
+  Milk,
+  Nut,
+  Shell,
+  Shrimp,
+  Sprout,
+  Wheat,
+  Wine,
+  type LucideIcon,
+} from "lucide-react";
 import { SheetScrollTopButton } from "./SheetScrollTopButton";
 
 export function AllergenSheetView({ sheet }: { sheet: AllergenSheet }) {
@@ -15,16 +30,6 @@ export function AllergenSheetView({ sheet }: { sheet: AllergenSheet }) {
           {sheet.subtitle}
         </p>
       </header>
-
-      {sheet.sourceImageSrc ? (
-        <figure className="mt-6 overflow-hidden rounded-md border border-border bg-card/45">
-          <img
-            src={sheet.sourceImageSrc}
-            alt={`Carta de alÃ©rgenos original de ${sheet.title}`}
-            className="h-auto w-full"
-          />
-        </figure>
-      ) : null}
 
       <div className="mt-6 grid gap-4 md:grid-cols-[0.8fr_1.2fr]">
         <section className="rounded-md border border-border bg-card/45 p-5">
@@ -61,7 +66,10 @@ export function AllergenSheetView({ sheet }: { sheet: AllergenSheet }) {
               key={row.allergen}
               className="grid grid-cols-[0.9fr_0.75fr_1.35fr] gap-3 border-t border-border bg-background px-4 py-3 text-sm"
             >
-              <span className="font-semibold text-foreground">{row.allergen}</span>
+              <span className="flex items-center gap-3 font-semibold text-foreground">
+                <AllergenIcon allergen={row.allergen} />
+                {row.allergen}
+              </span>
               <span className={`font-semibold ${statusClass(row.status)}`}>{row.status}</span>
               <span className="leading-relaxed text-muted-foreground">{row.observation}</span>
             </div>
@@ -100,6 +108,33 @@ export function AllergenSheetView({ sheet }: { sheet: AllergenSheet }) {
 
       <SheetScrollTopButton />
     </article>
+  );
+}
+
+const allergenIcons: Record<string, LucideIcon> = {
+  Gluten: Wheat,
+  Crustáceos: Shrimp,
+  Huevos: Egg,
+  Pescado: Fish,
+  Cacahuetes: Nut,
+  Soja: Sprout,
+  Lácteos: Milk,
+  "Frutos de cáscara": Nut,
+  Apio: Leaf,
+  Mostaza: Leaf,
+  "Granos de sésamo": CircleDot,
+  "Dióxido de azufre y sulfitos": Wine,
+  Altramuces: Sprout,
+  Moluscos: Shell,
+};
+
+function AllergenIcon({ allergen }: { allergen: string }) {
+  const Icon = allergenIcons[allergen] ?? CircleAlert;
+
+  return (
+    <span className="grid size-8 shrink-0 place-items-center rounded-md border border-accent/25 bg-accent/10 text-accent">
+      <Icon aria-hidden="true" className="size-4" strokeWidth={1.9} />
+    </span>
   );
 }
 

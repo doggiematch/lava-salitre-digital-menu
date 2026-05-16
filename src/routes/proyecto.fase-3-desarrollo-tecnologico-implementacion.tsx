@@ -1,5 +1,6 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
+import { QuickDishDialog } from "@/components/site/QuickDishDialog";
 import { ProjectPhasePage } from "@/components/site/ProjectPhasePage";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { allDishes } from "@/data/menu";
@@ -18,10 +19,6 @@ const phaseSections = [
   {
     title: "Realidad aumentada",
     text: "La realidad aumentada se plantea como un recurso puntual para reforzar el relato de algunos platos especiales, no como un elemento decorativo permanente. Podría utilizarse en elaboraciones vinculadas al paisaje volcánico o al Atlántico para mostrar origen del producto, técnica o inspiración, siempre manteniendo la comida como protagonista.",
-  },
-  {
-    title: "Pruebas de funcionamiento",
-    text: "Antes de presentar la carta digital al cliente, se comprobarán enlaces, códigos QR, carga de imágenes, legibilidad móvil y acceso a fichas técnicas. También se revisará que ingredientes, alérgenos y descripciones coincidan con la información de las fichas, ya que afectan a la confianza del cliente y al trabajo en sala.",
   },
 ] as const;
 
@@ -49,9 +46,7 @@ function Fase3DesarrolloTecnologicoImplementacion() {
               key={section.title}
               className="rounded-md border border-border bg-background/70 p-6 md:p-8"
             >
-              <h2 className="font-serif text-2xl text-foreground md:text-3xl">
-                {section.title}
-              </h2>
+              <h2 className="font-serif text-2xl text-foreground md:text-3xl">{section.title}</h2>
               <p className="mt-4 max-w-4xl text-sm leading-[1.8] text-muted-foreground md:text-base">
                 {section.text}
               </p>
@@ -124,6 +119,8 @@ function DigitalPlatformSection() {
 }
 
 function QrCodesSection({ dishes, origin }: { dishes: DigitalDish[]; origin: string }) {
+  const [selectedDish, setSelectedDish] = useState<DigitalDish | null>(null);
+
   return (
     <article className="rounded-md border border-border bg-background/70 p-6 md:p-8">
       <h2 className="font-serif text-2xl text-foreground md:text-3xl">Códigos QR</h2>
@@ -165,13 +162,13 @@ function QrCodesSection({ dishes, origin }: { dishes: DigitalDish[]; origin: str
                     {dish.categoryName}
                   </td>
                   <td className="p-3 text-sm">
-                    <Link
-                      to="/carta-digital/$dishId"
-                      params={{ dishId: dish.id }}
+                    <button
+                      type="button"
+                      onClick={() => setSelectedDish(dish)}
                       className="font-medium text-accent underline underline-offset-4 transition hover:text-foreground"
                     >
                       Abrir ficha
-                    </Link>
+                    </button>
                   </td>
                 </tr>
               );
@@ -179,6 +176,11 @@ function QrCodesSection({ dishes, origin }: { dishes: DigitalDish[]; origin: str
           </tbody>
         </table>
       </div>
+
+      <QuickDishDialog
+        dish={selectedDish}
+        onOpenChange={(open) => !open && setSelectedDish(null)}
+      />
     </article>
   );
 }
@@ -188,7 +190,10 @@ function MultimediaSection({ dishes }: { dishes: DigitalDish[] }) {
   const dessertImages = dishes.filter((dish) =>
     ["Postres", "Petit four"].includes(dish.categoryName),
   );
-  const plateImages = dishes.filter((dish) => !["Postres", "Petit four"].includes(dish.categoryName));
+  const plateImages = ["Entrantes", "Primeros platos", "Segundos platos"].flatMap((category) =>
+    dishes.filter((dish) => dish.categoryName === category),
+  );
+  const sorbetImages = dishes.filter((dish) => dish.categoryName === "Sorbete");
   const selectedSheet = selectedDish?.technicalSheetId
     ? technicalSheets[selectedDish.technicalSheetId]
     : undefined;
@@ -198,18 +203,20 @@ function MultimediaSection({ dishes }: { dishes: DigitalDish[] }) {
     <article className="rounded-md border border-border bg-background/70 p-6 md:p-8">
       <h2 className="font-serif text-2xl text-foreground md:text-3xl">Contenido multimedia</h2>
       <p className="mt-4 max-w-4xl text-sm leading-[1.8] text-muted-foreground md:text-base">
-        El contenido multimedia reutiliza las imágenes ya disponibles de platos y postres. Las
-        miniaturas cuadradas sirven como material visual para carta digital, presentación del
-        restaurante, redes sociales y apoyo al discurso de sala.
+        El contenido multimedia acompaña la experiencia digital del restaurante y ayuda a presentar
+        cada elaboración de forma más clara, atractiva y cercana. Las imágenes de platos, postres y
+        petit four refuerzan la identidad visual de Lava & Salitre y permiten que el cliente se haga
+        una idea del estilo gastronómico antes de la visita.
       </p>
 
       <div className="mt-7 grid gap-8">
+        <ThumbnailGrid title="Platos" dishes={plateImages} onSelectDish={setSelectedDish} />
+        <ThumbnailGrid title="Sorbete" dishes={sorbetImages} onSelectDish={setSelectedDish} />
         <ThumbnailGrid
-          title="Postres y petit four"
+          title="Postres"
           dishes={dessertImages}
           onSelectDish={setSelectedDish}
         />
-        <ThumbnailGrid title="Platos" dishes={plateImages} onSelectDish={setSelectedDish} />
       </div>
 
       <Dialog open={Boolean(selectedDish)} onOpenChange={(open) => !open && setSelectedDish(null)}>

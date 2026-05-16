@@ -1,4 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
+import {
+  CalendarCheck,
+  CircleHelp,
+  Compass,
+  Heart,
+  MapPin,
+  MessageCircle,
+  QrCode,
+  Sparkles,
+  TabletSmartphone,
+  Target,
+  UserRound,
+  UsersRound,
+  type LucideIcon,
+} from "lucide-react";
 import { useState, type ReactNode } from "react";
 import { ProjectPhasePage } from "@/components/site/ProjectPhasePage";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -10,8 +25,7 @@ export const Route = createFileRoute("/proyecto/fase-1-conceptualizacion-fundame
   }),
 });
 
-const phaseSections = [
-] as const;
+const phaseSections = [] as const;
 
 const traditionalDesserts = [
   {
@@ -58,7 +72,8 @@ const reinterpretationExamples = [
     title: "Bienmesabe en texturas",
     description:
       "Reinterpretación del postre tradicional canario bienmesabe, presentando sus sabores clásicos en diferentes texturas y temperaturas.",
-    components: "Gel de limón, crema ligera de almendra, helado de almendra y crujiente de almendra.",
+    components:
+      "Gel de limón, crema ligera de almendra, helado de almendra y crujiente de almendra.",
     image: "/proyecto/fase-1/bienmesabe-texturas.jpg",
   },
   {
@@ -325,43 +340,48 @@ const islandConceptProducts = [
 const audienceSegments = [
   {
     title: "Segmentación demográfica",
+    icon: UsersRound,
     text: "Lava y Salitre se dirige principalmente a personas adultas, entre 30 y 60 años, con mayor peso entre los 35 y 55 años. Es un cliente con una situación económica más estable, dispuesto a pagar por una experiencia gastronómica cuidada, con menú degustación, producto de calidad, opción de maridaje y servicio personalizado.",
   },
   {
     title: "Segmentación geográfica",
+    icon: MapPin,
     text: "El público principal vendría de Gran Canaria, especialmente de personas que quieran desplazarse hasta Agaete para una comida o cena especial. También se contempla a clientes de Tenerife por la conexión marítima con el Puerto de las Nieves, además de turistas nacionales y extranjeros interesados en una cocina canaria actual vinculada al mar, la tierra y el paisaje volcánico.",
   },
   {
     title: "Segmentación psicográfica",
+    icon: Heart,
     text: "El cliente valora la gastronomía como una experiencia, no solo como una comida. Le interesa el origen del producto, la historia de cada plato y la relación del menú con Canarias. Busca restaurantes con personalidad, identidad propia, presentación cuidada, sostenibilidad y respeto por el entorno.",
   },
   {
     title: "Segmentación conductual",
+    icon: CalendarCheck,
     text: "Lava y Salitre no sería un restaurante de consumo diario. El cliente acudiría en momentos concretos como celebraciones, escapadas, aniversarios, comidas especiales o cenas diferentes. Antes de reservar consultaría opiniones, fotos, redes sociales, recomendaciones y la posibilidad de elegir menú con o sin maridaje.",
   },
   {
     title: "Segmentación por necesidades",
+    icon: Target,
     text: "La necesidad principal no es comer rápido ni barato, sino vivir una experiencia especial y bien cuidada. El cliente quiere producto canario de calidad, atención cercana, una cocina conectada con Canarias y una presentación moderna y creativa.",
   },
 ] as const;
 
 const audienceValues = [
-  "Producto local",
   "Cocina de autor",
-  "Vinos canarios",
-  "Kilómetro cero",
   "Experiencias tranquilas",
+  "Kilómetro cero",
+  "Producto local",
   "Restaurantes con identidad propia",
   "Sostenibilidad y respeto por el entorno",
+  "Vinos canarios",
 ] as const;
 
 const audienceNeeds = [
+  "Conocer una cocina canaria más actual.",
   "Disfrutar de una comida o cena especial.",
   "Probar producto canario bien trabajado.",
-  "Vivir una experiencia gastronómica tranquila.",
-  "Conocer una cocina canaria más actual.",
   "Sentirse cómodo en un ambiente elegante pero cercano.",
   "Tener la opción de acompañar el menú con vinos canarios.",
+  "Vivir una experiencia gastronómica tranquila.",
 ] as const;
 
 const personaDetails = [
@@ -381,68 +401,73 @@ const culinaryTechnologies = [
     title: "Esferificación",
     description:
       "Permite convertir un líquido en pequeñas esferas con una capa fina exterior y un interior líquido que explota en boca.",
-    use:
-      "En Lava y Salitre puede utilizarse para esferas de mojo rojo, mojo verde, caldo de pescado o jugo de tuno indio, presentando sabores canarios de forma moderna y sorprendente.",
+    use: "En Lava y Salitre puede utilizarse para esferas de mojo rojo, mojo verde, caldo de pescado o jugo de tuno indio, presentando sabores canarios de forma moderna y sorprendente.",
   },
   {
     title: "Nitrógeno líquido",
     description:
       "Congela alimentos de forma muy rápida y permite crear helados al momento, efectos de frío o pequeños contrastes visuales.",
-    use:
-      "Se reservaría para momentos concretos, sobre todo postres o pequeños bocados, como un helado rápido de plátano canario o un toque frío en un prepostre.",
+    use: "Se reservaría para momentos concretos, sobre todo postres o pequeños bocados, como un helado rápido de plátano canario o un toque frío en un prepostre.",
   },
   {
     title: "Deconstrucción",
     description:
       "Parte de un plato tradicional, separa sus elementos y los presenta de otra manera manteniendo el sabor original.",
-    use:
-      "Encaja con la unión entre tradición e innovación: unas papas arrugadas con mojo podrían convertirse en crema de papa, esfera de mojo y sal cristalizada.",
+    use: "Encaja con la unión entre tradición e innovación: unas papas arrugadas con mojo podrían convertirse en crema de papa, esfera de mojo y sal cristalizada.",
   },
   {
     title: "Espumas",
     description:
       "Transforman cremas, salsas o líquidos en texturas ligeras y aireadas, normalmente mediante sifón.",
-    use:
-      "Pueden aplicarse a gofio, queso canario, marisco o mojo suave para aportar sabor, ligereza y una presentación más cuidada.",
+    use: "Pueden aplicarse a gofio, queso canario, marisco o mojo suave para aportar sabor, ligereza y una presentación más cuidada.",
   },
   {
     title: "Gelificaciones",
     description:
       "Convierten líquidos en geles usando agar-agar, gelatina o pectina, aportando forma, color y textura.",
-    use:
-      "Se usarían geles de lima, maracuyá, vino malvasía o caldo marino para dar frescor y equilibrar pescados, mariscos o postres.",
+    use: "Se usarían geles de lima, maracuyá, vino malvasía o caldo marino para dar frescor y equilibrar pescados, mariscos o postres.",
   },
 ] as const;
 
 const digitalTechnologies = [
   {
     title: "Carta con código QR",
+    icon: QrCode,
     description:
       "Permite consultar la carta desde el móvil y actualizar platos, precios o productos de temporada con facilidad.",
-    use:
-      "Puede incluir alérgenos, fotos, explicaciones de platos, origen de productos y recomendaciones de maridaje, manteniendo también una carta física para quien la prefiera.",
+    use: "Puede incluir alérgenos, fotos, explicaciones de platos, origen de productos y recomendaciones de maridaje, manteniendo también una carta física para quien la prefiera.",
   },
   {
     title: "Menús interactivos",
+    icon: TabletSmartphone,
     description:
       "Amplían la información sobre cada plato: ingredientes principales, isla de origen, técnica utilizada o vino recomendado.",
-    use:
-      "Ayudan a que el cliente entienda mejor una propuesta basada en producto canario y platos elaborados.",
+    use: "Ayudan a que el cliente entienda mejor una propuesta basada en producto canario y platos elaborados.",
   },
   {
     title: "Realidad aumentada",
+    icon: Sparkles,
     description:
       "Añade elementos digitales sobre el entorno real a través del móvil, como visualizaciones del plato o del origen del producto.",
-    use:
-      "Se aplicaría solo en platos especiales o momentos concretos del menú degustación para aportar innovación sin restar protagonismo a la comida.",
+    use: "Se aplicaría solo en platos especiales o momentos concretos del menú degustación para aportar innovación sin restar protagonismo a la comida.",
   },
 ] as const;
 
 const selectedTechnologyUses = [
   {
+    technology: "Carta física",
+    where: "Servicio en sala",
+    reason: "Mantiene comodidad y elegancia.",
+  },
+  {
     technology: "Deconstrucción",
     where: "Platos canarios reinterpretados",
     reason: "Une tradición e innovación.",
+  },
+  {
+    technology: "Esferificación",
+    where: "Mojos, caldos y jugos",
+    reason: "Da un toque moderno y sorprendente.",
   },
   {
     technology: "Espumas",
@@ -455,9 +480,9 @@ const selectedTechnologyUses = [
     reason: "Controla sabores y mejora la presentación.",
   },
   {
-    technology: "Esferificación",
-    where: "Mojos, caldos y jugos",
-    reason: "Da un toque moderno y sorprendente.",
+    technology: "Menú interactivo",
+    where: "Explicación de la propuesta gastronómica",
+    reason: "Ayuda a conocer el origen de cada ingrediente.",
   },
   {
     technology: "Nitrógeno líquido",
@@ -470,28 +495,65 @@ const selectedTechnologyUses = [
     reason: "Facilita alérgenos, origen y maridajes.",
   },
   {
-    technology: "Carta física",
-    where: "Servicio en sala",
-    reason: "Mantiene comodidad y elegancia.",
-  },
-  {
-    technology: "Menú interactivo",
-    where: "Explicación de la propuesta gastronómica",
-    reason: "Ayuda a conocer el origen de cada ingrediente.",
-  },
-  {
     technology: "Realidad aumentada",
     where: "Platos especiales",
     reason: "Aporta originalidad como complemento puntual.",
   },
 ] as const;
 
+const personaInsightCards = [
+  {
+    title: "¿Quién es?",
+    icon: UserRound,
+    text: "Marta es una persona adulta, curiosa y con interés por la gastronomía. Le gusta descubrir restaurantes diferentes, sobre todo aquellos que trabajan con producto local y ofrecen una experiencia cuidada. No busca platos enormes ni una carta muy larga: prefiere un menú pensado, con varios pases, buena presentación y una historia detrás.",
+  },
+  {
+    title: "Intereses",
+    icon: Heart,
+    text: "Le interesan la cocina canaria actual, los vinos de las islas, los restaurantes con encanto y los planes tranquilos. Valora el producto local y le gusta conocer el origen de lo que come.",
+  },
+  {
+    title: "Necesidades",
+    icon: Target,
+    text: "Necesita encontrar un restaurante especial, cuidado y con personalidad. Quiere sentirse bien atendida, comer bien y vivir una experiencia que merezca la pena, con elegancia y cercanía.",
+  },
+  {
+    title: "Motivaciones",
+    icon: Compass,
+    text: "Elegiría Lava y Salitre por la unión entre mar, tierra y paisaje de Agaete, por una cocina canaria diferente, productos de cercanía, técnicas actuales y vinos canarios.",
+  },
+] as const;
+
+const reservationInfoCards = [
+  {
+    title: "Posibles dudas",
+    icon: CircleHelp,
+    text: "Podría preguntarse si el precio será adecuado, si el menú degustación será suficiente, si los platos serán demasiado modernos, si el restaurante se adapta a intolerancias o si la experiencia merece la pena frente a otros restaurantes de la isla.",
+  },
+  {
+    title: "Canales",
+    icon: MessageCircle,
+    text: "Buscaría información en Instagram, Google Maps, la web del restaurante, opiniones de otros clientes, recomendaciones de amigos, guías gastronómicas y publicaciones sobre restaurantes canarios.",
+  },
+] as const;
+
+function CardTitle({ icon: Icon, title }: { icon: LucideIcon; title: string }) {
+  return (
+    <div className="flex items-start gap-3">
+      <span className="grid size-10 shrink-0 place-items-center rounded-md border border-accent/30 bg-accent/10 text-accent">
+        <Icon aria-hidden="true" className="size-5" strokeWidth={1.8} />
+      </span>
+      <h4 className="pt-1 font-serif text-xl text-foreground">{title}</h4>
+    </div>
+  );
+}
+
 function Fase1ConceptualizacionFundamentacion() {
   return (
     <ProjectPhasePage
       phase="Fase 1"
       title="Conceptualización y fundamentación"
-      intro="Esta primera fase establece la base estratégica del proyecto: un restaurante especializado en postres vanguardistas que transforma la identidad repostera canaria en una propuesta gastronómica diferencial, viable y con capacidad de atraer tanto al cliente local como al visitante que busca una experiencia singular vinculada al territorio."
+      intro="Esta primera fase establece la base estratégica del proyecto: un restaurante que reinterpreta la tradición gastronómica canaria en platos y postres vanguardistas, creando una propuesta diferencial, viable y capaz de atraer tanto al cliente local como al visitante que busca una experiencia singular vinculada al territorio."
     >
       <section className="border-t border-border/60">
         <div className="mx-auto grid max-w-6xl gap-8 px-5 py-12 md:py-16">
@@ -505,9 +567,7 @@ function Fase1ConceptualizacionFundamentacion() {
               key={section.title}
               className="rounded-md border border-border bg-background/70 p-6 md:p-8"
             >
-              <h2 className="font-serif text-2xl text-foreground md:text-3xl">
-                {section.title}
-              </h2>
+              <h2 className="font-serif text-2xl text-foreground md:text-3xl">{section.title}</h2>
               <p className="mt-4 max-w-4xl text-sm leading-[1.8] text-muted-foreground md:text-base">
                 {section.text}
               </p>
@@ -539,9 +599,9 @@ function GastronomicContextSection() {
         </Text>
         <Text>
           La propuesta no busca sustituir la cocina tradicional, sino darle una lectura más actual.
-          El objetivo es que cada pase mantenga una conexión con Canarias, ya sea por el ingrediente,
-          por la técnica reinterpretada o por la memoria del sabor que el cliente reconoce en una
-          forma nueva.
+          El objetivo es que cada pase mantenga una conexión con Canarias, ya sea por el
+          ingrediente, por la técnica reinterpretada o por la memoria del sabor que el cliente
+          reconoce en una forma nueva.
         </Text>
       </div>
 
@@ -646,16 +706,14 @@ function GastronomicContextSection() {
 function Km0IngredientsSection() {
   return (
     <article className="rounded-md border border-border bg-background/70 p-6 md:p-8">
-      <h2 className="mt-3 font-serif text-2xl text-foreground md:text-3xl">
-        Ingredientes km 0
-      </h2>
+      <h2 className="mt-3 font-serif text-2xl text-foreground md:text-3xl">Ingredientes km 0</h2>
 
       <div className="mt-5 space-y-5">
         <Text>
           La investigación de ingredientes km 0 define una despensa canaria amplia para Lava &
           Salitre, ordenada por isla, productor o procedencia y zona agrícola u origen. Esta base
-          permite construir una carta con trazabilidad, identidad local y coherencia con el relato de
-          tierra volcánica y Atlántico.
+          permite construir una carta con trazabilidad, identidad local y coherencia con el relato
+          de tierra volcánica y Atlántico.
         </Text>
         <Text>
           Las procedencias se plantean como propuesta de abastecimiento para el proyecto. En
@@ -673,7 +731,9 @@ function Km0IngredientsSection() {
             <div className="border-r border-border p-3">Nº</div>
             <div className="border-r border-border p-3">Ingrediente</div>
             <div className="hidden border-r border-border p-3 md:block">Isla</div>
-            <div className="hidden border-r border-border p-3 md:block">Productor / procedencia</div>
+            <div className="hidden border-r border-border p-3 md:block">
+              Productor / procedencia
+            </div>
             <div className="hidden p-3 md:block">Zona agrícola u origen</div>
           </div>
           {km0Ingredients.map((item, index) => (
@@ -716,8 +776,8 @@ function Km0IngredientsSection() {
         <Text className="mt-4">
           Para la carta de postres de Lava y Salitre se seleccionan ingredientes que aparecen
           directamente en las fichas de postres y petit fours trabajadas. La elección se basa en
-          productos con identidad canaria, sabor reconocible y capacidad para trabajarse con técnicas
-          actuales dentro de los menús Lava, Salitre y Lava y Salitre.
+          productos con identidad canaria, sabor reconocible y capacidad para trabajarse con
+          técnicas actuales dentro de los menús Lava, Salitre y Lava y Salitre.
         </Text>
 
         <div className="mt-5 grid gap-4 md:grid-cols-2">
@@ -740,9 +800,9 @@ function Km0IngredientsSection() {
         <h3 className="font-serif text-xl text-foreground md:text-2xl">Conclusión</h3>
         <Text className="mt-4">
           Estos ingredientes forman una base coherente para la carta dulce del restaurante porque
-          salen de las recetas ya creadas y refuerzan el concepto de Lava y Salitre. El chocolate, el
-          cacao, el plátano y la piña conectan con la parte volcánica y tropical; la sal marina y el
-          ron aportan contraste; y la almendra, la miel de palma y la leche de cabra mantienen la
+          salen de las recetas ya creadas y refuerzan el concepto de Lava y Salitre. El chocolate,
+          el cacao, el plátano y la piña conectan con la parte volcánica y tropical; la sal marina y
+          el ron aportan contraste; y la almendra, la miel de palma y la leche de cabra mantienen la
           identidad canaria del proyecto.
         </Text>
         <Text className="mt-4">
@@ -775,10 +835,10 @@ function GastronomicConceptSection() {
             de kilómetro cero.
           </Text>
           <Text>
-            La filosofía del restaurante se basa en respetar el producto canario y presentarlo de una
-            forma más actual, limpia y elegante, sin perder la esencia tradicional. Cada plato busca
-            contar una parte del paisaje de las islas: el sabor salino del mar, la fuerza volcánica
-            de la tierra y la riqueza de sus productos.
+            La filosofía del restaurante se basa en respetar el producto canario y presentarlo de
+            una forma más actual, limpia y elegante, sin perder la esencia tradicional. Cada plato
+            busca contar una parte del paisaje de las islas: el sabor salino del mar, la fuerza
+            volcánica de la tierra y la riqueza de sus productos.
           </Text>
         </div>
         <figure className="overflow-hidden rounded-md border border-border bg-black">
@@ -797,8 +857,8 @@ function GastronomicConceptSection() {
         </h3>
         <Text className="mt-4">
           El menú representa a las ocho islas Canarias mediante ingredientes como pescados frescos,
-          algas, agua de mar, sal marina, gofio, papas, miel de palma, almendra de Tejeda, piña de El
-          Hierro, plátano canario, leche de cabra, vino canario y carnes locales.
+          algas, agua de mar, sal marina, gofio, papas, miel de palma, almendra de Tejeda, piña de
+          El Hierro, plátano canario, leche de cabra, vino canario y carnes locales.
         </Text>
         <div className="mt-5 grid gap-4 md:grid-cols-2">
           {islandConceptProducts.map((item) => (
@@ -876,9 +936,9 @@ function TargetAudienceSection() {
       <div className="mt-8 space-y-5">
         <Text>
           Para definir mejor el público al que se dirige Lava y Salitre, es importante no quedarse
-          solo en la edad o en el tipo de cliente. El restaurante no está pensado para todo el mundo,
-          sino para personas que buscan una experiencia gastronómica especial, con producto canario,
-          buen servicio y una propuesta diferente.
+          solo en la edad o en el tipo de cliente. El restaurante no está pensado para todo el
+          mundo, sino para personas que buscan una experiencia gastronómica especial, con producto
+          canario, buen servicio y una propuesta diferente.
         </Text>
       </div>
 
@@ -889,7 +949,7 @@ function TargetAudienceSection() {
         <div className="mt-5 grid gap-4 md:grid-cols-2">
           {audienceSegments.map((segment) => (
             <div key={segment.title} className="rounded-md border border-border bg-card/50 p-5">
-              <h4 className="font-serif text-xl text-foreground">{segment.title}</h4>
+              <CardTitle icon={segment.icon} title={segment.title} />
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{segment.text}</p>
             </div>
           ))}
@@ -935,48 +995,27 @@ function TargetAudienceSection() {
         </h3>
         <div className="mt-5 overflow-hidden rounded-md border border-border">
           {personaDetails.map((detail) => (
-            <div key={detail.label} className="grid border-t border-border first:border-t-0 md:grid-cols-[14rem_1fr]">
+            <div
+              key={detail.label}
+              className="grid border-t border-border first:border-t-0 md:grid-cols-[14rem_1fr]"
+            >
               <div className="bg-card/60 p-4 text-[10px] uppercase tracking-[0.24em] text-accent">
                 {detail.label}
               </div>
-              <div className="p-4 text-sm leading-relaxed text-muted-foreground">{detail.value}</div>
+              <div className="p-4 text-sm leading-relaxed text-muted-foreground">
+                {detail.value}
+              </div>
             </div>
           ))}
         </div>
 
         <div className="mt-6 grid gap-4 md:grid-cols-2">
-          <div className="rounded-md border border-border bg-card/50 p-5">
-            <h4 className="font-serif text-xl text-foreground">¿Quién es?</h4>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              Marta es una persona adulta, curiosa y con interés por la gastronomía. Le gusta
-              descubrir restaurantes diferentes, sobre todo aquellos que trabajan con producto local
-              y ofrecen una experiencia cuidada. No busca platos enormes ni una carta muy larga:
-              prefiere un menú pensado, con varios pases, buena presentación y una historia detrás.
-            </p>
-          </div>
-          <div className="rounded-md border border-border bg-card/50 p-5">
-            <h4 className="font-serif text-xl text-foreground">Intereses</h4>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              Le interesan la cocina canaria actual, los vinos de las islas, los restaurantes con
-              encanto y los planes tranquilos. Valora el producto local y le gusta conocer el origen
-              de lo que come.
-            </p>
-          </div>
-          <div className="rounded-md border border-border bg-card/50 p-5">
-            <h4 className="font-serif text-xl text-foreground">Necesidades</h4>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              Necesita encontrar un restaurante especial, cuidado y con personalidad. Quiere sentirse
-              bien atendida, comer bien y vivir una experiencia que merezca la pena, con elegancia y
-              cercanía.
-            </p>
-          </div>
-          <div className="rounded-md border border-border bg-card/50 p-5">
-            <h4 className="font-serif text-xl text-foreground">Motivaciones</h4>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              Elegiría Lava y Salitre por la unión entre mar, tierra y paisaje de Agaete, por una
-              cocina canaria diferente, productos de cercanía, técnicas actuales y vinos canarios.
-            </p>
-          </div>
+          {personaInsightCards.map((card) => (
+            <div key={card.title} className="rounded-md border border-border bg-card/50 p-5">
+              <CardTitle icon={card.icon} title={card.title} />
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{card.text}</p>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -985,22 +1024,12 @@ function TargetAudienceSection() {
           Antes de reservar y canales de información
         </h3>
         <div className="mt-5 grid gap-4 md:grid-cols-2">
-          <div className="rounded-md border border-border bg-card/50 p-5">
-            <h4 className="font-serif text-xl text-foreground">Posibles dudas</h4>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              Podría preguntarse si el precio será adecuado, si el menú degustación será suficiente,
-              si los platos serán demasiado modernos, si el restaurante se adapta a intolerancias o
-              si la experiencia merece la pena frente a otros restaurantes de la isla.
-            </p>
-          </div>
-          <div className="rounded-md border border-border bg-card/50 p-5">
-            <h4 className="font-serif text-xl text-foreground">Canales</h4>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              Buscaría información en Instagram, Google Maps, la web del restaurante, opiniones de
-              otros clientes, recomendaciones de amigos, guías gastronómicas y publicaciones sobre
-              restaurantes canarios.
-            </p>
-          </div>
+          {reservationInfoCards.map((card) => (
+            <div key={card.title} className="rounded-md border border-border bg-card/50 p-5">
+              <CardTitle icon={card.icon} title={card.title} />
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{card.text}</p>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -1011,8 +1040,8 @@ function TargetAudienceSection() {
         <Text className="mt-4">
           Espera una experiencia completa: buena comida, buen servicio, ambiente tranquilo, producto
           canario y una presentación cuidada. No quiere un restaurante frío ni excesivamente formal:
-          quiere sentirse cómoda, disfrutar sin prisa y notar que cada plato tiene sentido dentro del
-          concepto.
+          quiere sentirse cómoda, disfrutar sin prisa y notar que cada plato tiene sentido dentro
+          del concepto.
         </Text>
         <Text className="mt-4">
           En conclusión, Lava y Salitre se dirige a un público adulto que valora la gastronomía, el
@@ -1071,14 +1100,14 @@ function GastronomicTechnologiesSection() {
           Tecnologías digitales para la carta
         </h3>
         <Text className="mt-4">
-          Las tecnologías digitales modernizan la imagen del restaurante, facilitan la información al
-          cliente y mejoran la organización del servicio. En Lava y Salitre deben reforzar el relato
-          gastronómico sin sustituir la atención en sala ni la elegancia de una carta física.
+          Las tecnologías digitales modernizan la imagen del restaurante, facilitan la información
+          al cliente y mejoran la organización del servicio. En Lava y Salitre deben reforzar el
+          relato gastronómico sin sustituir la atención en sala ni la elegancia de una carta física.
         </Text>
         <div className="mt-5 grid gap-4 md:grid-cols-3">
           {digitalTechnologies.map((technology) => (
             <div key={technology.title} className="rounded-md border border-border bg-card/50 p-5">
-              <h4 className="font-serif text-xl text-foreground">{technology.title}</h4>
+              <CardTitle icon={technology.icon} title={technology.title} />
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 {technology.description}
               </p>
@@ -1102,7 +1131,9 @@ function GastronomicTechnologiesSection() {
         <div className="mt-5 overflow-hidden rounded-md border border-border">
           <div className="grid bg-card/70 text-[10px] uppercase tracking-[0.22em] text-accent md:grid-cols-[1fr_1.2fr_1.4fr]">
             <div className="border-b border-border p-3 md:border-r">Tecnología</div>
-            <div className="hidden border-b border-r border-border p-3 md:block">Dónde se usaría</div>
+            <div className="hidden border-b border-r border-border p-3 md:block">
+              Dónde se usaría
+            </div>
             <div className="hidden border-b border-border p-3 md:block">Por qué se usaría</div>
           </div>
           {selectedTechnologyUses.map((item) => (
@@ -1132,14 +1163,14 @@ function GastronomicTechnologiesSection() {
         <h3 className="font-serif text-xl text-foreground md:text-2xl">Conclusión</h3>
         <div className="mt-4 space-y-5">
           <Text>
-            Lava y Salitre combinaría tradición canaria con técnicas modernas, manteniendo siempre el
-            respeto por el producto. Las tecnologías culinarias servirían para mejorar la textura, la
-            presentación y la experiencia del cliente, no para esconder el sabor original de los
-            ingredientes.
+            Lava y Salitre combinaría tradición canaria con técnicas modernas, manteniendo siempre
+            el respeto por el producto. Las tecnologías culinarias servirían para mejorar la
+            textura, la presentación y la experiencia del cliente, no para esconder el sabor
+            original de los ingredientes.
           </Text>
           <Text>
-            La deconstrucción, las espumas, las gelificaciones y algunas esferificaciones ayudarían a
-            mostrar la cocina canaria desde una visión más actual. El nitrógeno líquido se usaría
+            La deconstrucción, las espumas, las gelificaciones y algunas esferificaciones ayudarían
+            a mostrar la cocina canaria desde una visión más actual. El nitrógeno líquido se usaría
             solo en momentos concretos, principalmente para crear sorpresa en postres o pequeños
             bocados.
           </Text>
@@ -1154,13 +1185,7 @@ function GastronomicTechnologiesSection() {
   );
 }
 
-function Text({
-  children,
-  className = "",
-}: {
-  children: ReactNode;
-  className?: string;
-}) {
+function Text({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
     <p className={`text-sm leading-[1.85] text-muted-foreground md:text-base ${className}`}>
       {children}

@@ -12,7 +12,6 @@ export type AllergenSheet = {
   subtitle: string;
   represents: string;
   originNote: string;
-  sourceImageSrc?: string;
   ingredients: string[];
   containsSummary: string;
   traceNote: string;
@@ -92,27 +91,46 @@ export const allergenSheets: Record<string, AllergenSheet> = {
       },
     }),
   },
+  "bruma-agaete": {
+    id: "bruma-agaete",
+    title: "Bruma de Agaete",
+    subtitle: "Criogranizado de pepino, hierbahuerto y miel de palma.",
+    represents: "La Gomera",
+    originNote:
+      "Entrante frío, vegetal y ligero basado en pepino, hierbahuerto y miel de palma.",
+    ingredients: [
+      "Pepino",
+      "Agua",
+      "Miel de palma",
+      "Azúcar",
+      "Hierbahuerto fresco",
+      "Nitrógeno líquido",
+    ],
+    containsSummary: "No contiene alérgenos principales declarados.",
+    traceNote:
+      "Este plato puede contener trazas de otros alérgenos debido a la manipulación en cocina.",
+    rows: rows({}),
+  },
   "ostra-canaria": {
     id: "ostra-canaria",
     title: "Ostra canaria, aire marino y granizado salino",
-    subtitle: "Ostra fresca, pepino, limÃ³n, agua de mar y lecitina de soja.",
+    subtitle: "Ostra fresca, pepino, limón, agua de mar y lecitina de soja.",
     represents: "El Hierro",
-    originNote: "Entrada frÃ­a, salina y marina con ostra fresca.",
-    sourceImageSrc: "/alergenos/ostra-canaria.png",
+    originNote: "Entrada fría, salina y marina con ostra fresca.",
     ingredients: [
       "Ostras frescas",
       "Pepino",
-      "Zumo de limÃ³n",
+      "Zumo de limón",
       "Sal",
       "Agua de mar filtrada",
       "Lecitina de soja",
     ],
     containsSummary: "Soja y moluscos.",
     traceNote:
-      "No contiene segÃºn receta: gluten, crustÃ¡ceos, huevos, pescado, cacahuetes, lÃ¡cteos, frutos de cÃ¡scara, apio, mostaza, sÃ©samo, sulfitos y altramuces.",
+      "No contiene según receta: gluten, crustáceos, huevos, pescado, cacahuetes, lácteos, frutos de cáscara, apio, mostaza, sésamo, sulfitos y altramuces.",
     rows: rows({
-      Soja: { status: "SÃ­ contiene", observation: "Por la lecitina de soja." },
-      Moluscos: { status: "SÃ­ contiene", observation: "Por la ostra fresca." },
+      Soja: { status: "Sí contiene", observation: "Por la lecitina de soja." },
+      Moluscos: { status: "Sí contiene", observation: "Por la ostra fresca." },
     }),
   },
   "ceviche-cherne": {
@@ -120,8 +138,7 @@ export const allergenSheets: Record<string, AllergenSheet> = {
     title: "Ceviche de cherne, leche de tigre clarificada y aceite de cilantro",
     subtitle: "Cherne fresco, lima, fumet suave, jengibre, ajo, cilantro y cebolla morada.",
     represents: "Gran Canaria",
-    originNote: "Entrada fresca, Ã¡cida y limpia basada en pescado canario.",
-    sourceImageSrc: "/alergenos/ceviche-cherne.png",
+    originNote: "Entrada fresca, ácida y limpia basada en pescado canario.",
     ingredients: [
       "Cherne fresco",
       "Zumo de lima",
@@ -131,13 +148,13 @@ export const allergenSheets: Record<string, AllergenSheet> = {
       "Cilantro",
       "Aceite de girasol",
       "Cebolla morada",
-      "MaÃ­z tostado opcional",
+      "Maíz tostado opcional",
     ],
     containsSummary: "Pescado.",
     traceNote:
-      "No contiene segÃºn receta: gluten, crustÃ¡ceos, huevos, cacahuetes, soja, lÃ¡cteos, frutos de cÃ¡scara, apio, mostaza, sÃ©samo, sulfitos, altramuces y moluscos.",
+      "No contiene según receta: gluten, crustáceos, huevos, cacahuetes, soja, lácteos, frutos de cáscara, apio, mostaza, sésamo, sulfitos, altramuces y moluscos.",
     rows: rows({
-      Pescado: { status: "SÃ­ contiene", observation: "Por el cherne fresco y el fumet." },
+      Pescado: { status: "Sí contiene", observation: "Por el cherne fresco y el fumet." },
     }),
   },
   "vieja-sancochada": {
@@ -227,6 +244,46 @@ export const allergenSheets: Record<string, AllergenSheet> = {
       "Granos de sésamo": {
         status: "Sí contiene",
         observation: "Presente en el topping de sésamo tostado.",
+      },
+    }),
+  },
+  "ceniza-dulce": {
+    id: "ceniza-dulce",
+    title: "Ceniza dulce de chocolate volcánico",
+    subtitle: "Ganache de chocolate negro, ceniza dulce de cacao y aire de leche de cabra.",
+    represents: "Fuerteventura",
+    originNote:
+      "Postre de inspiración volcánica con chocolate, bizcocho seco y leche de cabra.",
+    ingredients: [
+      "Ganache de chocolate negro",
+      "Ceniza dulce de cacao y bizcocho seco",
+      "Aire de leche de cabra ahumada",
+      "Lecitina",
+      "Decoración opcional",
+    ],
+    containsSummary: "Gluten, huevos, soja y lácteos.",
+    traceNote:
+      "Puede contener trazas de frutos de cáscara por el chocolate, el bizcocho o la manipulación en cocina.",
+    rows: rows({
+      Gluten: {
+        status: "Sí contiene",
+        observation: "Presente en el bizcocho seco usado para la ceniza dulce.",
+      },
+      Huevos: {
+        status: "Sí contiene",
+        observation: "Puede estar presente en el bizcocho seco de la ceniza dulce.",
+      },
+      Soja: {
+        status: "Sí contiene",
+        observation: "Puede estar presente en la lecitina y en el chocolate negro.",
+      },
+      Lácteos: {
+        status: "Sí contiene",
+        observation: "Presente en el aire de leche de cabra y posiblemente en la ganache.",
+      },
+      "Frutos de cáscara": {
+        status: "Puede contener",
+        observation: "Puede contener trazas por el chocolate o por contaminación cruzada.",
       },
     }),
   },
@@ -423,6 +480,42 @@ export const allergenSheets: Record<string, AllergenSheet> = {
       "Dióxido de azufre y sulfitos": {
         status: "Sí contiene",
         observation: "Contiene vino dulce con sulfitos.",
+      },
+    }),
+  },
+  "palma-cacao": {
+    id: "palma-cacao",
+    title: "La Palma bajo cacao",
+    subtitle: "Ganache de chocolate, esfera líquida de plátano canario, tierra de cacao y aire.",
+    represents: "La Palma",
+    originNote:
+      "Postre de contraste entre cacao, tierra volcánica y dulzor del plátano canario.",
+    ingredients: [
+      "Ganache de chocolate negro",
+      "Esfera líquida de plátano canario",
+      "Tierra volcánica de cacao y galleta",
+      "Aire de cacao",
+      "Lecitina",
+    ],
+    containsSummary: "Gluten, soja, lácteos y posibles frutos de cáscara.",
+    traceNote:
+      "Puede contener trazas de frutos de cáscara por el chocolate, la galleta o la manipulación en cocina.",
+    rows: rows({
+      Gluten: {
+        status: "Sí contiene",
+        observation: "Presente en la galleta de la tierra volcánica de cacao.",
+      },
+      Soja: {
+        status: "Sí contiene",
+        observation: "Puede estar presente en la lecitina y en el chocolate.",
+      },
+      Lácteos: {
+        status: "Sí contiene",
+        observation: "Puede estar presente en la ganache de chocolate.",
+      },
+      "Frutos de cáscara": {
+        status: "Puede contener",
+        observation: "Puede contener trazas por chocolate, galleta o contaminación cruzada.",
       },
     }),
   },

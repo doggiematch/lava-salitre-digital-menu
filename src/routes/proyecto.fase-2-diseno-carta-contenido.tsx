@@ -1,5 +1,9 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { useMemo, useState } from "react";
+import { DishModal } from "@/components/site/DishModal";
 import { ProjectPhasePage } from "@/components/site/ProjectPhasePage";
+import { allDishes, type Dish } from "@/data/menu";
+import { technicalSheets } from "@/data/technicalSheets";
 
 export const Route = createFileRoute("/proyecto/fase-2-diseno-carta-contenido")({
   component: Fase2DisenoCartaContenido,
@@ -23,7 +27,7 @@ const dessertRows: MenuRow[] = [
   {
     dishId: "bienmesabe-aereo",
     name: "Bienmesabe aéreo con almendra de Tejeda",
-    category: "Postres clásicos reinterpretados",
+    category: "Postres de innovación",
     ingredients: "Almendra de Tejeda, miel de palma, cítricos y almendra crujiente.",
     technique: "Espuma con sifón, granizado cítrico y crujiente.",
     narrative:
@@ -100,8 +104,10 @@ const plateRows: MenuRow[] = [
     dishId: "perla-atlantica",
     name: "Perla Atlántica",
     category: "Platos canarios de vanguardia",
-    ingredients: "Agua de mar canaria, limón canario, aceite de hierbas, microbrotes y flor comestible.",
-    technique: "Esferificación inversa para crear una esfera salina y cítrica que se rompe en boca.",
+    ingredients:
+      "Agua de mar canaria, limón canario, aceite de hierbas, microbrotes y flor comestible.",
+    technique:
+      "Esferificación inversa para crear una esfera salina y cítrica que se rompe en boca.",
     narrative:
       "Snack de apertura que funciona como primer contacto con el mar y representa la parte atlántica del restaurante.",
     visual: "Pequeña esfera con apariencia de perla marina, limpia, fresca y directa.",
@@ -133,7 +139,8 @@ const plateRows: MenuRow[] = [
     dishId: "cabrito-cumbre",
     name: "Cabrito de cumbre en ceniza volcánica",
     category: "Platos canarios de vanguardia",
-    ingredients: "Cabrito canario, batata, vino tinto Listán Negro, miel de palma y aceituna negra.",
+    ingredients:
+      "Cabrito canario, batata, vino tinto Listán Negro, miel de palma y aceituna negra.",
     technique: "Cocción sous-vide, prensado, glaseado y ceniza gastronómica de aceituna negra.",
     narrative:
       "Representa la zona de medianías y cumbre mediante cabrito meloso, vino canario y miel de palma.",
@@ -168,8 +175,7 @@ const plateRows: MenuRow[] = [
     category: "Platos canarios de vanguardia",
     ingredients: "Ostra canaria, agua de mar filtrada, pepino, limón y lecitina de soja.",
     technique: "Aire marino y granizado salino para reforzar la sensación atlántica.",
-    narrative:
-      "Bocado frío y limpio que respeta la ostra y refuerza su personalidad marina.",
+    narrative: "Bocado frío y limpio que respeta la ostra y refuerza su personalidad marina.",
     visual: "Ostra casi natural con granizado de pepino y aire marino de aspecto ligero.",
     type: "Plato",
   },
@@ -212,8 +218,7 @@ const plateRows: MenuRow[] = [
     category: "Platos canarios de vanguardia",
     ingredients: "Lima canaria, sal marina, aceite de oliva suave y ralladura de lima.",
     technique: "Mantecado de sorbete con equilibrio entre acidez, salinidad y grasa suave.",
-    narrative:
-      "Pase de transición pensado para limpiar el paladar antes del postre.",
+    narrative: "Pase de transición pensado para limpiar el paladar antes del postre.",
     visual: "Bocado pequeño, frío y ligero, con brillo de aceite y ralladura cítrica.",
     type: "Plato",
   },
@@ -236,7 +241,8 @@ const plateRows: MenuRow[] = [
     technique: "Marcado tipo tataki, jugo marino reducido y emulsión grasa.",
     narrative:
       "Plato potente de pescado marcado por fuera y rojo en el interior, equilibrado con frescor vegetal.",
-    visual: "Atún marcado con interior rojo, jugo marino brillante, emulsión grasa y pepino crujiente.",
+    visual:
+      "Atún marcado con interior rojo, jugo marino brillante, emulsión grasa y pepino crujiente.",
     type: "Plato",
   },
 ];
@@ -247,12 +253,6 @@ const menuStructure = [
     description:
       "Pases salados de mar, costa, cumbre y ganadería local que dan identidad al recorrido.",
     count: plateRows.length,
-  },
-  {
-    title: "Postres clásicos reinterpretados",
-    description:
-      "Postres reconocibles de la memoria canaria llevados a una textura más ligera y actual.",
-    count: dessertRows.filter((row) => row.category === "Postres clásicos reinterpretados").length,
   },
   {
     title: "Postres de innovación",
@@ -457,7 +457,7 @@ function Fase2DisenoCartaContenido() {
     <ProjectPhasePage
       phase="Fase 2"
       title="Diseño de la carta y contenido"
-      intro="Esta segunda fase convierte el concepto gastronómico en una oferta concreta y comercializable. La carta se basa en elaboraciones canarias de vanguardia, postres con identidad propia y petit four, siempre con nombre creativo, ingredientes principales canarios y una técnica innovadora aplicada."
+      intro="Esta segunda fase convierte el concepto gastronómico en una oferta concreta y comercializable. La carta se basa en elaboraciones canarias de vanguardia con identidad propia, siempre con nombre creativo, ingredientes principales canarios y una técnica innovadora aplicada."
     >
       <section className="border-t border-border/60">
         <div className="mx-auto grid max-w-6xl gap-8 px-5 py-12 md:py-16">
@@ -465,7 +465,7 @@ function Fase2DisenoCartaContenido() {
           <DessertsAndPlatesSection />
           <NarrativeSection />
           <VisualDesignSection />
-          <TechnicalSheetsSection rows={[...dessertRows, ...plateRows]} />
+          <TechnicalSheetsSection rows={[...plateRows, ...dessertRows]} />
         </div>
       </section>
     </ProjectPhasePage>
@@ -475,13 +475,11 @@ function Fase2DisenoCartaContenido() {
 function MenuStructureSection() {
   return (
     <article className="rounded-md border border-border bg-background/70 p-6 md:p-8">
-      <h2 className="font-serif text-2xl text-foreground md:text-3xl">
-        Estructura de la carta
-      </h2>
+      <h2 className="font-serif text-2xl text-foreground md:text-3xl">Estructura de la carta</h2>
       <p className="mt-4 max-w-4xl text-sm leading-[1.8] text-muted-foreground md:text-base">
         La carta se plantea como un recorrido de menú degustación con identidad canaria. No copia
-        platos tradicionales tal cual, sino que parte de productos y sabores reconocibles para darles
-        una presentación más actual, limpia y propia de un restaurante gastronómico.
+        platos tradicionales tal cual, sino que parte de productos y sabores reconocibles para
+        darles una presentación más actual, limpia y propia de un restaurante gastronómico.
       </p>
 
       <div className="mt-7 overflow-x-auto rounded-md border border-border">
@@ -520,9 +518,7 @@ function MenuStructureSection() {
         <div className="mt-5 grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
           <div className="rounded-md border border-border bg-card/50 p-5">
             <div className="border-b border-border pb-5 text-center">
-              <p className="text-[10px] uppercase tracking-[0.35em] text-accent">
-                Lava & Salitre
-              </p>
+              <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Lava & Salitre</p>
               <h4 className="mt-3 font-serif text-3xl text-foreground">La carta</h4>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 Cocina canaria de vanguardia · lava · salitre · producto local
@@ -570,36 +566,36 @@ function MenuStructureSection() {
 }
 
 function DessertsAndPlatesSection() {
-  const dessertCategories = ["Postres clásicos reinterpretados", "Postres de innovación", "Petit four"];
+  const dessertCategories = ["Postres de innovación", "Petit four"];
 
   return (
     <article className="rounded-md border border-border bg-background/70 p-6 md:p-8">
-      <h2 className="font-serif text-2xl text-foreground md:text-3xl">Los postres</h2>
+      <h2 className="font-serif text-2xl text-foreground md:text-3xl">Los platos</h2>
       <p className="mt-4 max-w-4xl text-sm leading-[1.8] text-muted-foreground md:text-base">
-        La propuesta dulce se construye con seis elaboraciones: cuatro postres y dos petit four.
-        Todas incluyen un nombre creativo, ingredientes principales canarios y una técnica
-        innovadora aplicada.
+        Los platos canarios de vanguardia combinan elaboraciones frías, bocados de apertura,
+        pescados, carnes y un pase refrescante. Las técnicas modernas se usan para mejorar textura,
+        concentrar sabor o hacer que la presentación sea más elegante sin perder raíz canaria.
       </p>
 
-      <div className="mt-7 grid gap-7">
-        {dessertCategories.map((category) => (
-          <MenuTable
-            key={category}
-            title={category}
-            rows={dessertRows.filter((row) => row.category === category)}
-          />
-        ))}
+      <div className="mt-7">
+        <MenuTable title="Platos canarios de vanguardia" rows={plateRows} />
       </div>
 
       <div className="mt-10 border-t border-border/60 pt-8">
-        <h3 className="font-serif text-2xl text-foreground md:text-3xl">Los platos</h3>
+        <h3 className="font-serif text-2xl text-foreground md:text-3xl">Los postres</h3>
         <p className="mt-4 max-w-4xl text-sm leading-[1.8] text-muted-foreground md:text-base">
-          Los platos canarios de vanguardia combinan elaboraciones frías, bocados de apertura,
-          pescados, carnes y un pase refrescante. Las técnicas modernas se usan para mejorar textura,
-          concentrar sabor o hacer que la presentación sea más elegante sin perder raíz canaria.
+          La propuesta dulce se construye con seis elaboraciones: cuatro postres y dos petit four.
+          Todas incluyen un nombre creativo, ingredientes principales canarios y una técnica
+          innovadora aplicada.
         </p>
-        <div className="mt-7">
-          <MenuTable title="Platos canarios de vanguardia" rows={plateRows} />
+        <div className="mt-7 grid gap-7">
+          {dessertCategories.map((category) => (
+            <MenuTable
+              key={category}
+              title={category}
+              rows={dessertRows.filter((row) => row.category === category)}
+            />
+          ))}
         </div>
       </div>
     </article>
@@ -609,9 +605,7 @@ function DessertsAndPlatesSection() {
 function NarrativeSection() {
   return (
     <article className="rounded-md border border-border bg-background/70 p-6 md:p-8">
-      <h2 className="font-serif text-2xl text-foreground md:text-3xl">
-        Narrativa gastronómica
-      </h2>
+      <h2 className="font-serif text-2xl text-foreground md:text-3xl">Narrativa gastronómica</h2>
       <p className="mt-4 max-w-4xl text-sm leading-[1.8] text-muted-foreground md:text-base">
         La narrativa de Lava & Salitre cuenta Canarias a través de sus productos, paisajes y formas
         de cocinar. La lava representa la tierra, la cumbre, la ganadería, el fuego y el origen
@@ -630,7 +624,10 @@ function NarrativeSection() {
         <NarrativeDetailTable title="Historia de los platos" rows={plateNarratives} />
       </div>
       <div className="mt-7">
-        <NarrativeDetailTable title="Historia de los postres y petit four" rows={dessertNarratives} />
+        <NarrativeDetailTable
+          title="Historia de los postres y petit four"
+          rows={dessertNarratives}
+        />
       </div>
 
       <div className="mt-8 border-t border-border/60 pt-6">
@@ -657,16 +654,24 @@ function VisualDesignSection() {
         temporada.
       </p>
       <div className="mt-7">
-        <DetailTable title="Diseño visual de postres y petit four" rows={dessertRows} field="visual" />
+        <DetailTable title="Diseño visual de platos" rows={plateRows} field="visual" />
       </div>
       <div className="mt-7">
-        <DetailTable title="Diseño visual de platos" rows={plateRows} field="visual" />
+        <DetailTable
+          title="Diseño visual de postres y petit four"
+          rows={dessertRows}
+          field="visual"
+        />
       </div>
     </article>
   );
 }
 
 function TechnicalSheetsSection({ rows }: { rows: MenuRow[] }) {
+  const [activeDishId, setActiveDishId] = useState<string | null>(null);
+  const dishesById = useMemo(() => buildDishesById(), []);
+  const activeDish = activeDishId ? dishesById.get(activeDishId) : undefined;
+
   return (
     <article className="rounded-md border border-border bg-background/70 p-6 md:p-8">
       <h2 className="font-serif text-2xl text-foreground md:text-3xl">Fichas técnicas</h2>
@@ -698,21 +703,65 @@ function TechnicalSheetsSection({ rows }: { rows: MenuRow[] }) {
                   {row.technique}
                 </td>
                 <td className="p-3 text-sm">
-                  <Link
-                    to="/carta-digital/$dishId"
-                    params={{ dishId: row.dishId }}
+                  <button
+                    type="button"
+                    onClick={() => setActiveDishId(row.dishId)}
                     className="font-medium text-accent underline underline-offset-4 transition hover:text-foreground"
                   >
                     Ver ficha técnica
-                  </Link>
+                  </button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+
+      {activeDish ? (
+        <DishModal
+          dish={activeDish}
+          open={Boolean(activeDishId)}
+          onOpenChange={(open) => !open && setActiveDishId(null)}
+        />
+      ) : null}
     </article>
   );
+}
+
+function buildDishesById() {
+  const dishesById = new Map<string, Dish>();
+
+  allDishes.forEach((dish) => {
+    dishesById.set(dish.id, dish);
+  });
+
+  Object.values(technicalSheets).forEach((sheet) => {
+    if (dishesById.has(sheet.id)) return;
+
+    const description = sheet.plate.find((row) => row.label === "Descripción del plato")?.value ?? "";
+    const technique =
+      sheet.plate.find((row) => row.label === "Técnica culinaria aplicada")?.value ?? "";
+    const inspiration =
+      sheet.plate.find((row) => row.label === "Inspiración o historia")?.value ?? "";
+    const origin =
+      sheet.ingredient.find((row) => row.label === "Isla o zona de producción")?.value ?? "";
+
+    dishesById.set(sheet.id, {
+      id: sheet.id,
+      name: sheet.name,
+      description,
+      longDescription: description,
+      ingredients: sheet.ingredients.slice(0, 4).map((row) => row.label),
+      technique,
+      origin,
+      inspiration,
+      allergens: [],
+      price: 0,
+      technicalSheetId: sheet.id,
+    });
+  });
+
+  return dishesById;
 }
 
 function MenuTable({ title, rows }: { title: string; rows: MenuRow[] }) {
@@ -724,7 +773,9 @@ function MenuTable({ title, rows }: { title: string; rows: MenuRow[] }) {
           <thead className="bg-card/70 text-[10px] uppercase tracking-[0.22em] text-accent">
             <tr>
               <th className="border-r border-border p-3 font-medium">Nombre creativo</th>
-              <th className="border-r border-border p-3 font-medium">Ingredientes principales canarios</th>
+              <th className="border-r border-border p-3 font-medium">
+                Ingredientes principales canarios
+              </th>
               <th className="p-3 font-medium">Técnica innovadora aplicada</th>
             </tr>
           </thead>
@@ -766,7 +817,9 @@ function DetailTable({
           <thead className="bg-card/70 text-[10px] uppercase tracking-[0.22em] text-accent">
             <tr>
               <th className="border-r border-border p-3 font-medium">Elaboración</th>
-              <th className="p-3 font-medium">{field === "narrative" ? "Relato" : "Presentación"}</th>
+              <th className="p-3 font-medium">
+                {field === "narrative" ? "Relato" : "Presentación"}
+              </th>
             </tr>
           </thead>
           <tbody>
