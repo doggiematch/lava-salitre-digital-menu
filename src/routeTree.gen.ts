@@ -29,6 +29,7 @@ import { Route as ProyectoFase2DisenoCartaContenidoRouteImport } from './routes/
 import { Route as ProyectoFase1ConceptualizacionFundamentacionRouteImport } from './routes/proyecto.fase-1-conceptualizacion-fundamentacion'
 import { Route as ProyectoEstructuraMenusInversionTempRouteImport } from './routes/proyecto.estructura-menus-inversion-temp'
 import { Route as ProyectoConceptualizacionFundamentacionTempRouteImport } from './routes/proyecto.conceptualizacion-fundamentacion-temp'
+import { Route as ProyectoCartaFisicaAbiertaRouteImport } from './routes/proyecto.carta-fisica-abierta'
 import { Route as CartaDigitalDishIdRouteImport } from './routes/carta-digital.$dishId'
 
 const ReservasRoute = ReservasRouteImport.update({
@@ -138,6 +139,12 @@ const ProyectoConceptualizacionFundamentacionTempRoute =
     path: '/conceptualizacion-fundamentacion-temp',
     getParentRoute: () => ProyectoRoute,
   } as any)
+const ProyectoCartaFisicaAbiertaRoute =
+  ProyectoCartaFisicaAbiertaRouteImport.update({
+    id: '/carta-fisica-abierta',
+    path: '/carta-fisica-abierta',
+    getParentRoute: () => ProyectoRoute,
+  } as any)
 const CartaDigitalDishIdRoute = CartaDigitalDishIdRouteImport.update({
   id: '/$dishId',
   path: '/$dishId',
@@ -157,6 +164,7 @@ export interface FileRoutesByFullPath {
   '/proyecto': typeof ProyectoRouteWithChildren
   '/reservas': typeof ReservasRoute
   '/carta-digital/$dishId': typeof CartaDigitalDishIdRoute
+  '/proyecto/carta-fisica-abierta': typeof ProyectoCartaFisicaAbiertaRoute
   '/proyecto/conceptualizacion-fundamentacion-temp': typeof ProyectoConceptualizacionFundamentacionTempRoute
   '/proyecto/estructura-menus-inversion-temp': typeof ProyectoEstructuraMenusInversionTempRoute
   '/proyecto/fase-1-conceptualizacion-fundamentacion': typeof ProyectoFase1ConceptualizacionFundamentacionRoute
@@ -179,6 +187,7 @@ export interface FileRoutesByTo {
   '/pedidos': typeof PedidosRoute
   '/reservas': typeof ReservasRoute
   '/carta-digital/$dishId': typeof CartaDigitalDishIdRoute
+  '/proyecto/carta-fisica-abierta': typeof ProyectoCartaFisicaAbiertaRoute
   '/proyecto/conceptualizacion-fundamentacion-temp': typeof ProyectoConceptualizacionFundamentacionTempRoute
   '/proyecto/estructura-menus-inversion-temp': typeof ProyectoEstructuraMenusInversionTempRoute
   '/proyecto/fase-1-conceptualizacion-fundamentacion': typeof ProyectoFase1ConceptualizacionFundamentacionRoute
@@ -203,6 +212,7 @@ export interface FileRoutesById {
   '/proyecto': typeof ProyectoRouteWithChildren
   '/reservas': typeof ReservasRoute
   '/carta-digital/$dishId': typeof CartaDigitalDishIdRoute
+  '/proyecto/carta-fisica-abierta': typeof ProyectoCartaFisicaAbiertaRoute
   '/proyecto/conceptualizacion-fundamentacion-temp': typeof ProyectoConceptualizacionFundamentacionTempRoute
   '/proyecto/estructura-menus-inversion-temp': typeof ProyectoEstructuraMenusInversionTempRoute
   '/proyecto/fase-1-conceptualizacion-fundamentacion': typeof ProyectoFase1ConceptualizacionFundamentacionRoute
@@ -228,6 +238,7 @@ export interface FileRouteTypes {
     | '/proyecto'
     | '/reservas'
     | '/carta-digital/$dishId'
+    | '/proyecto/carta-fisica-abierta'
     | '/proyecto/conceptualizacion-fundamentacion-temp'
     | '/proyecto/estructura-menus-inversion-temp'
     | '/proyecto/fase-1-conceptualizacion-fundamentacion'
@@ -250,6 +261,7 @@ export interface FileRouteTypes {
     | '/pedidos'
     | '/reservas'
     | '/carta-digital/$dishId'
+    | '/proyecto/carta-fisica-abierta'
     | '/proyecto/conceptualizacion-fundamentacion-temp'
     | '/proyecto/estructura-menus-inversion-temp'
     | '/proyecto/fase-1-conceptualizacion-fundamentacion'
@@ -273,6 +285,7 @@ export interface FileRouteTypes {
     | '/proyecto'
     | '/reservas'
     | '/carta-digital/$dishId'
+    | '/proyecto/carta-fisica-abierta'
     | '/proyecto/conceptualizacion-fundamentacion-temp'
     | '/proyecto/estructura-menus-inversion-temp'
     | '/proyecto/fase-1-conceptualizacion-fundamentacion'
@@ -440,6 +453,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProyectoConceptualizacionFundamentacionTempRouteImport
       parentRoute: typeof ProyectoRoute
     }
+    '/proyecto/carta-fisica-abierta': {
+      id: '/proyecto/carta-fisica-abierta'
+      path: '/carta-fisica-abierta'
+      fullPath: '/proyecto/carta-fisica-abierta'
+      preLoaderRoute: typeof ProyectoCartaFisicaAbiertaRouteImport
+      parentRoute: typeof ProyectoRoute
+    }
     '/carta-digital/$dishId': {
       id: '/carta-digital/$dishId'
       path: '/$dishId'
@@ -463,6 +483,7 @@ const CartaDigitalRouteWithChildren = CartaDigitalRoute._addFileChildren(
 )
 
 interface ProyectoRouteChildren {
+  ProyectoCartaFisicaAbiertaRoute: typeof ProyectoCartaFisicaAbiertaRoute
   ProyectoConceptualizacionFundamentacionTempRoute: typeof ProyectoConceptualizacionFundamentacionTempRoute
   ProyectoEstructuraMenusInversionTempRoute: typeof ProyectoEstructuraMenusInversionTempRoute
   ProyectoFase1ConceptualizacionFundamentacionRoute: typeof ProyectoFase1ConceptualizacionFundamentacionRoute
@@ -475,6 +496,7 @@ interface ProyectoRouteChildren {
 }
 
 const ProyectoRouteChildren: ProyectoRouteChildren = {
+  ProyectoCartaFisicaAbiertaRoute: ProyectoCartaFisicaAbiertaRoute,
   ProyectoConceptualizacionFundamentacionTempRoute:
     ProyectoConceptualizacionFundamentacionTempRoute,
   ProyectoEstructuraMenusInversionTempRoute:

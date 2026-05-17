@@ -52,7 +52,7 @@ export function DishCard({ dish }: { dish: Dish }) {
       <DishModal dish={dish} open={open} onOpenChange={setOpen} />
       {allergenSheet ? (
         <Dialog open={allergenOpen} onOpenChange={setAllergenOpen}>
-          <DialogContent className="max-h-[92vh] max-w-[96vw] overflow-y-auto p-0 md:max-w-5xl lg:max-w-6xl">
+          <DialogContent className="max-h-[92vh] max-w-[96vw] overflow-y-auto p-0 lg:max-w-6xl">
             <DialogHeader className="sr-only">
               <DialogTitle>Ficha de alérgenos de {allergenSheet.title}</DialogTitle>
             </DialogHeader>

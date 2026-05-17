@@ -15,7 +15,7 @@ export function SectionTitle({
       {eyebrow && (
         <div className={`ornament mb-5 ${isCenter ? "justify-center" : ""}`}>{eyebrow}</div>
       )}
-      <h2 className="font-serif text-[2.5rem] leading-[1.05] text-foreground sm:text-5xl md:text-[3.75rem]">
+      <h2 className="font-serif text-[2.5rem] leading-[1.05] text-foreground lg:text-[3.75rem]">
         {title}
       </h2>
       {subtitle && (

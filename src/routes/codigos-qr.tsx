@@ -35,8 +35,8 @@ function CodigosQrPage() {
 
   return (
     <div className="paper">
-      <section className="mx-auto max-w-6xl px-5 py-12 md:py-16">
-        <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+      <section className="mx-auto max-w-6xl px-5 py-12 lg:py-16">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
           <SectionTitle
             eyebrow="Día 2 · Códigos QR"
             title="QR de platos y postres"
@@ -74,7 +74,7 @@ function CodigosQrPage() {
                 </span>
               </div>
 
-              <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 print:grid-cols-2">
+              <div className="grid gap-5 lg:grid-cols-3 print:grid-cols-2">
                 {group.dishes.map((dish) => {
                   const href = `/carta-digital/${dish.id}`;
                   const target = `${origin}${href}`;

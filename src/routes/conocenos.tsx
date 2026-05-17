@@ -473,14 +473,14 @@ const investmentBudget = [
 function Conocenos() {
   return (
     <div className="paper">
-      <section className="mx-auto max-w-6xl px-5 py-14 md:py-20">
+      <section className="mx-auto max-w-6xl px-5 py-14 lg:py-20">
         <SectionTitle
           eyebrow="Lava & Salitre"
           title="Conócenos"
           subtitle="Proyecto de restaurante gastronómico en el Puerto de las Nieves, Agaete."
         />
 
-        <div className="mt-12 grid gap-px overflow-hidden rounded-md border border-border bg-border md:grid-cols-2">
+        <div className="mt-12 grid gap-px overflow-hidden rounded-md border border-border bg-border lg:grid-cols-2">
           {overview.map((item) => (
             <div key={item.label} className="bg-background p-6">
               <p className="text-[10px] uppercase tracking-[0.3em] text-accent">{item.label}</p>
@@ -491,7 +491,7 @@ function Conocenos() {
       </section>
 
       <section className="border-t border-border/60 bg-background">
-        <div className="mx-auto grid max-w-6xl gap-10 px-5 py-12 md:grid-cols-[0.9fr_1.1fr] md:items-center md:py-16">
+        <div className="mx-auto grid max-w-6xl gap-10 px-5 py-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:py-16">
           <div className="relative">
             <div className="absolute -left-4 -top-4 h-28 w-28 border-l border-t border-accent/50" />
             <div className="absolute -bottom-5 -right-5 h-44 w-44 rounded-full bg-accent/15 blur-2xl" />
@@ -501,7 +501,7 @@ function Conocenos() {
                 src="/galeria/rudy-ceo.png"
                 alt="Rudy Lindgreen García, CEO de Lava & Salitre"
                 loading="lazy"
-                className="h-[420px] w-full object-cover object-top md:h-[560px]"
+                className="h-[420px] w-full object-cover object-top lg:h-[560px]"
               />
             </figure>
           </div>
@@ -509,7 +509,7 @@ function Conocenos() {
             <p className="text-[10px] uppercase tracking-[0.35em] text-accent">
               CEO & Culinary Leader
             </p>
-            <h2 className="mt-4 font-serif text-3xl leading-tight text-foreground md:text-4xl">
+            <h2 className="mt-4 font-serif text-3xl leading-tight text-foreground lg:text-4xl">
               “Lava & Salitre nace para escuchar la isla: el mar, la piedra caliente y la memoria de
               cada producto.”
             </h2>
@@ -551,9 +551,9 @@ export function ProjectSections({ activeSection }: { activeSection?: ProjectSect
     <>
       {(!activeSection || activeSection === "investigacion-ingredientes-km-0") && (
         <section id="investigacion-ingredientes-km-0" className="border-t border-border/60">
-          <div className="mx-auto max-w-6xl px-5 py-12 md:py-16">
+          <div className="mx-auto max-w-6xl px-5 py-12 lg:py-16">
             <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Categoría</p>
-            <h2 className="mt-4 font-serif text-3xl text-foreground md:text-4xl">
+            <h2 className="mt-4 font-serif text-3xl text-foreground lg:text-4xl">
               Investigación de ingredientes km 0
             </h2>
             <div className="mt-6 space-y-5">
@@ -575,12 +575,12 @@ export function ProjectSections({ activeSection }: { activeSection?: ProjectSect
               <h3 className="font-serif text-2xl text-foreground">
                 Base dulce de la carta de postres
               </h3>
-              <p className="mt-3 text-sm leading-[1.85] text-muted-foreground md:text-base">
+              <p className="mt-3 text-sm leading-[1.85] text-muted-foreground lg:text-base">
                 Estos diez ingredientes principales forman la base de nuestra carta de postres. Cada
                 uno aporta una función: dulzor, acidez, untuosidad, aroma, textura o memoria
                 canaria.
               </p>
-              <div className="mt-6 grid gap-4 md:grid-cols-2">
+              <div className="mt-6 grid gap-4 lg:grid-cols-2">
                 {dessertIngredients.map((ingredient) => (
                   <article
                     key={ingredient.name}
@@ -599,7 +599,7 @@ export function ProjectSections({ activeSection }: { activeSection?: ProjectSect
               <h3 className="px-5 py-4 font-serif text-xl text-foreground">
                 Selección completa de ingredientes canarios
               </h3>
-              <div className="grid gap-px border-t border-border bg-border md:grid-cols-2">
+              <div className="grid gap-px border-t border-border bg-border lg:grid-cols-2">
                 {km0Ingredients.map((ingredient) => (
                   <div key={ingredient.name} className="bg-background p-5">
                     <p className="font-serif text-lg text-foreground">{ingredient.name}</p>
@@ -616,9 +616,9 @@ export function ProjectSections({ activeSection }: { activeSection?: ProjectSect
 
       {(!activeSection || activeSection === "estructura-menus-inversion") && (
         <section id="estructura-menus-inversion" className="border-t border-border/60">
-          <div className="mx-auto max-w-6xl px-5 py-12 md:py-16">
+          <div className="mx-auto max-w-6xl px-5 py-12 lg:py-16">
             <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Categoría</p>
-            <h2 className="mt-4 font-serif text-3xl text-foreground md:text-4xl">
+            <h2 className="mt-4 font-serif text-3xl text-foreground lg:text-4xl">
               Estructura, menús e inversión inicial
             </h2>
             <div className="mt-6 space-y-5">
@@ -639,8 +639,8 @@ export function ProjectSections({ activeSection }: { activeSection?: ProjectSect
               <h3 className="px-5 py-4 font-serif text-xl text-foreground">
                 Estructura, menús e inversión
               </h3>
-              <div className="space-y-8 border-t border-border p-5 md:p-8">
-                <div className="grid gap-6 md:grid-cols-[0.9fr_1.1fr]">
+              <div className="space-y-8 border-t border-border p-5 lg:p-8">
+                <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
                   <div className="rounded-md border border-border bg-card/60 p-6">
                     <h3 className="font-serif text-2xl text-foreground">Capacidad y servicio</h3>
                     <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
@@ -695,7 +695,7 @@ export function ProjectSections({ activeSection }: { activeSection?: ProjectSect
                   <h3 className="font-serif text-2xl text-foreground">
                     Opciones de inversión inicial
                   </h3>
-                  <div className="mt-5 grid gap-4 md:grid-cols-2">
+                  <div className="mt-5 grid gap-4 lg:grid-cols-2">
                     {investmentOptions.map((item) => (
                       <article
                         key={item.option}
@@ -719,7 +719,7 @@ export function ProjectSections({ activeSection }: { activeSection?: ProjectSect
                     {investmentBudget.map((row) => (
                       <div
                         key={row.concept}
-                        className="grid gap-3 border-b border-border bg-background p-5 last:border-b-0 md:grid-cols-[0.6fr_0.4fr]"
+                        className="grid gap-3 border-b border-border bg-background p-5 last:border-b-0 lg:grid-cols-[0.6fr_0.4fr]"
                       >
                         <p className="font-serif text-lg text-foreground">{row.concept}</p>
                         <p className="text-sm leading-relaxed text-muted-foreground">
@@ -742,9 +742,9 @@ export function ProjectSections({ activeSection }: { activeSection?: ProjectSect
 
       {(!activeSection || activeSection === "concepto-gastronomico") && (
         <section id="concepto-gastronomico" className="border-t border-border/60">
-          <div className="mx-auto max-w-6xl px-5 py-12 md:py-16">
+          <div className="mx-auto max-w-6xl px-5 py-12 lg:py-16">
             <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Categoría</p>
-            <h2 className="mt-4 font-serif text-3xl text-foreground md:text-4xl">
+            <h2 className="mt-4 font-serif text-3xl text-foreground lg:text-4xl">
               Concepto gastronómico: lava, salitre e identidad canaria
             </h2>
             <div className="mt-6 rounded-md border border-border bg-background/70 p-6">
@@ -793,8 +793,8 @@ export function ProjectSections({ activeSection }: { activeSection?: ProjectSect
               <h3 className="px-5 py-4 font-serif text-xl text-foreground">
                 Productos e islas representadas
               </h3>
-              <div className="space-y-6 border-t border-border p-5 md:p-8">
-                <div className="grid gap-5 md:grid-cols-2">
+              <div className="space-y-6 border-t border-border p-5 lg:p-8">
+                <div className="grid gap-5 lg:grid-cols-2">
                   {islandProducts.map((item) => (
                     <article
                       key={item.island}
@@ -860,7 +860,7 @@ export function ProjectSections({ activeSection }: { activeSection?: ProjectSect
                     </h3>
                   </div>
 
-                  <div className="grid gap-6 md:grid-cols-[0.95fr_1.05fr] md:items-center">
+                  <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
                     <figure className="overflow-hidden rounded-md border border-border bg-black">
                       <img
                         src="/galeria/logo-version-dorada-transparente.png"
@@ -886,7 +886,7 @@ export function ProjectSections({ activeSection }: { activeSection?: ProjectSect
                     </div>
                   </div>
 
-                  <div className="grid gap-5 md:grid-cols-2">
+                  <div className="grid gap-5 lg:grid-cols-2">
                     <div className="rounded-md border border-border bg-card/60 p-5">
                       <h4 className="font-serif text-xl text-foreground">Isotipo</h4>
                       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -928,13 +928,13 @@ export function ProjectSections({ activeSection }: { activeSection?: ProjectSect
 
                   <div>
                     <h4 className="font-serif text-xl text-foreground">Versiones del logotipo</h4>
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-base">
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground lg:text-base">
                       Las distintas versiones permiten mantener una identidad coherente en sala,
                       carta, web, redes sociales, papelería, señalética y materiales promocionales,
                       adaptándose a fondos oscuros, claros, fotográficos o monocromos sin perder
                       reconocimiento.
                     </p>
-                    <div className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                    <div className="mt-5 grid gap-4 lg:grid-cols-3">
                       {logoVersions.map((version) => (
                         <figure
                           key={version.src}
@@ -968,9 +968,9 @@ export function ProjectSections({ activeSection }: { activeSection?: ProjectSect
       {(!activeSection || activeSection === "tecnologias-gastronomicas") && (
         <>
           <section id="tecnologias-gastronomicas" className="border-t border-border/60">
-            <div className="mx-auto max-w-6xl px-5 py-12 md:py-16">
+            <div className="mx-auto max-w-6xl px-5 py-12 lg:py-16">
               <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Categoría</p>
-              <h2 className="mt-4 font-serif text-3xl text-foreground md:text-4xl">
+              <h2 className="mt-4 font-serif text-3xl text-foreground lg:text-4xl">
                 Público objetivo
               </h2>
               <div className="mt-6 space-y-5">
@@ -1110,13 +1110,13 @@ export function ProjectSections({ activeSection }: { activeSection?: ProjectSect
                         src="/galeria/equipo.png"
                         alt="Equipo de Lava & Salitre frente al restaurante"
                         loading="lazy"
-                        className="h-[260px] w-full object-cover md:h-[360px]"
+                        className="h-[260px] w-full object-cover lg:h-[360px]"
                       />
                       <figcaption className="px-5 py-4 text-sm italic leading-relaxed text-muted-foreground">
                         Un equipo cercano, profesional y conectado con la identidad del restaurante.
                       </figcaption>
                     </figure>
-                    <div className="grid gap-6 md:grid-cols-2">
+                    <div className="grid gap-6 lg:grid-cols-2">
                       {segments.map((segment) => (
                         <article
                           key={segment.title}
@@ -1203,7 +1203,7 @@ export function ProjectSections({ activeSection }: { activeSection?: ProjectSect
                       {idealClient.map((row) => (
                         <div
                           key={row.aspect}
-                          className="grid gap-3 border-b border-border bg-background p-5 last:border-b-0 md:grid-cols-[0.35fr_0.65fr]"
+                          className="grid gap-3 border-b border-border bg-background p-5 last:border-b-0 lg:grid-cols-[0.35fr_0.65fr]"
                         >
                           <p className="font-serif text-lg text-foreground">{row.aspect}</p>
                           <p className="text-sm leading-relaxed text-muted-foreground">
@@ -1220,7 +1220,7 @@ export function ProjectSections({ activeSection }: { activeSection?: ProjectSect
                         src="/galeria/restaurante-clientes.png"
                         alt="Clientes comiendo en el salón superior de Lava & Salitre"
                         loading="lazy"
-                        className="h-[280px] w-full object-cover md:h-[460px]"
+                        className="h-[280px] w-full object-cover lg:h-[460px]"
                       />
                       <figcaption className="px-5 py-4 text-sm italic leading-relaxed text-muted-foreground">
                         Clientes comiendo en el salón superior del restaurante.
@@ -1299,9 +1299,9 @@ export function ProjectSections({ activeSection }: { activeSection?: ProjectSect
           </section>
 
           <section className="border-t border-border/60">
-            <div className="mx-auto max-w-6xl px-5 py-12 md:py-16">
+            <div className="mx-auto max-w-6xl px-5 py-12 lg:py-16">
               <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Categoría</p>
-              <h2 className="mt-4 font-serif text-3xl text-foreground md:text-4xl">
+              <h2 className="mt-4 font-serif text-3xl text-foreground lg:text-4xl">
                 Tecnologías gastronómicas
               </h2>
               <div className="mt-6 space-y-5">
@@ -1323,10 +1323,10 @@ export function ProjectSections({ activeSection }: { activeSection?: ProjectSect
                 <h3 className="px-5 py-4 font-serif text-xl text-foreground">
                   Tecnologías y aplicaciones
                 </h3>
-                <div className="space-y-8 border-t border-border p-5 md:p-8">
+                <div className="space-y-8 border-t border-border p-5 lg:p-8">
                   <div>
                     <h3 className="font-serif text-2xl text-foreground">Técnicas culinarias</h3>
-                    <div className="mt-5 grid gap-4 md:grid-cols-2">
+                    <div className="mt-5 grid gap-4 lg:grid-cols-2">
                       {culinaryTechnologies.map((technology) => (
                         <article
                           key={technology.name}
@@ -1345,7 +1345,7 @@ export function ProjectSections({ activeSection }: { activeSection?: ProjectSect
                     <h3 className="font-serif text-2xl text-foreground">
                       Tecnologías para la carta y la experiencia
                     </h3>
-                    <div className="mt-5 grid gap-4 md:grid-cols-2">
+                    <div className="mt-5 grid gap-4 lg:grid-cols-2">
                       {digitalTechnologies.map((technology) => (
                         <article
                           key={technology.name}
@@ -1366,7 +1366,7 @@ export function ProjectSections({ activeSection }: { activeSection?: ProjectSect
                       {technologySummary.map((row) => (
                         <div
                           key={row.technology}
-                          className="grid gap-3 border-b border-border bg-background p-5 last:border-b-0 md:grid-cols-[0.25fr_0.35fr_0.4fr]"
+                          className="grid gap-3 border-b border-border bg-background p-5 last:border-b-0 lg:grid-cols-[0.25fr_0.35fr_0.4fr]"
                         >
                           <p className="font-serif text-lg text-foreground">{row.technology}</p>
                           <p className="text-sm leading-relaxed text-muted-foreground">{row.use}</p>
@@ -1390,8 +1390,8 @@ export function ProjectSections({ activeSection }: { activeSection?: ProjectSect
 function ContentSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section className="border-t border-border/60">
-      <div className="mx-auto max-w-6xl px-5 py-12 md:py-16">
-        <h2 className="font-serif text-3xl text-foreground md:text-4xl">{title}</h2>
+      <div className="mx-auto max-w-6xl px-5 py-12 lg:py-16">
+        <h2 className="font-serif text-3xl text-foreground lg:text-4xl">{title}</h2>
         <div className="mt-7 space-y-5">{children}</div>
       </div>
     </section>
@@ -1399,7 +1399,7 @@ function ContentSection({ title, children }: { title: string; children: React.Re
 }
 
 function Text({ children }: { children: React.ReactNode }) {
-  return <p className="text-sm leading-[1.85] text-muted-foreground md:text-base">{children}</p>;
+  return <p className="text-sm leading-[1.85] text-muted-foreground lg:text-base">{children}</p>;
 }
 
 function CeoText({ children }: { children: React.ReactNode }) {
@@ -1421,7 +1421,7 @@ function InfoList({ items }: { items: readonly string[] }) {
 
 function ImageGrid({ photos }: { photos: readonly { src: string; alt: string; title: string }[] }) {
   return (
-    <div className="grid gap-4 md:grid-cols-2">
+    <div className="grid gap-4 lg:grid-cols-2">
       {photos.map((photo) => (
         <figure
           key={photo.src}

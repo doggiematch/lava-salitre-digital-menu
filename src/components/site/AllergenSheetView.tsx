@@ -20,18 +20,18 @@ export function AllergenSheetView({ sheet }: { sheet: AllergenSheet }) {
   const contained = sheet.rows.filter((row) => row.status !== "No contiene");
 
   return (
-    <article className="bg-background px-4 py-6 text-foreground sm:px-8 md:px-12 md:py-10">
+    <article className="bg-background px-4 py-6 text-foreground lg:px-12 lg:py-10">
       <header className="border-b border-gold pb-6 text-center">
         <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Carta de alérgenos</p>
-        <h2 className="mt-3 font-serif text-3xl leading-tight text-foreground md:text-5xl">
+        <h2 className="mt-3 font-serif text-3xl leading-tight text-foreground lg:text-5xl">
           {sheet.title}
         </h2>
-        <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
+        <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground lg:text-base">
           {sheet.subtitle}
         </p>
       </header>
 
-      <div className="mt-6 grid gap-4 md:grid-cols-[0.8fr_1.2fr]">
+      <div className="mt-6 grid gap-4 lg:grid-cols-[0.8fr_1.2fr]">
         <section className="rounded-md border border-border bg-card/45 p-5">
           <p className="text-[10px] uppercase tracking-[0.24em] text-accent">Representa</p>
           <h3 className="mt-2 font-serif text-2xl text-foreground">{sheet.represents}</h3>
@@ -77,7 +77,7 @@ export function AllergenSheetView({ sheet }: { sheet: AllergenSheet }) {
         </div>
       </section>
 
-      <footer className="mt-6 grid gap-4 md:grid-cols-3">
+      <footer className="mt-6 grid gap-4 lg:grid-cols-3">
         <div className="rounded-md border border-border bg-card/45 p-5">
           <p className="text-[10px] uppercase tracking-[0.24em] text-sage">Contiene</p>
           <p className="mt-2 text-sm font-semibold leading-relaxed text-foreground">

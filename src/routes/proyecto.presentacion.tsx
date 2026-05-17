@@ -110,15 +110,15 @@ function PresentacionProyecto() {
 
   return (
     <div className="paper">
-      <section className="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-[1fr_0.82fr] md:items-center md:py-20">
+      <section className="mx-auto grid max-w-6xl gap-10 px-5 py-14 lg:grid-cols-[1fr_0.82fr] lg:items-center lg:py-20">
         <div>
           <p className="text-[10px] uppercase tracking-[0.35em] text-accent">
             Presentación final
           </p>
-          <h1 className="mt-4 font-serif text-4xl leading-tight text-foreground md:text-6xl">
+          <h1 className="mt-4 font-serif text-4xl leading-tight text-foreground lg:text-6xl">
             Lava & Salitre
           </h1>
-          <p className="mt-6 max-w-3xl text-base leading-[1.8] text-muted-foreground md:text-lg">
+          <p className="mt-6 max-w-3xl text-base leading-[1.8] text-muted-foreground lg:text-lg">
             Lava & Salitre es una propuesta de restaurante canario de vanguardia situada en Agaete.
             El proyecto une producto local, paisaje volcánico, mar Atlántico y una carta pensada para
             explicar Canarias desde una mirada actual.
@@ -149,12 +149,12 @@ function PresentacionProyecto() {
       </section>
 
       <section className="border-t border-border/60">
-        <div className="mx-auto max-w-6xl px-5 py-12 md:py-16">
+        <div className="mx-auto max-w-6xl px-5 py-12 lg:py-16">
           <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Concepto</p>
-          <h2 className="mt-3 font-serif text-3xl text-foreground md:text-4xl">
+          <h2 className="mt-3 font-serif text-3xl text-foreground lg:text-4xl">
             Tradición canaria, producto local y cocina actual
           </h2>
-          <div className="mt-7 grid gap-4 md:grid-cols-3">
+          <div className="mt-7 grid gap-4 lg:grid-cols-3">
             {conceptPoints.map((point) => (
               <article key={point.title} className="rounded-md border border-border bg-background/70 p-5">
                 <h3 className="font-serif text-2xl text-foreground">{point.title}</h3>
@@ -166,28 +166,28 @@ function PresentacionProyecto() {
       </section>
 
       <section className="border-t border-border/60">
-        <div className="mx-auto max-w-6xl px-5 py-12 md:py-16">
+        <div className="mx-auto max-w-6xl px-5 py-12 lg:py-16">
           <p className="text-[10px] uppercase tracking-[0.35em] text-accent">
             Guion de exposición
           </p>
-          <h2 className="mt-3 font-serif text-3xl text-foreground md:text-4xl">
+          <h2 className="mt-3 font-serif text-3xl text-foreground lg:text-4xl">
             Las cuatro fases del proyecto
           </h2>
           <div className="mt-7 grid gap-6">
             {phaseSlides.map((slide) => (
               <article
                 key={slide.phase}
-                className="grid overflow-hidden rounded-md border border-border bg-background/70 md:grid-cols-[0.85fr_1.15fr]"
+                className="grid overflow-hidden rounded-md border border-border bg-background/70 lg:grid-cols-[0.85fr_1.15fr]"
               >
                 <img src={slide.image} alt={slide.title} className="h-full min-h-64 w-full object-cover" />
-                <div className="p-6 md:p-8">
+                <div className="p-6 lg:p-8">
                   <p className="text-[10px] uppercase tracking-[0.35em] text-accent">
                     {slide.phase}
                   </p>
-                  <h3 className="mt-3 font-serif text-2xl text-foreground md:text-3xl">
+                  <h3 className="mt-3 font-serif text-2xl text-foreground lg:text-3xl">
                     {slide.title}
                   </h3>
-                  <p className="mt-4 text-sm leading-[1.8] text-muted-foreground md:text-base">
+                  <p className="mt-4 text-sm leading-[1.8] text-muted-foreground lg:text-base">
                     {slide.text}
                   </p>
                   <ul className="mt-5 grid gap-2">
@@ -205,17 +205,17 @@ function PresentacionProyecto() {
       </section>
 
       <section className="border-t border-border/60">
-        <div className="mx-auto max-w-6xl px-5 py-12 md:py-16">
+        <div className="mx-auto max-w-6xl px-5 py-12 lg:py-16">
           <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Carta</p>
-          <h2 className="mt-3 font-serif text-3xl text-foreground md:text-4xl">
+          <h2 className="mt-3 font-serif text-3xl text-foreground lg:text-4xl">
             Recorrido gastronómico
           </h2>
-          <p className="mt-4 max-w-3xl text-sm leading-[1.8] text-muted-foreground md:text-base">
+          <p className="mt-4 max-w-3xl text-sm leading-[1.8] text-muted-foreground lg:text-base">
             La carta se entiende como un recorrido breve y ordenado. Primero aparecen los platos
             canarios de vanguardia; después, la parte dulce con postres clásicos reinterpretados,
             postres de innovación y petit four.
           </p>
-          <div className="mt-7 grid gap-4 md:grid-cols-4">
+          <div className="mt-7 grid gap-4 lg:grid-cols-4">
             {tastingPath.map((step, index) => (
               <article key={step} className="rounded-md border border-border bg-card/50 p-5">
                 <p className="font-serif text-3xl text-accent">{String(index + 1).padStart(2, "0")}</p>
@@ -227,12 +227,12 @@ function PresentacionProyecto() {
       </section>
 
       <section className="border-t border-border/60">
-        <div className="mx-auto max-w-6xl px-5 py-12 md:py-16">
+        <div className="mx-auto max-w-6xl px-5 py-12 lg:py-16">
           <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Galería de apoyo</p>
-          <h2 className="mt-3 font-serif text-3xl text-foreground md:text-4xl">
+          <h2 className="mt-3 font-serif text-3xl text-foreground lg:text-4xl">
             Imágenes para explicar la propuesta
           </h2>
-          <div className="mt-7 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+          <div className="mt-7 grid grid-cols-2 gap-4 lg:grid-cols-5">
             {featuredDishes.map((dish) => {
               const sheet = dish.technicalSheetId ? technicalSheets[dish.technicalSheetId] : undefined;
               const imageSrc = sheet?.photoSrc ?? sheet?.sketchSrc;
@@ -266,7 +266,7 @@ function PresentacionProyecto() {
       </section>
 
       <section className="border-t border-border/60">
-        <div className="mx-auto grid max-w-6xl gap-6 px-5 py-12 md:grid-cols-[0.9fr_1.1fr] md:items-center md:py-16">
+        <div className="mx-auto grid max-w-6xl gap-6 px-5 py-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:py-16">
           <div className="overflow-hidden rounded-md border border-border bg-card/50">
             <img
               src="/galeria/logo-lava-salitre.png"
@@ -276,10 +276,10 @@ function PresentacionProyecto() {
           </div>
           <div>
             <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Cierre</p>
-            <h2 className="mt-3 font-serif text-3xl text-foreground md:text-4xl">
+            <h2 className="mt-3 font-serif text-3xl text-foreground lg:text-4xl">
               Una experiencia canaria contemporánea
             </h2>
-            <p className="mt-4 text-sm leading-[1.8] text-muted-foreground md:text-base">
+            <p className="mt-4 text-sm leading-[1.8] text-muted-foreground lg:text-base">
               Como conclusión, Lava & Salitre propone una forma de contar Canarias desde la cocina:
               producto local, paisaje, memoria gastronómica y tecnología sencilla al servicio de la
               experiencia. La propuesta es visual, clara y preparada para presentarse tanto en sala

@@ -25,7 +25,7 @@ function Experiencia() {
     <div className="mx-auto max-w-6xl px-5 py-14">
       <SectionTitle eyebrow="Filosofía" title="La experiencia" subtitle="Una cocina que conversa con el paisaje volcánico y el mar de Agaete." />
 
-      <div className="mt-12 grid gap-px overflow-hidden rounded-md border border-border bg-border md:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-12 grid gap-px overflow-hidden rounded-md border border-border bg-border lg:grid-cols-3">
         {blocks.map((b, i) => (
           <div key={b.t} className="bg-background p-8">
             <span className="font-serif text-sm text-accent">0{i + 1}</span>
@@ -35,8 +35,8 @@ function Experiencia() {
         ))}
       </div>
 
-      <div className="mt-16 rounded-md border border-border bg-gradient-to-br from-background to-secondary/40 p-8 md:p-12">
-        <p className="font-serif text-2xl italic leading-relaxed text-stone-volcanic md:text-3xl">
+      <div className="mt-16 rounded-md border border-border bg-gradient-to-br from-background to-secondary/40 p-8 lg:p-12">
+        <p className="font-serif text-2xl italic leading-relaxed text-stone-volcanic lg:text-3xl">
           “El sabor de una isla está hecho de viento, sal y piedra caliente. Nosotros sólo lo escuchamos.”
         </p>
         <p className="mt-4 text-xs uppercase tracking-[0.3em] text-accent">— Chef ejecutivo</p>

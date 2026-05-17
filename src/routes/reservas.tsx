@@ -27,8 +27,8 @@ function Reservas() {
     <div className="mx-auto max-w-3xl px-5 py-14">
       <SectionTitle eyebrow="Reservas" title="Reserva tu mesa" subtitle="Lorem ipsum dolor sit amet. Te confirmaremos disponibilidad por email." align="center" />
 
-      <form onSubmit={submit} className="mt-10 space-y-5 rounded-md border border-border bg-card/60 p-6 md:p-8">
-        <div className="grid gap-5 md:grid-cols-2">
+      <form onSubmit={submit} className="mt-10 space-y-5 rounded-md border border-border bg-card/60 p-6 lg:p-8">
+        <div className="grid gap-5 lg:grid-cols-2">
           <Field label="Fecha">
             <input type="date" required value={form.date} onChange={(e) => setForm({ ...form, date: e.target.value })} className="input" />
           </Field>

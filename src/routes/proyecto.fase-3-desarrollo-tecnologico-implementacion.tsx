@@ -8,6 +8,9 @@ import { technicalSheets } from "@/data/technicalSheets";
 
 type DigitalDish = (typeof allDishes)[number];
 
+const PROJECT_WEB_URL =
+  "https://lava-salitre-digital-menu-el3mqseme-doggiematchs-projects.vercel.app/";
+
 export const Route = createFileRoute("/proyecto/fase-3-desarrollo-tecnologico-implementacion")({
   component: Fase3DesarrolloTecnologicoImplementacion,
   head: () => ({
@@ -37,17 +40,17 @@ function Fase3DesarrolloTecnologicoImplementacion() {
       intro="Esta tercera fase transforma la carta en una experiencia digital accesible, informativa y alineada con el posicionamiento del restaurante. El objetivo es crear los elementos tecnológicos que acompañarán la propuesta gastronómica, aportando transparencia, interacción, valor de marca y nuevas oportunidades de comunicación con el cliente."
     >
       <section className="border-t border-border/60">
-        <div className="mx-auto grid max-w-6xl gap-8 px-5 py-12 md:py-16">
+        <div className="mx-auto grid max-w-6xl gap-8 px-5 py-12 lg:py-16">
           <DigitalPlatformSection />
           <QrCodesSection dishes={dishes} origin={origin} />
           <MultimediaSection dishes={dishes} />
           {phaseSections.map((section) => (
             <article
               key={section.title}
-              className="rounded-md border border-border bg-background/70 p-6 md:p-8"
+              className="rounded-md border border-border bg-background/70 p-6 lg:p-8"
             >
-              <h2 className="font-serif text-2xl text-foreground md:text-3xl">{section.title}</h2>
-              <p className="mt-4 max-w-4xl text-sm leading-[1.8] text-muted-foreground md:text-base">
+              <h2 className="font-serif text-2xl text-foreground lg:text-3xl">{section.title}</h2>
+              <p className="mt-4 max-w-4xl text-sm leading-[1.8] text-muted-foreground lg:text-base">
                 {section.text}
               </p>
             </article>
@@ -60,10 +63,19 @@ function Fase3DesarrolloTecnologicoImplementacion() {
 
 function DigitalPlatformSection() {
   return (
-    <article className="rounded-md border border-border bg-background/70 p-6 md:p-8">
-      <h2 className="font-serif text-2xl text-foreground md:text-3xl">Plataforma digital</h2>
-      <p className="mt-4 max-w-4xl text-sm leading-[1.8] text-muted-foreground md:text-base">
-        La web funciona como presentación digital de Lava & Salitre: un restaurante de cocina
+    <article className="rounded-md border border-border bg-background/70 p-6 lg:p-8">
+      <h2 className="font-serif text-2xl text-foreground lg:text-3xl">Plataforma digital</h2>
+      <p className="mt-4 max-w-4xl text-sm leading-[1.8] text-muted-foreground lg:text-base">
+        La{" "}
+        <a
+          href={PROJECT_WEB_URL}
+          target="_blank"
+          rel="noreferrer"
+          className="text-foreground underline underline-offset-4 transition-colors hover:text-accent"
+        >
+          web
+        </a>{" "}
+        funciona como presentación digital de Lava & Salitre: un restaurante de cocina
         canaria de vanguardia que une tierra volcánica, salitre atlántico, producto local y menú
         degustación. La plataforma resume el concepto, muestra la carta digital, presenta platos y
         postres con imágenes, y permite consultar fichas rápidas desde códigos QR.
@@ -122,9 +134,9 @@ function QrCodesSection({ dishes, origin }: { dishes: DigitalDish[]; origin: str
   const [selectedDish, setSelectedDish] = useState<DigitalDish | null>(null);
 
   return (
-    <article className="rounded-md border border-border bg-background/70 p-6 md:p-8">
-      <h2 className="font-serif text-2xl text-foreground md:text-3xl">Códigos QR</h2>
-      <p className="mt-4 max-w-4xl text-sm leading-[1.8] text-muted-foreground md:text-base">
+    <article className="rounded-md border border-border bg-background/70 p-6 lg:p-8">
+      <h2 className="font-serif text-2xl text-foreground lg:text-3xl">Códigos QR</h2>
+      <p className="mt-4 max-w-4xl text-sm leading-[1.8] text-muted-foreground lg:text-base">
         Los códigos QR conectan la carta física con fichas digitales actualizables. Cada QR dirige
         a una ficha rápida con descripción, ingredientes, técnica, origen del producto e información
         de alérgenos.
@@ -200,9 +212,9 @@ function MultimediaSection({ dishes }: { dishes: DigitalDish[] }) {
   const selectedImage = selectedSheet?.photoSrc ?? selectedSheet?.sketchSrc;
 
   return (
-    <article className="rounded-md border border-border bg-background/70 p-6 md:p-8">
-      <h2 className="font-serif text-2xl text-foreground md:text-3xl">Contenido multimedia</h2>
-      <p className="mt-4 max-w-4xl text-sm leading-[1.8] text-muted-foreground md:text-base">
+    <article className="rounded-md border border-border bg-background/70 p-6 lg:p-8">
+      <h2 className="font-serif text-2xl text-foreground lg:text-3xl">Contenido multimedia</h2>
+      <p className="mt-4 max-w-4xl text-sm leading-[1.8] text-muted-foreground lg:text-base">
         El contenido multimedia acompaña la experiencia digital del restaurante y ayuda a presentar
         cada elaboración de forma más clara, atractiva y cercana. Las imágenes de platos, postres y
         petit four refuerzan la identidad visual de Lava & Salitre y permiten que el cliente se haga
@@ -220,7 +232,7 @@ function MultimediaSection({ dishes }: { dishes: DigitalDish[] }) {
       </div>
 
       <Dialog open={Boolean(selectedDish)} onOpenChange={(open) => !open && setSelectedDish(null)}>
-        <DialogContent className="max-h-[92vh] max-w-[94vw] overflow-y-auto p-0 md:max-w-4xl">
+        <DialogContent className="max-h-[92vh] max-w-[94vw] overflow-y-auto p-0 lg:max-w-4xl">
           {selectedDish ? (
             <>
               <DialogHeader className="sr-only">
@@ -259,13 +271,13 @@ function ThumbnailGrid({
   return (
     <section>
       <div className="mb-4 flex items-center gap-4">
-        <h3 className="shrink-0 font-serif text-xl text-foreground md:text-2xl">{title}</h3>
+        <h3 className="shrink-0 font-serif text-xl text-foreground lg:text-2xl">{title}</h3>
         <span className="h-px flex-1 bg-border" />
         <span className="text-[10px] uppercase tracking-[0.24em] text-muted-foreground">
           {dishes.length} imágenes
         </span>
       </div>
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+      <div className="grid grid-cols-2 gap-4 lg:grid-cols-5">
         {dishes.map((dish) => {
           const sheet = dish.technicalSheetId ? technicalSheets[dish.technicalSheetId] : undefined;
           const imageSrc = sheet?.photoSrc ?? sheet?.sketchSrc;

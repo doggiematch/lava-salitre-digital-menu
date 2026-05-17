@@ -40,13 +40,13 @@ const projectMenu = [
 function ProyectoIndex() {
   return (
     <div className="paper">
-      <section className="mx-auto max-w-6xl px-5 py-14 md:py-20">
+      <section className="mx-auto max-w-6xl px-5 py-14 lg:py-20">
         <SectionTitle eyebrow="Proyecto" title="Proyecto Lava & Salitre" />
       </section>
 
       <section className="border-t border-border/60">
-        <div className="mx-auto max-w-6xl px-5 py-12 md:py-16">
-          <nav className="grid gap-4 md:grid-cols-2" aria-label="Menú del proyecto">
+        <div className="mx-auto max-w-6xl px-5 py-12 lg:py-16">
+          <nav className="grid gap-4 lg:grid-cols-2" aria-label="Menú del proyecto">
             {projectMenu.map((item) => (
               <Link
                 key={item.to}

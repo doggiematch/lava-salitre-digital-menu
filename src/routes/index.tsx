@@ -25,12 +25,12 @@ function Index() {
           className="absolute inset-0 h-full w-full object-cover"
         />
 
-        <div className="relative z-10 mx-auto flex min-h-[calc(100svh-88px)] max-w-7xl items-center px-6 py-16 lg:-translate-x-8 lg:px-10 xl:-translate-x-14">
-          <div className="relative max-w-[38rem] animate-fade-up px-5 py-6 sm:px-8 sm:py-8">
+        <div className="relative z-10 mx-auto flex min-h-[calc(100svh-88px)] max-w-7xl items-center px-6 py-16 lg:-translate-x-14 lg:px-10">
+          <div className="relative max-w-[38rem] animate-fade-up px-5 py-6 lg:px-8 lg:py-8">
             <div className="absolute inset-0 -z-10 rounded-xl border border-background/30 bg-background/28 shadow-[0_24px_90px_-45px_oklch(0.18_0.012_55/.55)] backdrop-blur-md" />
             <div className="ornament mb-8">Puerto de las Nieves · Agaete</div>
 
-            <h1 className="font-serif text-[3.5rem] leading-[0.95] text-foreground drop-shadow-sm sm:text-[5rem] md:text-[6.5rem]">
+            <h1 className="font-serif text-[3.5rem] leading-[0.95] text-foreground drop-shadow-sm lg:text-[6.5rem]">
               Lava
               <br />
               <span className="italic text-accent">&amp;</span> Salitre
@@ -38,7 +38,7 @@ function Index() {
 
             <div className="mt-8 flex items-center gap-4">
               <span className="h-px w-12 bg-accent" />
-              <p className="font-serif text-xl italic text-stone-volcanic sm:text-2xl">
+              <p className="font-serif text-xl italic text-stone-volcanic lg:text-2xl">
                 Cocina canaria de vanguardia
               </p>
             </div>
@@ -49,7 +49,7 @@ function Index() {
               memoria insular.
             </p>
 
-            <div className="mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
+            <div className="mt-12 flex flex-col items-center justify-center gap-3 lg:flex-row lg:flex-wrap">
               <Link to="/menus" search={{ menu: "lava" }} className="btn-primary">
                 Menú Lava
               </Link>
@@ -73,7 +73,7 @@ function Index() {
       </section>
 
       <section className="relative border-y border-border/50 bg-cream/40">
-        <div className="mx-auto grid max-w-7xl gap-12 px-6 py-20 md:grid-cols-3 lg:px-10">
+        <div className="mx-auto grid max-w-7xl gap-12 px-6 py-20 lg:grid-cols-3 lg:px-10">
           {[
             {
               n: "01",
@@ -106,7 +106,7 @@ function Index() {
       <section className="relative overflow-hidden">
         <div className="mx-auto max-w-4xl px-6 py-24 text-center lg:py-32">
           <div className="ornament mb-8 justify-center">Filosofía</div>
-          <p className="font-serif text-3xl italic leading-[1.4] text-stone-volcanic sm:text-4xl md:text-[2.75rem]">
+          <p className="font-serif text-3xl italic leading-[1.4] text-stone-volcanic lg:text-[2.75rem]">
             “El sabor de una isla está hecho de viento, sal y piedra caliente. Nosotros sólo lo
             escuchamos.”
           </p>
@@ -118,7 +118,7 @@ function Index() {
       </section>
 
       <section className="border-t border-border/60 bg-background">
-        <div className="mx-auto flex max-w-7xl flex-col items-center gap-6 px-6 py-16 text-center md:flex-row md:justify-between md:text-left lg:px-10">
+        <div className="mx-auto flex max-w-7xl flex-col items-center gap-6 px-6 py-16 text-center lg:flex-row lg:justify-between lg:text-left lg:px-10">
           <div>
             <h3 className="font-serif text-3xl">Reserva tu mesa</h3>
             <p className="mt-2 text-sm text-muted-foreground">

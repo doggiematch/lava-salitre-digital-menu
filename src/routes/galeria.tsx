@@ -22,7 +22,7 @@ const photos = [
     src: "/galeria/fachada-atardecer.png",
     alt: "Fachada de Lava & Salitre al atardecer frente al mar",
     title: "Frente al Atlántico",
-    className: "md:col-span-2",
+    className: "lg:col-span-2",
   },
   {
     src: "/galeria/salon-vistas.png",
@@ -40,13 +40,13 @@ const photos = [
     src: "/galeria/terraza-atardecer.png",
     alt: "Terraza del restaurante con mesas y vistas al atardecer",
     title: "Terraza",
-    className: "md:col-span-2",
+    className: "lg:col-span-2",
   },
   {
     src: "/galeria/cocina.png",
     alt: "Cocina profesional de Lava & Salitre preparada para el servicio",
     title: "Cocina vista",
-    className: "md:col-span-2",
+    className: "lg:col-span-2",
   },
   {
     src: "/galeria/equipo.png",
@@ -61,7 +61,7 @@ function Galeria() {
 
   return (
     <div className="paper">
-      <section className="mx-auto max-w-7xl px-5 py-14 md:py-20">
+      <section className="mx-auto max-w-7xl px-5 py-14 lg:py-20">
         <div className="grid items-end gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <SectionTitle
             eyebrow="Galería"
@@ -69,16 +69,16 @@ function Galeria() {
             subtitle="Piedra volcánica, madera cálida y el Atlántico como telón de fondo para cada servicio."
           />
 
-          {/* <div className="flex min-h-[300px] items-center justify-center lg:justify-end md:min-h-[420px]">
+          {/* <div className="flex min-h-[300px] items-center justify-center lg:justify-end lg:min-h-[420px]">
             <img
               src="/galeria/logo-version-dorada-transparente.png"
               alt="Logo de Lava & Salitre"
-              className="h-auto max-h-[300px] w-auto max-w-full object-contain md:max-h-[390px] lg:max-w-[680px]"
+              className="h-auto max-h-[300px] w-auto max-w-full object-contain lg:max-h-[390px] lg:max-w-[680px]"
             />
           </div> */}
         </div>
 
-        <div className="mt-14 grid auto-rows-[260px] gap-4 md:grid-cols-3 md:auto-rows-[320px]">
+        <div className="mt-14 grid auto-rows-[260px] gap-4 lg:grid-cols-3 lg:auto-rows-[320px]">
           {photos.map((photo) => (
             <button
               key={photo.src}

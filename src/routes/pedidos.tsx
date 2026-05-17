@@ -31,7 +31,7 @@ function Pedidos() {
       <SectionTitle eyebrow="Take away" title="Pedidos para llevar" subtitle="Una selección curada de nuestra cocina, lista para disfrutar en casa." />
 
       <div className="mt-10 grid gap-10 lg:grid-cols-3">
-        <div className="grid gap-5 sm:grid-cols-2 lg:col-span-2">
+        <div className="grid gap-5 lg:grid-cols-2 lg:col-span-2">
           {products.map((p) => (
             <div key={p.id} className="flex flex-col rounded-md border border-border bg-card/60 p-5">
               <div className="flex items-start justify-between gap-3">

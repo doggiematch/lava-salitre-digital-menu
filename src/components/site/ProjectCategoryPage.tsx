@@ -11,7 +11,7 @@ type ProjectCategoryPageProps = {
 export function ProjectCategoryPage({ activeSection, title, subtitle }: ProjectCategoryPageProps) {
   return (
     <div className="paper">
-      <section className="mx-auto max-w-6xl px-5 py-14 md:py-20">
+      <section className="mx-auto max-w-6xl px-5 py-14 lg:py-20">
         <Link
           to="/proyecto"
           className="text-[10px] uppercase tracking-[0.35em] text-accent transition-colors hover:text-foreground"

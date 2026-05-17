@@ -51,7 +51,7 @@ function QuickDishPage() {
 
   return (
     <div className="paper">
-      <section className="mx-auto max-w-4xl px-5 py-8 md:py-12">
+      <section className="mx-auto max-w-4xl px-5 py-8 lg:py-12">
         <Link
           to="/carta-digital"
           className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.24em] text-muted-foreground transition-colors hover:text-foreground"
@@ -65,16 +65,16 @@ function QuickDishPage() {
             <img src={imageSrc} alt={dish.name} className="aspect-video w-full object-cover" />
           ) : null}
 
-          <div className="p-6 md:p-8">
+          <div className="p-6 lg:p-8">
             <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Ficha rápida QR</p>
-            <h1 className="mt-4 font-serif text-4xl leading-tight text-foreground md:text-5xl">
+            <h1 className="mt-4 font-serif text-4xl leading-tight text-foreground lg:text-5xl">
               {dish.name}
             </h1>
             <p className="mt-4 text-base leading-[1.8] text-muted-foreground">
               {dish.description}
             </p>
 
-            <div className="mt-8 grid gap-4 md:grid-cols-2">
+            <div className="mt-8 grid gap-4 lg:grid-cols-2">
               <InfoCard icon={Leaf} label="Origen del producto" value={dish.origin} />
               <InfoCard icon={ChefHat} label="Técnica" value={dish.technique} />
               <InfoCard

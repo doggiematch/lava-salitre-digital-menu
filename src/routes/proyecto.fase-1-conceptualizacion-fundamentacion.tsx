@@ -25,6 +25,9 @@ export const Route = createFileRoute("/proyecto/fase-1-conceptualizacion-fundame
   }),
 });
 
+const PROJECT_WEB_URL =
+  "https://lava-salitre-digital-menu-el3mqseme-doggiematchs-projects.vercel.app/";
+
 const phaseSections = [] as const;
 
 const traditionalDesserts = [
@@ -337,6 +340,57 @@ const islandConceptProducts = [
   },
 ] as const;
 
+const logoVersions = [
+  {
+    src: "/galeria/logo-version-dorada-negro.png",
+    alt: "Logotipo dorado de Lava & Salitre sobre fondo negro",
+    title: "Versión principal",
+    description:
+      "Dorada sobre fondo oscuro, pensada para soportes elegantes, presencia digital y piezas de mayor impacto.",
+    frameClassName: "bg-stone-950",
+  },
+  {
+    src: "/galeria/logo-version-dorada-transparente.png",
+    alt: "Logotipo dorado de Lava & Salitre con fondo transparente",
+    title: "Versión dorada adaptable",
+    description:
+      "Útil para aplicaciones sobre fotografía, materiales corporativos y fondos neutros donde el oro mantiene protagonismo.",
+    frameClassName: "bg-stone-950",
+  },
+  {
+    src: "/galeria/logo-version-blanca-negro.png",
+    alt: "Logotipo blanco de Lava & Salitre sobre fondo negro",
+    title: "Versión blanca",
+    description:
+      "Funciona en fondos oscuros cuando se busca máxima limpieza, contraste y lectura inmediata.",
+    frameClassName: "bg-stone-950",
+  },
+  {
+    src: "/galeria/logo-version-dorada-blanco.png",
+    alt: "Logotipo dorado y negro de Lava & Salitre sobre fondo blanco",
+    title: "Versión clara premium",
+    description:
+      "Adecuada para papelería, cartas, presentaciones y soportes impresos con fondo claro.",
+    frameClassName: "bg-card",
+  },
+  {
+    src: "/galeria/logo-version-negra-blanco.png",
+    alt: "Logotipo negro de Lava & Salitre sobre fondo blanco",
+    title: "Versión monocroma",
+    description:
+      "Pensada para usos sobrios, documentación, sellos, grabados o aplicaciones donde el color no sea posible.",
+    frameClassName: "bg-card",
+  },
+  {
+    src: "/galeria/logo-version-claim-centrado.png",
+    alt: "Logotipo de Lava & Salitre con claim Tierra y Mar centrado",
+    title: "Versión con claim centrado",
+    description:
+      "Refuerza el mensaje Tierra y Mar en piezas donde la identidad conceptual debe quedar especialmente clara.",
+    frameClassName: "bg-card",
+  },
+] as const;
+
 const audienceSegments = [
   {
     title: "Segmentación demográfica",
@@ -548,6 +602,30 @@ function CardTitle({ icon: Icon, title }: { icon: LucideIcon; title: string }) {
   );
 }
 
+function ProjectWebText({ text }: { text: string }) {
+  const parts = text.split(/(\bla web\b|\bweb\b)/i);
+
+  return (
+    <>
+      {parts.map((part, index) =>
+        /^la web$|^web$/i.test(part) ? (
+          <a
+            key={`${part}-${index}`}
+            href={PROJECT_WEB_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="text-foreground underline underline-offset-4 transition-colors hover:text-accent"
+          >
+            {part}
+          </a>
+        ) : (
+          part
+        ),
+      )}
+    </>
+  );
+}
+
 function Fase1ConceptualizacionFundamentacion() {
   return (
     <ProjectPhasePage
@@ -556,7 +634,7 @@ function Fase1ConceptualizacionFundamentacion() {
       intro="Esta primera fase establece la base estratégica del proyecto: un restaurante que reinterpreta la tradición gastronómica canaria en platos y postres vanguardistas, creando una propuesta diferencial, viable y capaz de atraer tanto al cliente local como al visitante que busca una experiencia singular vinculada al territorio."
     >
       <section className="border-t border-border/60">
-        <div className="mx-auto grid max-w-6xl gap-8 px-5 py-12 md:py-16">
+        <div className="mx-auto grid max-w-6xl gap-8 px-5 py-12 lg:py-16">
           <GastronomicContextSection />
           <Km0IngredientsSection />
           <GastronomicConceptSection />
@@ -565,10 +643,10 @@ function Fase1ConceptualizacionFundamentacion() {
           {phaseSections.map((section) => (
             <article
               key={section.title}
-              className="rounded-md border border-border bg-background/70 p-6 md:p-8"
+              className="rounded-md border border-border bg-background/70 p-6 lg:p-8"
             >
-              <h2 className="font-serif text-2xl text-foreground md:text-3xl">{section.title}</h2>
-              <p className="mt-4 max-w-4xl text-sm leading-[1.8] text-muted-foreground md:text-base">
+              <h2 className="font-serif text-2xl text-foreground lg:text-3xl">{section.title}</h2>
+              <p className="mt-4 max-w-4xl text-sm leading-[1.8] text-muted-foreground lg:text-base">
                 {section.text}
               </p>
             </article>
@@ -585,8 +663,8 @@ function GastronomicContextSection() {
   >(null);
 
   return (
-    <article className="rounded-md border border-border bg-background/70 p-6 md:p-8">
-      <h2 className="mt-3 font-serif text-2xl text-foreground md:text-3xl">
+    <article className="rounded-md border border-border bg-background/70 p-6 lg:p-8">
+      <h2 className="mt-3 font-serif text-2xl text-foreground lg:text-3xl">
         Contexto gastronómico canario
       </h2>
 
@@ -606,10 +684,10 @@ function GastronomicContextSection() {
       </div>
 
       <div className="mt-8 border-t border-border/60 pt-7">
-        <h3 className="font-serif text-xl text-foreground md:text-2xl">
+        <h3 className="font-serif text-xl text-foreground lg:text-2xl">
           Postres tradicionales como punto de partida
         </h3>
-        <div className="mt-5 grid gap-4 md:grid-cols-2">
+        <div className="mt-5 grid gap-4 lg:grid-cols-2">
           {traditionalDesserts.map((dessert) => (
             <div key={dessert.name} className="border-l border-accent/40 pl-4">
               <h4 className="font-serif text-lg text-foreground">{dessert.name}</h4>
@@ -622,7 +700,7 @@ function GastronomicContextSection() {
       </div>
 
       <div className="mt-8 border-t border-border/60 pt-7">
-        <h3 className="font-serif text-xl text-foreground md:text-2xl">
+        <h3 className="font-serif text-xl text-foreground lg:text-2xl">
           Reinterpretación con cocina de vanguardia
         </h3>
         <Text className="mt-4">
@@ -630,7 +708,7 @@ function GastronomicContextSection() {
           mantener su sabor principal y presentarlo de una forma más actual, con más ligereza, mejor
           lectura visual y mayor contraste de texturas.
         </Text>
-        <ul className="mt-5 grid gap-3 md:grid-cols-2">
+        <ul className="mt-5 grid gap-3 lg:grid-cols-2">
           {avantGardeResources.map((resource) => (
             <li
               key={resource}
@@ -643,15 +721,15 @@ function GastronomicContextSection() {
       </div>
 
       <div className="mt-8 border-t border-border/60 pt-7">
-        <h3 className="font-serif text-xl text-foreground md:text-2xl">
+        <h3 className="font-serif text-xl text-foreground lg:text-2xl">
           Líneas creativas de postres canarios
         </h3>
-        <p className="mt-3 text-sm leading-[1.8] text-muted-foreground md:text-base">
+        <p className="mt-3 text-sm leading-[1.8] text-muted-foreground lg:text-base">
           Estos bocetos muestran cómo un sabor tradicional puede transformarse en un pase más
           técnico, visual y adaptado a un menú degustación. Cada enlace abre la imagen en modal para
           verla ampliada.
         </p>
-        <div className="mt-5 grid gap-4 md:grid-cols-2">
+        <div className="mt-5 grid gap-4 lg:grid-cols-2">
           {reinterpretationExamples.map((example, index) => (
             <div key={example.title} className="rounded-md border border-border bg-card/50 p-5">
               <p className="text-[10px] uppercase tracking-[0.28em] text-accent">
@@ -684,7 +762,7 @@ function GastronomicContextSection() {
           }
         }}
       >
-        <DialogContent className="max-h-[92vh] max-w-[94vw] overflow-y-auto p-0 md:max-w-4xl">
+        <DialogContent className="max-h-[92vh] max-w-[94vw] overflow-y-auto p-0 lg:max-w-4xl">
           {selectedExample && (
             <>
               <DialogHeader className="sr-only">
@@ -705,8 +783,8 @@ function GastronomicContextSection() {
 
 function Km0IngredientsSection() {
   return (
-    <article className="rounded-md border border-border bg-background/70 p-6 md:p-8">
-      <h2 className="mt-3 font-serif text-2xl text-foreground md:text-3xl">Ingredientes km 0</h2>
+    <article className="rounded-md border border-border bg-background/70 p-6 lg:p-8">
+      <h2 className="mt-3 font-serif text-2xl text-foreground lg:text-3xl">Ingredientes km 0</h2>
 
       <div className="mt-5 space-y-5">
         <Text>
@@ -723,42 +801,42 @@ function Km0IngredientsSection() {
       </div>
 
       <div className="mt-8 border-t border-border/60 pt-7">
-        <h3 className="font-serif text-xl text-foreground md:text-2xl">
+        <h3 className="font-serif text-xl text-foreground lg:text-2xl">
           Listado de 20 ingredientes producidos en Canarias
         </h3>
         <div className="mt-5 overflow-hidden rounded-md border border-border">
-          <div className="grid grid-cols-[3rem_1fr] bg-card/70 text-[10px] uppercase tracking-[0.22em] text-accent md:grid-cols-[3rem_1fr_0.8fr_1.35fr_1.25fr]">
+          <div className="grid grid-cols-[3rem_1fr] bg-card/70 text-[10px] uppercase tracking-[0.22em] text-accent lg:grid-cols-[3rem_1fr_0.8fr_1.35fr_1.25fr]">
             <div className="border-r border-border p-3">Nº</div>
             <div className="border-r border-border p-3">Ingrediente</div>
-            <div className="hidden border-r border-border p-3 md:block">Isla</div>
-            <div className="hidden border-r border-border p-3 md:block">
+            <div className="hidden border-r border-border p-3 lg:block">Isla</div>
+            <div className="hidden border-r border-border p-3 lg:block">
               Productor / procedencia
             </div>
-            <div className="hidden p-3 md:block">Zona agrícola u origen</div>
+            <div className="hidden p-3 lg:block">Zona agrícola u origen</div>
           </div>
           {km0Ingredients.map((item, index) => (
             <div
               key={item.ingredient}
-              className="grid grid-cols-[3rem_1fr] border-t border-border bg-background md:grid-cols-[3rem_1fr_0.8fr_1.35fr_1.25fr]"
+              className="grid grid-cols-[3rem_1fr] border-t border-border bg-background lg:grid-cols-[3rem_1fr_0.8fr_1.35fr_1.25fr]"
             >
               <div className="border-r border-border p-3 text-sm text-muted-foreground">
                 {index + 1}
               </div>
               <div className="border-r border-border p-3">
                 <p className="font-serif text-lg text-foreground">{item.ingredient}</p>
-                <div className="mt-2 space-y-1 text-sm leading-relaxed text-muted-foreground md:hidden">
+                <div className="mt-2 space-y-1 text-sm leading-relaxed text-muted-foreground lg:hidden">
                   <p>{item.island}</p>
                   <p>{item.source}</p>
                   <p>{item.origin}</p>
                 </div>
               </div>
-              <div className="hidden border-r border-border p-3 text-sm leading-relaxed text-muted-foreground md:block">
+              <div className="hidden border-r border-border p-3 text-sm leading-relaxed text-muted-foreground lg:block">
                 {item.island}
               </div>
-              <div className="hidden border-r border-border p-3 text-sm leading-relaxed text-muted-foreground md:block">
+              <div className="hidden border-r border-border p-3 text-sm leading-relaxed text-muted-foreground lg:block">
                 {item.source}
               </div>
-              <div className="hidden p-3 text-sm leading-relaxed text-muted-foreground md:block">
+              <div className="hidden p-3 text-sm leading-relaxed text-muted-foreground lg:block">
                 {item.origin}
               </div>
             </div>
@@ -770,7 +848,7 @@ function Km0IngredientsSection() {
         <p className="text-[10px] uppercase tracking-[0.28em] text-accent">
           Lava y Salitre - Carta de postres
         </p>
-        <h3 className="mt-3 font-serif text-xl text-foreground md:text-2xl">
+        <h3 className="mt-3 font-serif text-xl text-foreground lg:text-2xl">
           Selección de 10 ingredientes principales
         </h3>
         <Text className="mt-4">
@@ -780,7 +858,7 @@ function Km0IngredientsSection() {
           técnicas actuales dentro de los menús Lava, Salitre y Lava y Salitre.
         </Text>
 
-        <div className="mt-5 grid gap-4 md:grid-cols-2">
+        <div className="mt-5 grid gap-4 lg:grid-cols-2">
           {dessertIngredientSelection.map((item, index) => (
             <div key={item.ingredient} className="rounded-md border border-border bg-card/50 p-5">
               <p className="text-[10px] uppercase tracking-[0.28em] text-accent">
@@ -797,7 +875,7 @@ function Km0IngredientsSection() {
       </div>
 
       <div className="mt-8 border-t border-border/60 pt-7">
-        <h3 className="font-serif text-xl text-foreground md:text-2xl">Conclusión</h3>
+        <h3 className="font-serif text-xl text-foreground lg:text-2xl">Conclusión</h3>
         <Text className="mt-4">
           Estos ingredientes forman una base coherente para la carta dulce del restaurante porque
           salen de las recetas ya creadas y refuerzan el concepto de Lava y Salitre. El chocolate,
@@ -817,12 +895,20 @@ function Km0IngredientsSection() {
 
 function GastronomicConceptSection() {
   return (
-    <article className="rounded-md border border-border bg-background/70 p-6 md:p-8">
-      <h2 className="mt-3 font-serif text-2xl text-foreground md:text-3xl">
+    <article className="rounded-md border border-border bg-background/70 p-6 lg:p-8">
+      <h2 className="mt-3 font-serif text-2xl text-foreground lg:text-3xl">
         Concepto gastronómico
       </h2>
 
-      <div className="mt-6 grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+      <div className="mt-6 flow-root">
+        <figure className="mb-5 overflow-hidden rounded-md border border-border bg-black lg:float-right lg:mb-4 lg:ml-7 lg:w-[47%]">
+          <img
+            src="/proyecto/fase-1/concepto-lava-salitre.jpg"
+            alt="Identidad visual de Lava y Salitre"
+            className="aspect-[16/9] w-full object-cover"
+            loading="lazy"
+          />
+        </figure>
         <div className="space-y-5">
           <Text>
             Lava y Salitre es un restaurante inspirado en dos elementos muy presentes en Canarias:
@@ -841,18 +927,12 @@ function GastronomicConceptSection() {
             volcánica de la tierra y la riqueza de sus productos.
           </Text>
         </div>
-        <figure className="overflow-hidden rounded-md border border-border bg-black">
-          <img
-            src="/proyecto/fase-1/concepto-lava-salitre.jpg"
-            alt="Identidad visual de Lava y Salitre"
-            className="aspect-[16/9] w-full object-cover"
-            loading="lazy"
-          />
-        </figure>
       </div>
 
+      <LogoIdentitySection />
+
       <div className="mt-8 border-t border-border/60 pt-7">
-        <h3 className="font-serif text-xl text-foreground md:text-2xl">
+        <h3 className="font-serif text-xl text-foreground lg:text-2xl">
           Representación de las ocho islas Canarias
         </h3>
         <Text className="mt-4">
@@ -860,7 +940,7 @@ function GastronomicConceptSection() {
           algas, agua de mar, sal marina, gofio, papas, miel de palma, almendra de Tejeda, piña de
           El Hierro, plátano canario, leche de cabra, vino canario y carnes locales.
         </Text>
-        <div className="mt-5 grid gap-4 md:grid-cols-2">
+        <div className="mt-5 grid gap-4 lg:grid-cols-2">
           {islandConceptProducts.map((item) => (
             <div key={item.island} className="rounded-md border border-border bg-card/50 p-5">
               <h4 className="font-serif text-xl text-foreground">{item.island}</h4>
@@ -876,7 +956,7 @@ function GastronomicConceptSection() {
       </div>
 
       <div className="mt-8 border-t border-border/60 pt-7">
-        <h3 className="font-serif text-xl text-foreground md:text-2xl">
+        <h3 className="font-serif text-xl text-foreground lg:text-2xl">
           Tradición canaria con mirada vanguardista
         </h3>
         <div className="mt-4 space-y-5">
@@ -901,12 +981,128 @@ function GastronomicConceptSection() {
   );
 }
 
+function LogoIdentitySection() {
+  return (
+    <div className="mt-8 border-t border-border/60 pt-7">
+      <div>
+        <p className="text-[10px] uppercase tracking-[0.28em] text-accent">Identidad visual</p>
+        <h3 className="mt-3 font-serif text-xl text-foreground lg:text-2xl">
+          Logotipo de Lava & Salitre
+        </h3>
+      </div>
+
+      <div className="mt-5 grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+        <a
+          href="/galeria/logo-version-dorada-negro.png"
+          target="_blank"
+          rel="noreferrer"
+          className="block overflow-hidden rounded-md border border-border bg-black"
+          aria-label="Abrir logotipo principal de Lava & Salitre"
+        >
+          <img
+            src="/galeria/logo-version-dorada-negro.png"
+            alt="Logotipo principal de Lava & Salitre"
+            loading="lazy"
+            className="h-full min-h-64 w-full object-contain"
+          />
+        </a>
+        <div className="space-y-5">
+          <Text>
+            La identidad visual de Lava & Salitre resume el mismo concepto que sostiene la cocina
+            del restaurante: la fuerza de la tierra volcánica y la presencia constante del mar. El
+            símbolo superior representa una montaña o formación volcánica atravesada por un recorrido
+            orgánico que puede leerse como lava, camino, costa o corriente marina.
+          </Text>
+          <Text>
+            El dorado aporta calidez, valor gastronómico y una sensación premium sin alejarse de la
+            naturaleza del proyecto. El negro conecta con la piedra volcánica y la elegancia de la
+            sala; el blanco permite versiones más limpias y luminosas para soportes claros.
+          </Text>
+        </div>
+      </div>
+
+      <div className="mt-6 grid gap-5 lg:grid-cols-2">
+        <div className="rounded-md border border-border bg-card/60 p-5">
+          <h4 className="font-serif text-xl text-foreground">Isotipo</h4>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            Es la parte simbólica: la montaña volcánica, el trazo sinuoso y los puntos que evocan
+            salitre, arena, espuma o mineralidad. Puede funcionar como recurso gráfico, aunque al
+            ser una marca nueva conviene acompañarlo del nombre para que el cliente lo asocie con el
+            restaurante.
+          </p>
+        </div>
+        <div className="rounded-md border border-border bg-card/60 p-5">
+          <h4 className="font-serif text-xl text-foreground">Logotipo</h4>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            Es la composición tipográfica de Lava & Salitre, acompañada por la palabra Restaurante.
+            La elección de una tipografía serif transmite oficio, pausa y una experiencia
+            gastronómica cuidada.
+          </p>
+        </div>
+        <div className="rounded-md border border-border bg-card/60 p-5">
+          <h4 className="font-serif text-xl text-foreground">Claim</h4>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            Tierra y Mar funciona como claim porque condensa la promesa del restaurante en una idea
+            breve y memorable: producto terrestre, paisaje volcánico, pescado, sal marina y
+            Atlántico.
+          </p>
+        </div>
+        <div className="rounded-md border border-border bg-card/60 p-5">
+          <h4 className="font-serif text-xl text-foreground">Imagotipo</h4>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            La marca se entiende como un imagotipo porque combina un símbolo reconocible con un
+            texto legible, y ambos pueden separarse en ciertos usos sin romper la coherencia visual.
+          </p>
+        </div>
+      </div>
+
+      <div className="mt-7">
+        <h4 className="font-serif text-xl text-foreground">Versiones del logotipo</h4>
+        <p className="mt-3 text-sm leading-relaxed text-muted-foreground lg:text-base">
+          Las distintas versiones permiten mantener una identidad coherente en sala, carta, web,
+          redes sociales, papelería, señalética y materiales promocionales, adaptándose a fondos
+          oscuros, claros, fotográficos o monocromos sin perder reconocimiento.
+        </p>
+        <div className="mt-5 grid gap-4 lg:grid-cols-3">
+          {logoVersions.map((version) => (
+            <figure
+              key={version.src}
+              className="overflow-hidden rounded-md border border-border bg-background"
+            >
+              <a
+                href={version.src}
+                target="_blank"
+                rel="noreferrer"
+                className={`flex h-40 items-center justify-center p-4 ${version.frameClassName}`}
+                aria-label={`Abrir ${version.title}`}
+              >
+                <img
+                  src={version.src}
+                  alt={version.alt}
+                  loading="lazy"
+                  className="max-h-full w-full object-contain"
+                />
+              </a>
+              <figcaption className="p-4">
+                <p className="font-serif text-lg text-foreground">{version.title}</p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {version.description}
+                </p>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function TargetAudienceSection() {
   return (
-    <article className="rounded-md border border-border bg-background/70 p-6 md:p-8">
-      <h2 className="mt-3 font-serif text-2xl text-foreground md:text-3xl">Público objetivo</h2>
+    <article className="rounded-md border border-border bg-background/70 p-6 lg:p-8">
+      <h2 className="mt-3 font-serif text-2xl text-foreground lg:text-3xl">Público objetivo</h2>
 
-      <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-6 grid gap-4 lg:grid-cols-4">
         <div className="rounded-md border border-border bg-card/50 p-5">
           <p className="text-[10px] uppercase tracking-[0.28em] text-accent">Ubicación</p>
           <p className="mt-2 font-serif text-lg text-foreground">
@@ -943,10 +1139,10 @@ function TargetAudienceSection() {
       </div>
 
       <div className="mt-8 border-t border-border/60 pt-7">
-        <h3 className="font-serif text-xl text-foreground md:text-2xl">
+        <h3 className="font-serif text-xl text-foreground lg:text-2xl">
           Segmentación del público objetivo
         </h3>
-        <div className="mt-5 grid gap-4 md:grid-cols-2">
+        <div className="mt-5 grid gap-4 lg:grid-cols-2">
           {audienceSegments.map((segment) => (
             <div key={segment.title} className="rounded-md border border-border bg-card/50 p-5">
               <CardTitle icon={segment.icon} title={segment.title} />
@@ -958,7 +1154,7 @@ function TargetAudienceSection() {
 
       <div className="mt-8 grid gap-6 border-t border-border/60 pt-7 lg:grid-cols-2">
         <div>
-          <h3 className="font-serif text-xl text-foreground md:text-2xl">
+          <h3 className="font-serif text-xl text-foreground lg:text-2xl">
             Lo que valora este cliente
           </h3>
           <ul className="mt-5 grid gap-3">
@@ -973,7 +1169,7 @@ function TargetAudienceSection() {
           </ul>
         </div>
         <div>
-          <h3 className="font-serif text-xl text-foreground md:text-2xl">
+          <h3 className="font-serif text-xl text-foreground lg:text-2xl">
             Necesidades principales
           </h3>
           <ul className="mt-5 grid gap-3">
@@ -990,14 +1186,14 @@ function TargetAudienceSection() {
       </div>
 
       <div className="mt-8 border-t border-border/60 pt-7">
-        <h3 className="font-serif text-xl text-foreground md:text-2xl">
+        <h3 className="font-serif text-xl text-foreground lg:text-2xl">
           Buyer persona: cliente ideal de Lava y Salitre
         </h3>
         <div className="mt-5 overflow-hidden rounded-md border border-border">
           {personaDetails.map((detail) => (
             <div
               key={detail.label}
-              className="grid border-t border-border first:border-t-0 md:grid-cols-[14rem_1fr]"
+              className="grid border-t border-border first:border-t-0 lg:grid-cols-[14rem_1fr]"
             >
               <div className="bg-card/60 p-4 text-[10px] uppercase tracking-[0.24em] text-accent">
                 {detail.label}
@@ -1009,32 +1205,36 @@ function TargetAudienceSection() {
           ))}
         </div>
 
-        <div className="mt-6 grid gap-4 md:grid-cols-2">
+        <div className="mt-6 grid gap-4 lg:grid-cols-2">
           {personaInsightCards.map((card) => (
             <div key={card.title} className="rounded-md border border-border bg-card/50 p-5">
               <CardTitle icon={card.icon} title={card.title} />
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{card.text}</p>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                <ProjectWebText text={card.text} />
+              </p>
             </div>
           ))}
         </div>
       </div>
 
       <div className="mt-8 border-t border-border/60 pt-7">
-        <h3 className="font-serif text-xl text-foreground md:text-2xl">
+        <h3 className="font-serif text-xl text-foreground lg:text-2xl">
           Antes de reservar y canales de información
         </h3>
-        <div className="mt-5 grid gap-4 md:grid-cols-2">
+        <div className="mt-5 grid gap-4 lg:grid-cols-2">
           {reservationInfoCards.map((card) => (
             <div key={card.title} className="rounded-md border border-border bg-card/50 p-5">
               <CardTitle icon={card.icon} title={card.title} />
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{card.text}</p>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                <ProjectWebText text={card.text} />
+              </p>
             </div>
           ))}
         </div>
       </div>
 
       <div className="mt-8 border-t border-border/60 pt-7">
-        <h3 className="font-serif text-xl text-foreground md:text-2xl">
+        <h3 className="font-serif text-xl text-foreground lg:text-2xl">
           Qué espera de Lava y Salitre
         </h3>
         <Text className="mt-4">
@@ -1058,8 +1258,8 @@ function TargetAudienceSection() {
 
 function GastronomicTechnologiesSection() {
   return (
-    <article className="rounded-md border border-border bg-background/70 p-6 md:p-8">
-      <h2 className="mt-3 font-serif text-2xl text-foreground md:text-3xl">
+    <article className="rounded-md border border-border bg-background/70 p-6 lg:p-8">
+      <h2 className="mt-3 font-serif text-2xl text-foreground lg:text-3xl">
         Tecnologías gastronómicas
       </h2>
 
@@ -1077,10 +1277,10 @@ function GastronomicTechnologiesSection() {
       </div>
 
       <div className="mt-8 border-t border-border/60 pt-7">
-        <h3 className="font-serif text-xl text-foreground md:text-2xl">
+        <h3 className="font-serif text-xl text-foreground lg:text-2xl">
           Tecnologías culinarias modernas
         </h3>
-        <div className="mt-5 grid gap-4 md:grid-cols-2">
+        <div className="mt-5 grid gap-4 lg:grid-cols-2">
           {culinaryTechnologies.map((technology) => (
             <div key={technology.title} className="rounded-md border border-border bg-card/50 p-5">
               <h4 className="font-serif text-xl text-foreground">{technology.title}</h4>
@@ -1096,7 +1296,7 @@ function GastronomicTechnologiesSection() {
       </div>
 
       <div className="mt-8 border-t border-border/60 pt-7">
-        <h3 className="font-serif text-xl text-foreground md:text-2xl">
+        <h3 className="font-serif text-xl text-foreground lg:text-2xl">
           Tecnologías digitales para la carta
         </h3>
         <Text className="mt-4">
@@ -1104,7 +1304,7 @@ function GastronomicTechnologiesSection() {
           al cliente y mejoran la organización del servicio. En Lava y Salitre deben reforzar el
           relato gastronómico sin sustituir la atención en sala ni la elegancia de una carta física.
         </Text>
-        <div className="mt-5 grid gap-4 md:grid-cols-3">
+        <div className="mt-5 grid gap-4 lg:grid-cols-3">
           {digitalTechnologies.map((technology) => (
             <div key={technology.title} className="rounded-md border border-border bg-card/50 p-5">
               <CardTitle icon={technology.icon} title={technology.title} />
@@ -1120,7 +1320,7 @@ function GastronomicTechnologiesSection() {
       </div>
 
       <div className="mt-8 border-t border-border/60 pt-7">
-        <h3 className="font-serif text-xl text-foreground md:text-2xl">
+        <h3 className="font-serif text-xl text-foreground lg:text-2xl">
           Tecnologías elegidas y justificación
         </h3>
         <Text className="mt-4">
@@ -1129,29 +1329,29 @@ function GastronomicTechnologiesSection() {
           algo al concepto del restaurante.
         </Text>
         <div className="mt-5 overflow-hidden rounded-md border border-border">
-          <div className="grid bg-card/70 text-[10px] uppercase tracking-[0.22em] text-accent md:grid-cols-[1fr_1.2fr_1.4fr]">
-            <div className="border-b border-border p-3 md:border-r">Tecnología</div>
-            <div className="hidden border-b border-r border-border p-3 md:block">
+          <div className="grid bg-card/70 text-[10px] uppercase tracking-[0.22em] text-accent lg:grid-cols-[1fr_1.2fr_1.4fr]">
+            <div className="border-b border-border p-3 lg:border-r">Tecnología</div>
+            <div className="hidden border-b border-r border-border p-3 lg:block">
               Dónde se usaría
             </div>
-            <div className="hidden border-b border-border p-3 md:block">Por qué se usaría</div>
+            <div className="hidden border-b border-border p-3 lg:block">Por qué se usaría</div>
           </div>
           {selectedTechnologyUses.map((item) => (
             <div
               key={item.technology}
-              className="grid border-t border-border bg-background first:border-t-0 md:grid-cols-[1fr_1.2fr_1.4fr]"
+              className="grid border-t border-border bg-background first:border-t-0 lg:grid-cols-[1fr_1.2fr_1.4fr]"
             >
-              <div className="p-4 md:border-r md:border-border">
+              <div className="p-4 lg:border-r lg:border-border">
                 <p className="font-serif text-lg text-foreground">{item.technology}</p>
-                <div className="mt-2 space-y-1 text-sm leading-relaxed text-muted-foreground md:hidden">
+                <div className="mt-2 space-y-1 text-sm leading-relaxed text-muted-foreground lg:hidden">
                   <p>{item.where}</p>
                   <p>{item.reason}</p>
                 </div>
               </div>
-              <div className="hidden border-r border-border p-4 text-sm leading-relaxed text-muted-foreground md:block">
+              <div className="hidden border-r border-border p-4 text-sm leading-relaxed text-muted-foreground lg:block">
                 {item.where}
               </div>
-              <div className="hidden p-4 text-sm leading-relaxed text-muted-foreground md:block">
+              <div className="hidden p-4 text-sm leading-relaxed text-muted-foreground lg:block">
                 {item.reason}
               </div>
             </div>
@@ -1160,7 +1360,7 @@ function GastronomicTechnologiesSection() {
       </div>
 
       <div className="mt-8 border-t border-border/60 pt-7">
-        <h3 className="font-serif text-xl text-foreground md:text-2xl">Conclusión</h3>
+        <h3 className="font-serif text-xl text-foreground lg:text-2xl">Conclusión</h3>
         <div className="mt-4 space-y-5">
           <Text>
             Lava y Salitre combinaría tradición canaria con técnicas modernas, manteniendo siempre
@@ -1187,7 +1387,7 @@ function GastronomicTechnologiesSection() {
 
 function Text({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
-    <p className={`text-sm leading-[1.85] text-muted-foreground md:text-base ${className}`}>
+    <p className={`text-sm leading-[1.85] text-muted-foreground lg:text-base ${className}`}>
       {children}
     </p>
   );

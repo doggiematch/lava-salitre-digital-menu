@@ -19,6 +19,9 @@ export const Route = createFileRoute("/proyecto/fase-4-documentacion-presentacio
   }),
 });
 
+const PROJECT_WEB_URL =
+  "https://lava-salitre-digital-menu-el3mqseme-doggiematchs-projects.vercel.app/";
+
 const phaseSections = [
   {
     title: "Introducción del proyecto",
@@ -181,8 +184,32 @@ function CardTitle({ icon: Icon, title }: { icon: LucideIcon; title: string }) {
       <span className="grid size-10 shrink-0 place-items-center rounded-md border border-accent/30 bg-accent/10 text-accent">
         <Icon aria-hidden="true" className="size-5" strokeWidth={1.8} />
       </span>
-      <h2 className="pt-1 font-serif text-2xl text-foreground md:text-3xl">{title}</h2>
+      <h2 className="pt-1 font-serif text-2xl text-foreground lg:text-3xl">{title}</h2>
     </div>
+  );
+}
+
+function ProjectWebText({ text }: { text: string }) {
+  const parts = text.split(/(\bla web\b|\bweb\b)/i);
+
+  return (
+    <>
+      {parts.map((part, index) =>
+        /^la web$|^web$/i.test(part) ? (
+          <a
+            key={`${part}-${index}`}
+            href={PROJECT_WEB_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="text-foreground underline underline-offset-4 transition-colors hover:text-accent"
+          >
+            {part}
+          </a>
+        ) : (
+          part
+        ),
+      )}
+    </>
   );
 }
 
@@ -242,19 +269,19 @@ function Fase4DocumentacionPresentacion() {
       intro="Esta cuarta fase consolida el proyecto en una memoria completa capaz de comunicar su valor de forma clara y profesional. El objetivo es ordenar la información estratégica, económica, gastronómica y visual para demostrar la viabilidad de Lava y Salitre como restaurante especializado en cocina canaria de vanguardia."
     >
       <section className="border-t border-border/60">
-        <div className="mx-auto grid max-w-6xl gap-8 px-5 py-12 md:py-16">
+        <div className="mx-auto grid max-w-6xl gap-8 px-5 py-12 lg:py-16">
           {phaseSections.map((section) => (
             <article
               key={section.title}
-              className="rounded-md border border-border bg-background/70 p-6 md:p-8"
+              className="rounded-md border border-border bg-background/70 p-6 lg:p-8"
             >
               <CardTitle icon={section.icon} title={section.title} />
-              <p className="mt-5 max-w-4xl text-sm leading-[1.8] text-muted-foreground md:text-base">
-                {section.text}
+              <p className="mt-5 max-w-4xl text-sm leading-[1.8] text-muted-foreground lg:text-base">
+                <ProjectWebText text={section.text} />
               </p>
 
               {"highlights" in section && (
-                <ul className="mt-5 grid gap-3 text-sm leading-relaxed text-muted-foreground md:grid-cols-2">
+                <ul className="mt-5 grid gap-3 text-sm leading-relaxed text-muted-foreground lg:grid-cols-2">
                   {section.highlights.map((item) => (
                     <li key={item} className="rounded-md border border-border bg-card/50 p-4">
                       {item}
@@ -264,7 +291,7 @@ function Fase4DocumentacionPresentacion() {
               )}
 
               {"groups" in section && (
-                <div className="mt-6 grid gap-4 md:grid-cols-2">
+                <div className="mt-6 grid gap-4 lg:grid-cols-2">
                   {section.groups.map((group) => (
                     <div key={group.label} className="rounded-md border border-border bg-card/50 p-5">
                       <GroupTitle icon={"icon" in group ? group.icon : undefined} title={group.label} />
@@ -289,7 +316,7 @@ function Fase4DocumentacionPresentacion() {
 
               {"conclusion" in section && (
                 <p className="mt-5 rounded-md border border-accent/20 bg-accent/10 p-4 text-sm leading-relaxed text-foreground">
-                  {section.conclusion}
+                  <ProjectWebText text={section.conclusion} />
                 </p>
               )}
             </article>

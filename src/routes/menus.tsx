@@ -95,7 +95,7 @@ function MenusPage() {
 
   return (
     <div className="paper">
-      <section className="mx-auto max-w-6xl px-5 py-12 md:py-16">
+      <section className="mx-auto max-w-6xl px-5 py-12 lg:py-16">
         <SectionTitle
           eyebrow="Menú"
           title="Lava & Salitre"
@@ -128,7 +128,7 @@ function MenusPage() {
             </div>
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="grid gap-3 lg:grid-cols-2">
             {serviceNotes.map((note) => (
               <article key={note.title} className="rounded-md border border-border bg-card/55 p-5">
                 <note.icon className="h-5 w-5 text-accent" />
@@ -143,7 +143,7 @@ function MenusPage() {
       <section className="border-t border-border/60">
         <div className="mx-auto max-w-6xl px-5 py-8">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-            <div className="grid gap-2 sm:grid-cols-3">
+            <div className="grid gap-2 lg:grid-cols-3">
               {menuList.map((item) => {
                 const active = item.key === activeKey;
                 return (
@@ -184,13 +184,13 @@ function MenusPage() {
       </section>
 
       <section className="border-t border-border/60">
-        <div className="mx-auto max-w-6xl px-5 py-12 md:py-16">
-          <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+        <div className="mx-auto max-w-6xl px-5 py-12 lg:py-16">
+          <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
             <div>
               <p className="text-[10px] uppercase tracking-[0.35em] text-accent">
                 Recorrido gastronómico
               </p>
-              <h2 className="mt-4 font-serif text-3xl text-foreground md:text-4xl">
+              <h2 className="mt-4 font-serif text-3xl text-foreground lg:text-4xl">
                 {dishCount} elaboraciones en {menu.name}
               </h2>
             </div>
@@ -247,7 +247,7 @@ function MenusPage() {
           open={Boolean(allergenDish)}
           onOpenChange={(open) => !open && setAllergenDish(null)}
         >
-          <DialogContent className="max-h-[92vh] max-w-[96vw] overflow-y-auto p-0 md:max-w-5xl lg:max-w-6xl">
+          <DialogContent className="max-h-[92vh] max-w-[96vw] overflow-y-auto p-0 lg:max-w-6xl">
             <DialogHeader className="sr-only">
               <DialogTitle>Ficha de alérgenos de {allergenSheet.title}</DialogTitle>
             </DialogHeader>
@@ -258,7 +258,27 @@ function MenusPage() {
 
       {pairingSheet ? (
         <Dialog open={Boolean(pairingDish)} onOpenChange={(open) => !open && setPairingDish(null)}>
-          <DialogContent className="max-h-[92vh] max-w-[96vw] overflow-y-auto p-0 md:max-w-5xl lg:max-w-6xl">
+          <DialogContent
+            className="max-h-[92vh] max-w-[96vw] overflow-y-auto p-0 lg:max-w-6xl"
+            onInteractOutside={(event) => {
+              const target = event.target as HTMLElement | null;
+              if (
+                target?.closest("[data-image-lightbox='true']") ||
+                document.querySelector("[data-image-lightbox='true']")
+              ) {
+                event.preventDefault();
+              }
+            }}
+            onPointerDownOutside={(event) => {
+              const target = event.target as HTMLElement | null;
+              if (
+                target?.closest("[data-image-lightbox='true']") ||
+                document.querySelector("[data-image-lightbox='true']")
+              ) {
+                event.preventDefault();
+              }
+            }}
+          >
             <DialogHeader className="sr-only">
               <DialogTitle>Ficha de maridaje de {pairingSheet.dishName}</DialogTitle>
             </DialogHeader>
@@ -321,7 +341,7 @@ function DigitalDishCard({
 
           <p className="mt-4 text-sm leading-[1.7] text-muted-foreground">{dish.description}</p>
 
-          <div className="mt-5 grid gap-3 text-sm md:grid-cols-2">
+          <div className="mt-5 grid gap-3 text-sm lg:grid-cols-2">
             <InfoBlock icon={ChefHat} label="Técnica" value={dish.technique} />
             <InfoBlock icon={BadgeInfo} label="Ingredientes" value={dish.ingredients.join(" · ")} />
           </div>

@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { Link, createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { DishModal } from "@/components/site/DishModal";
 import { ProjectPhasePage } from "@/components/site/ProjectPhasePage";
@@ -22,6 +22,8 @@ type MenuRow = {
   visual: string;
   type: "Postre" | "Petit four" | "Plato";
 };
+
+const MENU_MOCKUP_IMAGE = "/proyecto/fase-2/carta-abierta-lava-salitre.jpg";
 
 const dessertRows: MenuRow[] = [
   {
@@ -458,9 +460,10 @@ function Fase2DisenoCartaContenido() {
       phase="Fase 2"
       title="Diseño de la carta y contenido"
       intro="Esta segunda fase convierte el concepto gastronómico en una oferta concreta y comercializable. La carta se basa en elaboraciones canarias de vanguardia con identidad propia, siempre con nombre creativo, ingredientes principales canarios y una técnica innovadora aplicada."
+      introExtra={<MenuMockupModal />}
     >
       <section className="border-t border-border/60">
-        <div className="mx-auto grid max-w-6xl gap-8 px-5 py-12 md:py-16">
+        <div className="mx-auto grid max-w-6xl gap-8 px-5 py-12 lg:py-16">
           <MenuStructureSection />
           <DessertsAndPlatesSection />
           <NarrativeSection />
@@ -472,11 +475,23 @@ function Fase2DisenoCartaContenido() {
   );
 }
 
+function MenuMockupModal() {
+  return (
+    <div className="mt-8">
+      <Link
+        to="/proyecto/carta-fisica-abierta"
+        className="inline-flex rounded-full border border-gold bg-gold/10 px-5 py-3 text-xs uppercase tracking-[0.24em] text-foreground transition-colors hover:bg-gold hover:text-accent-foreground"
+      >
+        Ver carta física abierta
+      </Link>
+    </div>
+  );
+}
 function MenuStructureSection() {
   return (
-    <article className="rounded-md border border-border bg-background/70 p-6 md:p-8">
-      <h2 className="font-serif text-2xl text-foreground md:text-3xl">Estructura de la carta</h2>
-      <p className="mt-4 max-w-4xl text-sm leading-[1.8] text-muted-foreground md:text-base">
+    <article className="rounded-md border border-border bg-background/70 p-6 lg:p-8">
+      <h2 className="font-serif text-2xl text-foreground lg:text-3xl">Estructura de la carta</h2>
+      <p className="mt-4 max-w-4xl text-sm leading-[1.8] text-muted-foreground lg:text-base">
         La carta se plantea como un recorrido de menú degustación con identidad canaria. No copia
         platos tradicionales tal cual, sino que parte de productos y sabores reconocibles para
         darles una presentación más actual, limpia y propia de un restaurante gastronómico.
@@ -512,7 +527,7 @@ function MenuStructureSection() {
       </div>
 
       <div className="mt-8 border-t border-border/60 pt-7">
-        <h3 className="font-serif text-xl text-foreground md:text-2xl">
+        <h3 className="font-serif text-xl text-foreground lg:text-2xl">
           Esquema visual de la carta
         </h3>
         <div className="mt-5 grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
@@ -569,9 +584,9 @@ function DessertsAndPlatesSection() {
   const dessertCategories = ["Postres de innovación", "Petit four"];
 
   return (
-    <article className="rounded-md border border-border bg-background/70 p-6 md:p-8">
-      <h2 className="font-serif text-2xl text-foreground md:text-3xl">Los platos</h2>
-      <p className="mt-4 max-w-4xl text-sm leading-[1.8] text-muted-foreground md:text-base">
+    <article className="rounded-md border border-border bg-background/70 p-6 lg:p-8">
+      <h2 className="font-serif text-2xl text-foreground lg:text-3xl">Los platos</h2>
+      <p className="mt-4 max-w-4xl text-sm leading-[1.8] text-muted-foreground lg:text-base">
         Los platos canarios de vanguardia combinan elaboraciones frías, bocados de apertura,
         pescados, carnes y un pase refrescante. Las técnicas modernas se usan para mejorar textura,
         concentrar sabor o hacer que la presentación sea más elegante sin perder raíz canaria.
@@ -582,8 +597,8 @@ function DessertsAndPlatesSection() {
       </div>
 
       <div className="mt-10 border-t border-border/60 pt-8">
-        <h3 className="font-serif text-2xl text-foreground md:text-3xl">Los postres</h3>
-        <p className="mt-4 max-w-4xl text-sm leading-[1.8] text-muted-foreground md:text-base">
+        <h3 className="font-serif text-2xl text-foreground lg:text-3xl">Los postres</h3>
+        <p className="mt-4 max-w-4xl text-sm leading-[1.8] text-muted-foreground lg:text-base">
           La propuesta dulce se construye con seis elaboraciones: cuatro postres y dos petit four.
           Todas incluyen un nombre creativo, ingredientes principales canarios y una técnica
           innovadora aplicada.
@@ -604,14 +619,14 @@ function DessertsAndPlatesSection() {
 
 function NarrativeSection() {
   return (
-    <article className="rounded-md border border-border bg-background/70 p-6 md:p-8">
-      <h2 className="font-serif text-2xl text-foreground md:text-3xl">Narrativa gastronómica</h2>
-      <p className="mt-4 max-w-4xl text-sm leading-[1.8] text-muted-foreground md:text-base">
+    <article className="rounded-md border border-border bg-background/70 p-6 lg:p-8">
+      <h2 className="font-serif text-2xl text-foreground lg:text-3xl">Narrativa gastronómica</h2>
+      <p className="mt-4 max-w-4xl text-sm leading-[1.8] text-muted-foreground lg:text-base">
         La narrativa de Lava & Salitre cuenta Canarias a través de sus productos, paisajes y formas
         de cocinar. La lava representa la tierra, la cumbre, la ganadería, el fuego y el origen
         volcánico. El salitre representa el mar, la costa, la pesca y la frescura del Atlántico.
       </p>
-      <p className="mt-4 max-w-4xl text-sm leading-[1.8] text-muted-foreground md:text-base">
+      <p className="mt-4 max-w-4xl text-sm leading-[1.8] text-muted-foreground lg:text-base">
         Cada elaboración mantiene una raíz canaria reconocible, pero se presenta con una mirada más
         actual. No se trata de copiar la receta tradicional tal cual, sino de transformarla en una
         experiencia más limpia, técnica y elegante, propia de un menú degustación.
@@ -631,8 +646,8 @@ function NarrativeSection() {
       </div>
 
       <div className="mt-8 border-t border-border/60 pt-6">
-        <h3 className="font-serif text-xl text-foreground md:text-2xl">Conclusión</h3>
-        <p className="mt-4 max-w-4xl text-sm leading-[1.8] text-muted-foreground md:text-base">
+        <h3 className="font-serif text-xl text-foreground lg:text-2xl">Conclusión</h3>
+        <p className="mt-4 max-w-4xl text-sm leading-[1.8] text-muted-foreground lg:text-base">
           La narrativa busca contar Canarias desde diferentes puntos de vista: el mar, la costa, la
           cumbre, la ganadería, la agricultura, los productos tradicionales y el paisaje volcánico.
           En conjunto, el menú mantiene la identidad de Lava & Salitre: una cocina donde la lava
@@ -646,9 +661,9 @@ function NarrativeSection() {
 
 function VisualDesignSection() {
   return (
-    <article className="rounded-md border border-border bg-background/70 p-6 md:p-8">
-      <h2 className="font-serif text-2xl text-foreground md:text-3xl">Diseño visual</h2>
-      <p className="mt-4 max-w-4xl text-sm leading-[1.8] text-muted-foreground md:text-base">
+    <article className="rounded-md border border-border bg-background/70 p-6 lg:p-8">
+      <h2 className="font-serif text-2xl text-foreground lg:text-3xl">Diseño visual</h2>
+      <p className="mt-4 max-w-4xl text-sm leading-[1.8] text-muted-foreground lg:text-base">
         El diseño visual se apoya en presentaciones limpias, bocados precisos, contrastes de textura
         y referencias al paisaje: roca volcánica, ceniza, bruma, mar, algas, cítricos y producto de
         temporada.
@@ -673,9 +688,9 @@ function TechnicalSheetsSection({ rows }: { rows: MenuRow[] }) {
   const activeDish = activeDishId ? dishesById.get(activeDishId) : undefined;
 
   return (
-    <article className="rounded-md border border-border bg-background/70 p-6 md:p-8">
-      <h2 className="font-serif text-2xl text-foreground md:text-3xl">Fichas técnicas</h2>
-      <p className="mt-4 max-w-4xl text-sm leading-[1.8] text-muted-foreground md:text-base">
+    <article className="rounded-md border border-border bg-background/70 p-6 lg:p-8">
+      <h2 className="font-serif text-2xl text-foreground lg:text-3xl">Fichas técnicas</h2>
+      <p className="mt-4 max-w-4xl text-sm leading-[1.8] text-muted-foreground lg:text-base">
         Las fichas técnicas permiten ampliar ingredientes, técnica aplicada, origen, inspiración y
         alérgenos. Cada enlace abre la ficha digital correspondiente.
       </p>
@@ -767,7 +782,7 @@ function buildDishesById() {
 function MenuTable({ title, rows }: { title: string; rows: MenuRow[] }) {
   return (
     <section>
-      <h3 className="font-serif text-xl text-foreground md:text-2xl">{title}</h3>
+      <h3 className="font-serif text-xl text-foreground lg:text-2xl">{title}</h3>
       <div className="mt-4 overflow-x-auto rounded-md border border-border">
         <table className="w-full min-w-[900px] border-collapse text-left">
           <thead className="bg-card/70 text-[10px] uppercase tracking-[0.22em] text-accent">
@@ -811,7 +826,7 @@ function DetailTable({
 }) {
   return (
     <section>
-      <h3 className="font-serif text-xl text-foreground md:text-2xl">{title}</h3>
+      <h3 className="font-serif text-xl text-foreground lg:text-2xl">{title}</h3>
       <div className="mt-4 overflow-x-auto rounded-md border border-border">
         <table className="w-full min-w-[760px] border-collapse text-left">
           <thead className="bg-card/70 text-[10px] uppercase tracking-[0.22em] text-accent">
@@ -841,7 +856,7 @@ function DetailTable({
 function NarrativeSummaryTable() {
   return (
     <section>
-      <h3 className="font-serif text-xl text-foreground md:text-2xl">
+      <h3 className="font-serif text-xl text-foreground lg:text-2xl">
         Resumen narrativo de los platos
       </h3>
       <div className="mt-4 overflow-x-auto rounded-md border border-border">
@@ -887,7 +902,7 @@ function NarrativeDetailTable({
 }) {
   return (
     <section>
-      <h3 className="font-serif text-xl text-foreground md:text-2xl">{title}</h3>
+      <h3 className="font-serif text-xl text-foreground lg:text-2xl">{title}</h3>
       <div className="mt-4 overflow-x-auto rounded-md border border-border">
         <table className="w-full min-w-[860px] border-collapse text-left">
           <thead className="bg-card/70 text-[10px] uppercase tracking-[0.22em] text-accent">

@@ -19,7 +19,7 @@ export function QuickDishDialog({
 
   return (
     <Dialog open={Boolean(dish)} onOpenChange={onOpenChange}>
-      <DialogContent className="max-h-[92vh] max-w-[94vw] overflow-y-auto p-0 md:max-w-3xl">
+      <DialogContent className="max-h-[92vh] max-w-[94vw] overflow-y-auto p-0 lg:max-w-3xl">
         {dish ? (
           <>
             <DialogHeader className="sr-only">
@@ -31,7 +31,7 @@ export function QuickDishDialog({
                 <img src={imageSrc} alt={dish.name} className="aspect-video w-full object-cover" />
               ) : null}
 
-              <div className="p-6 md:p-8">
+              <div className="p-6 lg:p-8">
                 <p className="text-[10px] uppercase tracking-[0.35em] text-accent">
                   Resumen del plato
                 </p>
@@ -42,7 +42,7 @@ export function QuickDishDialog({
                   {dish.description}
                 </p>
 
-                <div className="mt-6 grid gap-4 md:grid-cols-2">
+                <div className="mt-6 grid gap-4 lg:grid-cols-2">
                   <SummaryCard icon={Leaf} label="Origen" value={dish.origin} />
                   <SummaryCard icon={ChefHat} label="Técnica" value={dish.technique} />
                   <SummaryCard

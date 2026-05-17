@@ -40,8 +40,8 @@ export function Header() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
         <Link to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-          <Monogram size={72} className="h-16 w-16 text-foreground md:h-20 md:w-20" />
-          <span className="hidden font-serif text-base italic tracking-wider text-foreground sm:inline">
+          <Monogram size={72} className="h-16 w-16 text-foreground lg:h-20 lg:w-20" />
+          <span className="hidden font-serif text-base italic tracking-wider text-foreground lg:inline">
             Lava <span className="not-italic text-accent">&</span> Salitre
           </span>
         </Link>

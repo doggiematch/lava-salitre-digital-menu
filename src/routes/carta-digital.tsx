@@ -40,8 +40,8 @@ function CartaDigital() {
 
   return (
     <div className="paper">
-      <section className="mx-auto max-w-5xl px-5 py-12 md:py-16">
-        <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+      <section className="mx-auto max-w-5xl px-5 py-12 lg:py-16">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
           <SectionTitle
             eyebrow="Carta digital"
             title="Lava & Salitre"
@@ -61,7 +61,7 @@ function CartaDigital() {
           <WaveDivider className="h-4 w-52 text-accent" />
         </div>
 
-        <div className="mx-auto mt-10 max-w-2xl rounded-sm border border-border/70 bg-cream/35 px-6 py-7 text-center md:px-10">
+        <div className="mx-auto mt-10 max-w-2xl rounded-sm border border-border/70 bg-cream/35 px-6 py-7 text-center lg:px-10">
           <p className="text-[10px] uppercase tracking-[0.35em] text-accent">
             Carta escaneable
           </p>
@@ -72,13 +72,13 @@ function CartaDigital() {
       </section>
 
       <section className="border-t border-border/60">
-        <div className="mx-auto max-w-5xl px-5 py-12 md:py-16">
+        <div className="mx-auto max-w-5xl px-5 py-12 lg:py-16">
           <div className="space-y-14">
             {groupedDishes.map((group) => (
               <section key={group.category} className="break-inside-avoid">
                 <ElegantDivider label={group.category} count={`${group.dishes.length} QR`} />
 
-                <div className="mt-7 grid gap-5 md:grid-cols-2">
+                <div className="mt-7 grid gap-5 lg:grid-cols-2">
                   {group.dishes.map((dish) => {
                     const href = `/carta-digital/${dish.id}`;
                     const target = `${origin}/carta-digital/${dish.id}`;
@@ -87,12 +87,12 @@ function CartaDigital() {
                     return (
                       <article
                         key={dish.id}
-                        className="relative grid min-h-full gap-4 rounded-sm border border-border/70 bg-cream/30 p-5 sm:grid-cols-[145px_1fr]"
+                        className="relative grid min-h-full gap-4 rounded-sm border border-border/70 bg-cream/30 p-5 lg:grid-cols-[145px_1fr]"
                       >
                         <span className="pointer-events-none absolute right-5 top-5 font-serif text-xs italic text-accent/50">
                           ※
                         </span>
-                        <div className="flex flex-col items-center text-center sm:pr-0">
+                        <div className="flex flex-col items-center text-center lg:pr-0">
                           <div className="flex h-32 w-32 items-center justify-center rounded-sm border border-border bg-white p-3">
                             <img
                               src={qrSrc(target)}
@@ -115,7 +115,7 @@ function CartaDigital() {
                           </Link>
                         </div>
 
-                        <div className="flex min-w-0 flex-col border-t border-border/60 pt-4 sm:border-l sm:border-t-0 sm:pl-4 sm:pt-0">
+                        <div className="flex min-w-0 flex-col border-t border-border/60 pt-4 lg:border-l lg:border-t-0 lg:pl-4 lg:pt-0">
                           <p className="text-sm leading-[1.75] text-muted-foreground">
                             {dish.description}
                           </p>

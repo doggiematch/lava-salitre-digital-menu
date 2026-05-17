@@ -1,19 +1,15 @@
 import { useEffect, useState } from "react";
-import { createPortal } from "react-dom";
 import type { Dish } from "@/data/menu";
 import { technicalSheets, type TechnicalRow, type TechnicalSheet } from "@/data/technicalSheets";
 import { allergenSheets } from "@/data/allergenSheets";
 import { AllergenSheetView } from "./AllergenSheetView";
 import { SheetScrollTopButton } from "./SheetScrollTopButton";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { X } from "lucide-react";
+import { ImageLightbox, type LightboxImage } from "./ImageLightbox";
 
 const SKETCH_LINK_TEXT = "Accede aquí al boceto del emplatado";
 
-type ViewerImage = {
-  src: string;
-  alt: string;
-};
+type ViewerImage = LightboxImage;
 
 export function DishModal({
   dish,
@@ -36,11 +32,14 @@ export function DishModal({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
-        className="max-h-[92vh] max-w-[96vw] overflow-y-auto p-0 md:max-w-5xl lg:max-w-6xl"
+        className="max-h-[92vh] max-w-[96vw] overflow-y-auto p-0 lg:max-w-6xl"
         onInteractOutside={(event) => {
           preventParentCloseWhenImageIsOpen(event);
           const target = event.target as HTMLElement | null;
-          if (target?.closest("[data-image-viewer='true']")) {
+          if (
+            target?.closest("[data-image-lightbox='true']") ||
+            document.querySelector("[data-image-lightbox='true']")
+          ) {
             event.preventDefault();
           }
         }}
@@ -81,16 +80,16 @@ function TechnicalSheetView({
   }, [onImageViewerOpenChange, viewerImage]);
 
   return (
-    <article className="relative overflow-hidden bg-background px-4 py-6 text-foreground sm:px-8 md:px-12 md:py-10">
-      <div className="pointer-events-none absolute -left-16 -top-20 h-44 w-44 rounded-full bg-sand/55 md:h-64 md:w-64" />
-      <div className="pointer-events-none absolute -right-10 -top-12 h-36 w-36 rounded-full bg-stone-volcanic/10 md:h-56 md:w-56" />
+    <article className="relative overflow-hidden bg-background px-4 py-6 text-foreground lg:px-12 lg:py-10">
+      <div className="pointer-events-none absolute -left-16 -top-20 h-44 w-44 rounded-full bg-sand/55 lg:h-64 lg:w-64" />
+      <div className="pointer-events-none absolute -right-10 -top-12 h-36 w-36 rounded-full bg-stone-volcanic/10 lg:h-56 lg:w-56" />
 
       <header className="relative border-b border-gold pb-4">
-        <div className="grid gap-5 md:grid-cols-[8.5rem_1fr_auto] md:items-start md:gap-6">
+        <div className="grid gap-5 lg:grid-cols-[8.5rem_1fr_auto] lg:items-start lg:gap-6">
           {sheet.photoSrc ? (
             <button
               type="button"
-              className="group h-28 w-28 cursor-pointer overflow-hidden rounded-md border border-border bg-card shadow-sm md:h-32 md:w-32"
+              className="group h-28 w-28 cursor-pointer overflow-hidden rounded-md border border-border bg-card shadow-sm lg:h-32 lg:w-32"
               aria-label={`Ampliar fotografía de ${sheet.name}`}
               onClick={() =>
                 setViewerImage({ src: sheet.photoSrc!, alt: `Fotografía de ${sheet.name}` })
@@ -105,10 +104,10 @@ function TechnicalSheetView({
           ) : null}
 
           <div>
-            <h2 className="font-serif text-4xl leading-none text-foreground md:text-5xl">
+            <h2 className="font-serif text-4xl leading-none text-foreground lg:text-5xl">
               {sheet.name}
             </h2>
-            <p className="mt-2 text-sm font-medium text-stone-volcanic md:text-base">
+            <p className="mt-2 text-sm font-medium text-stone-volcanic lg:text-base">
               {sheet.type} · {sheet.menus}
             </p>
           </div>
@@ -172,10 +171,10 @@ function TechnicalSheetView({
 
       <SheetScrollTopButton />
 
-      <ImageViewer image={viewerImage} onClose={() => setViewerImage(null)} />
+      <ImageLightbox image={viewerImage} onClose={() => setViewerImage(null)} />
       {allergenSheet ? (
         <Dialog open={allergenOpen} onOpenChange={setAllergenOpen}>
-          <DialogContent className="max-h-[92vh] max-w-[96vw] overflow-y-auto p-0 md:max-w-5xl lg:max-w-6xl">
+          <DialogContent className="max-h-[92vh] max-w-[96vw] overflow-y-auto p-0 lg:max-w-6xl">
             <DialogHeader className="sr-only">
               <DialogTitle>Ficha de alérgenos de {allergenSheet.title}</DialogTitle>
             </DialogHeader>
@@ -194,7 +193,7 @@ function SheetSection({ title, children }: { title: string; children: React.Reac
         <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-gold/80">
           <span className="h-2 w-2 rounded-full bg-gold" />
         </span>
-        <h3 className="text-base font-semibold uppercase tracking-wide text-foreground md:text-xl">
+        <h3 className="text-base font-semibold uppercase tracking-wide text-foreground lg:text-xl">
           {title}
         </h3>
         <span className="h-px flex-1 bg-gold/70" />
@@ -230,7 +229,7 @@ function InfoRows({
         return (
           <div
             key={row.label}
-            className="border-b border-border last:border-b-0 sm:grid sm:grid-cols-[17rem_1fr]"
+            className="border-b border-border last:border-b-0 lg:grid lg:grid-cols-[17rem_1fr]"
           >
             <div className="bg-secondary/60 px-4 py-3 text-sm font-semibold text-stone-volcanic">
               {row.label}
@@ -293,7 +292,7 @@ function IngredientGrid({ rows }: { rows: TechnicalRow[] }) {
 
 function PillList({ items }: { items: string[] }) {
   return (
-    <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+    <ul className="grid gap-2 lg:grid-cols-3">
       {items.map((item) => (
         <li
           key={item}
@@ -309,54 +308,6 @@ function PillList({ items }: { items: string[] }) {
 
 function isLinkText(value: string) {
   return value === SKETCH_LINK_TEXT || value === "Consulta aquí la carta de alérgenos";
-}
-
-function ImageViewer({ image, onClose }: { image: ViewerImage | null; onClose: () => void }) {
-  if (!image || typeof document === "undefined") {
-    return null;
-  }
-
-  const stopViewerEvent = (event: React.SyntheticEvent) => {
-    event.stopPropagation();
-    event.nativeEvent.stopImmediatePropagation();
-  };
-
-  const closeViewer = (event: React.SyntheticEvent) => {
-    stopViewerEvent(event);
-    onClose();
-  };
-
-  return createPortal(
-    <div
-      data-image-viewer="true"
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-foreground/92 p-4"
-      role="dialog"
-      aria-modal="true"
-      aria-label={image.alt}
-      onPointerDown={stopViewerEvent}
-      onMouseDown={stopViewerEvent}
-      onClick={stopViewerEvent}
-    >
-      <button
-        type="button"
-        className="absolute right-4 top-4 flex h-12 w-12 cursor-pointer items-center justify-center rounded-md border border-background/70 bg-background text-foreground shadow-lg transition-colors hover:bg-secondary md:right-6 md:top-6"
-        aria-label="Cerrar imagen"
-        onPointerDown={closeViewer}
-        onClick={closeViewer}
-      >
-        <X className="h-7 w-7" />
-      </button>
-      <img
-        src={image.src}
-        alt={image.alt}
-        className="max-h-[88vh] max-w-[94vw] object-contain shadow-2xl"
-        onPointerDown={stopViewerEvent}
-        onMouseDown={stopViewerEvent}
-        onClick={stopViewerEvent}
-      />
-    </div>,
-    document.body,
-  );
 }
 
 function FallbackDishView({ dish }: { dish: Dish }) {

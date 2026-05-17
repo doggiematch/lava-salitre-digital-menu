@@ -220,7 +220,7 @@ const logoVersions = [
 function ConceptualizacionFundamentacion() {
   return (
     <div className="paper">
-      <section className="mx-auto max-w-6xl px-5 py-14 md:py-20">
+      <section className="mx-auto max-w-6xl px-5 py-14 lg:py-20">
         <SectionTitle
           eyebrow="Proyecto"
           title="Conceptualización y fundamentación"
@@ -229,16 +229,16 @@ function ConceptualizacionFundamentacion() {
       </section>
 
       <section className="border-t border-border/60">
-        <div className="mx-auto max-w-6xl px-5 py-12 md:py-16">
+        <div className="mx-auto max-w-6xl px-5 py-12 lg:py-16">
           <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Informe conceptual</p>
           <div className="mt-7 space-y-5">
-            <p className="text-sm leading-[1.85] text-muted-foreground md:text-base">
+            <p className="text-sm leading-[1.85] text-muted-foreground lg:text-base">
               Este apartado presenta la base conceptual del restaurante desde una mirada clara para
               el cliente: partir de la tradición gastronómica canaria, reconocer sus sabores más
               característicos y transformarlos en una experiencia contemporánea, cuidada y coherente
               con el territorio.
             </p>
-            <p className="text-sm leading-[1.85] text-muted-foreground md:text-base">
+            <p className="text-sm leading-[1.85] text-muted-foreground lg:text-base">
               La propuesta no busca sustituir la cocina tradicional, sino darle una lectura más
               actual. Lava & Salitre toma como punto de partida productos, recetas y memorias
               reconocibles de Canarias para construir platos y postres con técnica, ligereza,
@@ -249,20 +249,20 @@ function ConceptualizacionFundamentacion() {
       </section>
 
       <section className="border-t border-border/60">
-        <div className="mx-auto max-w-6xl px-5 py-12 md:py-16">
+        <div className="mx-auto max-w-6xl px-5 py-12 lg:py-16">
           <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Subapartado</p>
-          <h2 className="mt-4 font-serif text-3xl text-foreground md:text-4xl">
+          <h2 className="mt-4 font-serif text-3xl text-foreground lg:text-4xl">
             Contexto gastronómico canario: platos y postres
           </h2>
           <div className="mt-6 space-y-5">
-            <p className="text-sm leading-[1.85] text-muted-foreground md:text-base">
+            <p className="text-sm leading-[1.85] text-muted-foreground lg:text-base">
               La repostería canaria forma parte de la memoria gastronómica de las islas. Sus postres
               se apoyan en ingredientes sencillos, sabores reconocibles y elaboraciones ligadas al
               hogar, a la celebración y al producto local. Para un restaurante como Lava & Salitre,
               este contexto es valioso porque permite construir una cocina moderna sin perder una
               raíz comprensible para el cliente.
             </p>
-            <p className="text-sm leading-[1.85] text-muted-foreground md:text-base">
+            <p className="text-sm leading-[1.85] text-muted-foreground lg:text-base">
               En la carta, esta tradición puede convivir con platos salinos, marinos y volcánicos.
               El objetivo es que cada pase mantenga una conexión con Canarias, ya sea por el
               ingrediente, por la técnica reinterpretada o por la memoria del sabor que el cliente
@@ -274,7 +274,7 @@ function ConceptualizacionFundamentacion() {
             <h3 className="font-serif text-2xl text-foreground">
               Postres tradicionales como punto de partida
             </h3>
-            <div className="mt-5 grid gap-4 md:grid-cols-2">
+            <div className="mt-5 grid gap-4 lg:grid-cols-2">
               {traditionalDesserts.map((dessert) => (
                 <article
                   key={dessert.name}
@@ -293,13 +293,13 @@ function ConceptualizacionFundamentacion() {
             <h3 className="font-serif text-2xl text-foreground">
               Reinterpretación con cocina de vanguardia
             </h3>
-            <p className="mt-4 text-sm leading-[1.85] text-muted-foreground md:text-base">
+            <p className="mt-4 text-sm leading-[1.85] text-muted-foreground lg:text-base">
               Reinterpretar un plato o un postre no significa cambiarlo por completo. La clave está
               en mantener su sabor principal y presentarlo de una forma más actual, con más
               ligereza, mejor lectura visual y mayor contraste de texturas. Esta línea permite que
               la tradición y la innovación convivan en una misma experiencia.
             </p>
-            <ul className="mt-5 grid gap-3 md:grid-cols-2">
+            <ul className="mt-5 grid gap-3 lg:grid-cols-2">
               {avantGardeResources.map((resource) => (
                 <li
                   key={resource}
@@ -313,7 +313,7 @@ function ConceptualizacionFundamentacion() {
 
           <div className="mt-8 rounded-md border border-border bg-background/70 p-6">
             <h3 className="font-serif text-2xl text-foreground">Posibles líneas creativas</h3>
-            <p className="mt-4 text-sm leading-[1.85] text-muted-foreground md:text-base">
+            <p className="mt-4 text-sm leading-[1.85] text-muted-foreground lg:text-base">
               Como ejemplo de dirección gastronómica, el restaurante puede trabajar postres
               reconocibles desde una lectura más contemporánea. Estas ideas muestran cómo un sabor
               tradicional puede transformarse en un pase más técnico, visual y adaptado a un menú
@@ -334,9 +334,9 @@ function ConceptualizacionFundamentacion() {
       </section>
 
       <section className="border-t border-border/60">
-        <div className="mx-auto max-w-6xl px-5 py-12 md:py-16">
+        <div className="mx-auto max-w-6xl px-5 py-12 lg:py-16">
           <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Subapartado</p>
-          <h2 className="mt-4 font-serif text-3xl text-foreground md:text-4xl">
+          <h2 className="mt-4 font-serif text-3xl text-foreground lg:text-4xl">
             Ingredientes km 0
           </h2>
           <div className="mt-6 space-y-5">
@@ -358,11 +358,11 @@ function ConceptualizacionFundamentacion() {
             <h3 className="font-serif text-2xl text-foreground">
               Base dulce de la carta de postres
             </h3>
-            <p className="mt-3 text-sm leading-[1.85] text-muted-foreground md:text-base">
+            <p className="mt-3 text-sm leading-[1.85] text-muted-foreground lg:text-base">
               Estos diez ingredientes principales forman la base de nuestra carta de postres. Cada
               uno aporta una función: dulzor, acidez, untuosidad, aroma, textura o memoria canaria.
             </p>
-            <div className="mt-6 grid gap-4 md:grid-cols-2">
+            <div className="mt-6 grid gap-4 lg:grid-cols-2">
               {dessertIngredients.map((ingredient) => (
                 <article
                   key={ingredient.name}
@@ -381,7 +381,7 @@ function ConceptualizacionFundamentacion() {
             <h3 className="px-5 py-4 font-serif text-xl text-foreground">
               Selección completa de ingredientes canarios
             </h3>
-            <div className="grid gap-px border-t border-border bg-border md:grid-cols-2">
+            <div className="grid gap-px border-t border-border bg-border lg:grid-cols-2">
               {km0Ingredients.map((ingredient) => (
                 <div key={ingredient.name} className="bg-background p-5">
                   <p className="font-serif text-lg text-foreground">{ingredient.name}</p>
@@ -396,9 +396,9 @@ function ConceptualizacionFundamentacion() {
       </section>
 
       <section className="border-t border-border/60">
-        <div className="mx-auto max-w-6xl px-5 py-12 md:py-16">
+        <div className="mx-auto max-w-6xl px-5 py-12 lg:py-16">
           <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Subapartado</p>
-          <h2 className="mt-4 font-serif text-3xl text-foreground md:text-4xl">
+          <h2 className="mt-4 font-serif text-3xl text-foreground lg:text-4xl">
             Concepto gastronómico
           </h2>
           <div className="mt-6 rounded-md border border-border bg-background/70 p-6">
@@ -447,8 +447,8 @@ function ConceptualizacionFundamentacion() {
             <h3 className="px-5 py-4 font-serif text-xl text-foreground">
               Productos e islas representadas
             </h3>
-            <div className="space-y-6 border-t border-border p-5 md:p-8">
-              <div className="grid gap-5 md:grid-cols-2">
+            <div className="space-y-6 border-t border-border p-5 lg:p-8">
+              <div className="grid gap-5 lg:grid-cols-2">
                 {islandProducts.map((item) => (
                   <article
                     key={item.island}
@@ -514,7 +514,7 @@ function ConceptualizacionFundamentacion() {
                   </h3>
                 </div>
 
-                <div className="grid gap-6 md:grid-cols-[0.95fr_1.05fr] md:items-center">
+                <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
                   <figure className="overflow-hidden rounded-md border border-border bg-black">
                     <img
                       src="/galeria/logo-version-dorada-transparente.png"
@@ -540,7 +540,7 @@ function ConceptualizacionFundamentacion() {
                   </div>
                 </div>
 
-                <div className="grid gap-5 md:grid-cols-2">
+                <div className="grid gap-5 lg:grid-cols-2">
                   <div className="rounded-md border border-border bg-card/60 p-5">
                     <h4 className="font-serif text-xl text-foreground">Isotipo</h4>
                     <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -581,13 +581,13 @@ function ConceptualizacionFundamentacion() {
 
                 <div>
                   <h4 className="font-serif text-xl text-foreground">Versiones del logotipo</h4>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-base">
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground lg:text-base">
                     Las distintas versiones permiten mantener una identidad coherente en sala,
                     carta, web, redes sociales, papelería, señalética y materiales promocionales,
                     adaptándose a fondos oscuros, claros, fotográficos o monocromos sin perder
                     reconocimiento.
                   </p>
-                  <div className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                  <div className="mt-5 grid gap-4 lg:grid-cols-3">
                     {logoVersions.map((version) => (
                       <figure
                         key={version.src}
@@ -621,5 +621,5 @@ function ConceptualizacionFundamentacion() {
 }
 
 function Text({ children }: { children: React.ReactNode }) {
-  return <p className="text-sm leading-[1.85] text-muted-foreground md:text-base">{children}</p>;
+  return <p className="text-sm leading-[1.85] text-muted-foreground lg:text-base">{children}</p>;
 }

@@ -3,12 +3,18 @@ import { Monogram, WaveDivider } from "./Decorations";
 
 const sitemap = [
   { to: "/", label: "Inicio" },
-  { to: "/menus", label: "Menú" },
   { to: "/carta-digital", label: "Carta digital" },
   { to: "/conocenos", label: "Conócenos" },
   { to: "/galeria", label: "Galería" },
   { to: "/reservas", label: "Reservas" },
   { to: "/contacto", label: "Contacto" },
+] as const;
+
+const menuLinks = [
+  {
+    to: "/menus",
+    label: "Menú",
+  },
 ] as const;
 
 const projectLinks = [
@@ -47,7 +53,7 @@ export function Footer() {
           <WaveDivider className="mt-3 h-3 w-32 text-accent" />
         </div>
 
-        <div className="grid gap-12 md:grid-cols-3">
+        <div className="grid gap-12 lg:grid-cols-3">
           <div>
             <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Ubicación</p>
             <p className="mt-3 font-serif text-lg">Puerto de las Nieves</p>
@@ -66,16 +72,30 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 grid gap-10 border-t border-border/50 pt-12 md:grid-cols-[1fr_1fr_0.7fr]">
+        <div className="mt-14 grid gap-10 border-t border-border/50 pt-12 lg:grid-cols-[1fr_0.6fr_1fr_0.7fr]">
           <div>
             <p className="text-[10px] uppercase tracking-[0.35em] text-accent">
               Mapa de navegación
             </p>
             <nav
-              className="mt-4 grid gap-2 sm:grid-cols-2 md:grid-cols-4"
+              className="mt-4 grid grid-cols-2 gap-2"
               aria-label="Mapa de navegación"
             >
               {sitemap.map((item) => (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+          <div>
+            <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Menú</p>
+            <nav className="mt-4 grid gap-2" aria-label="Menú">
+              {menuLinks.map((item) => (
                 <Link
                   key={item.to}
                   to={item.to}
