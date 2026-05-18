@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
-import { Printer, QrCode } from "lucide-react";
+import { QrCode } from "lucide-react";
 import { DishModal } from "@/components/site/DishModal";
 import { QuickDishDialog } from "@/components/site/QuickDishDialog";
 import { SectionTitle } from "@/components/site/SectionTitle";
@@ -42,17 +42,9 @@ function CodigosQrPage() {
             title="QR de platos y postres"
             subtitle="Cada código enlaza a una ficha rápida con ingredientes principales, alérgenos, origen del producto, técnica e inspiración del plato."
           />
-          <button
-            type="button"
-            onClick={() => window.print()}
-            className="inline-flex w-fit items-center gap-2 rounded-md border border-foreground px-5 py-3 text-xs uppercase tracking-[0.24em] transition-colors hover:bg-foreground hover:text-primary-foreground print:hidden"
-          >
-            <Printer className="h-4 w-4" />
-            Imprimir
-          </button>
         </div>
 
-        <div className="mt-10 rounded-md border border-border bg-background/70 p-5 print:hidden">
+        <div className="mt-10 rounded-md border border-border bg-background/70 p-5">
           <div className="flex items-start gap-3">
             <QrCode className="mt-1 h-5 w-5 shrink-0 text-accent" />
             <p className="text-sm leading-[1.8] text-muted-foreground">
@@ -74,7 +66,7 @@ function CodigosQrPage() {
                 </span>
               </div>
 
-              <div className="grid gap-5 lg:grid-cols-3 print:grid-cols-2">
+              <div className="grid gap-5 lg:grid-cols-3">
                 {group.dishes.map((dish) => {
                   const href = `/carta-digital/${dish.id}`;
                   const target = `${origin}${href}`;
@@ -104,7 +96,7 @@ function CodigosQrPage() {
                       <button
                         type="button"
                         onClick={() => setSelectedDish(dish)}
-                        className="mt-4 inline-flex text-left text-xs uppercase tracking-[0.24em] text-muted-foreground transition-colors hover:text-foreground print:hidden"
+                        className="mt-4 inline-flex text-left text-xs uppercase tracking-[0.24em] text-muted-foreground transition-colors hover:text-foreground"
                       >
                         Abrir ficha rápida
                       </button>
@@ -122,7 +114,7 @@ function CodigosQrPage() {
         onOpenChange={(open) => !open && setSelectedDish(null)}
         onOpenTechnicalSheet={(dish) => {
           setSelectedDish(null);
-          setTechnicalDish(dish);
+          setTechnicalDish(dishes.find((item) => item.id === dish.id) ?? null);
         }}
       />
       <DishModal

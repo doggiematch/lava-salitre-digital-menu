@@ -1,294 +1,868 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  BookOpen,
+  CheckCircle2,
+  ChefHat,
+  FileText,
+  Gem,
+  Pause,
+  Palette,
+  Play,
+  QrCode,
+  Sparkles,
+  Utensils,
+  Waves,
+  type LucideIcon,
+} from "lucide-react";
 import { allDishes } from "@/data/menu";
-import { technicalSheets } from "@/data/technicalSheets";
+import { projectReportMeta } from "@/data/projectReport";
 
 export const Route = createFileRoute("/proyecto/presentacion")({
-  component: PresentacionProyecto,
+  component: ExposicionDeck,
   head: () => ({
     meta: [
-      { title: "Presentación del proyecto - Lava & Salitre" },
+      { title: "Exposición - Lava & Salitre" },
       {
         name: "description",
-        content:
-          "Presentación visual resumida del proyecto Lava & Salitre para exposición en clase.",
+        content: "Presentación interactiva de 11 slides para exponer el proyecto Lava & Salitre.",
       },
     ],
   }),
 });
 
-const phaseSlides = [
+type Slide = {
+  tab: string;
+  eyebrow: string;
+  title: string;
+  subtitle?: string;
+  content: ReactNode;
+};
+
+const dishExamples = [
   {
-    phase: "Fase 1",
-    title: "Conceptualización y fundamentación",
-    image: "/galeria/imagen-hero.png",
-    text:
-      "En esta fase se define la base del proyecto: un restaurante canario de vanguardia que parte de la tradición repostera, los productos de kilómetro cero y las técnicas actuales para crear una propuesta con identidad propia.",
-    bullets: [
-      "Investigación de postres tradicionales canarios.",
-      "Selección de ingredientes locales y de temporada.",
-      "Definición del concepto, público objetivo y tecnologías gastronómicas.",
-    ],
-  },
-  {
-    phase: "Fase 2",
-    title: "Diseño de la carta y contenido",
-    image: "/fotos-platos/bienmesabe-aereo.png",
-    text:
-      "La segunda fase convierte la idea en una carta concreta. Se organizan los postres, petit four y platos canarios de vanguardia, cada uno con nombre creativo, ingredientes principales, técnica aplicada y narrativa gastronómica.",
-    bullets: [
-      "Estructura de carta clara y fácil de presentar.",
-      "Creación de platos, postres y fichas técnicas.",
-      "Relato ligado al paisaje, la cultura y la cocina canaria.",
-    ],
-  },
-  {
-    phase: "Fase 3",
-    title: "Desarrollo tecnológico e implementación",
+    group: "Aperitivo",
+    name: "Perla Atlántica",
     image: "/fotos-platos/perla-atlantica.png",
-    text:
-      "La tercera fase lleva la carta al entorno digital. La web, los códigos QR y las imágenes permiten que el cliente consulte información de cada elaboración de forma rápida, visual y actualizable.",
-    bullets: [
-      "Carta digital accesible desde móvil.",
-      "Códigos QR enlazados a fichas informativas.",
-      "Galería multimedia con platos y postres del proyecto.",
+    origin: "Agua de mar canaria y limón canario",
+    technique: "Esferificación inversa",
+    text: "Un bocado salino y cítrico que abre el menú como una gota del Atlántico.",
+  },
+  {
+    group: "Primero",
+    name: "Ceviche de cherne",
+    image: "/fotos-platos/ceviche-cherne.png",
+    origin: "Cherne fresco, lima y cilantro",
+    technique: "Leche de tigre clarificada",
+    text: "Un pase fresco que mantiene la acidez del ceviche con una presentación más limpia.",
+  },
+  {
+    group: "Segundo",
+    name: "Cabrito de cumbre",
+    image: "/fotos-platos/cabrito-cumbre.png",
+    origin: "Cabrito canario, batata y vino Listán Negro",
+    technique: "Sous-vide, glaseado y ceniza comestible",
+    text: "Representa la cumbre, la ganadería y la lectura volcánica del proyecto.",
+  },
+  {
+    group: "Postre",
+    name: "Bienmesabe aéreo",
+    image: "/fotos-platos/bienmesabe-aereo.png",
+    origin: "Almendra de Tejeda, miel de palma y cítricos",
+    technique: "Espuma en sifón, granizado y crujiente",
+    text: "Reinterpreta un dulce canario en una versión ligera y de menú degustación.",
+  },
+] as const;
+
+const targetAudience = [
+  "Público adulto de 30 a 60 años, con especial peso entre 35 y 55.",
+  "Cliente local y turista gastronómico que busca producto canario, relato y una experiencia cuidada.",
+  "Parejas, pequeños grupos, gourmets y personas interesadas en sostenibilidad y cocina de autor.",
+] as const;
+
+const experiencePoints = [
+  {
+    title: "Ambiente",
+    text: "Tranquilo, elegante y vinculado al paisaje de Agaete, con presencia de piedra volcánica, mar y luz natural.",
+  },
+  {
+    title: "Sensaciones",
+    text: "Frescura atlántica, fuerza de la tierra, producto de temporada y una lectura actual de sabores reconocibles.",
+  },
+  {
+    title: "Experiencia",
+    text: "Menú degustación con relato: el cliente recorre Canarias a través de bocados de mar, cumbre, fuego y memoria insular.",
+  },
+] as const;
+
+const visualDesign = [
+  {
+    label: "Colores",
+    value: "Negro volcánico, dorado, crema, blanco roto y acentos de salitre.",
+  },
+  {
+    label: "Tipografía",
+    value: "Serif elegante para la marca y titulares; sans clara para lectura digital.",
+  },
+  {
+    label: "Estilo",
+    value: "Minimalista, sobrio, premium y ligado a la textura de la carta física.",
+  },
+] as const;
+
+const TIMER_DURATION_MS = 10 * 60 * 1000;
+const TIMER_STORAGE_KEY = "lava-salitre-presentation-timer";
+
+type TimerState = {
+  elapsedMs: number;
+  running: boolean;
+  startedAt: number | null;
+};
+
+const initialTimerState: TimerState = {
+  elapsedMs: 0,
+  running: false,
+  startedAt: null,
+};
+
+function ExposicionDeck() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [timer, setTimer] = useState<TimerState>(initialTimerState);
+  const [, setTimerTick] = useState(0);
+  const totalDishes = useMemo(() => uniqueDishes(allDishes).length, []);
+
+  const slides = useMemo<Slide[]>(
+    () => [
+      {
+        tab: "Portada",
+        eyebrow: "Exposición del proyecto",
+        title: "Lava & Salitre",
+        subtitle: "Cocina canaria de vanguardia",
+        content: <CoverSlide />,
+      },
+      {
+        tab: "Identidad",
+        eyebrow: "1. Presentación del restaurante",
+        title: "Nombre, logotipo y eslogan",
+        subtitle: "La marca resume la unión entre la tierra volcánica y el Atlántico.",
+        content: <IdentitySlide />,
+      },
+      {
+        tab: "Concepto",
+        eyebrow: "2. Concepto del restaurante",
+        title: "Tradición canaria con mirada actual",
+        subtitle: "Producto local, técnica de vanguardia y relato territorial.",
+        content: <ConceptSlide />,
+      },
+      {
+        tab: "Público",
+        eyebrow: "3. Público objetivo",
+        title: "Clientes que buscan una experiencia especial",
+        subtitle:
+          "No es una propuesta para comer rápido: es una experiencia gastronómica con pausa.",
+        content: <AudienceSlide />,
+      },
+      {
+        tab: "Experiencia",
+        eyebrow: "4. Experiencia gastronómica",
+        title: "El cliente vive tierra, mar y memoria",
+        subtitle: "La sala, el paisaje y la carta trabajan juntos para contar Canarias.",
+        content: <ExperienceSlide />,
+      },
+      {
+        tab: "Carta",
+        eyebrow: "5. La carta gastronómica",
+        title: `${totalDishes} elaboraciones organizadas en 3 menús`,
+        subtitle: "Menú Lava, Menú Salitre y Menú Lava & Salitre.",
+        content: <MenuSlide totalDishes={totalDishes} />,
+      },
+      {
+        tab: "Técnicas",
+        eyebrow: "6. Técnicas culinarias utilizadas",
+        title: "Vanguardia al servicio del producto",
+        subtitle:
+          "Las técnicas se usan para mejorar textura, temperatura, sorpresa y presentación.",
+        content: <TechniquesSlide />,
+      },
+      {
+        tab: "Diseño",
+        eyebrow: "7. Diseño de la carta",
+        title: "Una carta física elegante conectada con contenido digital",
+        subtitle: "La identidad visual se mantiene entre papel, web, QR y fichas técnicas.",
+        content: <DesignSlide />,
+      },
+      {
+        tab: "Innovación",
+        eyebrow: "8. Elemento más innovador",
+        title: "QR por elaboración y carta digital ampliada",
+        subtitle:
+          "La tecnología no sustituye la sala: amplía la información sin recargar la carta.",
+        content: <InnovationSlide />,
+      },
+      {
+        tab: "Cierre",
+        eyebrow: "9. Cierre de la exposición",
+        title: "Una propuesta completa, coherente y defendible",
+        subtitle:
+          "Concepto, carta, técnica, diseño, web y documentación unidos en un mismo proyecto.",
+        content: <ClosingSlide />,
+      },
+      {
+        tab: "Gracias",
+        eyebrow: "Fin de la exposición",
+        title: "¡Muchas gracias!",
+        content: <ThanksSlide />,
+      },
     ],
-  },
-  {
-    phase: "Fase 4",
-    title: "Documentación y presentación",
-    image: "/galeria/salon-vistas.png",
-    text:
-      "La última fase ordena todo el trabajo en una memoria y una exposición final. El objetivo es demostrar que Lava & Salitre no es solo una idea gastronómica, sino una propuesta coherente, comunicable y viable.",
-    bullets: [
-      "Introducción del proyecto y valor del producto local.",
-      "Análisis DAFO, marketing y presupuesto.",
-      "Presentación final clara, visual y profesional.",
-    ],
-  },
-] as const;
+    [totalDishes],
+  );
 
-const conceptPoints = [
-  {
-    title: "Lava",
-    text: "Representa la tierra, la cumbre, el fuego, la ganadería y el origen volcánico de Canarias.",
-  },
-  {
-    title: "Salitre",
-    text: "Representa el mar, la costa, la pesca, la frescura atlántica y la relación directa con Agaete.",
-  },
-  {
-    title: "Vanguardia",
-    text: "Actualiza sabores reconocibles con técnicas como esferificación, espumas, gelificaciones, brasa y texturas aireadas.",
-  },
-] as const;
+  const activeSlide = slides[activeIndex] ?? slides[0];
+  const progress = ((activeIndex + 1) / slides.length) * 100;
+  const elapsedMs = getCurrentElapsedMs(timer);
+  const remainingMs = Math.max(0, TIMER_DURATION_MS - elapsedMs);
+  const timerHasFinished = remainingMs === 0;
 
-const tastingPath = [
-  "Platos canarios de vanguardia",
-  "Postres clásicos reinterpretados",
-  "Postres de innovación",
-  "Petit four",
-] as const;
+  useEffect(() => {
+    const savedTimer = readSavedTimer();
+    setTimer(savedTimer);
+  }, []);
 
-const featuredDishIds = [
-  "perla-atlantica",
-  "bruma-agaete",
-  "cabrito-cumbre",
-  "vieja-sancochada",
-  "ceniza-dulce",
-  "bienmesabe-aereo",
-  "pina-hierro",
-  "palma-cacao",
-  "bombon-volcanico",
-  "toffee-aireado",
-] as const;
+  useEffect(() => {
+    if (!timer.running) return;
 
-function PresentacionProyecto() {
-  const featuredDishes = featuredDishIds
-    .map((id) => uniqueDishes(allDishes).find((dish) => dish.id === id))
-    .filter(Boolean) as Array<(typeof allDishes)[number]>;
+    const intervalId = window.setInterval(() => {
+      setTimerTick((tick) => tick + 1);
+    }, 500);
+
+    return () => window.clearInterval(intervalId);
+  }, [timer.running]);
+
+  useEffect(() => {
+    if (!timer.running || !timer.startedAt) return;
+
+    if (elapsedMs >= TIMER_DURATION_MS) {
+      const finishedTimer: TimerState = {
+        elapsedMs: TIMER_DURATION_MS,
+        running: false,
+        startedAt: null,
+      };
+      setTimer(finishedTimer);
+      saveTimer(finishedTimer);
+    }
+  }, [elapsedMs, timer.running, timer.startedAt]);
+
+  function toggleTimer() {
+    const currentElapsedMs = getCurrentElapsedMs(timer);
+
+    if (currentElapsedMs >= TIMER_DURATION_MS) return;
+
+    if (timer.running) {
+      const pausedTimer: TimerState = {
+        elapsedMs: currentElapsedMs,
+        running: false,
+        startedAt: null,
+      };
+      setTimer(pausedTimer);
+      saveTimer(pausedTimer);
+      return;
+    }
+
+    const runningTimer: TimerState = {
+      elapsedMs: currentElapsedMs,
+      running: true,
+      startedAt: Date.now(),
+    };
+    setTimer(runningTimer);
+    saveTimer(runningTimer);
+  }
+
+  useEffect(() => {
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousDocumentOverflow = document.documentElement.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === "ArrowRight") {
+        setActiveIndex((index) => Math.min(index + 1, slides.length - 1));
+      }
+
+      if (event.key === "ArrowLeft") {
+        setActiveIndex((index) => Math.max(index - 1, 0));
+      }
+    }
+
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousDocumentOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [slides.length]);
 
   return (
-    <div className="paper">
-      <section className="mx-auto grid max-w-6xl gap-10 px-5 py-14 lg:grid-cols-[1fr_0.82fr] lg:items-center lg:py-20">
-        <div>
-          <p className="text-[10px] uppercase tracking-[0.35em] text-accent">
-            Presentación final
-          </p>
-          <h1 className="mt-4 font-serif text-4xl leading-tight text-foreground lg:text-6xl">
-            Lava & Salitre
-          </h1>
-          <p className="mt-6 max-w-3xl text-base leading-[1.8] text-muted-foreground lg:text-lg">
-            Lava & Salitre es una propuesta de restaurante canario de vanguardia situada en Agaete.
-            El proyecto une producto local, paisaje volcánico, mar Atlántico y una carta pensada para
-            explicar Canarias desde una mirada actual.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              to="/proyecto/fase-1-conceptualizacion-fundamentacion"
-              className="inline-flex items-center gap-2 rounded-md border border-foreground px-5 py-3 text-xs uppercase tracking-[0.24em] transition-colors hover:bg-foreground hover:text-primary-foreground"
+    <div className="fixed inset-0 z-[100] flex h-dvh flex-col overflow-hidden bg-[#f8f5ee] text-[#24302d]">
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,_rgba(248,245,238,0.98)_0%,_rgba(232,244,242,0.95)_48%,_rgba(255,248,237,0.98)_100%)]" />
+
+      <header className="relative z-10 shrink-0 border-b border-[#24302d]/10 bg-white/65 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-2.5 lg:px-8">
+          <Link
+            to="/proyecto"
+            className="flex shrink-0 items-center gap-3 rounded-md px-2 py-1 transition-colors hover:bg-white/70"
+            aria-label="Volver al proyecto"
+          >
+            <img src="/galeria/isotipo.png" alt="" className="size-10 object-contain" aria-hidden />
+            <span className="hidden font-serif text-lg text-[#24302d] [letter-spacing:0] lg:block">
+              Lava <span className="text-[#b8812c]">&</span> Salitre
+            </span>
+          </Link>
+
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={toggleTimer}
+              disabled={timerHasFinished}
+              className={`inline-flex items-center gap-2 rounded-md border px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em] transition-colors ${
+                timer.running
+                  ? "border-[#c98a4b] bg-[#fff9ed] text-[#24302d] hover:bg-[#f4ead7]"
+                  : "border-[#24302d]/20 bg-white/70 text-[#24302d] hover:border-[#24302d]"
+              } disabled:cursor-not-allowed disabled:opacity-60`}
+              aria-label={timer.running ? "Pausar cronómetro" : "Iniciar cronómetro"}
             >
-              Ver fases
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-            <Link
-              to="/carta-digital"
-              className="inline-flex items-center gap-2 rounded-md border border-border px-5 py-3 text-xs uppercase tracking-[0.24em] text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
-            >
-              Carta digital
-            </Link>
+              {timer.running ? <Pause className="size-4" /> : <Play className="size-4" />}
+              <span>{timer.running ? "Pausar" : elapsedMs > 0 ? "Reanudar" : "Iniciar"}</span>
+            </button>
+            <div className="min-w-[5.6rem] rounded-md border border-[#24302d]/12 bg-white/70 px-3 py-2 text-center font-serif text-2xl leading-none text-[#24302d] [letter-spacing:0]">
+              {formatRemainingTime(remainingMs)}
+            </div>
+            <div className="hidden min-w-16 text-right text-xs font-semibold text-[#52615d] lg:block">
+              {activeIndex + 1} / {slides.length}
+            </div>
           </div>
         </div>
-        <div className="overflow-hidden rounded-md border border-border bg-card/50">
-          <img
-            src="/galeria/terraza-atardecer.png"
-            alt="Restaurante Lava & Salitre frente al mar"
-            className="aspect-[4/5] w-full object-cover"
+        <div className="h-1 bg-[#24302d]/10">
+          <div
+            className="h-full bg-[#c98a4b] transition-all duration-500"
+            style={{ width: `${progress}%` }}
           />
         </div>
-      </section>
+      </header>
 
-      <section className="border-t border-border/60">
-        <div className="mx-auto max-w-6xl px-5 py-12 lg:py-16">
-          <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Concepto</p>
-          <h2 className="mt-3 font-serif text-3xl text-foreground lg:text-4xl">
-            Tradición canaria, producto local y cocina actual
-          </h2>
-          <div className="mt-7 grid gap-4 lg:grid-cols-3">
-            {conceptPoints.map((point) => (
-              <article key={point.title} className="rounded-md border border-border bg-background/70 p-5">
-                <h3 className="font-serif text-2xl text-foreground">{point.title}</h3>
-                <p className="mt-3 text-sm leading-[1.8] text-muted-foreground">{point.text}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="border-t border-border/60">
-        <div className="mx-auto max-w-6xl px-5 py-12 lg:py-16">
-          <p className="text-[10px] uppercase tracking-[0.35em] text-accent">
-            Guion de exposición
-          </p>
-          <h2 className="mt-3 font-serif text-3xl text-foreground lg:text-4xl">
-            Las cuatro fases del proyecto
-          </h2>
-          <div className="mt-7 grid gap-6">
-            {phaseSlides.map((slide) => (
-              <article
-                key={slide.phase}
-                className="grid overflow-hidden rounded-md border border-border bg-background/70 lg:grid-cols-[0.85fr_1.15fr]"
+      <main className="relative z-10 min-h-0 flex-1 overflow-hidden px-4 lg:px-8">
+        <div className="mx-auto h-full max-w-7xl overflow-hidden py-3 lg:py-4">
+          <section
+            key={activeSlide.tab}
+            className="grid min-h-full items-center animate-fade-up"
+            aria-labelledby="slide-title"
+          >
+            <div className="mb-3 max-w-4xl">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.32em] text-[#b8812c]">
+                {activeSlide.eyebrow}
+              </p>
+              <h1
+                id="slide-title"
+                className="mt-2 font-serif text-3xl leading-[1.04] text-[#24302d] [letter-spacing:0] lg:text-[2.75rem]"
               >
-                <img src={slide.image} alt={slide.title} className="h-full min-h-64 w-full object-cover" />
-                <div className="p-6 lg:p-8">
-                  <p className="text-[10px] uppercase tracking-[0.35em] text-accent">
-                    {slide.phase}
-                  </p>
-                  <h3 className="mt-3 font-serif text-2xl text-foreground lg:text-3xl">
-                    {slide.title}
-                  </h3>
-                  <p className="mt-4 text-sm leading-[1.8] text-muted-foreground lg:text-base">
-                    {slide.text}
-                  </p>
-                  <ul className="mt-5 grid gap-2">
-                    {slide.bullets.map((bullet) => (
-                      <li key={bullet} className="text-sm leading-relaxed text-muted-foreground">
-                        {bullet}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </article>
-            ))}
-          </div>
+                {activeSlide.title}
+              </h1>
+              {activeSlide.subtitle ? (
+                <p className="mt-1.5 max-w-3xl text-sm leading-6 text-[#52615d] lg:text-base">
+                  {activeSlide.subtitle}
+                </p>
+              ) : null}
+            </div>
+            {activeSlide.content}
+          </section>
         </div>
-      </section>
+      </main>
 
-      <section className="border-t border-border/60">
-        <div className="mx-auto max-w-6xl px-5 py-12 lg:py-16">
-          <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Carta</p>
-          <h2 className="mt-3 font-serif text-3xl text-foreground lg:text-4xl">
-            Recorrido gastronómico
-          </h2>
-          <p className="mt-4 max-w-3xl text-sm leading-[1.8] text-muted-foreground lg:text-base">
-            La carta se entiende como un recorrido breve y ordenado. Primero aparecen los platos
-            canarios de vanguardia; después, la parte dulce con postres clásicos reinterpretados,
-            postres de innovación y petit four.
+      <footer className="relative z-10 shrink-0 border-t border-[#24302d]/10 bg-white/55 px-4 py-2.5 backdrop-blur-xl lg:px-8">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-2">
+          <button
+            type="button"
+            onClick={() => setActiveIndex((index) => Math.max(index - 1, 0))}
+            disabled={activeIndex === 0}
+            className="inline-flex items-center gap-2 rounded-md border border-[#24302d]/20 bg-white/60 px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#24302d] transition-colors hover:border-[#24302d] disabled:cursor-not-allowed disabled:opacity-40"
+          >
+            <ArrowLeft className="size-4" />
+            <span className="hidden lg:inline">Anterior</span>
+          </button>
+
+          <nav className="flex min-w-0 flex-1 flex-wrap justify-center gap-1" aria-label="Slides">
+            {slides.map((slide, index) => (
+              <button
+                key={slide.tab}
+                type="button"
+                onClick={() => setActiveIndex(index)}
+                className={`rounded-md border px-2.5 py-1.5 text-[9px] font-semibold uppercase leading-none tracking-[0.1em] transition-colors lg:text-[10px] ${
+                  activeIndex === index
+                    ? "border-[#24302d] bg-[#24302d] text-white"
+                    : "border-[#24302d]/15 bg-white/50 text-[#52615d] hover:border-[#24302d]/45 hover:text-[#24302d]"
+                }`}
+              >
+                {slide.tab}
+              </button>
+            ))}
+          </nav>
+
+          <button
+            type="button"
+            onClick={() => setActiveIndex((index) => Math.min(index + 1, slides.length - 1))}
+            disabled={activeIndex === slides.length - 1}
+            className="inline-flex items-center gap-2 rounded-md border border-[#24302d]/20 bg-[#24302d] px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-white transition-colors hover:bg-[#3a4844] disabled:cursor-not-allowed disabled:opacity-40"
+          >
+            <span className="hidden lg:inline">Siguiente</span>
+            <ArrowRight className="size-4" />
+          </button>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+function getCurrentElapsedMs(timer: TimerState) {
+  if (!timer.running || !timer.startedAt) {
+    return Math.min(timer.elapsedMs, TIMER_DURATION_MS);
+  }
+
+  return Math.min(timer.elapsedMs + Date.now() - timer.startedAt, TIMER_DURATION_MS);
+}
+
+function readSavedTimer(): TimerState {
+  if (typeof window === "undefined") return initialTimerState;
+
+  try {
+    const rawTimer = window.localStorage.getItem(TIMER_STORAGE_KEY);
+    if (!rawTimer) return initialTimerState;
+
+    const savedTimer = JSON.parse(rawTimer) as Partial<TimerState>;
+    const normalizedTimer: TimerState = {
+      elapsedMs: Number(savedTimer.elapsedMs) || 0,
+      running: Boolean(savedTimer.running),
+      startedAt: typeof savedTimer.startedAt === "number" ? savedTimer.startedAt : null,
+    };
+    const elapsedMs = getCurrentElapsedMs(normalizedTimer);
+
+    if (elapsedMs >= TIMER_DURATION_MS) {
+      return {
+        elapsedMs: TIMER_DURATION_MS,
+        running: false,
+        startedAt: null,
+      };
+    }
+
+    return {
+      elapsedMs,
+      running: normalizedTimer.running,
+      startedAt: normalizedTimer.running ? Date.now() : null,
+    };
+  } catch {
+    return initialTimerState;
+  }
+}
+
+function saveTimer(timer: TimerState) {
+  if (typeof window === "undefined") return;
+  window.localStorage.setItem(TIMER_STORAGE_KEY, JSON.stringify(timer));
+}
+
+function formatRemainingTime(milliseconds: number) {
+  const totalSeconds = Math.ceil(milliseconds / 1000);
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+
+  return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+}
+
+function CoverSlide() {
+  return (
+    <div className="grid gap-5 lg:grid-cols-[0.88fr_1.12fr] lg:items-center">
+      <div className="rounded-md border border-[#24302d]/12 bg-white/65 p-5">
+        <img
+          src={projectReportMeta.logo.src}
+          alt={projectReportMeta.logo.alt}
+          className="h-20 w-auto object-contain"
+        />
+        <p className="mt-6 text-[10px] font-semibold uppercase tracking-[0.28em] text-[#b8812c]">
+          Proyecto escolar
+        </p>
+        <h2 className="mt-3 font-serif text-5xl leading-none text-[#24302d] [letter-spacing:0] lg:text-7xl">
+          Lava <span className="text-[#b8812c]">&</span> Salitre
+        </h2>
+        <p className="mt-4 max-w-xl text-base leading-7 text-[#52615d] lg:text-lg">
+          Restaurante gastronómico canario inspirado en la fuerza volcánica de la tierra y la
+          frescura del Atlántico.
+        </p>
+        <div className="mt-6 grid gap-3 lg:grid-cols-3">
+          <MiniStat value="Tierra" label="Lava" />
+          <MiniStat value="Mar" label="Salitre" />
+          <MiniStat value="Vanguardia" label="Cocina" />
+        </div>
+      </div>
+      <HeroImage src="/galeria/imagen-hero.png" alt="Plato de Lava & Salitre frente a Agaete" />
+    </div>
+  );
+}
+
+function IdentitySlide() {
+  return (
+    <div className="grid gap-5 lg:grid-cols-[1fr_0.92fr] lg:items-center">
+      <div className="grid gap-4">
+        <InfoPanel icon={Utensils} title="Nombre del restaurante">
+          Se llama Lava & Salitre porque une dos elementos esenciales de Canarias: la tierra
+          volcánica y el salitre del Atlántico.
+        </InfoPanel>
+        <InfoPanel icon={Gem} title="Logotipo">
+          El símbolo representa una formación volcánica atravesada por un trazo orgánico que puede
+          leerse como lava, camino, costa o corriente marina.
+        </InfoPanel>
+        <InfoPanel icon={Palette} title="Colores y eslogan">
+          El dorado transmite valor gastronómico; el negro conecta con la piedra volcánica. El claim
+          es "Tierra y Mar" y el subtítulo de marca es "Cocina canaria de vanguardia".
+        </InfoPanel>
+      </div>
+
+      <figure className="rounded-md border border-[#24302d]/12 bg-[#171a18] p-8 text-center">
+        <img
+          src="/galeria/logo-version-dorada-negro.png"
+          alt="Logotipo Lava & Salitre"
+          className="mx-auto max-h-72 w-full object-contain"
+        />
+        <figcaption className="mt-4 text-[10px] uppercase tracking-[0.26em] text-[#e4c688]">
+          Imagotipo · símbolo + texto
+        </figcaption>
+      </figure>
+    </div>
+  );
+}
+
+function ConceptSlide() {
+  return (
+    <div className="grid gap-5 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
+      <HeroImage src="/proyecto/fase-1/concepto-lava-salitre.jpg" alt="Concepto Lava & Salitre" />
+      <div className="grid gap-4">
+        <Statement>
+          El restaurante ofrece cocina canaria minimalista y de vanguardia, con platos de mar y
+          tierra elaborados con producto local, de temporada y kilómetro cero.
+        </Statement>
+        <div className="grid gap-3 lg:grid-cols-2">
+          <SmallCard title="Tipo de cocina" text="Cocina canaria actual, precisa y elegante." />
+          <SmallCard
+            title="Estilo gastronómico"
+            text="Menú degustación con raíz local y técnica moderna."
+          />
+          <SmallCard
+            title="Idea principal"
+            text="Contar Canarias desde la lava, el salitre y el producto insular."
+          />
+          <SmallCard
+            title="Diferenciación"
+            text="No copia recetas tradicionales: las reinterpreta con una lectura contemporánea."
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function AudienceSlide() {
+  return (
+    <div className="grid gap-5 lg:grid-cols-[1fr_0.92fr] lg:items-center">
+      <div className="grid gap-4">
+        {targetAudience.map((item) => (
+          <div
+            key={item}
+            className="flex gap-3 rounded-md border border-[#24302d]/12 bg-white/65 p-4"
+          >
+            <CheckCircle2 className="mt-1 size-5 shrink-0 text-[#3f7f66]" />
+            <p className="text-base leading-7 text-[#52615d]">{item}</p>
+          </div>
+        ))}
+        <div className="rounded-md border border-[#c98a4b]/35 bg-[#fff9ed]/80 p-5">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[#b8812c]">
+            Qué buscan
           </p>
-          <div className="mt-7 grid gap-4 lg:grid-cols-4">
-            {tastingPath.map((step, index) => (
-              <article key={step} className="rounded-md border border-border bg-card/50 p-5">
-                <p className="font-serif text-3xl text-accent">{String(index + 1).padStart(2, "0")}</p>
-                <h3 className="mt-3 font-serif text-xl text-foreground">{step}</h3>
-              </article>
-            ))}
-          </div>
+          <p className="mt-3 font-serif text-2xl leading-snug text-[#24302d] [letter-spacing:0]">
+            Buena comida, buen servicio, ambiente tranquilo, producto canario y una presentación con
+            sentido.
+          </p>
         </div>
-      </section>
+      </div>
+      <HeroImage src="/galeria/restaurante-clientes.png" alt="Clientes en Lava & Salitre" />
+    </div>
+  );
+}
 
-      <section className="border-t border-border/60">
-        <div className="mx-auto max-w-6xl px-5 py-12 lg:py-16">
-          <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Galería de apoyo</p>
-          <h2 className="mt-3 font-serif text-3xl text-foreground lg:text-4xl">
-            Imágenes para explicar la propuesta
-          </h2>
-          <div className="mt-7 grid grid-cols-2 gap-4 lg:grid-cols-5">
-            {featuredDishes.map((dish) => {
-              const sheet = dish.technicalSheetId ? technicalSheets[dish.technicalSheetId] : undefined;
-              const imageSrc = sheet?.photoSrc ?? sheet?.sketchSrc;
+function ExperienceSlide() {
+  return (
+    <div className="grid gap-5 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+      <HeroImage src="/galeria/terraza-atardecer.png" alt="Terraza frente al Atlántico" />
+      <div className="grid gap-4">
+        {experiencePoints.map((point) => (
+          <InfoPanel key={point.title} icon={Waves} title={point.title}>
+            {point.text}
+          </InfoPanel>
+        ))}
+        <Statement>
+          Se busca que el cliente sienta que cada plato forma parte de un recorrido: costa, cumbre,
+          agricultura, ganadería, fuego y Atlántico.
+        </Statement>
+      </div>
+    </div>
+  );
+}
 
-              return (
-                <figure
-                  key={dish.id}
-                  className="overflow-hidden rounded-md border border-border bg-card/50"
-                >
-                  {imageSrc ? (
-                    <img
-                      src={imageSrc}
-                      alt={dish.name}
-                      className="aspect-square w-full object-cover"
-                      loading="lazy"
-                    />
-                  ) : null}
-                  <figcaption className="p-3">
-                    <p className="line-clamp-2 min-h-[2.5rem] text-sm leading-snug text-foreground">
-                      {dish.name}
-                    </p>
-                    <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-accent">
-                      {dish.categoryName}
-                    </p>
-                  </figcaption>
-                </figure>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+function MenuSlide({ totalDishes }: { totalDishes: number }) {
+  return (
+    <div className="grid gap-5">
+      <div className="grid gap-3 lg:grid-cols-4">
+        <MiniStat value={`${totalDishes}`} label="Elaboraciones" />
+        <MiniStat value="10" label="Pases Menú Lava" />
+        <MiniStat value="10" label="Pases Menú Salitre" />
+        <MiniStat value="15" label="Pases Lava & Salitre" />
+      </div>
+      <div className="grid gap-4 lg:grid-cols-4">
+        {dishExamples.map((dish) => (
+          <DishCard key={dish.name} dish={dish} />
+        ))}
+      </div>
+    </div>
+  );
+}
 
-      <section className="border-t border-border/60">
-        <div className="mx-auto grid max-w-6xl gap-6 px-5 py-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:py-16">
-          <div className="overflow-hidden rounded-md border border-border bg-card/50">
-            <img
-              src="/galeria/logo-lava-salitre.png"
-              alt="Logo Lava & Salitre"
-              className="aspect-video w-full object-cover"
-            />
-          </div>
-          <div>
-            <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Cierre</p>
-            <h2 className="mt-3 font-serif text-3xl text-foreground lg:text-4xl">
-              Una experiencia canaria contemporánea
-            </h2>
-            <p className="mt-4 text-sm leading-[1.8] text-muted-foreground lg:text-base">
-              Como conclusión, Lava & Salitre propone una forma de contar Canarias desde la cocina:
-              producto local, paisaje, memoria gastronómica y tecnología sencilla al servicio de la
-              experiencia. La propuesta es visual, clara y preparada para presentarse tanto en sala
-              como en formato digital.
+function TechniquesSlide() {
+  return (
+    <div className="grid gap-5 lg:grid-cols-[0.72fr_1.28fr] lg:items-center">
+      <div className="rounded-md border border-[#24302d]/12 bg-white/65 p-5">
+        <ChefHat className="size-8 text-[#b8812c]" />
+        <h2 className="mt-4 font-serif text-3xl text-[#24302d] [letter-spacing:0]">
+          Técnicas elegidas con sentido
+        </h2>
+        <p className="mt-4 text-sm leading-7 text-[#52615d]">
+          La guía pide explicar el motivo de la elección: aquí la técnica no es decoración, sirve
+          para aligerar, concentrar sabor, crear contraste o hacer más clara la presentación.
+        </p>
+      </div>
+      <div className="grid gap-4 lg:grid-cols-2">
+        {dishExamples.map((dish) => (
+          <TechniqueCard key={dish.name} dish={dish} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function DesignSlide() {
+  return (
+    <div className="grid gap-5 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+      <div className="grid gap-4">
+        {visualDesign.map((item) => (
+          <div key={item.label} className="rounded-md border border-[#24302d]/12 bg-white/65 p-5">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[#b8812c]">
+              {item.label}
+            </p>
+            <p className="mt-3 font-serif text-2xl leading-snug text-[#24302d] [letter-spacing:0]">
+              {item.value}
             </p>
           </div>
+        ))}
+      </div>
+      <div className="grid gap-4">
+        <HeroImage
+          src="/proyecto/fase-2/carta-fisica/portada-carta-menu.png"
+          alt="Portada de la carta física"
+        />
+        <div className="rounded-md border border-[#24302d]/12 bg-white/65 p-4 text-sm leading-7 text-[#52615d]">
+          La carta se plantea como soporte de sala: limpia, visual, con nombres de platos y QR para
+          ampliar origen, alérgenos y ficha técnica.
         </div>
-      </section>
+      </div>
     </div>
+  );
+}
+
+function InnovationSlide() {
+  return (
+    <div className="grid gap-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+      <div className="grid gap-4">
+        <Statement>
+          El elemento más innovador es unir carta física, carta digital y QR individual por plato.
+        </Statement>
+        <InfoPanel icon={QrCode} title="Qué lo hace único">
+          Cada elaboración puede abrir una ficha con descripción, ingredientes, técnica, origen del
+          producto, alérgenos, imagen y maridaje.
+        </InfoPanel>
+        <InfoPanel icon={FileText} title="Por qué aporta valor">
+          La carta impresa no se satura, el cliente entiende mejor el plato y el contenido puede
+          actualizarse por temporada.
+        </InfoPanel>
+      </div>
+      <div className="rounded-md border border-[#24302d]/12 bg-white/65 p-5">
+        <img
+          src="/proyecto/fase-2/carta-fisica/interior-3-carta-menu.png"
+          alt="Interior de carta con códigos QR"
+          className="h-[315px] w-full rounded-md object-cover object-top"
+        />
+        <div className="mt-4 grid gap-3 lg:grid-cols-3">
+          <MiniStat value="QR" label="Carta física" />
+          <MiniStat value="Web" label="Fichas" />
+          <MiniStat value="Sala" label="Relato" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ClosingSlide() {
+  return (
+    <div className="grid gap-5 lg:grid-cols-[1fr_0.92fr] lg:items-center">
+      <div className="grid gap-4">
+        <InfoPanel icon={Sparkles} title="Conclusión">
+          Lava & Salitre ofrece una experiencia gastronómica canaria de vanguardia basada en
+          producto local, técnica contemporánea y una identidad visual coherente.
+        </InfoPanel>
+        <InfoPanel icon={Utensils} title="Qué busca el proyecto">
+          Sorprender al cliente mostrando que los productos de las islas pueden formar parte de una
+          cocina moderna, elegante y con relato.
+        </InfoPanel>
+        <InfoPanel icon={BookOpen} title="Resultado final">
+          El proyecto une concepto, público objetivo, carta, técnicas, diseño, soporte digital,
+          documentación y presentación académica.
+        </InfoPanel>
+      </div>
+      <HeroImage src="/galeria/equipo.png" alt="Equipo de Lava & Salitre" />
+    </div>
+  );
+}
+
+function ThanksSlide() {
+  return (
+    <div className="grid min-h-[54vh] place-items-center rounded-md border border-[#24302d]/12 bg-white/65 p-8 text-center">
+      <div>
+        <img
+          src="/galeria/logo-version-dorada-transparente.png"
+          alt="Logo Lava & Salitre"
+          className="mx-auto h-32 w-auto object-contain"
+        />
+        <h2 className="mt-10 font-serif text-6xl leading-none text-[#24302d] [letter-spacing:0] lg:text-8xl">
+          ¡Muchas gracias!
+        </h2>
+        <p className="mt-6 text-sm uppercase tracking-[0.28em] text-[#b8812c]">
+          Lava & Salitre · Tierra y Mar
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function HeroImage({ src, alt }: { src: string; alt: string }) {
+  return (
+    <figure className="overflow-hidden rounded-md border border-[#24302d]/12 bg-white/65 shadow-[0_18px_70px_-42px_rgba(36,48,45,0.55)]">
+      <img src={src} alt={alt} className="h-[350px] w-full object-cover" />
+    </figure>
+  );
+}
+
+function InfoPanel({
+  icon: Icon,
+  title,
+  children,
+}: {
+  icon: LucideIcon;
+  title: string;
+  children: ReactNode;
+}) {
+  return (
+    <article className="rounded-md border border-[#24302d]/12 bg-white/65 p-3">
+      <div className="flex items-center gap-3">
+        <span className="grid size-9 shrink-0 place-items-center rounded-md bg-[#24302d] text-white">
+          <Icon className="size-5" />
+        </span>
+        <h2 className="font-serif text-2xl text-[#24302d] [letter-spacing:0]">{title}</h2>
+      </div>
+      <p className="mt-2 text-sm leading-6 text-[#52615d]">{children}</p>
+    </article>
+  );
+}
+
+function Statement({ children }: { children: ReactNode }) {
+  return (
+    <div className="rounded-md border border-[#c98a4b]/35 bg-[#fff9ed]/80 p-3.5">
+      <p className="font-serif text-xl leading-snug text-[#24302d] [letter-spacing:0] lg:text-2xl">
+        {children}
+      </p>
+    </div>
+  );
+}
+
+function SmallCard({ title, text }: { title: string; text: string }) {
+  return (
+    <article className="rounded-md border border-[#24302d]/12 bg-white/65 p-4">
+      <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#b8812c]">
+        {title}
+      </p>
+      <p className="mt-3 text-sm leading-6 text-[#52615d]">{text}</p>
+    </article>
+  );
+}
+
+function MiniStat({ value, label }: { value: string; label: string }) {
+  return (
+    <div className="rounded-md border border-[#24302d]/12 bg-white/65 p-3.5">
+      <p className="font-serif text-2xl text-[#24302d] [letter-spacing:0] lg:text-3xl">{value}</p>
+      <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#52615d]">
+        {label}
+      </p>
+    </div>
+  );
+}
+
+function DishCard({ dish }: { dish: (typeof dishExamples)[number] }) {
+  return (
+    <article className="overflow-hidden rounded-md border border-[#24302d]/12 bg-white/65">
+      <img src={dish.image} alt={dish.name} className="h-36 w-full object-cover" />
+      <div className="p-4">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#b8812c]">
+          {dish.group}
+        </p>
+        <h2 className="mt-2 font-serif text-2xl leading-tight text-[#24302d] [letter-spacing:0]">
+          {dish.name}
+        </h2>
+        <p className="mt-3 text-xs leading-5 text-[#52615d]">{dish.text}</p>
+        <div className="mt-4 grid gap-2">
+          <Badge>{dish.origin}</Badge>
+          <Badge>{dish.technique}</Badge>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+function TechniqueCard({ dish }: { dish: (typeof dishExamples)[number] }) {
+  return (
+    <article className="grid gap-3 rounded-md border border-[#24302d]/12 bg-white/65 p-4 lg:grid-cols-[92px_1fr]">
+      <img src={dish.image} alt={dish.name} className="size-[92px] rounded-md object-cover" />
+      <div>
+        <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#b8812c]">
+          {dish.group}
+        </p>
+        <h3 className="mt-1 font-serif text-xl text-[#24302d] [letter-spacing:0]">{dish.name}</h3>
+        <p className="mt-2 text-sm font-medium text-[#24302d]">{dish.technique}</p>
+        <p className="mt-1 text-xs leading-5 text-[#52615d]">{dish.text}</p>
+      </div>
+    </article>
+  );
+}
+
+function Badge({ children }: { children: ReactNode }) {
+  return (
+    <span className="inline-flex min-h-8 items-center rounded-md border border-[#24302d]/10 bg-white/70 px-2.5 py-1 text-xs leading-4 text-[#52615d]">
+      {children}
+    </span>
   );
 }
 

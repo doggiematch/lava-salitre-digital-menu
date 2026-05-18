@@ -11,6 +11,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { ProjectPhasePage } from "@/components/site/ProjectPhasePage";
+import { projectReportPhases } from "@/data/projectReport";
 
 export const Route = createFileRoute("/proyecto/fase-4-documentacion-presentacion")({
   component: Fase4DocumentacionPresentacion,
@@ -113,12 +114,27 @@ const phaseSections = [
     table: {
       headers: ["Acción", "Objetivo"],
       rows: [
-        ["Vídeos cortos de emplatado", "Mostrar la parte visual, creativa y técnica del restaurante."],
-        ["Productos canarios de temporada", "Reforzar la identidad local y la filosofía de kilómetro cero."],
+        [
+          "Vídeos cortos de emplatado",
+          "Mostrar la parte visual, creativa y técnica del restaurante.",
+        ],
+        [
+          "Productos canarios de temporada",
+          "Reforzar la identidad local y la filosofía de kilómetro cero.",
+        ],
         ["Equipo de cocina y sala", "Hacer el proyecto más humano, cercano y real."],
-        ["Maridajes con vinos canarios", "Dar valor a la experiencia completa del menú degustación."],
-        ["Menús especiales o eventos", "Atraer reservas en fechas concretas y crear movimiento en redes."],
-        ["Creadores gastronómicos", "Llegar a público interesado en gastronomía y experiencias diferentes."],
+        [
+          "Maridajes con vinos canarios",
+          "Dar valor a la experiencia completa del menú degustación.",
+        ],
+        [
+          "Menús especiales o eventos",
+          "Atraer reservas en fechas concretas y crear movimiento en redes.",
+        ],
+        [
+          "Creadores gastronómicos",
+          "Llegar a público interesado en gastronomía y experiencias diferentes.",
+        ],
       ],
     },
     conclusion:
@@ -177,6 +193,7 @@ const phaseSections = [
       "Sin maridaje, el coste de producción del menú se estima entre 23,50 EUR y 42 EUR por persona. La parte tecnológica debe comenzar de forma sencilla con web, códigos QR, carta digital, fotografías y vídeos básicos para redes.",
   },
 ] as const;
+const phaseReport = projectReportPhases[3];
 
 function CardTitle({ icon: Icon, title }: { icon: LucideIcon; title: string }) {
   return (
@@ -249,7 +266,10 @@ function DataTable({
           {rows.map((row) => (
             <tr key={row.join("-")} className="bg-background/45">
               {row.map((cell) => (
-                <td key={cell} className="px-4 py-3 align-top leading-relaxed text-muted-foreground">
+                <td
+                  key={cell}
+                  className="px-4 py-3 align-top leading-relaxed text-muted-foreground"
+                >
                   {cell}
                 </td>
               ))}
@@ -263,11 +283,7 @@ function DataTable({
 
 function Fase4DocumentacionPresentacion() {
   return (
-    <ProjectPhasePage
-      phase="Fase 4"
-      title="Documentación y presentación"
-      intro="Esta cuarta fase consolida el proyecto en una memoria completa capaz de comunicar su valor de forma clara y profesional. El objetivo es ordenar la información estratégica, económica, gastronómica y visual para demostrar la viabilidad de Lava y Salitre como restaurante especializado en cocina canaria de vanguardia."
-    >
+    <ProjectPhasePage phase={phaseReport.phase} title={phaseReport.title} intro={phaseReport.intro}>
       <section className="border-t border-border/60">
         <div className="mx-auto grid max-w-6xl gap-8 px-5 py-12 lg:py-16">
           {phaseSections.map((section) => (
@@ -293,8 +309,14 @@ function Fase4DocumentacionPresentacion() {
               {"groups" in section && (
                 <div className="mt-6 grid gap-4 lg:grid-cols-2">
                   {section.groups.map((group) => (
-                    <div key={group.label} className="rounded-md border border-border bg-card/50 p-5">
-                      <GroupTitle icon={"icon" in group ? group.icon : undefined} title={group.label} />
+                    <div
+                      key={group.label}
+                      className="rounded-md border border-border bg-card/50 p-5"
+                    >
+                      <GroupTitle
+                        icon={"icon" in group ? group.icon : undefined}
+                        title={group.label}
+                      />
                       <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted-foreground">
                         {group.items.map((item) => (
                           <li key={item}>{item}</li>
@@ -305,7 +327,9 @@ function Fase4DocumentacionPresentacion() {
                 </div>
               )}
 
-              {"table" in section && <DataTable headers={section.table.headers} rows={section.table.rows} />}
+              {"table" in section && (
+                <DataTable headers={section.table.headers} rows={section.table.rows} />
+              )}
 
               {"extraTable" in section && (
                 <div className="mt-6">

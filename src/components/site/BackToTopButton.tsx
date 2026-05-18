@@ -18,7 +18,7 @@ export function BackToTopButton() {
       aria-label="Subir al inicio de la pagina"
       title="Subir"
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      className={`fixed bottom-4 right-4 z-30 grid size-11 place-items-center rounded-md border border-border bg-background/95 text-foreground shadow-lg backdrop-blur transition hover:border-foreground hover:bg-secondary print:hidden ${
+      className={`fixed bottom-4 right-4 z-30 grid size-11 place-items-center rounded-md border border-border bg-background/95 text-foreground shadow-lg backdrop-blur transition hover:border-foreground hover:bg-secondary ${
         visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-2 opacity-0"
       }`}
     >

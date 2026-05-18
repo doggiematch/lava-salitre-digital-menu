@@ -4,6 +4,7 @@ import { QuickDishDialog } from "@/components/site/QuickDishDialog";
 import { ProjectPhasePage } from "@/components/site/ProjectPhasePage";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { allDishes } from "@/data/menu";
+import { projectReportPhases } from "@/data/projectReport";
 import { technicalSheets } from "@/data/technicalSheets";
 
 type DigitalDish = (typeof allDishes)[number];
@@ -24,6 +25,7 @@ const phaseSections = [
     text: "La realidad aumentada se plantea como un recurso puntual para reforzar el relato de algunos platos especiales, no como un elemento decorativo permanente. Podría utilizarse en elaboraciones vinculadas al paisaje volcánico o al Atlántico para mostrar origen del producto, técnica o inspiración, siempre manteniendo la comida como protagonista.",
   },
 ] as const;
+const phaseReport = projectReportPhases[2];
 
 function Fase3DesarrolloTecnologicoImplementacion() {
   const [origin, setOrigin] = useState("http://localhost:5173");
@@ -34,11 +36,7 @@ function Fase3DesarrolloTecnologicoImplementacion() {
   }, []);
 
   return (
-    <ProjectPhasePage
-      phase="Fase 3"
-      title="Desarrollo tecnológico e implementación"
-      intro="Esta tercera fase transforma la carta en una experiencia digital accesible, informativa y alineada con el posicionamiento del restaurante. El objetivo es crear los elementos tecnológicos que acompañarán la propuesta gastronómica, aportando transparencia, interacción, valor de marca y nuevas oportunidades de comunicación con el cliente."
-    >
+    <ProjectPhasePage phase={phaseReport.phase} title={phaseReport.title} intro={phaseReport.intro}>
       <section className="border-t border-border/60">
         <div className="mx-auto grid max-w-6xl gap-8 px-5 py-12 lg:py-16">
           <DigitalPlatformSection />
@@ -75,10 +73,10 @@ function DigitalPlatformSection() {
         >
           web
         </a>{" "}
-        funciona como presentación digital de Lava & Salitre: un restaurante de cocina
-        canaria de vanguardia que une tierra volcánica, salitre atlántico, producto local y menú
-        degustación. La plataforma resume el concepto, muestra la carta digital, presenta platos y
-        postres con imágenes, y permite consultar fichas rápidas desde códigos QR.
+        funciona como presentación digital de Lava & Salitre: un restaurante de cocina canaria de
+        vanguardia que une tierra volcánica, salitre atlántico, producto local y menú degustación.
+        La plataforma resume el concepto, muestra la carta digital, presenta platos y postres con
+        imágenes, y permite consultar fichas rápidas desde códigos QR.
       </p>
 
       <div className="mt-7 overflow-x-auto rounded-md border border-border">
@@ -94,12 +92,14 @@ function DigitalPlatformSection() {
             {[
               {
                 area: "Presentación",
-                content: "Concepto Lava & Salitre, identidad canaria, público objetivo y propuesta de valor.",
+                content:
+                  "Concepto Lava & Salitre, identidad canaria, público objetivo y propuesta de valor.",
                 use: "Explica el restaurante antes de la visita y refuerza su posicionamiento gastronómico.",
               },
               {
                 area: "Carta digital",
-                content: "Platos, postres, ingredientes principales, técnica aplicada, origen e inspiración.",
+                content:
+                  "Platos, postres, ingredientes principales, técnica aplicada, origen e inspiración.",
                 use: "Permite al cliente entender la experiencia y consultar información ampliada.",
               },
               {
@@ -137,8 +137,8 @@ function QrCodesSection({ dishes, origin }: { dishes: DigitalDish[]; origin: str
     <article className="rounded-md border border-border bg-background/70 p-6 lg:p-8">
       <h2 className="font-serif text-2xl text-foreground lg:text-3xl">Códigos QR</h2>
       <p className="mt-4 max-w-4xl text-sm leading-[1.8] text-muted-foreground lg:text-base">
-        Los códigos QR conectan la carta física con fichas digitales actualizables. Cada QR dirige
-        a una ficha rápida con descripción, ingredientes, técnica, origen del producto e información
+        Los códigos QR conectan la carta física con fichas digitales actualizables. Cada QR dirige a
+        una ficha rápida con descripción, ingredientes, técnica, origen del producto e información
         de alérgenos.
       </p>
 
@@ -224,11 +224,7 @@ function MultimediaSection({ dishes }: { dishes: DigitalDish[] }) {
       <div className="mt-7 grid gap-8">
         <ThumbnailGrid title="Platos" dishes={plateImages} onSelectDish={setSelectedDish} />
         <ThumbnailGrid title="Sorbete" dishes={sorbetImages} onSelectDish={setSelectedDish} />
-        <ThumbnailGrid
-          title="Postres"
-          dishes={dessertImages}
-          onSelectDish={setSelectedDish}
-        />
+        <ThumbnailGrid title="Postres" dishes={dessertImages} onSelectDish={setSelectedDish} />
       </div>
 
       <Dialog open={Boolean(selectedDish)} onOpenChange={(open) => !open && setSelectedDish(null)}>
@@ -283,7 +279,10 @@ function ThumbnailGrid({
           const imageSrc = sheet?.photoSrc ?? sheet?.sketchSrc;
 
           return (
-            <figure key={dish.id} className="overflow-hidden rounded-md border border-border bg-card/50">
+            <figure
+              key={dish.id}
+              className="overflow-hidden rounded-md border border-border bg-card/50"
+            >
               <button
                 type="button"
                 onClick={() => onSelectDish(dish)}

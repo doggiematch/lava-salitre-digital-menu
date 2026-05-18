@@ -17,6 +17,7 @@ import {
 import { useState, type ReactNode } from "react";
 import { ProjectPhasePage } from "@/components/site/ProjectPhasePage";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { projectReportPhases } from "@/data/projectReport";
 
 export const Route = createFileRoute("/proyecto/fase-1-conceptualizacion-fundamentacion")({
   component: Fase1ConceptualizacionFundamentacion,
@@ -28,7 +29,8 @@ export const Route = createFileRoute("/proyecto/fase-1-conceptualizacion-fundame
 const PROJECT_WEB_URL =
   "https://lava-salitre-digital-menu-el3mqseme-doggiematchs-projects.vercel.app/";
 
-const phaseSections = [] as const;
+const phaseSections: readonly { title: string; text: string }[] = [];
+const phaseReport = projectReportPhases[0];
 
 const traditionalDesserts = [
   {
@@ -628,11 +630,7 @@ function ProjectWebText({ text }: { text: string }) {
 
 function Fase1ConceptualizacionFundamentacion() {
   return (
-    <ProjectPhasePage
-      phase="Fase 1"
-      title="Conceptualización y fundamentación"
-      intro="Esta primera fase establece la base estratégica del proyecto: un restaurante que reinterpreta la tradición gastronómica canaria en platos y postres vanguardistas, creando una propuesta diferencial, viable y capaz de atraer tanto al cliente local como al visitante que busca una experiencia singular vinculada al territorio."
-    >
+    <ProjectPhasePage phase={phaseReport.phase} title={phaseReport.title} intro={phaseReport.intro}>
       <section className="border-t border-border/60">
         <div className="mx-auto grid max-w-6xl gap-8 px-5 py-12 lg:py-16">
           <GastronomicContextSection />
@@ -1010,8 +1008,8 @@ function LogoIdentitySection() {
           <Text>
             La identidad visual de Lava & Salitre resume el mismo concepto que sostiene la cocina
             del restaurante: la fuerza de la tierra volcánica y la presencia constante del mar. El
-            símbolo superior representa una montaña o formación volcánica atravesada por un recorrido
-            orgánico que puede leerse como lava, camino, costa o corriente marina.
+            símbolo superior representa una montaña o formación volcánica atravesada por un
+            recorrido orgánico que puede leerse como lava, camino, costa o corriente marina.
           </Text>
           <Text>
             El dorado aporta calidez, valor gastronómico y una sensación premium sin alejarse de la

@@ -1,6 +1,5 @@
 import { createFileRoute, Link, Outlet, useRouterState } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
-import { Printer } from "lucide-react";
 import { SectionTitle } from "@/components/site/SectionTitle";
 import { WaveDivider } from "@/components/site/Decorations";
 import { allDishes } from "@/data/menu";
@@ -47,14 +46,6 @@ function CartaDigital() {
             title="Lava & Salitre"
             subtitle="Carta de consulta en mesa: cada elaboracion mantiene su QR directo, una descripcion breve y la informacion esencial de menu, origen, ingredientes y alergenos."
           />
-          <button
-            type="button"
-            onClick={() => window.print()}
-            className="inline-flex w-fit items-center gap-2 rounded-md border border-foreground px-5 py-3 text-xs uppercase tracking-[0.24em] transition-colors hover:bg-foreground hover:text-primary-foreground print:hidden"
-          >
-            <Printer className="h-4 w-4" />
-            Imprimir
-          </button>
         </div>
 
         <div className="mt-8 flex justify-center">
@@ -109,7 +100,7 @@ function CartaDigital() {
                           </h2>
                           <Link
                             to={href}
-                            className="mt-4 inline-flex rounded-md border border-accent/70 px-3 py-2 text-[10px] uppercase tracking-[0.2em] text-accent transition-colors hover:bg-accent hover:text-accent-foreground print:hidden"
+                            className="mt-4 inline-flex rounded-md border border-accent/70 px-3 py-2 text-[10px] uppercase tracking-[0.2em] text-accent transition-colors hover:bg-accent hover:text-accent-foreground"
                           >
                             Ver contenido del QR
                           </Link>

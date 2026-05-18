@@ -330,3 +330,9 @@
 .animate-fade-up {
   animation: fade-up 0.8s ease-out both;
 }
+
+@media print {
+  body {
+    display: none;
+  }
+}

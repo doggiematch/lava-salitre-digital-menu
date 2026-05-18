@@ -3,6 +3,7 @@ import { useMemo, useState } from "react";
 import { DishModal } from "@/components/site/DishModal";
 import { ProjectPhasePage } from "@/components/site/ProjectPhasePage";
 import { allDishes, type Dish } from "@/data/menu";
+import { projectReportPhases } from "@/data/projectReport";
 import { technicalSheets } from "@/data/technicalSheets";
 
 export const Route = createFileRoute("/proyecto/fase-2-diseno-carta-contenido")({
@@ -24,6 +25,7 @@ type MenuRow = {
 };
 
 const MENU_MOCKUP_IMAGE = "/proyecto/fase-2/carta-abierta-lava-salitre.jpg";
+const phaseReport = projectReportPhases[1];
 
 const dessertRows: MenuRow[] = [
   {
@@ -457,9 +459,9 @@ const dessertNarratives = [
 function Fase2DisenoCartaContenido() {
   return (
     <ProjectPhasePage
-      phase="Fase 2"
-      title="Diseño de la carta y contenido"
-      intro="Esta segunda fase convierte el concepto gastronómico en una oferta concreta y comercializable. La carta se basa en elaboraciones canarias de vanguardia con identidad propia, siempre con nombre creativo, ingredientes principales canarios y una técnica innovadora aplicada."
+      phase={phaseReport.phase}
+      title={phaseReport.title}
+      intro={phaseReport.intro}
       introExtra={<MenuMockupModal />}
     >
       <section className="border-t border-border/60">
@@ -753,7 +755,8 @@ function buildDishesById() {
   Object.values(technicalSheets).forEach((sheet) => {
     if (dishesById.has(sheet.id)) return;
 
-    const description = sheet.plate.find((row) => row.label === "Descripción del plato")?.value ?? "";
+    const description =
+      sheet.plate.find((row) => row.label === "Descripción del plato")?.value ?? "";
     const technique =
       sheet.plate.find((row) => row.label === "Técnica culinaria aplicada")?.value ?? "";
     const inspiration =
