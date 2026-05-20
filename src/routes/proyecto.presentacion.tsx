@@ -27,7 +27,7 @@ export const Route = createFileRoute("/proyecto/presentacion")({
       { title: "Exposición - Lava & Salitre" },
       {
         name: "description",
-        content: "Presentación interactiva de 11 slides para exponer el proyecto Lava & Salitre.",
+        content: "Presentación interactiva de 16 slides para exponer el proyecto Lava & Salitre.",
       },
     ],
   }),
@@ -43,36 +43,56 @@ type Slide = {
 
 const dishExamples = [
   {
-    group: "Aperitivo",
-    name: "Perla Atlántica",
-    image: "/fotos-platos/perla-atlantica.png",
-    origin: "Agua de mar canaria y limón canario",
-    technique: "Esferificación inversa",
-    text: "Un bocado salino y cítrico que abre el menú como una gota del Atlántico.",
+    group: "Entrante",
+    name: "Ostra canaria",
+    image: "/fotos-platos/ostra-canaria.png",
+    origin: "Ostra canaria, agua de mar filtrada, pepino y limón",
+    technique: "Aire marino y granizado",
+    recipe:
+      "Se abre la ostra con cuidado y se conserva su agua natural para mantener todo su sabor marino. Se prepara un aire marino con agua de mar filtrada y lecitina, que aporta una textura ligera y fresca. Se acompaña con granizado salino de pepino para reforzar la sensación de mar y dar un contraste refrescante.",
+    pairing:
+      "Los Bermejos Malvasía Seco, de Lanzarote, elaborado con uva Malvasía Volcánica. Su frescura, mineralidad y toque salino acompañan muy bien el sabor marino de la ostra.",
+    pairingWine: "Los Bermejos Malvasía Seco",
+    text: "Un pase marino, fresco y salino que abre la experiencia con una lectura directa del Atlántico.",
   },
   {
     group: "Primero",
     name: "Ceviche de cherne",
     image: "/fotos-platos/ceviche-cherne.png",
-    origin: "Cherne fresco, lima y cilantro",
-    technique: "Leche de tigre clarificada",
-    text: "Un pase fresco que mantiene la acidez del ceviche con una presentación más limpia.",
+    origin: "Cherne fresco, cítricos, leche de tigre y cilantro",
+    technique: "Maceración y clarificación",
+    recipe:
+      "El cherne se corta en dados pequeños y se marina con cítricos para que la acidez cocine ligeramente el pescado. Se termina con leche de tigre clarificada, que aporta un sabor limpio, fresco y elegante. El aceite de cilantro se añade al final para dar aroma, color y un toque vegetal al plato.",
+    pairing:
+      "Tajinaste Blanco Seco, de Tenerife, elaborado con uva Listán Blanco. Su acidez y frescura acompañan muy bien el ceviche.",
+    pairingWine: "Tajinaste Blanco Seco",
+    text: "Un plato ácido, limpio y elegante que mantiene la frescura del pescado como protagonista.",
   },
   {
     group: "Segundo",
-    name: "Cabrito de cumbre",
-    image: "/fotos-platos/cabrito-cumbre.png",
-    origin: "Cabrito canario, batata y vino Listán Negro",
-    technique: "Sous-vide, glaseado y ceniza comestible",
-    text: "Representa la cumbre, la ganadería y la lectura volcánica del proyecto.",
+    name: "Conejo en salmorejo invertido",
+    image: "/fotos-platos/conejo-salmorejo.png",
+    origin: "Conejo canario, ajo, pimentón, vino blanco, tomillo y especias",
+    technique: "Marinado y cocción lenta",
+    recipe:
+      "El conejo se marina con ajo, pimentón, vino blanco, tomillo y especias para que absorba bien el sabor del salmorejo canario. Después se cocina lentamente hasta quedar tierno y jugoso. El salmorejo se presenta de forma moderna mediante espuma y geles, manteniendo el sabor tradicional pero con una presentación más actual.",
+    pairing:
+      "Monje Tradicional Tinto, de Tenerife, elaborado con uva Listán Negro. Sus notas afrutadas y especiadas combinan muy bien con el salmorejo y la carne de conejo.",
+    pairingWine: "Monje Tradicional Tinto",
+    text: "Reinterpreta una receta tradicional canaria desde una presentación contemporánea.",
   },
   {
-    group: "Postre",
-    name: "Bienmesabe aéreo",
-    image: "/fotos-platos/bienmesabe-aereo.png",
-    origin: "Almendra de Tejeda, miel de palma y cítricos",
-    technique: "Espuma en sifón, granizado y crujiente",
-    text: "Reinterpreta un dulce canario en una versión ligera y de menú degustación.",
+    group: "Petit four",
+    name: "Toffee crujiente aireado",
+    image: "/fotos-platos/toffee-aireado.png",
+    origin: "Azúcar, nata, mantequilla y sal marina",
+    technique: "Caramelización y aireado",
+    recipe:
+      "Se elabora un toffee con azúcar, nata y mantequilla hasta conseguir un caramelo tostado y cremoso. Después se airea y se enfría para lograr una textura ligera, porosa y crujiente. Se sirve en pequeños bocados con un toque de sal marina, que equilibra el dulzor y potencia el sabor del caramelo.",
+    pairing:
+      "El Grifo Moscatel de Ana, de Lanzarote, elaborado con uva Moscatel de Alejandría. Sus notas dulces de miel, fruta madura y caramelo acompañan muy bien el toffee.",
+    pairingWine: "El Grifo Moscatel de Ana",
+    text: "Un cierre dulce, salino y ligero que funciona como pequeño final de menú.",
   },
 ] as const;
 
@@ -179,8 +199,23 @@ function ExposicionDeck() {
         content: <MenuSlide totalDishes={totalDishes} />,
       },
       {
+        tab: "4 platos",
+        eyebrow: "6. Selección de recetas",
+        title: "Cuatro elaboraciones para presentar",
+        subtitle:
+          "Cada receta se desarrolla en una slide propia con fotografía, elaboración, técnica y maridaje.",
+        content: <RecipeIntroSlide />,
+      },
+      ...dishExamples.map((dish, index) => ({
+        tab: `Receta ${index + 1}`,
+        eyebrow: `6.${index + 1}. ${dish.group}`,
+        title: dish.name,
+        subtitle: dish.text,
+        content: <RecipeDetailSlide dish={dish} index={index} />,
+      })),
+      {
         tab: "Técnicas",
-        eyebrow: "6. Técnicas culinarias utilizadas",
+        eyebrow: "7. Técnicas culinarias utilizadas",
         title: "Vanguardia al servicio del producto",
         subtitle:
           "Las técnicas se usan para mejorar textura, temperatura, sorpresa y presentación.",
@@ -188,14 +223,14 @@ function ExposicionDeck() {
       },
       {
         tab: "Diseño",
-        eyebrow: "7. Diseño de la carta",
+        eyebrow: "8. Diseño de la carta",
         title: "Una carta física elegante conectada con contenido digital",
         subtitle: "La identidad visual se mantiene entre papel, web, QR y fichas técnicas.",
         content: <DesignSlide />,
       },
       {
         tab: "Innovación",
-        eyebrow: "8. Elemento más innovador",
+        eyebrow: "9. Elemento más innovador",
         title: "QR por elaboración y carta digital ampliada",
         subtitle:
           "La tecnología no sustituye la sala: amplía la información sin recargar la carta.",
@@ -203,7 +238,7 @@ function ExposicionDeck() {
       },
       {
         tab: "Cierre",
-        eyebrow: "9. Cierre de la exposición",
+        eyebrow: "10. Cierre de la exposición",
         title: "Una propuesta completa, coherente y defendible",
         subtitle:
           "Concepto, carta, técnica, diseño, web y documentación unidos en un mismo proyecto.",
@@ -625,12 +660,96 @@ function MenuSlide({ totalDishes }: { totalDishes: number }) {
         <MiniStat value="10" label="Pases Menú Salitre" />
         <MiniStat value="15" label="Pases Lava & Salitre" />
       </div>
-      <div className="grid gap-4 lg:grid-cols-4">
+      <div className="grid gap-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-stretch">
+        <Statement>
+          La carta se defiende a través de una selección breve de cuatro elaboraciones completas:
+          entrante, primero, segundo y petit four.
+        </Statement>
+        <div className="rounded-md border border-[#24302d]/12 bg-white/65 p-5">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[#b8812c]">
+            Desarrollo en la exposición
+          </p>
+          <p className="mt-3 text-sm leading-7 text-[#52615d]">
+            A continuación, cada plato aparece en una slide independiente con fotografía,
+            elaboración, técnica culinaria y maridaje, siguiendo el contenido del documento de
+            recetas y maridajes.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function RecipeIntroSlide() {
+  return (
+    <div className="grid gap-5 lg:grid-cols-[0.82fr_1.18fr] lg:items-center">
+      <div className="rounded-md border border-[#24302d]/12 bg-white/65 p-5">
+        <ChefHat className="size-9 text-[#b8812c]" />
+        <h2 className="mt-5 font-serif text-4xl leading-tight text-[#24302d] [letter-spacing:0]">
+          Selección equilibrada para explicar el proyecto
+        </h2>
+        <p className="mt-4 text-sm leading-7 text-[#52615d]">
+          Las cuatro recetas muestran el recorrido gastronómico de Lava & Salitre: mar, pescado,
+          tradición canaria reinterpretada y cierre dulce con maridaje.
+        </p>
+        <div className="mt-6 grid gap-3">
+          <Badge>1 entrante · 1 primero · 1 segundo · 1 petit four</Badge>
+          <Badge>Fotografía, receta, técnica culinaria y maridaje en cada slide</Badge>
+        </div>
+      </div>
+      <div className="grid gap-3 lg:grid-cols-2">
         {dishExamples.map((dish) => (
           <DishCard key={dish.name} dish={dish} />
         ))}
       </div>
     </div>
+  );
+}
+
+function RecipeDetailSlide({
+  dish,
+  index,
+}: {
+  dish: (typeof dishExamples)[number];
+  index: number;
+}) {
+  return (
+    <div className="grid gap-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-stretch">
+      <figure className="overflow-hidden rounded-md border border-[#24302d]/12 bg-white/65 shadow-[0_18px_70px_-42px_rgba(36,48,45,0.55)]">
+        <img src={dish.image} alt={dish.name} className="h-[470px] w-full object-cover" />
+      </figure>
+
+      <div className="grid min-h-full gap-3">
+        <div className="rounded-md border border-[#24302d]/12 bg-white/70 p-4">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[#b8812c]">
+            Receta {index + 1} · {dish.group}
+          </p>
+          <h2 className="mt-2 font-serif text-4xl leading-tight text-[#24302d] [letter-spacing:0]">
+            {dish.name}
+          </h2>
+          <p className="mt-3 text-sm leading-6 text-[#52615d]">{dish.origin}</p>
+        </div>
+
+        <div className="grid gap-3 lg:grid-cols-2">
+          <RecipeInfoBlock title="Técnica culinaria">{dish.technique}</RecipeInfoBlock>
+          <RecipeInfoBlock title="Maridaje elegido">{dish.pairingWine}</RecipeInfoBlock>
+        </div>
+
+        <RecipeInfoBlock title="Elaboración">{dish.recipe}</RecipeInfoBlock>
+        <RecipeInfoBlock title="Maridaje">{dish.pairing}</RecipeInfoBlock>
+      </div>
+    </div>
+  );
+}
+
+function RecipeInfoBlock({ title, children }: { title: string; children: ReactNode }) {
+  return (
+    <article className="rounded-md border border-[#24302d]/12 bg-white/70 p-4">
+      <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#b8812c]">
+        {title}
+      </p>
+      <p className="mt-2 text-sm leading-6 text-[#52615d]">{children}</p>
+    </article>
   );
 }
 

@@ -77,10 +77,7 @@ export function Footer() {
             <p className="text-[10px] uppercase tracking-[0.35em] text-accent">
               Mapa de navegación
             </p>
-            <nav
-              className="mt-4 grid grid-cols-2 gap-2"
-              aria-label="Mapa de navegación"
-            >
+            <nav className="mt-4 grid grid-cols-2 gap-2" aria-label="Mapa de navegación">
               {sitemap.map((item) => (
                 <Link
                   key={item.to}
@@ -107,7 +104,12 @@ export function Footer() {
             </nav>
           </div>
           <div>
-            <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Proyecto</p>
+            <a
+              href="http://localhost:5173/proyecto"
+              className="text-[10px] uppercase tracking-[0.35em] text-accent transition-colors hover:text-foreground"
+            >
+              Proyecto
+            </a>
             <nav className="mt-4 grid gap-2" aria-label="Proyecto">
               {projectLinks.map((item) => (
                 <Link

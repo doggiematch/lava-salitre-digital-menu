@@ -230,14 +230,34 @@ export const reinterpretationImages = [
 
 export const cartaFisicaImages = [
   {
+    src: "/proyecto/fase-2/carta-fisica/portada-carta-menu.png",
+    alt: "Portada de la carta física",
+    caption: "Portada de carta física",
+  },
+  {
     src: "/proyecto/fase-2/carta-fisica/interior-1-carta-menu.png",
     alt: "Interior de carta física",
     caption: "Inicio de carta física",
   },
   {
+    src: "/proyecto/fase-2/carta-fisica/interior-2-carta-menu.png",
+    alt: "Interior de carta física con platos",
+    caption: "Carta física - platos",
+  },
+  {
+    src: "/proyecto/fase-2/carta-fisica/interior-3-carta-menu.png",
+    alt: "Interior de carta física con códigos QR",
+    caption: "Carta física - QR y fichas",
+  },
+  {
     src: "/proyecto/fase-2/carta-fisica/interior-4-carta-menu.png",
     alt: "Interior de carta física con menú Lava y Salitre",
     caption: "Menús y QR integrados",
+  },
+  {
+    src: "/proyecto/fase-2/carta-fisica/carta-vinos.png",
+    alt: "Carta de vinos y maridaje",
+    caption: "Carta de vinos y maridaje",
   },
 ] as const;
 
