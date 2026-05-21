@@ -132,6 +132,44 @@ const visualDesign = [
   },
 ] as const;
 
+const presentationTechniques = [
+  {
+    title: "Esferificación",
+    description:
+      "Convierte líquidos en pequeñas esferas con una capa fina exterior y un interior líquido que explota en boca.",
+    application:
+      "Aplicable a mojos, caldos, jugos marinos o tuno indio para presentar sabores canarios de forma moderna.",
+  },
+  {
+    title: "Nitrógeno líquido",
+    description:
+      "Congela muy rápido y permite crear helados al momento, contrastes de frío y pequeños efectos visuales.",
+    application:
+      "Reservado para postres o bocados concretos, como un helado rápido de plátano canario o un prepostre frío.",
+  },
+  {
+    title: "Deconstrucción",
+    description:
+      "Separa los elementos de un plato tradicional y los presenta de otra manera manteniendo su sabor original.",
+    application:
+      "Permite reinterpretar papas arrugadas, mojos o salmorejos desde una lectura limpia y contemporánea.",
+  },
+  {
+    title: "Espumas",
+    description:
+      "Transforman cremas, salsas o líquidos en texturas ligeras y aireadas mediante sifón.",
+    application:
+      "Aportan ligereza a gofio, queso canario, marisco o mojo suave sin ocultar el producto principal.",
+  },
+  {
+    title: "Gelificaciones",
+    description:
+      "Convierten líquidos en geles con agar-agar, gelatina o pectina para dar forma, color y textura.",
+    application:
+      "Sirven para puntos cítricos, frutales o marinos que equilibran pescados, mariscos y postres.",
+  },
+] as const;
+
 const TIMER_DURATION_MS = 10 * 60 * 1000;
 const TIMER_STORAGE_KEY = "lava-salitre-presentation-timer";
 
@@ -218,7 +256,7 @@ function ExposicionDeck() {
         eyebrow: "7. Técnicas culinarias utilizadas",
         title: "Vanguardia al servicio del producto",
         subtitle:
-          "Las técnicas se usan para mejorar textura, temperatura, sorpresa y presentación.",
+          "Deconstrucción, esferificación, espumas, gelificaciones y frío aplicado con sentido.",
         content: <TechniquesSlide />,
       },
       {
@@ -755,23 +793,66 @@ function RecipeInfoBlock({ title, children }: { title: string; children: ReactNo
 
 function TechniquesSlide() {
   return (
-    <div className="grid gap-5 lg:grid-cols-[0.72fr_1.28fr] lg:items-center">
-      <div className="rounded-md border border-[#24302d]/12 bg-white/65 p-5">
-        <ChefHat className="size-8 text-[#b8812c]" />
-        <h2 className="mt-4 font-serif text-3xl text-[#24302d] [letter-spacing:0]">
-          Técnicas elegidas con sentido
-        </h2>
-        <p className="mt-4 text-sm leading-7 text-[#52615d]">
-          La guía pide explicar el motivo de la elección: aquí la técnica no es decoración, sirve
-          para aligerar, concentrar sabor, crear contraste o hacer más clara la presentación.
-        </p>
+    <div className="grid gap-5 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
+      <div className="grid gap-4">
+        <div className="rounded-md border border-[#24302d]/12 bg-white/65 p-5">
+          <ChefHat className="size-8 text-[#b8812c]" />
+          <h2 className="mt-4 font-serif text-3xl text-[#24302d] [letter-spacing:0]">
+            Técnicas elegidas con sentido
+          </h2>
+          <p className="mt-4 text-sm leading-7 text-[#52615d]">
+            La técnica no funciona como decoración. Se utiliza para aligerar, concentrar sabor,
+            controlar temperatura, crear contraste y hacer más clara la presentación.
+          </p>
+        </div>
+        <div className="rounded-md border border-[#24302d]/12 bg-white/65 p-5">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[#b8812c]">
+            Aplicación en recetas
+          </p>
+          <div className="mt-3 grid gap-2">
+            {dishExamples.map((dish) => (
+              <div
+                key={dish.name}
+                className="flex items-center justify-between gap-3 border-b border-[#24302d]/10 pb-2 last:border-b-0 last:pb-0"
+              >
+                <span className="font-serif text-sm text-[#24302d] [letter-spacing:0]">
+                  {dish.name}
+                </span>
+                <span className="text-right text-[11px] font-medium text-[#52615d]">
+                  {dish.technique}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-      <div className="grid gap-4 lg:grid-cols-2">
-        {dishExamples.map((dish) => (
-          <TechniqueCard key={dish.name} dish={dish} />
+      <div className="grid gap-3 lg:grid-cols-2">
+        {presentationTechniques.map((technique) => (
+          <CulinaryTechniqueCard key={technique.title} technique={technique} />
         ))}
       </div>
     </div>
+  );
+}
+
+function CulinaryTechniqueCard({
+  technique,
+}: {
+  technique: (typeof presentationTechniques)[number];
+}) {
+  return (
+    <article className="rounded-md border border-[#24302d]/12 bg-white/65 p-4">
+      <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#b8812c]">
+        Técnica de la web
+      </p>
+      <h3 className="mt-2 font-serif text-2xl leading-tight text-[#24302d] [letter-spacing:0]">
+        {technique.title}
+      </h3>
+      <p className="mt-2 text-xs leading-5 text-[#52615d]">{technique.description}</p>
+      <p className="mt-2 border-t border-[#24302d]/10 pt-2 text-xs leading-5 text-[#52615d]">
+        <span className="font-semibold text-[#24302d]">Aplicación:</span> {technique.application}
+      </p>
+    </article>
   );
 }
 
@@ -956,22 +1037,6 @@ function DishCard({ dish }: { dish: (typeof dishExamples)[number] }) {
           <Badge>{dish.origin}</Badge>
           <Badge>{dish.technique}</Badge>
         </div>
-      </div>
-    </article>
-  );
-}
-
-function TechniqueCard({ dish }: { dish: (typeof dishExamples)[number] }) {
-  return (
-    <article className="grid gap-3 rounded-md border border-[#24302d]/12 bg-white/65 p-4 lg:grid-cols-[92px_1fr]">
-      <img src={dish.image} alt={dish.name} className="size-[92px] rounded-md object-cover" />
-      <div>
-        <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#b8812c]">
-          {dish.group}
-        </p>
-        <h3 className="mt-1 font-serif text-xl text-[#24302d] [letter-spacing:0]">{dish.name}</h3>
-        <p className="mt-2 text-sm font-medium text-[#24302d]">{dish.technique}</p>
-        <p className="mt-1 text-xs leading-5 text-[#52615d]">{dish.text}</p>
       </div>
     </article>
   );

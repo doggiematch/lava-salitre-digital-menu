@@ -109,7 +109,7 @@ function assetSrc(src) {
     process.versions?.node &&
     typeof process.cwd === "function"
   ) {
-    return `file:///${encodeURI(`${process.cwd().replace(/\\/g, "/")}/public${normalized}`)}`;
+    return `${process.cwd().replace(/\\/g, "/")}/public${normalized}`;
   }
 
   return normalized;
@@ -130,10 +130,6 @@ function InteriorFooter() {
 function EditorialPageMarker({ dark = false }) {
   return (
     <View style={styles.pageIdentityMarker} fixed>
-      <View style={[styles.pageIdentityRule, dark ? styles.pageIdentityRuleDark : undefined]} />
-      <Text style={[styles.pageIdentityName, dark ? styles.pageIdentityTextDark : undefined]}>
-        RUDY LINDGREEN GARCIA
-      </Text>
       <Text
         style={[styles.pageIdentityNumber, dark ? styles.pageIdentityTextDark : undefined]}
         render={({ pageNumber, totalPages }) => `${pageNumber} / ${totalPages}`}
@@ -161,12 +157,7 @@ function ReportPage({ children, style, id, bookmark, showHeader = true, showFoot
       {showHeader ? <PageHeader /> : null}
       {showHeader ? <View style={styles.pageAccent} fixed /> : null}
       {children}
-      {showFooter ? (
-        <>
-          <InteriorFooter />
-          <EditorialPageMarker />
-        </>
-      ) : null}
+      {showFooter ? <EditorialPageMarker /> : null}
     </Page>
   );
 }
@@ -243,31 +234,41 @@ function chunkItems(items, size) {
 
 function PhysicalMenuGalleryPages() {
   const pages = chunkItems(cartaFisicaImages, 2);
+  const pageTitles = [
+    "Galería de carta física",
+    "Galería de carta física - 2ª parte",
+    "Carta física y maridaje - 3ª parte",
+  ];
 
   return (
     <>
-      {pages.map((pageImages, pageIndex) => (
-        <ReportPage
-          key={`carta-fisica-gallery-${pageIndex}`}
-          bookmark={`Galería carta física ${pageIndex + 1}`}
-        >
-          <View style={styles.titleCluster}>
-            <Text style={styles.topKicker}>Diseño de carta y maridaje</Text>
-            <Text style={styles.h1}>
-              {pageIndex === 0 ? "Galería de carta física" : "Carta física y maridaje"}
-            </Text>
-            <View style={styles.titleRule} />
-          </View>
-          <View style={styles.menuGalleryPage} wrap={false}>
-            {pageImages.map((image) => (
-              <View key={image.src} style={styles.menuGalleryItem}>
-                <Image src={assetSrc(image.src)} alt={image.alt} style={styles.menuGalleryImage} />
-                <Text style={styles.imageCaption}>{image.caption}</Text>
+      {pages.map((pageImages, pageIndex) => {
+        const title = pageTitles[pageIndex] ?? `Carta física y maridaje - parte ${pageIndex + 1}`;
+
+        return (
+          <ReportPage key={`carta-fisica-gallery-${pageIndex}`} bookmark={title}>
+            <View wrap={false}>
+              <View style={[styles.titleCluster, styles.menuGalleryTitleCluster]}>
+                <Text style={styles.topKicker}>Diseño de carta y maridaje</Text>
+                <Text style={styles.h1}>{title}</Text>
+                <View style={styles.titleRule} />
               </View>
-            ))}
-          </View>
-        </ReportPage>
-      ))}
+              <View style={styles.menuGalleryPage}>
+                {pageImages.map((image) => (
+                  <View key={image.src} style={styles.menuGalleryItem}>
+                    <Image
+                      src={assetSrc(image.src)}
+                      alt={image.alt}
+                      style={styles.menuGalleryImage}
+                    />
+                    <Text style={styles.imageCaption}>{image.caption}</Text>
+                  </View>
+                ))}
+              </View>
+            </View>
+          </ReportPage>
+        );
+      })}
     </>
   );
 }
@@ -387,9 +388,19 @@ function ImageTextFeature({ image, title, paragraphs }) {
 }
 
 function LogoVersionGrid({ items }) {
+  const orderedTitles = [
+    "Versión blanca",
+    "Versión clara premium",
+    "Versión monocroma",
+    "Versión con claim centrado",
+  ];
+  const orderedItems = orderedTitles
+    .map((title) => items.find((version) => version.title === title))
+    .filter(Boolean);
+
   return (
     <View style={styles.logoVersionGrid}>
-      {items.map((version, index) => (
+      {orderedItems.map((version, index) => (
         <View
           key={version.src}
           style={[
@@ -636,15 +647,6 @@ function RecipeSectionCover({ dishes }) {
           </View>
         ))}
       </View>
-
-      <View style={styles.infoBand} wrap={false}>
-        <Text style={styles.h3}>Orden de lectura</Text>
-        <Text style={styles.paragraph}>
-          Primero se presentan los platos salados en este orden: entrantes, primeros platos y
-          segundos platos. Después se incorpora el sorbete como transición y, finalmente, los
-          postres y los petit four.
-        </Text>
-      </View>
     </ReportPage>
   );
 }
@@ -854,7 +856,6 @@ function RecipeLandscapePage({ dish, index, total }) {
         </View>
       </View>
 
-      <RecipeFooter />
       <EditorialPageMarker />
     </Page>
   );
@@ -982,12 +983,8 @@ function IndexPage() {
         PDF.
       </Text>
       <View style={styles.indexList}>
-        {INDEX_SECTIONS.map((section, index) => (
-          <View
-            key={section.target}
-            style={[styles.indexRow, (index + 1) % 2 === 0 ? styles.indexRowEven : undefined]}
-            wrap={false}
-          >
+        {INDEX_SECTIONS.map((section) => (
+          <View key={section.target} style={styles.indexRow} wrap={false}>
             <Text style={styles.indexNumber}>{section.number}</Text>
             <View style={styles.indexTextGroup}>
               <Text style={styles.indexTitle}>
@@ -1147,7 +1144,7 @@ function ConceptFeature({ image, title, paragraphs }) {
 
 function Km0IngredientsChapter({ phase, phase1, hideIntro = false }) {
   const ingredientPages = chunkItems(phase1.km0Ingredients, KM0_INGREDIENTS_PER_PAGE);
-  const headers = ["Ingrediente", "Isla", "Productor / procedencia", "Zona agrÃ­cola u origen"];
+  const headers = ["Ingrediente", "Isla", "Productor / procedencia", "Zona agrícola u origen"];
   const widths = ["18%", "17%", "32%", "33%"];
 
   return (
@@ -1170,19 +1167,19 @@ function Km0IngredientsChapter({ phase, phase1, hideIntro = false }) {
         </EditorialSection>
       </ReportPage>
 
-      <ReportPage bookmark={`${phase.phase}: ${phase.title} - ingredientes km 0 continuaciÃ³n`}>
+      <ReportPage bookmark={`${phase.phase}: ${phase.title} - ingredientes km 0 continuación`}>
         <EditorialSection
           kicker="Ingredientes km 0"
           title="Listado de 20 ingredientes producidos en Canarias"
         >
           <View style={styles.tableEditorialHeader} wrap={false}>
-            <Text style={styles.h3}>ContinuaciÃ³n de la tabla</Text>
+            <Text style={styles.h3}>Continuación de la tabla</Text>
             <Text style={styles.tableContinuationLabel}>Parte 2 / {ingredientPages.length}</Text>
           </View>
           <DataTable headers={headers} rows={ingredientPages[1] ?? []} widths={widths} />
           <View style={styles.subsectionBreak}>
             <Text style={styles.sectionKicker}>Lava y Salitre - Carta de postres</Text>
-            <Text style={styles.h3}>SelecciÃ³n de 10 ingredientes principales</Text>
+            <Text style={styles.h3}>Selección de 10 ingredientes principales</Text>
             <Text style={styles.paragraph}>{phase1.dessertIngredientIntro}</Text>
             <CardGrid
               items={phase1.dessertIngredientSelection}
@@ -1190,10 +1187,6 @@ function Km0IngredientsChapter({ phase, phase1, hideIntro = false }) {
               getText={(item) => `${item.recipe}. ${item.reason}`}
               getMeta={(_, index) => `Ingrediente ${index + 1}`}
             />
-          </View>
-          <View style={styles.infoBand}>
-            <Text style={styles.h3}>ConclusiÃ³n</Text>
-            <ParagraphGroup paragraphs={phase1.km0Conclusion} />
           </View>
         </EditorialSection>
       </ReportPage>
@@ -1321,7 +1314,6 @@ function PhaseOneFull({ phase, only, hideIntro = false }) {
             />
           </View>
           <View style={styles.infoBand}>
-            <Text style={styles.h3}>Conclusión</Text>
             <ParagraphGroup paragraphs={phase1.km0Conclusion} />
           </View>
         </EditorialSection>
@@ -1387,7 +1379,7 @@ function PhaseOneFull({ phase, only, hideIntro = false }) {
             getTitle={(item) => item.title}
             getText={(item) => item.text}
           />
-          <View style={styles.twoColumns}>
+          <View style={styles.twoColumns} wrap={false}>
             <View style={styles.columnLeft}>
               <Text style={styles.h3}>Lo que valora este cliente</Text>
               <NumberedListBlock items={phase1.audience.values} />
@@ -1452,7 +1444,6 @@ function PhaseOneFull({ phase, only, hideIntro = false }) {
             />
           </View>
           <View style={styles.infoBand} wrap={false}>
-            <Text style={styles.h3}>Conclusión</Text>
             <ParagraphGroup paragraphs={phase1.technologies.conclusion} />
           </View>
         </EditorialSection>
@@ -1538,27 +1529,41 @@ function PhaseTwoFull({ phase, only, hideIntro = false }) {
       {only === "narrative" ? (
         <EditorialSection title="Narrativa gastronómica" paragraphs={phase2.narrativeIntro}>
           <NarrativeCards rows={phase2.plateNarratives} />
-          <View style={styles.subsectionBreak}>
+          <View style={styles.subsectionBreak} break>
             <Text style={styles.h3}>Historia de los postres y petit four</Text>
             <NarrativeCards rows={phase2.dessertNarratives} includeIdea={false} />
           </View>
           <View style={styles.infoBand}>
-            <Text style={styles.h3}>Conclusión</Text>
             <Text style={styles.paragraph}>{phase2.narrativeConclusion}</Text>
           </View>
         </EditorialSection>
       ) : null}
 
-      {only === "visual" ? (
-        <EditorialSection title="Diseño visual" lead={phase2.visualDesignIntro}>
-          <DataTable
-            headers={["Elaboración", "Presentación"]}
-            rows={[...phase2.plateRows, ...phase2.dessertRows].map((row) => [row[1], row[6]])}
-            widths={["34%", "66%"]}
-          />
-        </EditorialSection>
-      ) : null}
+      {only === "visual" ? <VisualDesignSection phase2={phase2} /> : null}
     </ReportPage>
+  );
+}
+
+function VisualDesignSection({ phase2 }) {
+  const rows = [...phase2.plateRows, ...phase2.dessertRows].map((row) => [row[1], row[6]]);
+  const firstPageRows = rows.slice(0, 8);
+  const continuationRows = rows.slice(8);
+
+  return (
+    <EditorialSection title="Diseño visual" lead={phase2.visualDesignIntro}>
+      <DataTable
+        headers={["Elaboración", "Presentación"]}
+        rows={firstPageRows}
+        widths={["34%", "66%"]}
+      />
+      <View break>
+        <DataTable
+          headers={["Elaboración", "Presentación"]}
+          rows={continuationRows}
+          widths={["34%", "66%"]}
+        />
+      </View>
+    </EditorialSection>
   );
 }
 
@@ -1764,7 +1769,6 @@ function PhaseFourFull({ phase }) {
 
           {section.title !== "Presupuesto" && section.conclusion ? (
             <View style={styles.infoBand}>
-              <Text style={styles.h3}>Conclusión</Text>
               <Text style={styles.paragraph}>{section.conclusion}</Text>
             </View>
           ) : null}
@@ -1791,7 +1795,7 @@ function ConclusionPage() {
         <Text style={styles.h1}>{reportConclusion.title}</Text>
         <View style={styles.titleRule} />
       </View>
-      <ImageFigure image={reportConclusion.image} feature />
+      <ImageFigure image={reportConclusion.image} contain feature />
       <View style={styles.editorialColumns}>
         <View style={styles.editorialMainColumn}>
           {reportConclusion.paragraphs.map((paragraph) => (
@@ -1859,15 +1863,14 @@ function CeoClosingPage() {
   return (
     <Page id="ceo-closing" bookmark="Cierre institucional" size="A4" style={styles.ceoClosingPage}>
       <View style={styles.ceoClosingCenter}>
-        <Image src={assetSrc(CEO_IMAGE_SRC)} alt="Rudy Lindgreen García" style={styles.ceoPhoto} />
+        <View style={styles.ceoPhotoFrame}>
+          <Image
+            src={assetSrc(CEO_IMAGE_SRC)}
+            alt="Rudy Lindgreen García"
+            style={styles.ceoPhoto}
+          />
+        </View>
         <Text style={styles.ceoCaption}>Rudy Lindgreen García - CEO</Text>
-      </View>
-      <View style={styles.ceoFooter} fixed>
-        <Text style={styles.ceoFooterText}>RUDY LINDGREEN GARCIA</Text>
-        <Text
-          style={styles.ceoFooterText}
-          render={({ pageNumber, totalPages }) => `${pageNumber} / ${totalPages}`}
-        />
       </View>
       <EditorialPageMarker dark />
     </Page>
