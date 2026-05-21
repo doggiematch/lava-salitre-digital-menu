@@ -172,6 +172,8 @@ const presentationTechniques = [
 
 const TIMER_DURATION_MS = 10 * 60 * 1000;
 const TIMER_STORAGE_KEY = "lava-salitre-presentation-timer";
+const PROJECT_ACCESS_URL = "https://lava-salitre-digital-menu.vercel.app/";
+const PROJECT_ACCESS_PASSWORD = "lava2026";
 
 type TimerState = {
   elapsedMs: number;
@@ -283,10 +285,11 @@ function ExposicionDeck() {
         content: <ClosingSlide />,
       },
       {
-        tab: "Gracias",
+        tab: "Acceso",
         eyebrow: "Fin de la exposición",
-        title: "¡Muchas gracias!",
-        content: <ThanksSlide />,
+        title: "Acceso al proyecto",
+        subtitle: "QR, dirección web y cierre institucional.",
+        content: <FinalAccessSlide />,
       },
     ],
     [totalDishes],
@@ -939,22 +942,46 @@ function ClosingSlide() {
   );
 }
 
-function ThanksSlide() {
+function FinalAccessSlide() {
   return (
-    <div className="grid min-h-[54vh] place-items-center rounded-md border border-[#24302d]/12 bg-white/65 p-8 text-center">
-      <div>
-        <img
-          src="/galeria/logo-version-dorada-transparente.png"
-          alt="Logo Lava & Salitre"
-          className="mx-auto h-32 w-auto object-contain"
-        />
-        <h2 className="mt-10 font-serif text-6xl leading-none text-[#24302d] [letter-spacing:0] lg:text-8xl">
-          ¡Muchas gracias!
-        </h2>
-        <p className="mt-6 text-sm uppercase tracking-[0.28em] text-[#b8812c]">
-          Lava & Salitre · Tierra y Mar
+    <div className="grid min-h-[54vh] gap-5 lg:grid-cols-[1.05fr_0.95fr] lg:items-stretch">
+      <section className="rounded-md border border-[#24302d]/12 bg-white/70 p-6">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[#b8812c]">
+          Web del proyecto
         </p>
-      </div>
+        <div className="mt-5 grid place-items-center">
+          <img
+            src="/proyecto/acceso-web-qr.png"
+            alt="QR de acceso a la página del proyecto"
+            className="h-72 w-72 rounded-md bg-white object-contain p-4 shadow-[0_18px_60px_-42px_rgba(36,48,45,0.55)]"
+          />
+        </div>
+        <a
+          href={PROJECT_ACCESS_URL}
+          className="mt-5 block break-all text-center font-serif text-2xl leading-snug text-[#24302d] [letter-spacing:0]"
+        >
+          {PROJECT_ACCESS_URL}
+        </a>
+        <p className="mt-3 text-center text-xs uppercase tracking-[0.2em] text-[#52615d]">
+          Contraseña: {PROJECT_ACCESS_PASSWORD}
+        </p>
+      </section>
+
+      <section className="grid place-items-center rounded-md border border-[#24302d]/12 bg-[#24302d] p-6 text-center text-white">
+        <div>
+          <div className="mx-auto w-[21rem] border border-[#b8812c] p-4">
+            <img
+              src="/galeria/rudy-ceo.png"
+              alt="Rudy Lindgreen García"
+              className="h-[22rem] w-full object-contain"
+            />
+          </div>
+          <p className="mt-6 font-serif text-3xl leading-tight text-white [letter-spacing:0]">
+            Rudy Lindgreen García
+          </p>
+          <p className="mt-2 text-xs uppercase tracking-[0.26em] text-[#d8b26b]">CEO</p>
+        </div>
+      </section>
     </div>
   );
 }

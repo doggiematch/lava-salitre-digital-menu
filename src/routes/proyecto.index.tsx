@@ -21,7 +21,7 @@ function ProyectoIndex() {
     <div className="paper">
       <section className="mx-auto max-w-6xl px-5 py-14 lg:py-20">
         <SectionTitle eyebrow="Proyecto" title="Proyecto Lava & Salitre" />
-        <div className="mt-8">
+        <div className="mt-8 flex flex-wrap gap-3">
           <DownloadInformeButton />
         </div>
       </section>
